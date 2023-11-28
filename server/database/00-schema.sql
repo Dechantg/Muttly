@@ -28,7 +28,9 @@ CREATE TABLE dog_breeds (
   min_height_female SMALLINT,
   min_weight_male SMALLINT,
   min_weight_female SMALLINT,
-  name VARCHAR(50) NOT NULL
+  name VARCHAR(50) NOT NULL,
+  description TEXT
+
 );
 
 CREATE TABLE users (
@@ -49,8 +51,8 @@ CREATE TABLE generated_breeds (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  generated_name VARCHAR(50) NOT NULL
-  generated_photo_id INTEGER REFERENCES generated_photo_index(id) ON DELETE CASCADE,
+  generated_name VARCHAR(50) NOT NULL,
+  generated_photo_link INTEGER REFERENCES generated_photo_index(id) ON DELETE CASCADE,
   good_with_children SMALLINT,
   good_with_other_dogs SMALLINT,
   shedding SMALLINT,
@@ -70,7 +72,9 @@ CREATE TABLE generated_breeds (
   min_height_male SMALLINT,
   min_height_female SMALLINT,
   min_weight_male SMALLINT,
-  min_weight_female SMALLINT
+  min_weight_female SMALLINT,
+  description TEXT
+
 );
 
 CREATE TABLE liked_generated_breeds (
