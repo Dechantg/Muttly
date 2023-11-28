@@ -1,4 +1,7 @@
 import React from 'react';
+import { NavigationBarTop, NavigationBarBottom } from './';
+
+// import { Links } from 'react-router-dom';
 
 import './AboutUs.scss';
 
@@ -7,20 +10,7 @@ export default AboutUsPage = () => {
   return (
     <div className="about-us-container">
       {/* Top Navigation Bar */}
-      <div className="top-navigation-bar">
-        <div className="left-side">
-          <Link to="/news-feed" className="logo-link">
-            <img src="/path/to/muttlylogo.png" alt="Muttly Logo" className="muttly-logo" />
-          </Link>
-          <h1 classnName="muttly-brand">Muttly</h1>
-          <h2 className="muttly-slogan">Unlimited paw-sibilities... Tailored Tails, Your Way!</h2>
-        </div>
-        <div className="right-side">
-          <Link to="/signin" className="sign-in-out-button">
-            Bark In/Bark Out
-          </Link>
-        </div>
-      </div>
+      <NavigationBarTop />
 
       {/* Body of the About Us Page */}
       <div className="about-us-body">
@@ -42,17 +32,7 @@ export default AboutUsPage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <div className="bottom-navigation-bar">
-        <Link to="/contactUs" className="nav-link">
-          Contact Us
-        </Link>
-        <Link to="/aboutUs" className="nav-link">
-          About Us
-        </Link>
-        <Link to="/signUp" className="nav-link">
-          Sign Up
-        </Link>
-      </div>
+      <NavigationBarBottom />
     </div>
   );
 };
