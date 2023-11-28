@@ -1,0 +1,62 @@
+
+
+.about-us-container {
+
+}
+
+.top-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  // Styling for the logo link if needed? probably not, unless a click animation of sorts is used
+}
+
+.logo {
+  // Styling for the Muttly Paw Logo - can navigate to news-feed if clicked
+}
+
+.muttly-brand {
+  // Styling for the brand name Muttly
+}
+
+.muttly-slogan {
+  // Styling for the slogans presentation/size within the navigation-bar
+}
+
+.right-side {
+  // Styling for the right side - sign-in-out-button - margin/padding from edges?
+}
+
+.sign-in-out-button {
+  // Styling for the "Bark In/Bark Out" icon from uizard + colour changes with it's 'current status'
+}
+
+.about-us-body {
+  // Styling for the body of the page - between navigations bars (top & bottom)
+}
+
+.background-with-pawprints {
+  // Styling for the pawprints - unsure if we want animated walking on just 'still-locations' for the paws on the pages background
+}
+
+.about-us-content {
+  // Styling for the paragraph of text - centered? transparent (footprints can run behind?)
+}
+
+.bottom-navigation-bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-link {
+  // Styling for the navigation links - clickable with "Indie Flower" font?
+}
