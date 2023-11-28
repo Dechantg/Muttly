@@ -20,19 +20,20 @@ app.use(express.static(public));
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Connect to Database
-<<<<<<< HEAD
-// const pool = require('./database/connect');
-=======
-const pool = new Pool({
-  user: process.env.ELEPHANT_USER,
-  host: process.env.ELEPHANT_HOST,
-  database: process.env.ELEPHANT_USER,
-  password: process.env.ELEPHANT_PASSWORD,
-  port: 5432, // Replace with your PostgreSQL port
-});
+const dogBreed = require('../database/queries/retrieve_dog_breed');
+const dogBreedName = require('../database/queries/retrieve_all_breed_names');
 
->>>>>>> master
+
+// Connect to Database
+// const pool = require('./database/connect');
+// const pool = new Pool({
+//   user: process.env.ELEPHANT_USER,
+//   host: process.env.ELEPHANT_HOST,
+//   database: process.env.ELEPHANT_USER,
+//   password: process.env.ELEPHANT_PASSWORD,
+//   port: 5432
+// });
+
 
 // Use Routed Endpoints
 const itemRoutes = require('./routes/itemRoutes');
@@ -40,29 +41,44 @@ const muttyAssistent = require('./openAiApiCall');
 
 // app.use('/api/items', itemRoutes(pool));
 
+const generateBreed = require('./routes/generateNewDogObject');
+
+app.use('/api/generatebreed', generateBreed)
+
 app.get('/api/test', async (req, res) => {
   try {
     // Assuming you have a table named 'items'
-    const result = await pool.query('SELECT * FROM dog_breeds');
+    const someDogBreedId = 59;
+    const result = await dogBreed(someDogBreedId);
+    console.log('Fetched data:', result);
+
 
     // Send the result as JSON to the client
-    res.json(result.rows);
+    res.json(result);
   } catch (error) {
     console.error('Error executing SQL query:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Simple Endpoint - no routes module
-app.get("/api/status", async (req, res) => {
+
+app.get('/api/allbreeds', async (req, res) => {
   try {
-    const result = await muttyAssistent(dogOne, dogTwo);
-    res.json({ muttyResult: result });
+    const result = await dogBreedName();
+
+    console.log('Fetched data:', result);
+
+
+    res.json(result);
   } catch (error) {
-    console.error('Error in route handler:', error);
+    console.error('Error executing SQL query:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+// Simple Endpoint - no routes module
+
 
 app.use(function(req, res) {
   res.status(404);
