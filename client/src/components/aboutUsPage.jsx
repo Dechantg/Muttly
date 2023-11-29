@@ -1,16 +1,19 @@
-import React from 'react';
-import { NavigationBarTop, NavigationBarBottom } from './';
+// AboutUsPage.jsx
 
+import React from 'react';
 // import { Links } from 'react-router-dom';
+
+import TopNavigationBar from './NavigationBarTop';
+import BottomNavigationBar from './NavigationBarBottom';
 
 import './AboutUs.scss';
 
-export default AboutUsPage = () => {
+const AboutUsPage = () => {
 
   return (
     <div className="about-us-container">
       {/* Top Navigation Bar */}
-      <NavigationBarTop />
+      <TopNavigationBar />
 
       {/* Body of the About Us Page */}
       <div className="about-us-body">
@@ -32,7 +35,9 @@ export default AboutUsPage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <NavigationBarBottom />
+      <BottomNavigationBar />
     </div>
   );
 };
+
+export default AboutUsPage;

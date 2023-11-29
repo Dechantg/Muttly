@@ -1,0 +1,38 @@
+// NewsFeedPublicPage.scss
+
+@import './NavigationBarTop.scss';
+@import './NavigationBarBottom.scss';
+@import './SignInModal.scss';
+
+
+.news-feed-container {
+  // Styling for the overall container
+}
+
+.news-feed-content {
+  text-align: center;
+  margin: 20px;
+
+  h2 {
+    // Styling for the Titile
+  }
+
+  .image-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    // Styling for image thumbnails needed
+  }
+}
+
+.sign-in-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  // Styling for the pawprint icon
+}

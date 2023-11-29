@@ -1,3 +1,9 @@
+// HomePage.scss
+
+@import './NavigationBarTop.scss';
+@import './NavigationBarBottom.scss';
+
+
 .main {
   display: flex;
   position: absolute;

@@ -1,5 +1,9 @@
 import React from 'react';
 
+import TopNavigationBar from './NavigationBarTop';
+
+import '../views/stylesheets/SignUpPage';
+
 export default SignUpPage = () => {
   return (
     <div className="signup-container">
