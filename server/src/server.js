@@ -1,14 +1,21 @@
 require('dotenv').config();
+const fs = require('fs');
+const https = require('https');
 const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
-const { Pool } = require('pg');
 
-const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
+
+const httpsOptions = {
+  key: fs.readFileSync(),
+  cert: fs.readFileSync(),
+}
+
 const PORT = process.env.PORT || 8080;
+
 
 // serve static files from ../build (needed for React)
 const cwd = process.cwd();
@@ -27,17 +34,27 @@ const dogBreedById               = require('./routes/breedById')
 const generatedBreedById         = require('./routes/generatedBreedById')
 const generatedBreedsByUserId    = require('./routes/generatedBreedIdByUser')
 const deleteDogBreed             = require('./routes/deleteBreed')
+const mostLikedBreeds            = require('./routes/retrieveMostLikedBreeds')
+const mostRecentBreeds           = require('./routes/mostRecentBreeds')
 
 
 
 const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
-app.use('/api/generatebreed', generateBreed);
+
+app.use('/api/mostliked', mostLikedBreeds);
+app.use('/api/mostrecent', mostRecentBreeds);
+
 app.use('/api/allbreednames', dogBreedNames);
 app.use('/api/breedbyid', dogBreedById);
+
+app.use('/api/generatebreed', generateBreed);
+
 app.use('/api/generatedbreedbyid', generatedBreedById);
 app.use('/api/generatedbreedbyuserid', generatedBreedsByUserId);
+
 app.use('/api/deletebreed', deleteDogBreed);
+
 
 
 
@@ -71,9 +88,14 @@ app.use(function(req, res) {
   res.status(404);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}!`);
+// app.listen(PORT, () => {
+//   console.log(`Server started on port ${PORT}!`);
+// });
+
+https.createServer(httpsOptions, app).listen(port, () => {
+  console.log(`Server running at https://localhost:${port}/`);
 });
+
 
 
 // Use Routed Endpoints

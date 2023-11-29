@@ -29,7 +29,6 @@ try {
   console.log('Fetched data dog one:', dogBreedDetails);
 
 
-  // Send the combined results as JSON to the client
   res.json(dogBreedDetails);
 
 } catch (error) {
