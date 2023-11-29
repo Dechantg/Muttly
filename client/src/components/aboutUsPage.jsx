@@ -6,7 +6,7 @@ import React from 'react';
 import TopNavigationBar from './NavigationBarTop';
 import BottomNavigationBar from './NavigationBarBottom';
 
-import './AboutUs.scss';
+// import '../views/stylesheets/AboutUs.scss';
 
 const AboutUsPage = () => {
 
