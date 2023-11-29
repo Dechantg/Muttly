@@ -1,12 +1,15 @@
-import React from 'react';
+// ContactUsPage.jsx
 
-import './AboutUs.scss';
+import React from 'react';
+import { Links } from 'react-router-dom';
+
 import { NavigationBarTop, NavigationBarBottom } from './';
 
-export default AboutUsPage = () => {
+import './ContactUsPage.scss';
 
+export default ContactUsPage = () => {
   return (
-    <div className="about-us-container">
+    <div className="contact-us-container">
       {/* Top Navigation Bar */}
       <NavigationBarTop />
 
@@ -21,10 +24,10 @@ export default AboutUsPage = () => {
           <p>Our Code</p>
         </div>
       </div>
-      
-      {/* Social Media Section */}
+
+      {/* Paw Graphic + Social Media Links Section */}
       <div className="social-media-section">
-        {/* Larger Pawprint Icon */}
+        {/* Large Pawprint Icon */}
         <div className="large-pawprint">
           {/* TikTok Icon */}
           <img src="/path/to/tiktok-icon.png" alt="TikTok Icon" className="tiktok-icon" />
@@ -37,15 +40,16 @@ export default AboutUsPage = () => {
         </div>
 
         {/* Mailing Address Icon */}
-        <img src="/path/to/address-icon.png" alt="Address Icon" className="address-icon" />
-        <h3>Muttly Canine Creations</h3>
-        <p>456 Bark Avenue</p>
-        <p>Vancouver, BC Canada</p>
-        <p>V6Z 3G1</p>
+        <div className="address-icon" />
+          <img src="/path/to/address-icon.png" alt="Address Icon" className="address-icon" />
+          <h2>Muttly Canine Creations</h2>
+          <p>456 Bark Avenue</p>
+          <p>Vancouver, BC, Canada</p>
+          <p>V6Z 3G1</p>
+        </div>
+
+        {/* Bottom Navigation Bar */}
+        <NavigationBarBottom />
       </div>
-      
-      {/* Bottom Navigation Bar */}
-      <NavigationBarBottom />
-    </div>
   );
 };
