@@ -1,0 +1,60 @@
+// SignUpPage.scss
+
+.signup-container {
+  // Styling for the overall container
+}
+
+.signup-form {
+  text-align: center;
+  margin-top: 50px;
+  background-color: #C2F9FF;
+  padding: 20px;
+
+  h1 {
+    // Styling for the main header "Sign Up"
+  }
+
+  h2 {
+    // Styling for subheader text
+  }
+
+  p {
+    // Styling for the general text
+  }
+
+  .name-fields {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    label {
+      // Styling for the labels
+    }
+
+    input {
+      // Styling for the input fields
+    }
+  }
+
+  .email-field,
+  .confirm-email-field,
+  .password-field {
+    margin-bottom: 20px;
+
+    label {
+      // Styling for the labels
+    }
+
+    p {
+      // Styling for the general text
+    }
+
+    input {
+      // Styling for the input fields
+    }
+  }
+
+  button {
+    // Styling for the submit button
+  }
+}
