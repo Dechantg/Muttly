@@ -12,6 +12,8 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
 const muttyAssistent = require('../openAiApiCall');
+const muttyPhotoGen = require('../leonardoApiCall');
+
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
 const dogBreed = require('../../database/queries/retrieve_dog_breed');
@@ -66,13 +68,18 @@ router.get("/", async (req, res) => {
       dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
     }
 
-    // Convert numerical values to integers
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
-    // Insert into the database
-    await newGeneratedDog(parsedDogBreedData);
+    const dogPhotoUrl = await muttyPhotoGen(dogOneName, dogTwoName);
 
-    console.log(parsedDogBreedData);
+    parsedDogBreedData.generated_photo_link = dogPhotoUrl;
+   
+
+    // Insert into the database
+    const generatedBreedDetails = await newGeneratedDog(parsedDogBreedData);
+
+
+    console.log('Generated Breed Details:', generatedBreedDetails);
     res.json({ muttyResult: parsedDogBreedData });
   } catch (error) {
     console.error('Error in route handler:', error);
