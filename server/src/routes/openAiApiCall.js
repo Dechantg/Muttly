@@ -5,53 +5,6 @@ const OpenAI = require('openai');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const dogOne ={
-  "good_with_children": 5,
-  "good_with_other_dogs": 5,
-  "shedding": 2,
-  "grooming": 1,
-  "drooling": 1,
-  "coat_length": 1,
-  "good_with_strangers": 3,
-  "playfulness": 4,
-  "protectiveness": 3,
-  "trainability": 3,
-  "energy": 4,
-  "barking": 1,
-  "max_height_male": 22,
-  "max_height_female": 22,
-  "max_weight_male": 40,
-  "max_weight_female": 40,
-  "min_height_male": 19,
-  "min_height_female": 19,
-  "min_weight_male": 25,
-  "min_weight_female": 25,
-  "name": "Whippet"
-}
- const dogTwo = {
-  "good_with_children": 5,
-  "good_with_other_dogs": 4,
-  "shedding": 4,
-  "grooming": 2,
-  "drooling": 1,
-  "coat_length": 1,
-  "good_with_strangers": 5,
-  "playfulness": 5,
-  "protectiveness": 3,
-  "trainability": 4,
-  "energy": 3,
-  "barking": 1,
-  "max_height_male": 13,
-  "max_height_female": 13,
-  "max_weight_male": 18,
-  "max_weight_female": 18,
-  "min_height_male": 10,
-  "min_height_female": 10,
-  "min_weight_male": 14,
-  "min_weight_female": 14,
-  "name": "Pug"
-}
-
 
 
 async function muttyAssistent(dogOne, dogTwo) {
@@ -110,5 +63,8 @@ async function muttyAssistent(dogOne, dogTwo) {
  
 }
 
-muttyAssistent(dogOne, dogTwo);
 
+
+
+
+module.exports = muttyAssistent;
