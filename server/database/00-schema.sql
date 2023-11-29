@@ -41,18 +41,12 @@ CREATE TABLE users (
   password_hash TEXT NOT NULL
 );
 
-CREATE TABLE generated_photo_index (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  photo_link TEXT
-);
-
 CREATE TABLE generated_breeds (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   generated_name VARCHAR(50) NOT NULL,
-  generated_photo_link INTEGER REFERENCES generated_photo_index(id) ON DELETE CASCADE,
+  generated_photo_link TEXT,
   good_with_children SMALLINT,
   good_with_other_dogs SMALLINT,
   shedding SMALLINT,
