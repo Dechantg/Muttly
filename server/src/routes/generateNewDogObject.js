@@ -49,11 +49,22 @@ router.get("/", async (req, res) => {
       resultTwo: resultTwo
     };
 
+    const dogOneName = resultOne[0].name;
+    const dogTwoName = resultTwo[0].name;
+
+
     console.log("checking for the damn dog passover", combinedResults.resultOne)
     console.log("checking for the secopnd damn dog passover", combinedResults.resultTwo)
 
+    console.log("here is my attempt to pull the name for my leonardo api", dogOneName);
 
-    const dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+
+    let dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+
+    while (!dogBreedData.description || dogBreedData.description.trim() === '') {
+      console.log('Description is missing or empty. Rerunning the function.');
+      dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+    }
 
     // Convert numerical values to integers
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
