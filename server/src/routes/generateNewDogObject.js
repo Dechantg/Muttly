@@ -11,8 +11,8 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-const muttyAssistent = require('../openAiApiCall');
-const muttyPhotoGen = require('../leonardoApiCall');
+const muttyAssistent = require('./openAiApiCall');
+const muttyPhotoGen = require('./leonardoApiCall');
 
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
