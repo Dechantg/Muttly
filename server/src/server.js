@@ -21,10 +21,12 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 
-const generateBreed         = require('./routes/generateNewDogObject');
-const dogBreedNames         = require('./routes/retrieveAllDogBreeds')
-const dogBreedById          = require('./routes/breedById')
-const generatedBreedById    = require('./routes/generatedBreedById')
+const generateBreed              = require('./routes/generateNewDogObject');
+const dogBreedNames              = require('./routes/retrieveAllDogBreeds')
+const dogBreedById               = require('./routes/breedById')
+const generatedBreedById         = require('./routes/generatedBreedById')
+const generatedBreedsByUserId    = require('./routes/generatedBreedIdByUser')
+
 
 
 const breedDetails    = require('../database/queries/retrieve_dog_breed');
@@ -33,6 +35,7 @@ app.use('/api/generatebreed', generateBreed);
 app.use('/api/allbreeds', dogBreedNames);
 app.use('/api/breedbyid', dogBreedById);
 app.use('/api/generatedbreedbyid', generatedBreedById);
+app.use('/api/generatedbreedbyuserid', generatedBreedsByUserId);
 
 
 
