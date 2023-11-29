@@ -31,11 +31,29 @@ const parseNumericalValuesToIntegers = (data) => {
 
 router.get("/", async (req, res) => {
   try {
-    // const dogOneId = 59;
-    // const dogTwoId = 60;
-    
-    // Assuming muttyAssistent returns the object
-    const dogBreedData = await muttyAssistent(dogOne, dogTwo);
+  
+    // Fetch data for dog one and dog two
+    const dogOneId = req.query.dogOneId;
+    const dogTwoId = req.query.dogTwoId;
+
+    console.log("here is the second dog req", dogTwoId)
+    const resultOne = await dogBreed(dogOneId);
+    const resultTwo = await dogBreed(dogTwoId);
+
+    console.log('Result for dog two:', resultTwo);
+
+
+    // Combine the results into a single object
+    const combinedResults = {
+      resultOne: resultOne,
+      resultTwo: resultTwo
+    };
+
+    console.log("checking for the damn dog passover", combinedResults.resultOne)
+    console.log("checking for the secopnd damn dog passover", combinedResults.resultTwo)
+
+
+    const dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
 
     // Convert numerical values to integers
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
@@ -50,56 +68,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-const dogOne = {
-  "good_with_children": 5,
-  "good_with_other_dogs": 5,
-  "shedding": 3,
-  "grooming": 4,
-  "drooling": 1,
-  "coat_length": 1,
-  "good_with_strangers": 4,
-  "playfulness": 4,
-  "protectiveness": 3,
-  "trainability": 3,
-  "energy": 4,
-  "barking": 5,
-  "max_height_male": 22,
-  "max_height_female": 22,
-  "max_weight_male": 55,
-  "max_weight_female": 55,
-  "min_height_male": 21,
-  "min_height_female": 21,
-  "min_weight_male": 45,
-  "min_weight_female": 45,
-  "name": "Bearded Collie"
-
-}
-
-const dogTwo = {
-  "good_with_children": 3,
-  "good_with_other_dogs": 3,
-  "shedding": 3,
-  "grooming": 3,
-  "drooling": 1,
-  "coat_length": 1,
-  "good_with_strangers": 4,
-  "playfulness": 5,
-  "protectiveness": 3,
-  "trainability": 5,
-  "energy": 5,
-  "barking": 4,
-  "max_height_male": 22,
-  "max_height_female": 22,
-  "max_weight_male": 55,
-  "max_weight_female": 55,
-  "min_height_male": 19,
-  "min_height_female": 19,
-  "min_weight_male": 30,
-  "min_weight_female": 30,
-  "name": "Border Collie"
-
-}
 
 
 module.exports = router;

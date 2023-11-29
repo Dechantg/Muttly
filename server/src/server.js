@@ -24,20 +24,10 @@ const dogBreed = require('../database/queries/retrieve_dog_breed');
 const dogBreedName = require('../database/queries/retrieve_all_breed_names');
 
 
-// Connect to Database
-// const pool = require('./database/connect');
-// const pool = new Pool({
-//   user: process.env.ELEPHANT_USER,
-//   host: process.env.ELEPHANT_HOST,
-//   database: process.env.ELEPHANT_USER,
-//   password: process.env.ELEPHANT_PASSWORD,
-//   port: 5432
-// });
 
 
 // Use Routed Endpoints
 const itemRoutes = require('./routes/itemRoutes');
-const muttyAssistent = require('./openAiApiCall');
 
 // app.use('/api/items', itemRoutes(pool));
 
@@ -48,13 +38,24 @@ app.use('/api/generatebreed', generateBreed)
 app.get('/api/test', async (req, res) => {
   try {
     // Assuming you have a table named 'items'
-    const someDogBreedId = 59;
-    const result = await dogBreed(someDogBreedId);
-    console.log('Fetched data:', result);
+    // const someDogBreedId = 82;
+    // const someDogBreedIdTwo = 74;
 
+    const resultOne = await dogBreed(someDogBreedId);
+    const resultTwo = await dogBreed(someDogBreedIdTwo);
 
-    // Send the result as JSON to the client
-    res.json(result);
+    console.log('Fetched data dog one:', resultOne);
+    console.log('Fetched data dogtwo:', resultTwo);
+
+    // Combine the results into a single object
+    const combinedResults = {
+      resultOne: resultOne,
+      resultTwo: resultTwo
+    };
+
+    // Send the combined results as JSON to the client
+    res.json(combinedResults);
+
   } catch (error) {
     console.error('Error executing SQL query:', error);
     res.status(500).json({ error: 'Internal Server Error' });
