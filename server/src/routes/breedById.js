@@ -24,10 +24,9 @@ try {
 
   const dogBreedDetails = await breedDetails(dogBreedId);
 
-  console.log('Fetched data dog one:', dogBreedDetails);
+  console.log('Fetched data dog details:', dogBreedDetails);
 
 
-  // Send the combined results as JSON to the client
   res.json(dogBreedDetails);
 
 } catch (error) {
