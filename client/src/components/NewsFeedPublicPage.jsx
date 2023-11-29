@@ -5,7 +5,7 @@ import TopNavigationBar from './NavigationBarTop';
 import BottomNaviationBar from './NavigationBarBottom';
 import SignInModal from './SignInModal';
 
-import '../views/stylesheets/NewsFeedPublicPage';
+import '../views/stylesheets/NewsFeedPublicPage.scss';
 
 const NewsFeedPublicPage = () => {
 
