@@ -10,23 +10,38 @@ export default AboutUsPage = () => {
       {/* Top Navigation Bar */}
       <NavigationBarTop />
 
-      {/* Body of the About Us Page */}
-      <div className="about-us-body">
-        <div className="background-with-pawprints">
-          {/* SCSS for styling the pawprints, their placement etc. */}
+      {/* Header Section */}
+      <div className="header-section">
+        <div className="header-text">
+          <h1>Contact Us</h1>
+          <h2>Feel free to BARK at us any time...</h2>
         </div>
-        <div className="about-us-content">
-          <h2>About Us</h2>
-          <h3>Our Tail Begins Here...</h3>
-          <p>
-            ...At Muttly, we're the Picasso of Paws, the Da Vinci of Doggos! We're not just a dog company; we're barkitects of the highest pedigree...
-            Ever wondered what a Dalmatian and a Husky would look like combined? 
-            We did too! 
-            Our AI wizards work tirelessly, merging breeds with the precision of a doggy jigsaw puzzle.
-            From Beagle-Bernese to Shih Tzu-Shepherd, we're the matchmakers for mutts. 
-            Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!
-          </p>
+        <div className="github-section">
+          <img src="/path/to/github-icon.png" alt="GitHub Icon" className="github-icon" />
+          <p>Our Code</p>
         </div>
+      </div>
+      
+      {/* Social Media Section */}
+      <div className="social-media-section">
+        {/* Larger Pawprint Icon */}
+        <div className="large-pawprint">
+          {/* TikTok Icon */}
+          <img src="/path/to/tiktok-icon.png" alt="TikTok Icon" className="tiktok-icon" />
+          {/* Instagram Icon */}
+          <img src="/path/to/instagram-icon.png" alt="Instagram Icon" className="instagram-icon" />
+          {/* Email Icon */}
+          <img src="/path/to/email-icon.png" alt="Email Icon" className="email-icon" />
+          {/* Facebook Icon */}
+          <img src="/path/to/facebook-icon.png" alt="Facebook Icon" className="facebook-icon" />
+        </div>
+
+        {/* Mailing Address Icon */}
+        <img src="/path/to/address-icon.png" alt="Address Icon" className="address-icon" />
+        <h3>Muttly Canine Creations</h3>
+        <p>456 Bark Avenue</p>
+        <p>Vancouver, BC Canada</p>
+        <p>V6Z 3G1</p>
       </div>
       
       {/* Bottom Navigation Bar */}
