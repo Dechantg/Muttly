@@ -2,6 +2,7 @@ import './App.css';
 import HomePage from './components/HomePage';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
+import DogBreedCardModal from './components/DogBreedCardModal';
 import NavigationBarTop from './components/NavigationBarTop';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 // import NewsFeedUserPage from './components/NewsFeedUserPage';
@@ -26,15 +27,16 @@ export default function App() {
         <div className="AppWrapper">
           {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
           <div className="AppContent">
-            <Routes>
+            <DogBreedCardModal />
+            {/* <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> */}
-              <Route path="/signup" element={<SignUpPage />} />
-              {/* <Route path="/generate" element={<GenergatePage />} /> */}
-            </Routes>
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} /> */}
+              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+              {/* <Route path="/signup" element={<SignUpPage />} /> */}
+              {/* <Route path="/generate" element={<GenergatePage />} /> /  */}
+            {/* </Routes> */}
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
         </div>

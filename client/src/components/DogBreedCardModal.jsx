@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import './DogBreedCardModal.scss';
+import '../views/stylesheets/DogBreedCardModal.scss';
 
 const BreedCardModal = () => {
 
