@@ -2,12 +2,14 @@ import './App.css';
 import HomePage from './components/HomePage';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
+import DogBreedCardModal from './components/DogBreedCardModal';
 import NavigationBarTop from './components/NavigationBarTop';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 // import NewsFeedUserPage from './components/NewsFeedUserPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
+import PokemonCard from './components/PracticeCard';
 // import SignInModal from './components/SignInModal';
 
 export default function App() {
@@ -24,19 +26,21 @@ export default function App() {
   return (
     <div className="App">
         <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
+          {/* {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />} */}
           <div className="AppContent">
-            <Routes>
+            <PokemonCard />
+            {/* <DogBreedCardModal /> */}
+            {/* <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> */}
-              <Route path="/signup" element={<SignUpPage />} />
-              {/* <Route path="/generate" element={<GenergatePage />} /> */}
-            </Routes>
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} /> */}
+              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+              {/* <Route path="/signup" element={<SignUpPage />} /> */}
+              {/* <Route path="/generate" element={<GenergatePage />} /> /  */}
+            {/* </Routes> */}
           </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+          {/* {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />} */}
         </div>
     </div>
   );
