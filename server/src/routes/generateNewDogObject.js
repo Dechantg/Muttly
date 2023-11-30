@@ -11,12 +11,13 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-const muttyAssistent = require('./openAiApiCall');
-const muttyPhotoGen = require('./leonardoApiCall');
+const muttyAssistent = require('../helpers/openAiApiCall');
+const muttyPhotoGen = require('../helpers/leonardoApiCall');
+const muttyPhotoFetch = require('../helpers/leonardoApiGetPhoto');
 
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
-const dogBreed = require('../../database/queries/retrieve_dog_breed');
+const dogBreed = require('../../database/queries/retrieve_breed_for_generation');
 
 
 const parseNumericalValuesToIntegers = (data) => {
@@ -60,6 +61,7 @@ router.get("/", async (req, res) => {
 
     console.log("here is my attempt to pull the name for my leonardo api", dogOneName);
 
+    const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
     let dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
 
@@ -70,7 +72,11 @@ router.get("/", async (req, res) => {
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
-    const dogPhotoUrl = await muttyPhotoGen(dogOneName, dogTwoName);
+    const generationId = dogPhotoId.sdGenerationJob.generationId;
+
+
+    const dogPhotoUrl = await muttyPhotoFetch(generationId);
+    console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
    
