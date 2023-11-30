@@ -1,33 +1,21 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import '../views/stylesheets/NavigationBarBottom.scss';
 
-<<<<<<< HEAD
-function BottomNavigationBar() {
-=======
-function BottomNavigationBar (){
->>>>>>> master
+function NavigationBarBottom() {
   return (
     <div className="bottom-navigation-bar">
-      {/* <Link to="/contactUs" className="nav-link"> */}
+      <Link to="/contact" className="nav-link">
         Contact Us
-<<<<<<< HEAD
-      {/* </Link> */}
-      {/* <Link to="/aboutUs" className="nav-link"> */}
-=======
-      {/* </Link>
-      <Link to="/aboutUs" className="nav-link"> */}
->>>>>>> master
+      </Link> 
+      <Link to="/about" className="nav-link">
         About Us
-      {/* </Link>
-      <Link to="/signUp" className="nav-link"> */}
+      </Link>
+      <Link to="/signUp" className="nav-link">
         Sign Up
-      {/* </Link> */}
+      </Link>
     </div>
   );
 }; 
 
-<<<<<<< HEAD
-export default BottomNavigationBar
-=======
-export default  BottomNavigationBar
->>>>>>> master
+export default NavigationBarBottom

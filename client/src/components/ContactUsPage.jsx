@@ -9,9 +9,6 @@ import '../views/stylesheets/ContactUsPage.scss';
 function ContactUsPage() {
   return (
     <div className="contact-us-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
-
       {/* Header Section */}
       <div className="header-section">
         <div className="header-text">
@@ -46,9 +43,6 @@ function ContactUsPage() {
           <p>Vancouver, BC, Canada</p>
           <p>V6Z 3G1</p>
         </div>
-
-        {/* Bottom Navigation Bar */}
-        <BottomNavigationBar />
       </div>
   );
 }; 
