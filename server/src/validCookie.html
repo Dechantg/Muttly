@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Validation Test</title>
+</head>
+<body>
+
+    <h1>Session Validation Test</h1>
+
+    <script>
+        async function validateSession() {
+            try {
+                // Check if a cookie is present
+                const cookies = document.cookie;
+                if (!cookies) {
+                    alert('No cookie found. Please log in.');
+                    return;
+                }
+
+                // If a cookie is present, proceed with validation
+                const response = await fetch('https://localhost:8088/api/validate-session', {
+                    method: 'GET',
+                    credentials: 'include', // Include credentials (cookies) in the request
+                });
+
+                const data = await response.json();
+
+                console.log('Validation Response:', data);
+
+                if (response.ok) {
+                    alert(`You are logged in as:\nUser ID: ${data.user.id}\nEmail: ${data.user.email}`);
+                } else {
+                    alert('Session validation failed. Check the console for details.');
+                }
+            } catch (error) {
+                console.error('Error during session validation:', error);
+                alert('An error occurred during session validation. Check the console for details.');
+            }
+        }
+
+        // Call the validation function on page load
+        window.onload = validateSession;
+    </script>
+
+</body>
+</html>

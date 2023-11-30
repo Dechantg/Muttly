@@ -14,10 +14,10 @@ async function generateDogPhoto(dogOne, dogTwo) {
         Authorization: process.env.LEONARDO_API,
       },
       body: JSON.stringify({
-    height: 512,
+    height: 720,
     modelId: 'e316348f-7773-490e-adcd-46757c738eb7',
     prompt: `${dogOne} and ${dogTwo} looking cute and happy.`,
-    width: 512, // add a comma here
+    width: 1008, // add a comma here
     init_generation_image_id: '8aa11359-c714-4ffd-a9d6-43ea1dcdb957',
     init_strength: 0.2,
     nsfw: false,

@@ -8,11 +8,12 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const breedDetails = require('../../database/queries/retrieve_dog_breed')
+const breedDetails = require('../../database/queries/retrieve_dog_breed');
+const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateSession, async (req, res) => {
 
 try {
 

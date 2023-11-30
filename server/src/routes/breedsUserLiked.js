@@ -10,10 +10,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const userLikedBreeds = require('../../database/queries/get_breeds_user_liked')
+const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateSession, async (req, res) => {
 
 try {
 

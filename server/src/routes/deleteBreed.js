@@ -7,10 +7,12 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const deleteDogBreed = require('../../database/queries/delete_generated_dog')
+const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:breedId', async (req, res) => {
+router.get('/:breedId', validateSession, async (req, res) => {
+
 
 console.log("attempting to delete breed: ", req.params.breedId)
   const userId = req.user.id;
