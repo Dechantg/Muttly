@@ -31,8 +31,8 @@ const UsersFavouritesPage = () => {
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((imageId) => (   // unsure if we need to do it like this; think we could just
-            <img                                                // copy PhotoLabs's approach + it's scss
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((imageId) => (   // unsure if we need to do it like this; 
+            <img                                                // can also copy PhotoLabs scss
             key={imageId}
             src={`path/to/image${imageId}.png`}               
             alt={`Image ${imageId}`}
@@ -40,6 +40,16 @@ const UsersFavouritesPage = () => {
             />
             ))}
         </div>
+
+        {/* <div className="images"> */}
+          {/* Placeholder elements for Images */}
+          {/* Alternative for displaying the images? */}
+          {/* <div className="image" onClick={() => handleImageClick(1)}></div> */}
+          {/* <div className="image" onClick={() => handleImageClick(2)}></div> */}
+          {/* <div className="image" onClick={() => handleImageClick(3)}></div> */}
+          {/* <div className="image" onClick={() => handleImageClick(4)}></div> */}
+          {/* <div className="image" onClick={() => handleImageClick(5)}></div> */}
+        {/* </div>  */}
 
         {/* Dog Breed Card Modal */}
         {selectedImage && <DogBreedCardModal breed={selectedImage} onclick={clearSelectedImage}/>}

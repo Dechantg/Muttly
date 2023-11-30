@@ -22,18 +22,40 @@
     }
   }
 
+  // .images {
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  //   gap: 16px;
+
+  //   .image {
+  //     width: 100%;
+  //     height: 200px;
+  //     background-color: light-grey;
+  //     cursor: pointer;
+
+  //     // Stying for images
+
+  //     &:hover {
+  //       // Hover-styles if needed
+  //     }
+  //   }
+  //   // Styling for anything extra
+  // }
+
   .image-grid {
     display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
 
-    img {
+    .image {
       width: 100%;
       height: auto;
       cursor: pointer;
 
       // Styling for the images
     }
+    // Styling for anything extra
   }
 }
 
