@@ -8,7 +8,6 @@ import '../views/stylesheets/ContactUsPage.scss';
 function ContactUsPage() {
   return (
     <div className="contact-us-container">
-
       {/* Header Section */}
       <div className="header-section">
         <div className="header-text">
@@ -43,7 +42,6 @@ function ContactUsPage() {
           <p>Vancouver, BC, Canada</p>
           <p>V6Z 3G1</p>
         </div>
-
       </div>
   );
 }; 

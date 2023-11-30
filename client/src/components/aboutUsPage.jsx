@@ -1,8 +1,3 @@
-// AboutUsPage.jsx
-
-import React from 'react';
-// import { Links } from 'react-router-dom';
-
 // import '../views/stylesheets/AboutUs.scss';
 
 const AboutUsPage = () => {
