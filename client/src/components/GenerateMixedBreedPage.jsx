@@ -13,10 +13,7 @@ const GenerateMixedBreedPage = () => {
     setSelectedBreed(breed);
   };
 
-  const clearSelectedBreed = () => {
-    setSelectedBreed(null);
-  };
-
+  
   return (
     <div className="generate-mixed-breed-container">
       {/* Top Navigation Bar */}
@@ -32,9 +29,10 @@ const GenerateMixedBreedPage = () => {
             {/* Unsure how to reference all these db breednames within the component */}
           </select>
         </div>
+
         {/* Middle Container with the Pawprint Button to Mix the Selected Breeds */}
         <div className="middle-container">
-          <div className="generate-button" onClick={clearSelectedBreed}>
+          <div className="generate-button">
             {/* Render pawprint icon here */}
             <p>Generate Mixed</p>
           </div>
@@ -49,10 +47,10 @@ const GenerateMixedBreedPage = () => {
             {/* Unsure how to reference all these db breednames within the component */}
           </select>
         </div>
-      </div>
 
-      {/* Dog Breed Card Modal */}
-      {selectedBreed && <DogBreedCardModal breed={selectedBreed} onClose={clearSelectedBreed} />}
+        {/* Dog Breed Card Modal */}
+        {selectedBreed && <DogBreedCardModal breed={selectedBreed} />}
+      </div>
     </div>
   );
 };
