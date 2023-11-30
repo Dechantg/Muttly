@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react"; 
+import { Link } from "react-router-dom"
 import '../views/stylesheets/HomePage.scss';
 
 function HomePage() {
@@ -32,7 +33,9 @@ function HomePage() {
       <div className="main">
         <div className="home_main">
           <h1>WELCOME TO MUTTLY!</h1>
-          <button>Unleash your curiosity, and em-bark on a journey with the pack</button>
+          <Link to="/newsfeed" className="logo-link">
+            <button>Unleash your curiosity, and em-bark on a journey with the pack</button>
+          </Link>
           <div className="dog_container">
             {images.map((image, idx) => (
             <img
@@ -47,7 +50,9 @@ function HomePage() {
           <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
         </div>
         <div className="sign_in">
-          <img src="../icons/paws_pink.png"/>
+          <Link to="/signin" className="logo-link">
+            <img src="../icons/paws_pink.png"/>
+          </Link>
           <p>Sign In</p>
         </div>
       </div>
