@@ -9,6 +9,7 @@ import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
+import PokemonCard from './components/PokemonCard';
 // import SignInModal from './components/SignInModal';
 
 export default function App() {
@@ -25,9 +26,10 @@ export default function App() {
   return (
     <div className="App">
         <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
+          {/* {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />} */}
           <div className="AppContent">
-            <DogBreedCardModal />
+            <PokemonCard />
+            {/* <DogBreedCardModal /> */}
             {/* <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
@@ -38,7 +40,7 @@ export default function App() {
               {/* <Route path="/generate" element={<GenergatePage />} /> /  */}
             {/* </Routes> */}
           </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+          {/* {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />} */}
         </div>
     </div>
   );
