@@ -1,0 +1,43 @@
+// GenerateMixedBreedPage.scss
+
+@import './NavigationBarTop.scss';
+
+.generate-mixed-breed-container {
+  // Styling for overall container
+}
+
+.page-body {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+
+  .left-container, 
+  .right-container {
+    width: 35%;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+  }
+
+  .middle-container {
+    width: 30%;
+    text-align: center;
+
+    .generate-button {
+      cursor: pointer;
+
+      p {
+        // Styling for the text related to the button/s
+      }
+    }
+  }
+}
