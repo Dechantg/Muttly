@@ -10,9 +10,10 @@ const bodyParser = require('body-parser');
 
 
 const dogBreedName = require('../../database/queries/retrieve_all_breed_names');
+const validateSession = require('../helpers/sessionValidation')
 
 
-router.get('/', async (req, res) => {
+router.get('/', validateSession, async (req, res) => {
   try {
     const result = await dogBreedName();
 

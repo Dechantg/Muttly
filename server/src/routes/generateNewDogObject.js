@@ -14,6 +14,7 @@ router.use(bodyParser.json());
 const muttyAssistent = require('../helpers/openAiApiCall');
 const muttyPhotoGen = require('../helpers/leonardoApiCall');
 const muttyPhotoFetch = require('../helpers/leonardoApiGetPhoto');
+const validateSession = require('../helpers/sessionValidation')
 
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
@@ -32,7 +33,7 @@ const parseNumericalValuesToIntegers = (data) => {
   return result;
 };
 
-router.get("/", async (req, res) => {
+router.get("/", validateSession, async (req, res) => {
   try {
   
     // Fetch data for dog one and dog two

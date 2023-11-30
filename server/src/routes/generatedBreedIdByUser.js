@@ -10,10 +10,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const breedIdByUser = require('../../database/queries/get_generated_dog_by_user')
+const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateSession, async (req, res) => {
 
 try {
 
