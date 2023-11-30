@@ -1,0 +1,24 @@
+// EnlargedPawprintImage.scss
+
+.enlarged-pawprint-container {
+  position: relative;
+}
+
+.enlarged-pawprint-image {
+  width: 100%;
+  height: auto;
+}
+
+.small-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.small-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ba4848;
+  border-radius: 50%;
+}
