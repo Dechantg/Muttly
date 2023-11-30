@@ -1,17 +1,14 @@
-import React from 'react';
-import { NavigationBarTop, NavigationBarBottom } from './';
+// AboutUsPage.jsx
 
+import React from 'react';
 // import { Links } from 'react-router-dom';
 
-import './AboutUs.scss';
+// import '../views/stylesheets/AboutUs.scss';
 
-export default AboutUsPage = () => {
+const AboutUsPage = () => {
 
   return (
     <div className="about-us-container">
-      {/* Top Navigation Bar */}
-      <NavigationBarTop />
-
       {/* Body of the About Us Page */}
       <div className="about-us-body">
         <div className="background-with-pawprints">
@@ -30,9 +27,8 @@ export default AboutUsPage = () => {
           </p>
         </div>
       </div>
-
-      {/* Bottom Navigation Bar */}
-      <NavigationBarBottom />
     </div>
   );
 };
+
+export default AboutUsPage;

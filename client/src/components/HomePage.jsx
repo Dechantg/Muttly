@@ -1,4 +1,10 @@
+// HomePage.jsx
+
 import React, {useEffect, useState} from "react"; 
+
+import TopNavigationBar from "./NavigationBarTop";
+import BottomNavigationBar from "./NavigationBarBottom";
+
 import '../views/stylesheets/HomePage.scss';
 
 function HomePage() {
@@ -52,7 +58,7 @@ function HomePage() {
       </div>
     </div>
     </>
-  )
-}
+  );
+};
 
 export default HomePage
