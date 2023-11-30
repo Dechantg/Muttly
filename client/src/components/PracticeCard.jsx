@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../views/stylesheets/PokemonCard.scss';
+import '../views/stylesheets/PracticeCard.scss';
 
 const PokemonCard = () => {
   return (
