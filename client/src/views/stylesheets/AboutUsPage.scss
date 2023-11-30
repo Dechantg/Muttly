@@ -1,17 +1,65 @@
 // AboutUsPage.scss
 
 .about-us-container {
-  // Styling for the overall page container
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .about-us-body {
-  // Styling for the body of the page - between navigations bars (top & bottom)
+  text-align: center;
+  display: flex;
 }
 
-.background-with-pawprints {
-  // Styling for the pawprints - unsure if we want animated walking on just 'still-locations' for the paws on the pages background
+.background-with-pawprints-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 15vh;
+  // margin-left: 1.5rem;
+} 
+
+.background-with-pawprints-left {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 15vh;
+  padding-left: 0rem;
+  // margin-right: 1.5rem;
 }
 
 .about-us-content {
-  // Styling for the paragraph of text - centered? transparent (footprints can run behind?)
+  font-size: 1.25vw;
+  & > * {
+    margin-bottom: 2vh;
+  }
+}
+
+.about-us-content > h2 {
+  font-size: 3vw;
+  margin-top: 1vh;
+}
+
+.center_logo {
+  width: 10%;
+}
+
+.side_logo {
+  width: 3.5vw; /* Adjust image size as needed */
+  margin-bottom: 4rem; /* Adjust spacing between images as needed */
+} 
+
+.column-1 {
+  margin-left: 1vw;
+}
+
+.column-2 {
+  margin: 2rem 5rem 0 0;
+} 
+
+.column-3 {
+  margin: 2rem 0 0 5rem;
+}
+.column-4 {
+  margin-right: 1vw;
 }
