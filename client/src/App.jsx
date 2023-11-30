@@ -2,6 +2,7 @@ import './App.css';
 import HomePage from './components/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
+import NavigationBarTop from './components/NavigationBarTop';
 // import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
 // import AboutUsPage from './components/AboutUsPage';
@@ -14,6 +15,7 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <div className="AppWrapper">
+          <NavigationBarTop />
           <div className="AppContent">
             <Routes>
               <Route path="/" element={<HomePage />} />
