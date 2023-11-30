@@ -21,17 +21,4 @@ export default function App() {
     </BrowserRouter>
     </div>
   );
-} 
-
-<div className="App">
-      <BrowserRouter>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<ContactUsPage />} />
-          </Routes>
-          {isHomePage && <NavigationBarTop />}
-          {isContactPage && <NavigationBarBottom />}
-        </div>
-      </BrowserRouter>
-    </div>
+}
