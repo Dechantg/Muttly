@@ -1,7 +1,4 @@
 import React from 'react';
-import { NavigationBarTop, NavigationBarBottom } from './';
-
-// import { Links } from 'react-router-dom';
 
 import './AboutUs.scss';
 
@@ -10,7 +7,6 @@ export default AboutUsPage = () => {
   return (
     <div className="about-us-container">
       {/* Top Navigation Bar */}
-      <NavigationBarTop />
 
       {/* Body of the About Us Page */}
       <div className="about-us-body">
@@ -32,7 +28,6 @@ export default AboutUsPage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <NavigationBarBottom />
     </div>
   );
 };
