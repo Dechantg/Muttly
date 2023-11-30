@@ -9,7 +9,7 @@ import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
-import PokemonCard from './components/PokemonCard';
+import PokemonCard from './components/PracticeCard';
 // import SignInModal from './components/SignInModal';
 
 export default function App() {
