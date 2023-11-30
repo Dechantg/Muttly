@@ -37,10 +37,11 @@ const generatedBreedsByUserId    = require('./routes/generatedBreedIdByUser')
 const deleteDogBreed             = require('./routes/deleteBreed')
 const mostLikedBreeds            = require('./routes/retrieveMostLikedBreeds')
 const mostRecentBreeds           = require('./routes/mostRecentBreeds')
+const breedsUserLiked            = require('./routes/breedsUserLiked')
 
 
 
-const breedDetails    = require('../database/queries/retrieve_dog_breed');
+// const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
 
 app.use('/api/mostliked', mostLikedBreeds);
@@ -48,6 +49,7 @@ app.use('/api/mostrecent', mostRecentBreeds);
 
 app.use('/api/allbreednames', dogBreedNames);
 app.use('/api/breedbyid', dogBreedById);
+app.use('/api/userliked', breedsUserLiked);
 
 app.use('/api/generatebreed', generateBreed);
 
@@ -62,25 +64,25 @@ app.use('/api/deletebreed', deleteDogBreed);
 // app.use('/api/dogbreeddetails', retrieveDog)
 // app.use('/api/retrievedgenerated', retrieveGeneratedDog)
 
-app.get('/api/test', async (req, res) => {
-    try {
-      // Assuming you have a table named 'items'
-      const someDogBreedId = 82;
-      // const someDogBreedIdTwo = 74;
+// app.get('/api/test', async (req, res) => {
+//     try {
+//       // Assuming you have a table named 'items'
+//       const someDogBreedId = 82;
+//       // const someDogBreedIdTwo = 74;
   
-      const resultOne = await breedDetails(someDogBreedId);
+//       const resultOne = await breedDetails(someDogBreedId);
   
-      console.log('Fetched data dog one:', resultOne);
+//       console.log('Fetched data dog one:', resultOne);
   
     
-      // Send the combined results as JSON to the client
-      res.json(resultOne);
+//       // Send the combined results as JSON to the client
+//       res.json(resultOne);
   
-    } catch (error) {
-      console.error('Error executing SQL query:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
+//     } catch (error) {
+//       console.error('Error executing SQL query:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   });
 
 // Simple Endpoint - no routes module
 
