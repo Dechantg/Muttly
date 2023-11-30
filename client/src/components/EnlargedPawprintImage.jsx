@@ -7,7 +7,7 @@ import '../views/stylesheets/EnlargedPawPrintImage.scss';
 const EnlargedPawPrintImage = () => {
   return (
     <div className="enlarged-pawprint-container">
-      <img src="/path/to/enlargedPawprintImage.png" alt="Enlarged Pawprint Image" className="enlarged-pawprint-image" />
+      <img src="/public/icons/paws_grey.png" alt="Enlarged Pawprint Image" className="enlarged-pawprint-image" />
       <div className="small-icons">
         <div className="small-icon" style={{top: '50px', left: '100px' }}>
           {/* Social media icon TIKTOK */}
