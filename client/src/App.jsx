@@ -2,11 +2,13 @@ import './App.css';
 import HomePage from './components/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
-import TopNavigationBar from './components/NavigationBarTop';
+import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
+import AboutUsPage from './components/AboutUsPage';
+import SignUpPage from './components/SignUpPage';
+import SignInModal from './components/SignInModal';
 
 export default function App() {
-
 
   return (
     <div className="App">
@@ -21,4 +23,12 @@ export default function App() {
     </BrowserRouter>
     </div>
   );
-}
+      {/* <HomePage /> */}
+      {/* <NewsFeedPublicPage /> */}
+      {/* <ContactUsPage /> */}
+      {/* <AboutUsPage /> */}
+      {/* <SignUpPage /> */}
+// //       <SignInModal />
+//     </div>
+//   );
+// };

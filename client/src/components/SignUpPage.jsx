@@ -1,10 +1,11 @@
 import React from 'react';
 
-export default SignUpPage = () => {
+
+import '../views/stylesheets/SignUpPage.scss';
+
+const SignUpPage = () => {
   return (
     <div className="signup-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
 
       {/* Sign Up Form */}
       <div className="signup-form">
@@ -15,11 +16,11 @@ export default SignUpPage = () => {
         {/* First Name and Last Name Fields */}
         <div className="name-fields">
           <div>
-            <label htmlfor="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input type="text" id="firstName" placeholder="First Name" />
           </div>
           <div>
-            <label htmlfor="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input type="text" id="lastName" placeholder="Last Name" />
           </div>
         </div>
@@ -33,7 +34,7 @@ export default SignUpPage = () => {
 
         {/* Confirm Email Field */}
         <div className="confirm-email-field">
-          <label htmlfor="confirmEmail">Confirm Email</label>
+          <label htmlFor="confirmEmail">Confirm Email</label>
           <input type="email" id="confirmEmail" placeholder="Confirm your email address" />
         </div>
 
@@ -43,3 +44,5 @@ export default SignUpPage = () => {
     </div>
   );
 };
+
+export default SignUpPage;

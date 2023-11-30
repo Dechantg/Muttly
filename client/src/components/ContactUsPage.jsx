@@ -1,8 +1,7 @@
+// ContactUsPage.jsx
+
 import React from 'react';
 // import { Links } from 'react-router-dom';
-
-import TopNavigationBar from  './NavigationBarTop';
-import BottomNavigationBar from './NavigationBarBottom';
 
 import '../views/stylesheets/ContactUsPage.scss';
 

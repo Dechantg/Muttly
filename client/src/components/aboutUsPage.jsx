@@ -1,13 +1,9 @@
-import React from 'react';
+// import '../views/stylesheets/AboutUs.scss';
 
-import './AboutUs.scss';
-
-export default AboutUsPage = () => {
+const AboutUsPage = () => {
 
   return (
     <div className="about-us-container">
-      {/* Top Navigation Bar */}
-
       {/* Body of the About Us Page */}
       <div className="about-us-body">
         <div className="background-with-pawprints">
@@ -26,8 +22,8 @@ export default AboutUsPage = () => {
           </p>
         </div>
       </div>
-
-      {/* Bottom Navigation Bar */}
     </div>
   );
 };
+
+export default AboutUsPage;
