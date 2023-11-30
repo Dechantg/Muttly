@@ -2,10 +2,6 @@
 
 import React from 'react';
 import { useHistory } from 'react-reouter-dom';
-
-import TopNavigationBar from './NavigationBarTop';
-import BottomNavigationBar from './NavigationBarBottom';
-
 import '../views/stylesheets/NewsFeedUserPage';
 
 const NewsFeedUserPage = () => {
@@ -17,9 +13,6 @@ const NewsFeedUserPage = () => {
 
   return (
     <div className="news-feed-user-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
-
       {/* News Feed Content */}
       {/* Logged in User Specific Row */}
       <h2>Your Favourites</h2>
@@ -57,7 +50,6 @@ const NewsFeedUserPage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <BottomNavigationBar />
     </div>
   );
 };

@@ -11,7 +11,7 @@ function NavigationBarBottom() {
       <Link to="/about" className="nav-link">
         About Us
       </Link>
-      <Link to="/signUp" className="nav-link">
+      <Link to="/signup" className="nav-link">
         Sign Up
       </Link>
     </div>

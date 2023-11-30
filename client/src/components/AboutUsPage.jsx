@@ -1,4 +1,4 @@
-// import '../views/stylesheets/AboutUs.scss';
+import '../views/stylesheets/AboutUsPage.scss';
 
 const AboutUsPage = () => {
 
