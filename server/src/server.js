@@ -10,11 +10,12 @@ const path = require('path');
 const app = express();
 
 const httpsOptions = {
-  key: fs.readFileSync(),
-  cert: fs.readFileSync(),
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem'),
+  passphrase: process.env.KEY_PASSPHRASE,
 }
 
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 
 // serve static files from ../build (needed for React)
