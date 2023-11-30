@@ -5,6 +5,7 @@ const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
+const session = require('express-session');
 
 
 const app = express();
@@ -14,6 +15,12 @@ const httpsOptions = {
   cert: fs.readFileSync('./cert.pem'),
   passphrase: process.env.KEY_PASSPHRASE,
 }
+
+app.use(session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitialized: true,
+}));
 
 const port = process.env.PORT || 8080;
 
@@ -53,10 +60,9 @@ app.use('/api/userliked', breedsUserLiked);
 
 app.use('/api/generatebreed', generateBreed);
 
-app.use('/api/generatedbreedbyid', generatedBreedById);
-app.use('/api/generatedbreedbyuserid', generatedBreedsByUserId);
-
-app.use('/api/deletebreed', deleteDogBreed);
+app.use('/api/generated/breedbyid', generatedBreedById);
+app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
+app.use('/api/generated/delete', deleteDogBreed);
 
 
 
