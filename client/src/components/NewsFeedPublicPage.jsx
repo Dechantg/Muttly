@@ -1,8 +1,6 @@
 // NewsFeedPublicPage.jsx
 
 import React, { useState } from 'react';
-import TopNavigationBar from './NavigationBarTop';
-import BottomNaviationBar from './NavigationBarBottom';
 import SignInModal from './SignInModal';
 
 import '../views/stylesheets/NewsFeedPublicPage.scss';
@@ -21,9 +19,6 @@ const NewsFeedPublicPage = () => {
 
   return (
     <div className="news-feed-container">
-      {/* Top Navigation Bar  */}
-      <TopNavigationBar />
-
       {/* News Feed Public Content */}
       <div className="news-feed-content">
         <h2>Most Popular Generated Images</h2>
@@ -42,9 +37,6 @@ const NewsFeedPublicPage = () => {
         <div className="sign-in-button" onClick={openSignInModal}>
           {/* Render the pawprint icon here */}
         </div>
-
-        {/* Bottom Navigation Bar */}
-        <BottomNaviationBar />
 
         {/* Sign In Modal */}
         {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}

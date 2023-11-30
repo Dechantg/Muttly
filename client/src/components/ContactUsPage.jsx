@@ -3,16 +3,11 @@
 import React from 'react';
 // import { Links } from 'react-router-dom';
 
-import TopNavigationBar from  './NavigationBarTop';
-import BottomNavigationBar from './NavigationBarBottom';
-
 import '../views/stylesheets/ContactUsPage.scss';
 
 function ContactUsPage() {
   return (
     <div className="contact-us-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
 
       {/* Header Section */}
       <div className="header-section">
@@ -49,8 +44,6 @@ function ContactUsPage() {
           <p>V6Z 3G1</p>
         </div>
 
-        {/* Bottom Navigation Bar */}
-        <BottomNavigationBar />
       </div>
   );
 }; 

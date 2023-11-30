@@ -3,18 +3,12 @@
 import React from 'react';
 // import { Links } from 'react-router-dom';
 
-import TopNavigationBar from './NavigationBarTop';
-import BottomNavigationBar from './NavigationBarBottom';
-
 // import '../views/stylesheets/AboutUs.scss';
 
 const AboutUsPage = () => {
 
   return (
     <div className="about-us-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
-
       {/* Body of the About Us Page */}
       <div className="about-us-body">
         <div className="background-with-pawprints">
@@ -33,9 +27,6 @@ const AboutUsPage = () => {
           </p>
         </div>
       </div>
-
-      {/* Bottom Navigation Bar */}
-      <BottomNavigationBar />
     </div>
   );
 };

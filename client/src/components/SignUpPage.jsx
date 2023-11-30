@@ -1,14 +1,11 @@
 import React from 'react';
 
-import TopNavigationBar from './NavigationBarTop';
 
 import '../views/stylesheets/SignUpPage.scss';
 
 const SignUpPage = () => {
   return (
     <div className="signup-container">
-      {/* Top Navigation Bar */}
-      <TopNavigationBar />
 
       {/* Sign Up Form */}
       <div className="signup-form">
