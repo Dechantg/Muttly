@@ -18,16 +18,16 @@ function ContactUsPage() {
             <h3>Feel free to BARK at us any time...</h3>
           </div>
           <div className="github-section">
-            <img src="/public/icons/github.png" alt="GitHub Icon" className="github-icon" />
-            <p>Our Code</p>
+            <Link to="https://github.com/BSMuse/Muttly.git" target="_blank" rel="noopener noreferrer">
+              <img src="/public/icons/github.png" alt="GitHub Icon" className="github-icon" />
+            </Link>
+              <p>Our Code</p>
           </div>
         </div>
 
         <div className="enlarged-pawprint-image">
           <EnlargedPawPrintImage />
         </div>
-
-        {/* <NavigationBarBottom />  */}
       </div>
     </>
   );
