@@ -1,6 +1,7 @@
 // SignInModal.jsx
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../views/stylesheets/SignInModal.scss';
 
@@ -14,6 +15,7 @@ const SignInModal = ({ onClose }) => {
         <div className="logo-header">
           <img src="/public/icons/paws_pink.png" alt="Muttly Logo" className="logo" />
           <h2>Sign In!</h2>
+          <h3>If you don't have an account, please click <Link to="/signup">here</Link> to sign up!</h3>
         </div>
         <div className="form-container">
           <label htmlFor="email">Email Address</label>

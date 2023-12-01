@@ -41,12 +41,18 @@
       font-size: 30px;
       font-weight: bolder;
     }
+
+    h3 {
+      margin-top: -5px;
+      font-size: 13px;
+    }
   }
 
   .form-container {
     label {
       font-size: 18px;
       display: block;
+      margin-top: -0px;
       margin-bottom: 8px;
     }
 
