@@ -1,60 +1,112 @@
-div.yellow {
-  /* yellow card background - ELECTRIC TYPE */
-  background: linear-gradient(to bottom right, #ffffa4, #fff870, #fff200, #fff870, #ffffa4, #fff870);
+.organizecardsB {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+  // font-family: 'Cabin', sans-serif;
 }
 
-div.nameimageinfo {
-  width: 310px;
-  height: 480px;
+.color-1 {
+  /* color card background - ELECTRIC TYPE */
+  background: linear-gradient(to bottom right, #a1b8ff, #8a9eff, #a1b8ff, #8a9eff, #a1b8ff);
+  ;
+} 
+
+.color-2 {
+  /* color card background - ELECTRIC TYPE */
+  background: linear-gradient(to bottom right, #7B9AE1, #9D77B5, #BF5B8F, #9D77B5, #7B9AE1);
+  ;
+  ;
+  ;
+  ;
+}
+
+.color-3 {
+  /* color card background - ELECTRIC TYPE */
+  background: linear-gradient(to bottom right, #e682bf, #c75189, #e682bf, #c75189, #e682bf);
+  ;
+}
+
+.nameimageinfo {
+  width: 24.5rem;
+  height: 35rem;
   margin: 0px;
   padding: 5px 10px 5px 10px;
-  border: 10px solid gold;
+  border: 10px solid #EDCF8E;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Border around animal's information to comply with requirements */
-div.infoonly {
-  border: 1px dotted gray;
-  height: 240px;
-  border-radius: 5px;
-  opacity: 0.5;
-}
-
-/* Forcing tables to the same full width */
-table.nameheaders, table.stats, table.costs {
-  width: 310px;
+/* Forcing s to the same full width */
+.nameheaders {
+  width: 16vw;
   vertical-align: center;
+  margin-top: 1rem;
+}
+
+.top_stat_container {
+  display: flex;
+  width: 20rem;
+  margin-right: 0;
+  margin-bottom: -0.5rem;
+}
+
+.top_stats {
+  display: flex;
+}
+
+.stat_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.75rem;
+  width: 19.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.stats {
+
+}
+
+.symbol_container {
+  display: flex;
 }
 
 /* NAME AND BASIC STATS */
 
 /* ----- "Basic Pokemon" font styling */
-td.basic {
-  font-size: 9px;
+.basic {
+  font-size: 0.70em;
   font-weight: 600;
-  margin: 0px;
   padding: 0px;
+  height: 1rem;
 }
 
 /* ----- Name of Pokemon font styling */
-td.nameofanimal {
+.nameofanimal {
   font-weight: 700;
-  font-size: 20px;
-  margin: 0px;
+  font-size: 1.25rem;
+  width: 11rem;
+  height: 2.5rem;
   padding: 0px;
+  margin-bottom: -1rem;
 }
 
-/* ----- HP font styling */
-td.hp {
-  color: crimson;
-  font-size: 18px;
-  text-align: right;
-  font-weight: 600;
-  width: 50px;
+.protect_container {
+  display: flex;
+  align-items: flex-end;
+  width: 5rem;
+  height: 2rem;
 }
 
-/* ----- Type sign next to HP - OK to remove if replaced with image */
-td.typesign {
+.protect_container > .attackdesc {
+  margin-bottom: 0.3rem;
+}
+
+.typesign {
   font-size: 20px;
   text-align: center;
   width: 20px;
@@ -63,106 +115,74 @@ td.typesign {
 /* IMAGE AND DESCRIPTION */
 
 /* ----- Image border and drop shadow */
-img {
+.card_img {
   padding: 0px;
   margin: 0px 0px 5px 0px;
-  border: 5px yellow outset;
+  border: 5px #EDCF8E outset;
   box-shadow: 3px 3px 10px #000;
   /* Ensure the images are always correct size
  Note this will skew images of the wrong ratio */
-  width: 300px;
-  height: 190px;
+  min-width: 21rem;
+  min-height: 14rem;
 }
 
 /* Description font styling and gradient box
 this is DIRECTLY UNDER THE IMAGE */
-p.description {
+
+.below_image_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 0.25rem 0 ;
+}
+
+.description {
   /* This is skinnier than the image above it */
-  width: 250px; /* DO NOT REMOVE, HEATHER! */
-  padding: 2px 2px 2px 2px;
-  margin: 0px 0px 5px 30px;
-  background: linear-gradient(to right, goldenrod, yellow, goldenrod);
+  display: flex;
+  justify-content: space-around;
+  width: 18rem; /* DO NOT REMOVE, HEATHER! */
+  padding: 1px 2px 1px 2px;
+  margin: -1.5rem auto;
+  background: linear-gradient(to right, #C69E40, #EDCF8E, #BFAF3A);
   font-size: 10px;
   font-style: italic;
   font-weight: 600;
   text-align: center;
 }
 
-/* ATTACKS */
-
-/* ----- Attack Energy Cost - Stars/Energy Cards */
-td.energy {
-  width: 50px;
-  margin: 0px;
-  padding: 0px;
-  font-size: 18px;
-  text-align: center;
+.set_logo {
+  width: 1.25rem;  
+  margin-top: -1.5rem;
+  margin-left: -1.25rem;
 }
 
-/* ----- Cell that holds Attack Name and Description */
-td.attackdesc {
-  margin: 5px;
-  padding: 5px;
+.energy_symbol {
+  width: 1rem;
 }
 
-/* ----- Cards with no Attack Description have the Attack Name centered
-This is an extra class for those only */
 
-td.attackdescCENTER {
-  text-align: center;
-  margin: 5px;
-  padding: 5px;
-}
-
-/* ----- Attack Name Only */
-span.label {
+.label {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.75rem;
 }
 
-/* ----- Attack Description */
-span.labeltext {
-  font-weight: 400;
-  font-size: 12px;
+.attackdesc {
+  margin-right: 0.20rem;
 }
 
-/* ----- Attack Damage */
-td.damage {
-  font-weight: 400;
-  font-size: 20px;
-  width: 25px;
-  text-align: center;
+
+.stats {
+  display: flex; 
+  height: 2rem;
+  width: 100%;
 }
 
-table.stats {
-  border-bottom: 1.5px solid black;
-}
-
-/* WEAKNESS / RESISTANCE / RETREAT */
-
-/* ----- Styling table overall */
-table.costs {
-  font-size: 10px;
-  text-align: center;
-}
-
-/* ----- Styling headers */
-tr.costheaders {
-  font-weight: 900;
-}
-
-/* ----- Styling icons - OK to remove if using images */
-tr.costicons {
-  font-size: 18px;
-  vertical-align: center;
-  align: center;
-}
 
 /* Comply with requirements by having no bullets */
 ul, li {
   list-style: none;
   padding: 0px;
-  margin: 0px;
 }
 
 /* BOTTOM DESCRIPTION */
@@ -172,35 +192,43 @@ are two bullets in a list with different classes
 to style them differently */
 
 /* Bottom of card just above copyrights */
-li.italicize {
+.breed_facts{
+  background: linear-gradient(to right, #C69E40, #EDCF8E, #BFAF3A);
+  width: fit-content;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0px 5px;
+  font-style: italic;
+}
+
+.italicize {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
   font-style: italic;
   font-weight: 600;
-  font-size: 10px;
-  border: 1px ridge gold;
+  font-size: 0.65rem;
+  border: 1px ridge #EDCF8E;
   border-radius: 2px;
-  margin: 5px 0px 0px 0px;
-  padding: 5px 5px 5px 5px;
-  width: 298px;
+  width: 22rem;
+  height: 7.5rem;
   /* Remove comment marks to test size */
   /* border: 1px solid magenta; */
 }
 
 /* COPYRIGHTS */
-li.copyrights {
-  font-size: 7.2px;
+.copyrights {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: 1rem;
+  font-size: 0.55rem;
+  font-weight: 700;
   text-align: center;
   padding: 0px;
-  margin: 0px;
-  width: 308px;
-  /* Remove comment marks to test size */
-  /* border: 1px solid magenta; */
-}
-
-/* Copyright font changes along the line, and I love classes apparently */
-span.medium {
-  font-weight: 500;
-}
-
-span.strong {
-  font-weight: 700;
+  height: 1rem;
+  width: 20rem;
+  margin-bottom: 0.75rem;
 }
