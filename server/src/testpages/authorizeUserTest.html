@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authorization Test</title>
+</head>
+<body>
+
+    <h1>User Authorization Test</h1>
+
+    <form id="authorizationForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="button" onclick="authorizeUser()">Authorize User</button>
+    </form>
+
+    <script>
+      async function authorizeUser() {
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+  
+          try {
+              const response = await fetch('https://localhost:8088/api/login', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ email, password }),
+              });
+  
+              const data = await response.json();
+  
+              console.log('Authorization Response:', data);
+  
+              if (response.ok) {
+                  alert('User authorized successfully!');
+              } else {
+                  alert('Authorization failed. Check the console for details.');
+              }
+          } catch (error) {
+              console.error('Error during authorization:', error);
+              alert('An error occurred during authorization. Check the console for details.');
+          }
+      }
+  </script>
+
+</body>
+</html>
