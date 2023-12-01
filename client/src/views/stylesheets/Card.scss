@@ -23,12 +23,13 @@ $type-color-8: #EDCF8E;
 }
 
 .color-2 {
+  background: linear-gradient(to bottom right, $type-color-4, $type-color-5, $type-color-4, $type-color-5, $type-color-4);
+} 
+
+.color-fusion {
   background: linear-gradient(to bottom right, $type-color-1, $type-color-3, $type-color-4, $type-color-3, $type-color-1);
 }
 
-.color-3 {
-  background: linear-gradient(to bottom right, $type-color-4, $type-color-5, $type-color-4, $type-color-5, $type-color-4);
-}
 
 // Name and image information
 .nameimageinfo {
