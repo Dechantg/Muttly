@@ -198,7 +198,7 @@ const PokemonCard = () => {
 
   return (
     <td className="organizecardsB">
-      {card(1,'Base Breed', 'Miniature Shcnauzer', 'https://api-ninjas.com/images/dogs/miniature_schnauzer.jpg')}
+      {card(1,'Base Breed', 'Cavalier King Charles Spaniel', 'https://api-ninjas.com/images/dogs/miniature_schnauzer.jpg')}
       {card(2,'Miniature Shcnauzer/Alaskan Malmute','Schnauzer Malmute', '../mock_dogs/Default_alaskan_malamuteminiature_schnauzer_looking_cute_and_h_0.jpg')}
       <Card num={1}/>
     </td>

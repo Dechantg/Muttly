@@ -87,18 +87,30 @@ $type-color-8: #EDCF8E;
 }
 
 .nameofanimal {
+  position: relative;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   width: 11rem;
   height: 2.5rem;
   padding: 0;
-  margin-bottom: -1rem;
+  margin-bottom: -1.5rem;
+  padding-right: 0.5rem ;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.nameofanimal:hover {
+  text-overflow: unset; /* Display full text on hover */
+  white-space: normal;
+  overflow: visible;
 }
 
 // Protectiveness container styles
 .protect_container {
   display: flex;
-  align-items: flex-end;
+  // align-items: flex-end;
   justify-content: flex-start;
   gap:0px;
   width: 11rem;
@@ -106,7 +118,6 @@ $type-color-8: #EDCF8E;
 }
 
 .protect_container > .attackdesc {
-  margin-bottom: 0.3rem;
   margin-left: -0.15rem;
   padding-right: 0.15rem;
 }
