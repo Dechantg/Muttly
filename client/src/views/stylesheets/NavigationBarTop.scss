@@ -1,7 +1,12 @@
+// NavigationBarTop.scss
+
 .top-navigation-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+  margin-top: 2vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .left-side {
@@ -10,7 +15,12 @@
 }
 
 .logo-link {
-  // Styling for logo link if needed
+  
+}
+
+.logo-link > img {
+  height: 15vh;
+  margin: 0 1rem 0 2vw;
 }
 
 .logo {
@@ -18,7 +28,7 @@
 }
 
 .muttly-brand {
-  // Styling for the brandname Muttly
+  font-size: 3rem;
 }
 
 .muttly-slogan {
@@ -31,4 +41,10 @@
 
 .sign-in-out-link {
   // Styling for the Bark In/Bark Out logo link
+}
+
+.login_icon {
+  height: 10vh;
+  margin-right: 2vw;
+  margin-top: 5vh;
 }

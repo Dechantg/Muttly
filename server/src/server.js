@@ -5,16 +5,28 @@ const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
+const session = require('express-session');
 
 
 const app = express();
 
 const httpsOptions = {
-  key: fs.readFileSync(),
-  cert: fs.readFileSync(),
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem'),
+  passphrase: process.env.KEY_PASSPHRASE,
 }
 
-const PORT = process.env.PORT || 8080;
+app.use(session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true,
+    httpOnly: true,
+  },
+}));
+
+const port = process.env.PORT;
 
 
 // serve static files from ../build (needed for React)
@@ -36,10 +48,11 @@ const generatedBreedsByUserId    = require('./routes/generatedBreedIdByUser')
 const deleteDogBreed             = require('./routes/deleteBreed')
 const mostLikedBreeds            = require('./routes/retrieveMostLikedBreeds')
 const mostRecentBreeds           = require('./routes/mostRecentBreeds')
+const breedsUserLiked            = require('./routes/breedsUserLiked')
+const addNewUser                 = require('./routes/addNewUser')
+const login                      = require('./routes/userAuthorization')
 
-
-
-const breedDetails    = require('../database/queries/retrieve_dog_breed');
+// const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
 
 app.use('/api/mostliked', mostLikedBreeds);
@@ -47,132 +60,32 @@ app.use('/api/mostrecent', mostRecentBreeds);
 
 app.use('/api/allbreednames', dogBreedNames);
 app.use('/api/breedbyid', dogBreedById);
+app.use('/api/userliked', breedsUserLiked);
 
 app.use('/api/generatebreed', generateBreed);
 
-app.use('/api/generatedbreedbyid', generatedBreedById);
-app.use('/api/generatedbreedbyuserid', generatedBreedsByUserId);
+app.use('/api/generated/breedbyid', generatedBreedById);
+app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
+app.use('/api/generated/delete', deleteDogBreed);
 
-app.use('/api/deletebreed', deleteDogBreed);
+app.use('/api/addnewuser', addNewUser);
+app.use('/api/login', login);
 
-
-
-
-// app.use('/api/dogbreeddetails', retrieveDog)
-// app.use('/api/retrievedgenerated', retrieveGeneratedDog)
-
-app.get('/api/test', async (req, res) => {
-    try {
-      // Assuming you have a table named 'items'
-      const someDogBreedId = 82;
-      // const someDogBreedIdTwo = 74;
-  
-      const resultOne = await breedDetails(someDogBreedId);
-  
-      console.log('Fetched data dog one:', resultOne);
-  
-    
-      // Send the combined results as JSON to the client
-      res.json(resultOne);
-  
-    } catch (error) {
-      console.error('Error executing SQL query:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-
-// Simple Endpoint - no routes module
-
-
-app.use(function(req, res) {
-  res.status(404);
+app.get('/usertest', (req, res) => {
+  res.sendFile(path.join(__dirname, './testpages/newUserTestRoute.html'));
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server started on port ${PORT}!`);
-// });
+app.get('/userlogintest', (req, res) => {
+  res.sendFile(path.join(__dirname, './testpages/authorizeUserTest.html'));
+});
+
+app.get('/validlogin', (req, res) => {
+  res.sendFile(path.join(__dirname, './testpages/validCookie.html'));
+});
+
+
 
 https.createServer(httpsOptions, app).listen(port, () => {
   console.log(`Server running at https://localhost:${port}/`);
 });
 
-
-
-// Use Routed Endpoints
-// const itemRoutes = require('./routes/itemRoutes');
-
-// app.use('/api/items', itemRoutes(pool));
-
-// const dogOne ={
-//   "good_with_children": 5,
-//   "good_with_other_dogs": 5,
-//   "shedding": 2,
-//   "grooming": 1,
-//   "drooling": 1,
-//   "coat_length": 1,
-//   "good_with_strangers": 3,
-//   "playfulness": 4,
-//   "protectiveness": 3,
-//   "trainability": 3,
-//   "energy": 4,
-//   "barking": 1,
-//   "max_height_male": 22,
-//   "max_height_female": 22,
-//   "max_weight_male": 40,
-//   "max_weight_female": 40,
-//   "min_height_male": 19,
-//   "min_height_female": 19,
-//   "min_weight_male": 25,
-//   "min_weight_female": 25,
-//   "name": "Whippet"
-// }
-//  const dogTwo = {
-//   "good_with_children": 5,
-//   "good_with_other_dogs": 4,
-//   "shedding": 4,
-//   "grooming": 2,
-//   "drooling": 1,
-//   "coat_length": 1,
-//   "good_with_strangers": 5,
-//   "playfulness": 5,
-//   "protectiveness": 3,
-//   "trainability": 4,
-//   "energy": 3,
-//   "barking": 1,
-//   "max_height_male": 13,
-//   "max_height_female": 13,
-//   "max_weight_male": 18,
-//   "max_weight_female": 18,
-//   "min_height_male": 10,
-//   "min_height_female": 10,
-//   "min_weight_male": 14,
-//   "min_weight_female": 14,
-//   "name": "Pug"
-// }
-
-// app.get('/api/test', async (req, res) => {
-//   try {
-//     // Assuming you have a table named 'items'
-//     // const someDogBreedId = 82;
-//     // const someDogBreedIdTwo = 74;
-
-//     const resultOne = await dogBreed(someDogBreedId);
-//     const resultTwo = await dogBreed(someDogBreedIdTwo);
-
-//     console.log('Fetched data dog one:', resultOne);
-//     console.log('Fetched data dogtwo:', resultTwo);
-
-//     // Combine the results into a single object
-//     const combinedResults = {
-//       resultOne: resultOne,
-//       resultTwo: resultTwo
-//     };
-
-//     // Send the combined results as JSON to the client
-//     res.json(combinedResults);
-
-//   } catch (error) {
-//     console.error('Error executing SQL query:', error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });

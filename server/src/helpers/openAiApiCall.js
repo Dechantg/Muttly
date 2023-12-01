@@ -49,7 +49,6 @@ async function muttyAssistent(dogOne, dogTwo) {
 
       jsonObject.description = description;
 
-      console.log("fially victory is mine", jsonObject)
     } catch (error) {
       console.error('Error parsing JSON:', error);
     }

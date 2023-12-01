@@ -1,6 +1,5 @@
 .main {
   display: flex;
-  position: absolute;
 }
 
 .home_main, .sign_in {
@@ -21,15 +20,15 @@
 .home_main > p {
   text-align: center;
   width: 50vw;
-  font-size: 1.10rem;
-  margin-bottom: 0rem;
+  font-size: 1vw;
+  margin-bottom: 1rem;
 }
 
 .sign_in {
   position: relative;
-  right: 20vw; 
+  right: 20%; 
   margin-top: 5rem;
-  font-size: 2rem;
+  font-size: 1.75vw;
 }
 
 .sign_in > img {
@@ -80,7 +79,7 @@
 
 button {
   height: 3rem;
-  font-size: 1.5rem;
+  font-size: 1.25vw;
   margin-top: -1rem;
   width: 35vw; 
   border-radius: 10%;
@@ -93,7 +92,7 @@ button {
 } 
 
 h1 {
-  font-size: 6rem; 
+  font-size: 5vw; 
 }
 
 

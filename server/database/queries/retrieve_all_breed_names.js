@@ -7,7 +7,7 @@ const db = require('../connection');
 
 const dogBreedName = () => {
   return db.query (
-    'SELECT id, name FROM dog_breeds;')
+    'SELECT id, name FROM dog_breeds ORDER BY name ASC;')
     .then(data => {
       const generatedBreedDetails = data.rows;
       return generatedBreedDetails;

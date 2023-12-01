@@ -1,0 +1,39 @@
+// NewsFeedUserPage.scss
+
+@import './NavigationBarTop.scss';
+@import './NavigationBarBottom.scss';
+
+.news-feed-user-container {
+  // Styling for the overall container
+}
+
+.news-feed-content {
+  text-align: center;
+  margin: 20px;
+
+  h2 {
+    // Styling for the section titles
+  }
+
+  .image-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    // Stying for thumbnail images needed
+  }
+}
+
+.generate-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+
+  // Styling for the pawprint icon
+
+  p {
+    // Styling for the text related to button
+  }
+}

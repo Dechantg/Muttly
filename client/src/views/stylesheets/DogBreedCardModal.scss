@@ -1,0 +1,64 @@
+// DogBreedCardModal.scss
+
+
+.dog-breed-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    div {
+      flex: 1;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  &-description {
+    padding: 10px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &-footer {
+    padding: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  &-image {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+  }
+}

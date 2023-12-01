@@ -11,12 +11,15 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-const muttyAssistent = require('./openAiApiCall');
-const muttyPhotoGen = require('./leonardoApiCall');
+const muttyAssistent = require('../helpers/openAiApiCall');
+const muttyPhotoGen = require('../helpers/leonardoApiCall');
+const muttyPhotoFetch = require('../helpers/leonardoApiGetPhoto');
+const validateSession = require('../helpers/sessionValidation')
 
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
-const dogBreed = require('../../database/queries/retrieve_dog_breed');
+const dogBreed = require('../../database/queries/retrieve_breed_for_generation');
+const queryRecord = require('../../database/queries/add_generation_record')
 
 
 const parseNumericalValuesToIntegers = (data) => {
@@ -31,10 +34,10 @@ const parseNumericalValuesToIntegers = (data) => {
   return result;
 };
 
-router.get("/", async (req, res) => {
+router.get("/", validateSession, async (req, res) => {
   try {
-  
-    // Fetch data for dog one and dog two
+
+    const userId = req.session.user.id;
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
 
@@ -45,7 +48,6 @@ router.get("/", async (req, res) => {
     console.log('Result for dog two:', resultTwo);
 
 
-    // Combine the results into a single object
     const combinedResults = {
       resultOne: resultOne,
       resultTwo: resultTwo
@@ -54,12 +56,7 @@ router.get("/", async (req, res) => {
     const dogOneName = resultOne[0].name;
     const dogTwoName = resultTwo[0].name;
 
-
-    console.log("checking for the damn dog passover", combinedResults.resultOne)
-    console.log("checking for the secopnd damn dog passover", combinedResults.resultTwo)
-
-    console.log("here is my attempt to pull the name for my leonardo api", dogOneName);
-
+    const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
     let dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
 
@@ -70,13 +67,28 @@ router.get("/", async (req, res) => {
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
-    const dogPhotoUrl = await muttyPhotoGen(dogOneName, dogTwoName);
+    const generationId = dogPhotoId.sdGenerationJob.generationId;
+
+
+    const dogPhotoUrl = await muttyPhotoFetch(generationId);
+    console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
-   
 
-    // Insert into the database
+    parsedDogBreedData.userId = userId;
+
     const generatedBreedDetails = await newGeneratedDog(parsedDogBreedData);
+
+    const updatedBreed = {
+      genId: generatedBreedDetails[0].id,
+      userId: userId,
+      breedOne: dogOneId,
+      breedTwo: dogTwoId
+    };
+
+    await queryRecord(updatedBreed);
+
+    console.log("last by not least lets work on my query table", updatedBreed)
 
 
     console.log('Generated Breed Details:', generatedBreedDetails);

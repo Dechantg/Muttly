@@ -1,9 +1,17 @@
+// NavigationBarBottom.scss
 
 .bottom-navigation-bar {
   display: flex;
   justify-content: space-around;
+  background: white;
+  width: 100%;
+  align-items: center;
+  font-size: 2rem;
+  height: 10vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
-  // Styling for the navigation links - Indie Flower text etc
+  text-decoration: none;
+  color: inherit;
 }

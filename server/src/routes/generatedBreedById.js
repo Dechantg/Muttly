@@ -11,12 +11,16 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const generatedBreedDetails = require('../../database/queries/retrieve_generated_dog')
+const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateSession, async (req, res) => {
 
 try {
+
+  const userId = req.session.user.id;
+
 
   const dogBreedId = req.params.id;
 

@@ -1,0 +1,227 @@
+// Variables for colors used in gradients
+$type-color-1: #7B9AE1;
+$type-color-2: #5E74A1;
+$type-color-3: #BF5B8F;
+$type-color-4: #e682bf;
+$type-color-5: #c75189;
+$type-color-6: #C69E40;
+$type-color-7: #BFAF3A;
+$type-color-8: #EDCF8E;
+
+// Class for container
+.organizecardsB {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+  // font-family: 'Cabin', sans-serif;
+}
+
+// Electric Type color classes
+.color-1 {
+  background: linear-gradient(to bottom right, $type-color-1, $type-color-2, $type-color-1, $type-color-2, $type-color-1);
+}
+
+.color-2 {
+  background: linear-gradient(to bottom right, $type-color-4, $type-color-5, $type-color-4, $type-color-5, $type-color-4);
+} 
+
+.color-fusion {
+  background: linear-gradient(to bottom right, $type-color-1, $type-color-3, $type-color-4, $type-color-3, $type-color-1);
+}
+
+
+// Name and image information
+.nameimageinfo {
+  width: 24.5rem;
+  height: 35rem;
+  margin: 0;
+  padding: 5px 10px;
+  border: 10px solid $type-color-8;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Forcing headers to the same full width
+.nameheaders {
+  width: 10rem;
+  vertical-align: center;
+  margin-top: 1rem;
+}
+
+// Stat container classes
+.top_stat_container {
+  display: flex;
+  width: 20rem;
+  margin-right: 0;
+  margin-bottom: -0.5rem;
+}
+
+.top_stats {
+  display: flex;
+}
+
+.stat_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.75rem;
+  width: 19.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.stats {
+  display: flex; 
+  height: 2rem;
+  width: 8rem;
+}
+
+// Dog breed and Name of Dog
+.basic {
+  font-size: 0.70em;
+  font-weight: 600;
+  padding: 0;
+  height: 1rem;
+}
+
+.nameofanimal {
+  position: relative;
+  font-weight: 700;
+  font-size: 1.05rem;
+  width: 11rem;
+  height: 2.5rem;
+  padding: 0;
+  margin-bottom: -1.5rem;
+  padding-right: 0.5rem ;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.nameofanimal:hover {
+  text-overflow: unset;
+  white-space: normal;
+  overflow: visible;
+  background-color: rgba(128, 128, 128, 0.55);
+}
+
+// Protectiveness container styles
+.protect_container {
+  display: flex;
+  // align-items: flex-end;
+  justify-content: flex-start;
+  gap:0px;
+  width: 11rem;
+  height: 2rem;
+}
+
+.protect_container > .attackdesc {
+  margin-left: -0.15rem;
+  padding-right: 0.15rem;
+}
+
+.typesign {
+  font-size: 20px;
+  text-align: center;
+  width: 20px;
+  margin-left: -0.30rem;;
+}
+
+// Image and description styles
+.card_img {
+  padding: 0;
+  margin: 0 0 5px;
+  border: 5px $type-color-8 outset;
+  box-shadow: 3px 3px 10px #000;
+  min-width: 21rem;
+  min-height: 14rem;
+}
+
+.below_image_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 0.25rem;
+}
+
+.description {
+  display: flex;
+  justify-content: space-around;
+  width: 18rem;
+  padding: 1px 2px;
+  margin: -1.5rem auto;
+  background: linear-gradient(to right, $type-color-6, $type-color-8, $type-color-7);
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+}
+
+.set_logo {
+  width: 1.25rem;  
+  margin-top: -1.5rem;
+  margin-left: -1.25rem;
+}
+
+.energy_symbol {
+  width: 1rem;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.attackdesc {
+  margin-right: 0.20rem;
+}
+
+// Bullets removed for ul, li
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+// Bottom description and copyrights
+.breed_facts {
+  background: linear-gradient(to right, $type-color-6, $type-color-8, $type-color-7);
+  width: fit-content;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0 5px;
+  font-style: italic;
+}
+
+.italicize {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 0.65rem;
+  border: 1px ridge $type-color-8;
+  border-radius: 2px;
+  width: 22rem;
+  height: 7.5rem;
+}
+
+.copyrights {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: 1rem;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0;
+  height: 1rem;
+  width: 20rem;
+  margin-bottom: 0.75rem;
+}
