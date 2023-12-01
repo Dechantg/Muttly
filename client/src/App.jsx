@@ -13,6 +13,7 @@ import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
 import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
+import SignInModal from './components/SignInModal';
 
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/signin" element={<SignInModal />} />
               {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
