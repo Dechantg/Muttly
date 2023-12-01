@@ -30,24 +30,25 @@ export default function App() {
   return (
     <div className="App">
         <div className="AppWrapper">
-          {/* {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />} */}
+          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
           <div className="AppContent">
-            <EnlargedPawPrintImage />
+            {/* <ContactUsPage /> */}
+            {/* <EnlargedPawPrintImage /> */}
             {/* <UsersFavouritesPage /> */}
             {/* <PracticeCard /> */}
             {/* <DogBreedCardModal /> */}
-            {/* <Routes>
+            <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} /> */}
+              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               {/* <Route path="/signup" element={<SignUpPage />} /> */}
               {/* <Route path="/generate" element={<GenergateMixedBreedPage />} /> /  */}
-            {/* </Routes> */}
+            </Routes>
           </div>
-          {/* {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />} */}
+          {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
         </div>
-    </div>
+     </div>
   );
 };
