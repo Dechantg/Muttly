@@ -1,14 +1,12 @@
 // Variables for colors used in gradients
-$type-color-1: #a1b8ff;
-$type-color-2: #8a9eff;
-$type-color-3: #7B9AE1;
-$type-color-4: #9D77B5;
-$type-color-5: #BF5B8F;
-$type-color-6: #e682bf;
-$type-color-7: #c75189;
-$type-color-8: #C69E40;
-$type-color-9: #BFAF3A;
-$type-color-10: #EDCF8E;
+$type-color-1: #7B9AE1;
+$type-color-2: #5E74A1;
+$type-color-3: #BF5B8F;
+$type-color-4: #e682bf;
+$type-color-5: #c75189;
+$type-color-6: #C69E40;
+$type-color-7: #BFAF3A;
+$type-color-8: #EDCF8E;
 
 // Class for container
 .organizecardsB {
@@ -25,11 +23,11 @@ $type-color-10: #EDCF8E;
 }
 
 .color-2 {
-  background: linear-gradient(to bottom right, $type-color-3, $type-color-4, $type-color-5, $type-color-4, $type-color-3);
+  background: linear-gradient(to bottom right, $type-color-1, $type-color-3, $type-color-4, $type-color-3, $type-color-1);
 }
 
 .color-3 {
-  background: linear-gradient(to bottom right, $type-color-6, $type-color-7, $type-color-6, $type-color-7, $type-color-6);
+  background: linear-gradient(to bottom right, $type-color-4, $type-color-5, $type-color-4, $type-color-5, $type-color-4);
 }
 
 // Name and image information
@@ -38,7 +36,7 @@ $type-color-10: #EDCF8E;
   height: 35rem;
   margin: 0;
   padding: 5px 10px;
-  border: 10px solid $type-color-10;
+  border: 10px solid $type-color-8;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -119,7 +117,7 @@ $type-color-10: #EDCF8E;
 .card_img {
   padding: 0;
   margin: 0 0 5px;
-  border: 5px $type-color-10 outset;
+  border: 5px $type-color-8 outset;
   box-shadow: 3px 3px 10px #000;
   min-width: 21rem;
   min-height: 14rem;
@@ -139,7 +137,7 @@ $type-color-10: #EDCF8E;
   width: 18rem;
   padding: 1px 2px;
   margin: -1.5rem auto;
-  background: linear-gradient(to right, $type-color-8, $type-color-10, $type-color-9);
+  background: linear-gradient(to right, $type-color-6, $type-color-8, $type-color-7);
   font-size: 10px;
   font-style: italic;
   font-weight: 600;
@@ -173,7 +171,7 @@ ul, li {
 
 // Bottom description and copyrights
 .breed_facts {
-  background: linear-gradient(to right, $type-color-8, $type-color-10, $type-color-9);
+  background: linear-gradient(to right, $type-color-6, $type-color-8, $type-color-7);
   width: fit-content;
   font-size: 0.75rem;
   font-weight: 600;
@@ -190,7 +188,7 @@ ul, li {
   font-style: italic;
   font-weight: 600;
   font-size: 0.65rem;
-  border: 1px ridge $type-color-10;
+  border: 1px ridge $type-color-8;
   border-radius: 2px;
   width: 22rem;
   height: 7.5rem;

@@ -1,6 +1,6 @@
 import React from 'react';
-
-import '../views/stylesheets/PracticeCard.scss';
+import Card from './Card';
+import '../views/stylesheets/Card.scss';
 
 const PokemonCard = () => {
 
@@ -81,22 +81,24 @@ const PokemonCard = () => {
       <table className="stats">
         <tbody>
           <tr className="symbol_container">
-            <td className="attackdesc"><span className="label">Barking</span></td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
+          <td className="attackdesc"><span className="label">Drooling</span></td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
           </tr>
         </tbody>
       </table>
       <table className="stats">
         <tbody>
           <tr className="symbol_container">
-            <td className="attackdesc"><span className="label">Drooling</span></td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
-            <td className="typesign"> <img className="energy_symbol" src="../icons/drool.png"/> </td>
-
+          <td className="attackdesc"><span className="label">Barking</span></td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
+            <td className="typesign"> <img className="energy_symbol" src="../icons/bark.png"/> </td>
           </tr>
         </tbody>
       </table>
@@ -198,7 +200,7 @@ const PokemonCard = () => {
     <td className="organizecardsB">
       {card(1,'Base Breed', 'Miniature Shcnauzer', 'https://api-ninjas.com/images/dogs/miniature_schnauzer.jpg')}
       {card(2,'Miniature Shcnauzer/Alaskan Malmute','Schnauzer Malmute', '../mock_dogs/Default_alaskan_malamuteminiature_schnauzer_looking_cute_and_h_0.jpg')}
-      {card2(3)}
+      <Card num={1}/>
     </td>
   );
 };
