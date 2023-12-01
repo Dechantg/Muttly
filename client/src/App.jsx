@@ -43,7 +43,7 @@ export default function App() {
               <Route path="/about" element={<AboutUsPage />} />
               {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-              {/* <Route path="/signup" element={<SignUpPage />} /> */}
+              <Route path="/signup" element={<SignUpPage />} />
               {/* <Route path="/generate" element={<GenergateMixedBreedPage />} /> /  */}
             </Routes>
           </div>
