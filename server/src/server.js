@@ -52,7 +52,6 @@ const breedsUserLiked            = require('./routes/breedsUserLiked')
 const addNewUser                 = require('./routes/addNewUser')
 const login                      = require('./routes/userAuthorization')
 
-
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
 
@@ -71,7 +70,6 @@ app.use('/api/generated/delete', deleteDogBreed);
 
 app.use('/api/addnewuser', addNewUser);
 app.use('/api/login', login);
-
 
 app.get('/usertest', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/newUserTestRoute.html'));

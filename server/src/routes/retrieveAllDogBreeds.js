@@ -15,7 +15,7 @@ const validateSession = require('../helpers/sessionValidation')
 
 router.get('/', async (req, res) => {
   try {
-    const userId = req.session.user.id;
+    // const userId = req.session.user.id;
 
     const result = await dogBreedName();
 
