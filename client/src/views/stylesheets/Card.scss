@@ -102,9 +102,10 @@ $type-color-8: #EDCF8E;
 }
 
 .nameofanimal:hover {
-  text-overflow: unset; /* Display full text on hover */
+  text-overflow: unset;
   white-space: normal;
   overflow: visible;
+  background-color: rgba(128, 128, 128, 0.55);
 }
 
 // Protectiveness container styles
