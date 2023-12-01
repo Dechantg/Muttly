@@ -23,11 +23,13 @@ router.post ('/', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await addNewUser(firstName, lastName, email, hashedPassword);
+    const newUserResponse = await addNewUser(firstName, lastName, email, hashedPassword);
 
     if (newUserResponse.success) {
       req.session.user = { id: newUserResponse.user.id, username: newUserResponse.user.username };
     }
+
+    console.log("New user created for: ", newUserResponse);
 
     res.status(200).json(newUserResponse);
   } catch (error) {

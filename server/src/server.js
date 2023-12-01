@@ -70,7 +70,7 @@ app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
 app.use('/api/generated/delete', deleteDogBreed);
 
 app.use('/api/addnewuser', addNewUser);
-app.use('/api/login', login)
+app.use('/api/login', login);
 
 
 app.get('/usertest', (req, res) => {
