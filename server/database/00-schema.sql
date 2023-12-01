@@ -35,6 +35,7 @@ CREATE TABLE dog_breeds (
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   first_name VARCHAR(50),
   last_name VARCHAR(50),
   email VARCHAR(100) UNIQUE NOT NULL,
@@ -73,6 +74,7 @@ CREATE TABLE generated_breeds (
 
 CREATE TABLE liked_generated_breeds (
   id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   generated_breeds_id INTEGER REFERENCES generated_breeds(id) ON DELETE CASCADE,
   like_status BOOLEAN
@@ -80,6 +82,7 @@ CREATE TABLE liked_generated_breeds (
 
 CREATE TABLE new_breed_queries (
   id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   generated_breeds_id INTEGER REFERENCES generated_breeds(id) ON DELETE CASCADE,
   breed_one INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE,

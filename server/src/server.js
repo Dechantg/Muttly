@@ -74,15 +74,15 @@ app.use('/api/login', login)
 
 
 app.get('/usertest', (req, res) => {
-  res.sendFile(path.join(__dirname, 'newUserTestRoute.html'));
+  res.sendFile(path.join(__dirname, './testpages/newUserTestRoute.html'));
 });
 
 app.get('/userlogintest', (req, res) => {
-  res.sendFile(path.join(__dirname, 'authorizeUserTest.html'));
+  res.sendFile(path.join(__dirname, './testpages/authorizeUserTest.html'));
 });
 
 app.get('/validlogin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'validCookie.html'));
+  res.sendFile(path.join(__dirname, './testpages/validCookie.html'));
 });
 
 

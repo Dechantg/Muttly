@@ -21,7 +21,6 @@ router.post('/', async (req, res) => {
 
     if (bcrypt.compareSync(password, hashedPasswordFromDB)) {
       
-      // Passwords match, authentication successful
       req.session.user = { id: user.id, email: user.email };
 
      return res.status(200).json({

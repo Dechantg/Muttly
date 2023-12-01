@@ -8,7 +8,6 @@ const addNewGeneratedBreed = (dogBreedData) => {
     [name, good_with_children, good_with_other_dogs, shedding, grooming, drooling, coat_length, good_with_strangers, protectiveness, trainability, energy, barking, max_height_male, max_height_female, max_weight_male, max_weight_female, min_height_male, min_height_female, min_weight_male, min_weight_female, description, generated_photo_link]
   )
     .then(data => {
-      console.log('Returned Data:', data);
 
       const generatedBreedDetails = data.rows;
       return generatedBreedDetails;

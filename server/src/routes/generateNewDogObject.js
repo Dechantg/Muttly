@@ -35,8 +35,8 @@ const parseNumericalValuesToIntegers = (data) => {
 
 router.get("/", validateSession, async (req, res) => {
   try {
-  
-    // Fetch data for dog one and dog two
+    
+    const userId = req.params.id;
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
 
@@ -47,7 +47,6 @@ router.get("/", validateSession, async (req, res) => {
     console.log('Result for dog two:', resultTwo);
 
 
-    // Combine the results into a single object
     const combinedResults = {
       resultOne: resultOne,
       resultTwo: resultTwo
@@ -55,12 +54,6 @@ router.get("/", validateSession, async (req, res) => {
 
     const dogOneName = resultOne[0].name;
     const dogTwoName = resultTwo[0].name;
-
-
-    console.log("checking for the damn dog passover", combinedResults.resultOne)
-    console.log("checking for the secopnd damn dog passover", combinedResults.resultTwo)
-
-    console.log("here is my attempt to pull the name for my leonardo api", dogOneName);
 
     const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
@@ -82,7 +75,6 @@ router.get("/", validateSession, async (req, res) => {
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
    
 
-    // Insert into the database
     const generatedBreedDetails = await newGeneratedDog(parsedDogBreedData);
 
 
