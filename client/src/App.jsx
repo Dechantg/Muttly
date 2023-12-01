@@ -33,14 +33,14 @@ export default function App() {
           {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
           <div className="AppContent">
             {/* <ContactUsPage /> */}
-            <EnlargedPawPrintImage />
+            {/* <EnlargedPawPrintImage /> */}
             {/* <UsersFavouritesPage /> */}
             {/* <PracticeCard /> */}
             {/* <DogBreedCardModal /> */}
             <Routes>
               <Route path="/" element={<HomePage />} />
-              {/* <Route path="/contact" element={<ContactUsPage />} /> */}
-              {/* <Route path="/about" element={<AboutUsPage />} /> */}
+              <Route path="/contact" element={<ContactUsPage />} />
+              <Route path="/about" element={<AboutUsPage />} />
               {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               {/* <Route path="/signup" element={<SignUpPage />} /> */}

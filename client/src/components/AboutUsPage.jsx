@@ -1,3 +1,8 @@
+// AboutUsPage.jsx
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import '../views/stylesheets/AboutUsPage.scss';
 
 const AboutUsPage = () => {
@@ -21,8 +26,8 @@ const AboutUsPage = () => {
           </div>
         </div>
         <div className="about-us-content">
-          <h2>About Us...</h2>
-          <h3>Our Tail Begins Here...</h3>
+          <h1>About Us...</h1>
+          <h2>Our Tail Begins Here...</h2>
           <p>...At Muttly, we're the Picasso of Paws, the Da Vinci of Doggos! We're not just a dog company; we're barkitects of the highest pedigree...</p>
           <p>Ever wondered what a Dalmatian and a Husky would look like combined?</p>
           <p>We did too!</p>
