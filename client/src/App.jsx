@@ -2,7 +2,6 @@ import './App.css';
 import HomePage from './components/HomePage';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
-import DogBreedCardModal from './components/DogBreedCardModal';
 import NavigationBarTop from './components/NavigationBarTop';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 // import NewsFeedUserPage from './components/NewsFeedUserPage';
