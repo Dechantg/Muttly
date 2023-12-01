@@ -13,8 +13,10 @@ const dogBreedName = require('../../database/queries/retrieve_all_breed_names');
 const validateSession = require('../helpers/sessionValidation')
 
 
-router.get('/', validateSession, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
+    const userId = req.session.user.id;
+
     const result = await dogBreedName();
 
     console.log('Fetched data:', result);

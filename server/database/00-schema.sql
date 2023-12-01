@@ -69,7 +69,6 @@ CREATE TABLE generated_breeds (
   min_weight_male SMALLINT,
   min_weight_female SMALLINT,
   description TEXT
-
 );
 
 CREATE TABLE liked_generated_breeds (
@@ -89,3 +88,8 @@ CREATE TABLE new_breed_queries (
   breed_two INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE
 );
 
+CREATE TABLE user_login (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+)

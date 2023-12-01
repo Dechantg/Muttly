@@ -19,6 +19,7 @@ const validateSession = require('../helpers/sessionValidation')
 
 const newGeneratedDog = require('../../database/queries/add_new_generated_dog'); 
 const dogBreed = require('../../database/queries/retrieve_breed_for_generation');
+const queryRecord = require('../../database/queries/add_generation_record')
 
 
 const parseNumericalValuesToIntegers = (data) => {
@@ -35,8 +36,8 @@ const parseNumericalValuesToIntegers = (data) => {
 
 router.get("/", validateSession, async (req, res) => {
   try {
-    
-    const userId = req.params.id;
+
+    const userId = req.session.user.id;
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
 
@@ -73,9 +74,21 @@ router.get("/", validateSession, async (req, res) => {
     console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
-   
+
+    parsedDogBreedData.userId = userId;
 
     const generatedBreedDetails = await newGeneratedDog(parsedDogBreedData);
+
+    const updatedBreed = {
+      genId: generatedBreedDetails[0].id,
+      userId: userId,
+      breedOne: dogOneId,
+      breedTwo: dogTwoId
+    };
+
+    await queryRecord(updatedBreed);
+
+    console.log("last by not least lets work on my query table", updatedBreed)
 
 
     console.log('Generated Breed Details:', generatedBreedDetails);

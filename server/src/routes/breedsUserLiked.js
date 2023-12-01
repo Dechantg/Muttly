@@ -11,11 +11,13 @@ const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', validateSession, async (req, res) => {
+router.get('/', validateSession, async (req, res) => {
 
 try {
 
-  const userId = req.params.id;
+  const userId = req.session.user.id;
+
+  console.log("here is my userId attempt to validate:", userId)
 
   if (!userId) {
     return res.status(400).json({ error: 'Missing dogBreedId in the request' });

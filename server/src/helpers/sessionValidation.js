@@ -7,8 +7,7 @@ const validateSession = (req, res, next) => {
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    req.userId = req.session.user.id;
-
+    req.session.user.userId = req.params.id;
 
     next();
   } catch (error) {

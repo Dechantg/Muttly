@@ -13,9 +13,12 @@ const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', validateSession, async (req, res) => {
+router.get('/:id', async (req, res) => {
 
 try {
+
+  const userId = req.session.user.id;
+
 
   const dogBreedId = req.params.id;
 
