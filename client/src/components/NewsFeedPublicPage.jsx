@@ -17,6 +17,10 @@ const NewsFeedPublicPage = () => {
     setSignInModalOpen(false);
   };
 
+  const mostPopularImages = [];
+
+  const recentlyGeneratedImages = [];
+
   return (
     <div className="news-feed-container">
       {/* News Feed Public Content */}
@@ -25,12 +29,30 @@ const NewsFeedPublicPage = () => {
         <div className="image-row">
           {/* Render top 5 images here */}
           {/* Each image thumbnail can be clickable - for the image modal */}
+          {mostPopularImages.map((image) => (
+            <img 
+              key={image.id}
+              src={image.src}
+              alt={image.alt}
+              className="image-thumbnail"
+              // onClick handler for modal & other actions? 
+            />
+          ))}
         </div>
 
         <h2>Recently Generated Images</h2>
         <div className="image-row">
-        {/* Render ~10 images here */}
-        {/* Each image thumbnail can be clickable - for the image modal */}
+          {/* Render ~10 images here */}
+          {/* Each image thumbnail can be clickable - for the image modal */}
+          {recentlyGeneratedImages.map((image) => (
+            <img 
+              key={image.id}
+              src={image.src}
+              alt={image.alt}
+              className="image-thumbnail"
+              // onClick handler for the modal & other actions?
+            />
+          ))}
         </div>
 
         {/* Sign In Button */}
