@@ -13,6 +13,7 @@ import PokemonCard from './components/PracticeCard';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
+import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 
 
 export default function App() {
@@ -31,7 +32,8 @@ export default function App() {
         <div className="AppWrapper">
           {/* {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />} */}
           <div className="AppContent">
-            <UsersFavouritesPage />
+            <EnlargedPawPrintImage />
+            {/* <UsersFavouritesPage /> */}
             {/* <PracticeCard /> */}
             {/* <DogBreedCardModal /> */}
             {/* <Routes>
