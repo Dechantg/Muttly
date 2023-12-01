@@ -1,28 +1,34 @@
 require('dotenv').config();
 const fs = require('fs');
-const https = require('https');
+// const https = require('https');
 const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
+const cors = require('cors');
+
 
 
 const app = express();
 
-const httpsOptions = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-  passphrase: process.env.KEY_PASSPHRASE,
-}
+// const httpsOptions = {
+//   key: fs.readFileSync('./key.pem'),
+//   cert: fs.readFileSync('./cert.pem'),
+//   passphrase: process.env.KEY_PASSPHRASE,
+// }
+
+
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+
 
 app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: true,
-    httpOnly: true,
+    secure: false,
+    smaeSite: 'Lax',
   },
 }));
 
@@ -84,8 +90,7 @@ app.get('/validlogin', (req, res) => {
 });
 
 
-
-https.createServer(httpsOptions, app).listen(port, () => {
-  console.log(`Server running at https://localhost:${port}/`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 

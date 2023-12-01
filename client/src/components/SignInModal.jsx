@@ -1,15 +1,52 @@
 // SignInModal.jsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../views/stylesheets/SignInModal.scss';
 
-const SignInModal = ({ onClose }) => {
+
+
+const SignInModal = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSignIn = async () => {
+    try {
+      const response = await fetch('http://localhost:8088/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Sign-in failed');
+      }
+
+      console.log('Sign-in successful');
+
+      // onClose();
+    } catch (error) {
+      console.error('Error during sign-in:', error.message);
+    }
+  };
+  
+
   return (
     <div className="signin-modal-overlay">
       <div className="signin-modal">
-        <span className="close-button" onClick={onClose}>
+        <span className="close-button" >
           &times;
         </span>
         <div className="logo-header">
@@ -19,12 +56,12 @@ const SignInModal = ({ onClose }) => {
         </div>
         <div className="form-container">
           <label htmlFor="email">Email Address</label>
-          <input type="email" id="email" placeholder="Enter your email address" />
+          <input type="email" id="email" placeholder="Enter your email address" value={email} onChange={handleEmailChange} />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" />
+          <input type="password" id="password" placeholder="Enter your password" value={password} onChange={handlePasswordChange}/>
           <br></br>
-          <button type="button">Sign In</button>
+          <button type="button" onClick={handleSignIn} >Sign In</button>
         </div>
       </div>
     </div>
