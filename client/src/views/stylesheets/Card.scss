@@ -46,7 +46,7 @@ $type-color-8: #EDCF8E;
 
 // Forcing headers to the same full width
 .nameheaders {
-  width: 16vw;
+  width: 10rem;
   vertical-align: center;
   margin-top: 1rem;
 }
@@ -99,18 +99,23 @@ $type-color-8: #EDCF8E;
 .protect_container {
   display: flex;
   align-items: flex-end;
-  width: 5rem;
+  justify-content: flex-start;
+  gap:0px;
+  width: 11rem;
   height: 2rem;
 }
 
 .protect_container > .attackdesc {
   margin-bottom: 0.3rem;
+  margin-left: -0.15rem;
+  padding-right: 0.15rem;
 }
 
 .typesign {
   font-size: 20px;
   text-align: center;
   width: 20px;
+  margin-left: -0.30rem;;
 }
 
 // Image and description styles
