@@ -12,7 +12,7 @@ const SignInModal = ({ onClose }) => {
           &times;
         </span>
         <div className="logo-header">
-          <img src="/path/to/logo.png" alt="Muttly Logo" className="logo" />
+          <img src="/public/icons/paws_pink.png" alt="Muttly Logo" className="logo" />
           <h2>Sign In!</h2>
         </div>
         <div className="form-container">
@@ -21,7 +21,7 @@ const SignInModal = ({ onClose }) => {
 
           <label htmlFor="password">Password</label>
           <input type="password" id="password" placeholder="Enter your password" />
-
+          <br></br>
           <button type="button">Sign In</button>
         </div>
       </div>
