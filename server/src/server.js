@@ -27,6 +27,7 @@ app.use(session({
   saveUninitialized: true,
   name: 'Muttley',
   cookie: {
+    name:'test',
     secure: false,
     sameSite: 'Lax',
   },

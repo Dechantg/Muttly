@@ -12,6 +12,11 @@
 .left-side {
   display: flex;
   align-items: center;
+} 
+
+.generate-mixed-breed-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-link {
