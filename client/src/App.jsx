@@ -13,6 +13,7 @@ import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
 // import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
+import { ModalProvider } from './hooks/Context';
 
 
 export default function App() {
@@ -27,27 +28,29 @@ export default function App() {
   const isGenerate = location.pathname === '/generate';
 
   return (
-    <div className="App">
-        <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
-          <div className="AppContent">
-            {/* <ContactUsPage /> */}
-            {/* <EnlargedPawPrintImage /> */}
-            {/* <UsersFavouritesPage /> */}
-            {/* <DogBreedCardModal /> */}
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/contact" element={<ContactUsPage />} />
-              <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/signin" element={<SignInModal />} />
-              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
-              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/generate" element={<GenerateMixedBreedPage />} />
-            </Routes>
+    <ModalProvider>
+      <div className="App">
+          <div className="AppWrapper">
+            {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
+            <div className="AppContent">
+              {/* <ContactUsPage /> */}
+              {/* <EnlargedPawPrintImage /> */}
+              {/* <UsersFavouritesPage /> */}
+              {/* <DogBreedCardModal /> */}
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/contact" element={<ContactUsPage />} />
+                <Route path="/about" element={<AboutUsPage />} />
+                <Route path="/signin" element={<SignInModal />} />
+                {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
+                {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/generate" element={<GenerateMixedBreedPage />} />
+              </Routes>
+            </div>
+            {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
           </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
-        </div>
-     </div>
+      </div>
+    </ModalProvider>
   );
 };

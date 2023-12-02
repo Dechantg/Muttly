@@ -10,7 +10,7 @@
 }  
 
 .home_main {
-  width: 85vw;
+  width: 90vw;
   margin: 1rem 0 0 6rem; 
   & > * {
     margin-bottom: 1rem;
@@ -26,6 +26,7 @@
 
 .sign_in {
   position: relative;
+  font-size: 1.75vw;
   right: 20%; 
   height: 5rem;
   margin-right:-200rem;

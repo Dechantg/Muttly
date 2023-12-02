@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"; 
 import { Link } from "react-router-dom"
 import '../views/stylesheets/HomePage.scss';
-import useApplicationData from "../hooks/useApplicationData";
+import SignInModal from "./SignInModal";
 
 function HomePage() {
 
@@ -28,16 +28,26 @@ function HomePage() {
     return () => clearInterval(interval)
   }, [images.length])
   
-  const {
-    loggedIn, 
-    loggedStatus, 
-    isSignInModalOpen, 
-    setSignInModalOpen, 
-    history, 
-    openSignInModal, 
-    closeSignInModal, 
-    handleSignInClick
-  }  =useApplicationData
+  const [loggedIn, loggedStatus] = useState(false);
+  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+
+  const openSignInModal = () => {
+    setSignInModalOpen(true);
+  };
+
+  const closeSignInModal = () => {
+    console.log('click')
+    setSignInModalOpen(false);
+  };
+
+  const handleSignInClick = () => {
+    if (!loggedIn) {
+      openSignInModal();
+    } else {
+      loggedStatus(false);
+      history.push('/');
+    }
+  };
 
   return (
     <>
@@ -64,6 +74,7 @@ function HomePage() {
           <img onClick={handleSignInClick} src="../icons/paws_pink.png"/>
           <p>Sign In</p>
         </div>
+        {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
       </div>
     </>
   )
