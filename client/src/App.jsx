@@ -45,7 +45,7 @@ export default function App() {
               {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
-              {/* <Route path="/generate" element={<GenergateMixedBreedPage />} /> /  */}
+              <Route path="/generate" element={<GenerateMixedBreedPage />} />
             </Routes>
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}

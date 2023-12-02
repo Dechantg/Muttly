@@ -6,15 +6,30 @@ function Card(props) {
   const {num, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2} = props
 
   const avgStat = array => {
-      return array.reduce((x,y) => x+y)/array.length;
-  } 
+    if (!array || array.length === 0) {
+      return null;
+    }
+    return array.reduce((x, y) => x + y) / array.length;
+  }
+  
+  
+const avgWeight = weight && Array.isArray(weight) && weight.length > 0 ? `${avgStat(weight)} lbs` : null;
 
-  const avgWeight = avgStat(weight)
-  const avgHeight = avgStat(height) 
+const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat(height) : null;
+
+  const inchesToFeetAndInches = (inches) => {
+    const feet = Math.floor(inches / 12);
+    const remainingInches = inches % 12;
+    return `${feet}'${remainingInches}"`;
+  }
 
   const symbolGenerator = (statObj) => {
+    if (!statObj || Object.keys(statObj).length === 0) {
+      console.log('not working', statObj)
+      return null; 
+    }
     const type = Object.keys(statObj)[0];
-    const value = statObj[key];
+    const value = statObj[type];
 
     const fullFunct = () => {
       const elements = [];
@@ -44,10 +59,12 @@ function Card(props) {
           )
         );
       }
+      console.log('working', type)
+      console.log(elements)
       return elements;
     };
 
-  value % 1 === 0.5 ? halfFunct() : fullFunct() 
+  return value % 1 === 0.5 ? halfFunct() : fullFunct() 
 };
 
 
@@ -63,18 +80,18 @@ function Card(props) {
               <p className="nameofanimal" colSpan="3">{name}</p>
               <div className='protect_container'>
                 <div className="attackdesc"><span className="label">Protectiveness</span></div>
-                {symbolGenerator(protectiveness)}
+                {symbolGenerator(shedding) || symbolGenerator({'protectiveness':0}) }
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-      <img className='card_img' src={image} alt={name} />
+      <img className='card_img' src={image || null} alt={name || null} onError="this.style.display='none';"  />
       <br />
       <div className='below_image_container'>
         <div className="description">
-          <span className='height'>Average Height {avgHeight}</span>
-          <span className='weight'>Average Weight {avgWeight}</span>
+          <span className='height'>Average Height {inchesToFeetAndInches(avgHeight)} inches</span>
+          <span className='weight'>Average Weight {avgWeight || `0 lbs`}</span>
         </div>
         <img className='set_logo' src="../icons/paws_pink.png" alt="Logo" />
       </div>
@@ -83,7 +100,7 @@ function Card(props) {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Shedding</span></td>
-              {symbolGenerator(shedding)}
+              {symbolGenerator(shedding) || symbolGenerator({'shedding':0})}
             </tr>
           </tbody>
         </table>
@@ -91,7 +108,7 @@ function Card(props) {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Energy</span></td>
-              {symbolGenerator(energy)}
+              {symbolGenerator(energy) || symbolGenerator({'energy':0})}
             </tr>
           </tbody>
         </table>
@@ -101,7 +118,7 @@ function Card(props) {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Drooling</span></td>
-              {symbolGenerator(drooling)}
+              {symbolGenerator(drooling) || symbolGenerator({'drooling':0})}
             </tr>
           </tbody>
         </table>
@@ -109,14 +126,14 @@ function Card(props) {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Barking</span></td>
-              {symbolGenerator(barking)}
+              {symbolGenerator(barking) || symbolGenerator({'barking':0})}
             </tr>
           </tbody>
         </table>
       </div>
       <ul>
         <p className='breed_facts'>Breed Facts</p>
-        <li className="italicize">{description || 'Nothing to say...'}</li>
+        <li className="italicize">{description || 'No Facts for No Breeds! Pick a Pup!'}</li>
         <li className="copyrights">
           <span className="medium">©2023 - Muttly Inc - BREEDMIXER Ltd - AlChGr Designs</span>
         </li>
