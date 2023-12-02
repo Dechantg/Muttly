@@ -23,31 +23,36 @@ export default function App() {
   const isAboutPage = location.pathname === '/about';
   const isNewsFeed = location.pathname === '/newsfeed';
   const isNewsFeedUser = location.pathname === '/newsfeeduser';
+  const isUsersFavouritesPage = location.pathname === '/usersfavourites';
   const isSignUp = location.pathname === '/signup';
   const isGenerate = location.pathname === '/generate';
 
   return (
-      <div className="App">
-          <div className="AppWrapper">
-            {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
-            <div className="AppContent">
-              {/* <ContactUsPage /> */}
-              {/* <EnlargedPawPrintImage /> */}
-              {/* <UsersFavouritesPage /> */}
-              {/* <DogBreedCardModal /> */}
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/contact" element={<ContactUsPage />} />
-                <Route path="/about" element={<AboutUsPage />} />
-                <Route path="/signin" element={<SignInModal />} />
-                {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
-                {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/generate" element={<GenerateMixedBreedPage />} />
-              </Routes>
-            </div>
-            {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+
+    <div className="App">
+        <div className="AppWrapper">
+          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop />}
+          <div className="AppContent">
+            {/* <ContactUsPage /> */}
+            {/* <EnlargedPawPrintImage /> */}
+            {/* <UsersFavouritesPage /> */}
+            {/* <PracticeCard /> */}
+            {/* <DogBreedCardModal /> */}
+            {/* <UsersFavouritesPage /> */}
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/contact" element={<ContactUsPage />} />
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/signin" element={<SignInModal />} />
+              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
+              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
+              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/generate" element={<GenerateMixedBreedPage />} />
+            </Routes>
           </div>
-      </div>
+          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+        </div>
+     </div>
   );
 };
