@@ -28,12 +28,16 @@
   position: relative;
   right: 20%; 
   height: 5rem;
+  margin-right:-200rem;
   margin-top: 45vh;
-  font-size: 2rem;
   transition: filter 0.3s ease;
   &:hover {
     filter: brightness(1.2);
   }
+} 
+
+.sign_in > img {
+  width: 10vw; 
 }
 
 .dog_container {

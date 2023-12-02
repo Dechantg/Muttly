@@ -8,7 +8,6 @@ import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
-import PokemonCard from './components/PracticeCard';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
@@ -35,7 +34,6 @@ export default function App() {
             {/* <ContactUsPage /> */}
             {/* <EnlargedPawPrintImage /> */}
             {/* <UsersFavouritesPage /> */}
-            {/* <PracticeCard /> */}
             {/* <DogBreedCardModal /> */}
             <Routes>
               <Route path="/" element={<HomePage />} />

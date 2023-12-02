@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"; 
 import { Link } from "react-router-dom"
 import '../views/stylesheets/HomePage.scss';
+import useApplicationData from "../hooks/useApplicationData";
 
 function HomePage() {
 
@@ -27,6 +28,16 @@ function HomePage() {
     return () => clearInterval(interval)
   }, [images.length])
   
+  const {
+    loggedIn, 
+    loggedStatus, 
+    isSignInModalOpen, 
+    setSignInModalOpen, 
+    history, 
+    openSignInModal, 
+    closeSignInModal, 
+    handleSignInClick
+  }  =useApplicationData
 
   return (
     <>
@@ -50,9 +61,7 @@ function HomePage() {
           <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
         </div>
         <div className="sign_in">
-          <Link to="/signin" className="logo-link">
-            <img src="../icons/paws_pink.png"/>
-          </Link>
+          <img onClick={handleSignInClick} src="../icons/paws_pink.png"/>
           <p>Sign In</p>
         </div>
       </div>
