@@ -22,6 +22,12 @@ const SignInModal = (props) => {
 
 
   const handleSignIn = async () => {
+    if (!email || !password) {
+      // Handle case when fields are empty
+      alert('Email and password are required.'); // Show an alert or handle empty fields appropriately
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:8088/api/login', {
         method: 'POST',
@@ -31,19 +37,27 @@ const SignInModal = (props) => {
         body: JSON.stringify({ email, password }),
         credentials: 'include',
       });
-
+  
       if (!response.ok) {
-        alert('User Creditionals Failed')
+        if (response.status === 401) {
+          alert('Incorrect email or password. Please try again.');
+        } else {
+          alert('Sign-in failed. Please try again later.');
+        }
         throw new Error('Sign-in failed');
       }
-
+  
       console.log('Sign-in successful');
-
-      // onClose();
+      console.log(document.cookie)
+      // Perform actions after successful sign-in
+      onClose(); 
+  
     } catch (error) {
       console.error('Error during sign-in:', error.message);
     }
   };
+  
+  
   
 
   return (

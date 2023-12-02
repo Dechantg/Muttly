@@ -3,10 +3,19 @@
 @import './NavigationBarTop.scss';
 
 .generate-mixed-breed-container {
-  // Styling for overall container
-}
 
-.page-body {
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: -8rem;
+    margin-top: 0.5rem;
+    // font-size: 4rem;
+  }
+} 
+
+
+
+.page-body-generate {
   display: flex;
   justify-content: space-between;
   margin: 20px;
@@ -57,11 +66,12 @@
 
   .generate-button {
     margin-top: 10rem;
+    padding-top: 5px;
     cursor: pointer;
     width: 12rem;
     height: 12rem;
     border-radius: 50%; /* Makes the image round */
-    animation: pulse 2s infinite;
+    animation: pulse 5s infinite;
     transition: transform 0.1s linear;
     &:hover {
       animation: rumble 1s infinite; /* Apply the rumble animation on hover */
@@ -69,10 +79,10 @@
 
     @keyframes pulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); /* Initial shadow */
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 1); /* Initial shadow */
       }
       100% {
-        box-shadow: 0 0 20px 40px rgba(255, 255, 255, 0); /* Final shadow */
+        box-shadow: 0px 0px 20px 16px rgba(255, 255, 255, 1); /* Final shadow */
       }
     }
   
@@ -92,4 +102,3 @@
     }
   }
 }
-// src='../icons/paw_button.png'

@@ -69,7 +69,7 @@ $type-color-8: #EDCF8E;
   justify-content: space-between;
   gap: 1.75rem;
   width: 19.5rem;
-  margin-right: 1rem;
+  margin-right: 1.25rem;
   margin-bottom: 0.25rem;
 }
 
@@ -84,18 +84,19 @@ $type-color-8: #EDCF8E;
   display: flex;
   font-size: 0.70em;
   font-weight: 600;
-  padding: 0;
+  padding-top: 0.12rem;
   height: 1rem;
 }
 
 .nameofanimal {
   position: relative;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.35rem;
   width: 11rem;
-  height: 2.5rem;
+  height: 3.5rem;
   padding: 0;
-  margin-bottom: -1.5rem;
+  margin-bottom: -1.25rem;
+  margin-top: -0.25rem;
   padding-right: 0.5rem ;
   white-space: nowrap;
   overflow: hidden;
@@ -147,7 +148,7 @@ $type-color-8: #EDCF8E;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0 0;
 }
 
 .description {
@@ -169,8 +170,15 @@ $type-color-8: #EDCF8E;
   margin-left: -1.25rem;
 }
 
+
 .energy_symbol {
   width: 1rem;
+  margin-top: 0.65rem;
+}
+
+.protect_container > .typesign {
+  margin-top: -0.5rem;
+
 }
 
 .label {
@@ -180,6 +188,7 @@ $type-color-8: #EDCF8E;
 
 .attackdesc {
   margin-right: 0.20rem;
+  padding-right: 0.75rem;
 }
 
 // Bullets removed for ul, li
@@ -196,6 +205,7 @@ ul, li {
   font-weight: 600;
   padding: 0 5px;
   font-style: italic;
+  margin-top: 0.5rem;
 }
 
 .italicize {
@@ -204,9 +214,9 @@ ul, li {
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-  font-style: italic;
+  letter-spacing: 1px;
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.60rem;
   border: 1px ridge $type-color-8;
   border-radius: 2px;
   width: 22rem;
@@ -224,5 +234,5 @@ ul, li {
   padding: 0;
   height: 1rem;
   width: 20rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.15rem;
 }
