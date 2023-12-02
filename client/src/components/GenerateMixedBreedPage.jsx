@@ -20,7 +20,7 @@ const GenerateMixedBreedPage = () => {
 
   const { isValid, userId } = useSessionValidation();
 
-  const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
+  const { data: breedNames, error: fetchError } = useApiFetch('/api/generated/breedbyid/24');
 
   useEffect(() => {
     console.log('Breed Names:', breedNames);

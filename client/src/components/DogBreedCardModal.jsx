@@ -6,25 +6,7 @@ import '../views/stylesheets/DogBreedCardModal.scss';
 
 const BreedCardModal = () => {
 
-  const breedId = 90
-
-  const fetchData = async () => {
-    try {
-      const responce = await fetch(`http://localhost:8088/api/breedbyid/${breedId}`);
-      const data = await responce.json();
-
-      console.log("breed id object returned from api server:", data);
-      
-    } catch (error) {
-      console.error('Error fetch data', error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
- 
+  
 
   return (
     <div className="dog-breed-card">

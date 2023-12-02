@@ -9,7 +9,9 @@ const useApiFetch = (path) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8088${path}`);
+        const response = await fetch(`http://localhost:8088${path}`, {
+          credentials: 'include',
+        }); 
         const result = await response.json();
         setData(result);
       } catch (error) {
