@@ -27,8 +27,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
+    name:'test',
     secure: false,
-    smaeSite: 'Lax',
+    sameSite: 'Lax',
   },
 }));
 

@@ -83,9 +83,9 @@ const GenerateMixedBreedPage = () => {
   return (
     <div className="generate-mixed-breed-container">
       {/* Top Navigation Bar */}
-
       {/* Body of the Page */}
-      <div className="page-body">
+      <h1>Muttly's Mixer</h1>
+      <div className="page-body-generate">
         {/* Left Container with Dropdown */}
         <div className="left-container">
           <label htmlFor="leftDropdown">Select Dog Breed:</label>

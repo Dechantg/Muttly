@@ -80,13 +80,13 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
               <p className="nameofanimal" colSpan="3">{name}</p>
               <div className='protect_container'>
                 <div className="attackdesc"><span className="label">Protectiveness</span></div>
-                {symbolGenerator(shedding) || symbolGenerator({'protectiveness':0}) }
+                {symbolGenerator(protectiveness) || symbolGenerator({'protectiveness':0}) }
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-      <img className='card_img' src={image || null} alt={name || null} onError="this.style.display='none';"  />
+      <img className='card_img' src={image} alt={name || null} onError="this.style.display='none';"  />
       <br />
       <div className='below_image_container'>
         <div className="description">
@@ -134,6 +134,7 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
       <ul>
         <p className='breed_facts'>Breed Facts</p>
         <li className="italicize">{description || 'No Facts for No Breeds! Pick a Pup!'}</li>
+        
         <li className="copyrights">
           <span className="medium">©2023 - Muttly Inc - BREEDMIXER Ltd - AlChGr Designs</span>
         </li>
@@ -143,3 +144,4 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
 }
 
 export default Card;
+
