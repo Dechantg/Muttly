@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 import '../views/stylesheets/SignInModal.scss';
 
-
-
-const SignInModal = () => {
+const SignInModal = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { onClose } = props
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,6 +18,8 @@ const SignInModal = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+
 
   const handleSignIn = async () => {
     try {
@@ -31,6 +33,7 @@ const SignInModal = () => {
       });
 
       if (!response.ok) {
+        alert('User Creditionals Failed')
         throw new Error('Sign-in failed');
       }
 
@@ -46,13 +49,13 @@ const SignInModal = () => {
   return (
     <div className="signin-modal-overlay">
       <div className="signin-modal">
-        <span className="close-button" >
+        <span className="close-button" onClick ={(onClose)} >
           &times;
         </span>
         <div className="logo-header">
           <img src="/public/icons/paws_pink.png" alt="Muttly Logo" className="logo" />
           <h2>Sign In!</h2>
-          <h3>If you don't have an account, please click <Link to="/signup">here</Link> to sign up!</h3>
+          <h3>If you don't have an account, please click <a onClick ={(onClose)}><Link to="/signup">here</Link></a> to sign up!</h3>
         </div>
         <div className="form-container">
           <label htmlFor="email">Email Address</label>
