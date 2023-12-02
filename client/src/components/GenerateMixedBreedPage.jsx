@@ -2,13 +2,14 @@
 
 
 import React, { useState, useEffect } from 'react';
-
-
 import DogBreedCardModal from './DogBreedCardModal';
-
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
-
+import useSessionValidation from '../hooks/useSessionValidation';
+import useApiFetch from '../hooks/apiFetchHook';
 import Card from './Card';
+
+
+
 
 const GenerateMixedBreedPage = () => {
 
@@ -17,12 +18,20 @@ const GenerateMixedBreedPage = () => {
   const [selectedBreedOne, setDogOneBreed] = useState(null);
   const [selectedBreedTwo, setDogTwoBreed] = useState(null);
 
+  useSessionValidation();
+
+  const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
+
   useEffect(() => {
-    
-  })
+    console.log('Breed Names:', breedNames);
+    console.log('Fetch Error:', fetchError);
+
+  }, [breedNames, fetchError]);
+
+
 
   const handleDogOneSelection = (breed) => {
-    setDogTwoBreed(breed);
+    setDogOneBreed(breed);
   };
 
   const handleDogTwoSelection = (breed) => {
@@ -30,21 +39,6 @@ const GenerateMixedBreedPage = () => {
   };
 
 
-  const fetchData = async () => {
-    try {
-      const responce = await fetch(`http://localhost:8088/api/allbreednames`);
-      const data = await responce.json();
-
-      console.log("breed names object returned from api server:", data);
-      
-    } catch (error) {
-      console.error('Error fetch data', error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   // const firstDog = data.map((data) => (
   //   <Card 

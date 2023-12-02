@@ -24,8 +24,7 @@ const BreedCardModal = () => {
     fetchData();
   }, []);
 
-
-  
+ 
 
   return (
     <div className="dog-breed-card">
