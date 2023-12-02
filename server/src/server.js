@@ -21,11 +21,11 @@ const app = express();
 
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 
-
 app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: true,
+  name: 'Muttley',
   cookie: {
     name:'test',
     secure: false,
@@ -58,6 +58,7 @@ const mostRecentBreeds           = require('./routes/mostRecentBreeds')
 const breedsUserLiked            = require('./routes/breedsUserLiked')
 const addNewUser                 = require('./routes/addNewUser')
 const login                      = require('./routes/userAuthorization')
+const validate                   = require('./routes/verification')
 
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
@@ -77,6 +78,7 @@ app.use('/api/generated/delete', deleteDogBreed);
 
 app.use('/api/addnewuser', addNewUser);
 app.use('/api/login', login);
+app.use('/api/validate', validate);
 
 app.get('/usertest', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/newUserTestRoute.html'));
