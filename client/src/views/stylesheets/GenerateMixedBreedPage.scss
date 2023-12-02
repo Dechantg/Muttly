@@ -3,41 +3,45 @@
 @import './NavigationBarTop.scss';
 
 .generate-mixed-breed-container {
-
-  h1 {
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: -8rem;
-    margin-top: 0.5rem;
-    // font-size: 4rem;
-  }
+  zoom: 65%; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 } 
-
-
 
 .page-body-generate {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
 
   .left-container, 
   .right-container {
-    width: 100%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
 
     label {
       display: block;
+      font-weight: 700;
       margin-bottom: 8px;
       font-size: 1.5rem;
     }
 
     select {
-      width: 45%;
+      font-size: 1.25rem;
+      font-weight: 700;
+      width: 75%;
       padding: 10px;
       margin-bottom: 16px;
       box-sizing: border-box;
+      cursor: pointer;
+      font-family: indie flower, 'Courier New', Courier, monospace;
+
+      option {
+        font-weight: 700;
+      }
     }
   }
 

@@ -25,7 +25,6 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
 
   const symbolGenerator = (statObj) => {
     if (!statObj || Object.keys(statObj).length === 0) {
-      console.log('not working', statObj)
       return null; 
     }
     const type = Object.keys(statObj)[0];
@@ -59,8 +58,6 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
           )
         );
       }
-      console.log('working', type)
-      console.log(elements)
       return elements;
     };
 

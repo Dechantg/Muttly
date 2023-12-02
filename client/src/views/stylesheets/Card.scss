@@ -209,18 +209,28 @@ ul, li {
 }
 
 .italicize {
-  padding: 0 1rem;
+  padding: 1.5rem 0rem 0 0;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
   letter-spacing: 1px;
   font-weight: 600;
-  font-size: 0.60rem;
+  font-size: 0.70rem;
   border: 1px ridge $type-color-8;
   border-radius: 2px;
   width: 22rem;
   height: 7.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.italicize:hover {
+  text-overflow: unset;
+  white-space: normal;
+  overflow: visible;
+  background-color: rgba(128, 128, 128, 0.55);
 }
 
 .copyrights {

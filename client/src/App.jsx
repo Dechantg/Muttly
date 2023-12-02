@@ -31,7 +31,7 @@ export default function App() {
 
     <div className="App">
         <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop />}
+          {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop />}
           <div className="AppContent">
             {/* <ContactUsPage /> */}
             {/* <EnlargedPawPrintImage /> */}
@@ -51,7 +51,7 @@ export default function App() {
               {/* <Route path="/generate" element={<GenerateMixedBreedPage />} /> */}
             </Routes> 
           </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+          {(isGenerate || isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
         </div>
      </div>
   );
