@@ -22,3 +22,6 @@
 
 *.log
 .eslintcache
+
+cert.pem
+key.pem

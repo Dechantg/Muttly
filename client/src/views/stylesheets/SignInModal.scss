@@ -21,9 +21,9 @@
 
   .close-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: -5px;
+    right: 20px;
+    font-size: 50px;
     cursor: pointer;
   }
 
@@ -31,28 +31,45 @@
     margin-bottom: 20px;
 
     .logo {
-      // Styling for the logo
+      width: 25%;
+      height: auto;
     }
 
     h2 {
-      // Styling for the header "Sign In"
+      margin-top: 0px;
+      margin-bottom: 10px;
+      font-size: 30px;
+      font-weight: bolder;
+   }
+
+    h3 {
+      margin-top: -5px;
+      font-size: 13px;
     }
   }
 
   .form-container {
     label {
+      font-size: 18px;
       display: block;
+      margin-top: -0px;
       margin-bottom: 8px;
     }
 
     input {
-      width: 100%;
+      text-align: center;
+      font-style: italic;
+      width: 180px;
       padding: 10px;
       margin-bottom: 16px;
       box-sizing: border-box;
     }
 
     button {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      width: auto;
       background-color: rgb(39, 111, 192);
       color: #fff;
       padding: 10px 20px;
