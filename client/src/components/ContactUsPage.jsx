@@ -24,7 +24,6 @@ function ContactUsPage() {
               <p>Our Code</p>
           </div>
         </div>
-
         <div className="enlarged-pawprint-image">
           <EnlargedPawprintImage />
         </div>

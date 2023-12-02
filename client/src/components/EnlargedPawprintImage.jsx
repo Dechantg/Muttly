@@ -9,7 +9,6 @@ const EnlargedPawprintImage = () => {
   return (
     <div className="enlarged-pawprint-container">
       <img src="/public/icons/paws_grey.png" alt="Enlarged Pawprint Image" className="enlarged-pawprint-image" />
-      <div className="small-icons">
         <div>
           <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="tiktok-link" >
             <img src="/public/icons/tiktok.png" alt="TikTok Icon" className="tiktok-icon" />
@@ -45,7 +44,6 @@ const EnlargedPawprintImage = () => {
           <p>Vancouver, BC, Canada</p>
           <h5>V6Z 8G1</h5>
         </div>
-      </div>
     </div>
   );
 };
