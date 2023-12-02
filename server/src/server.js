@@ -21,13 +21,12 @@ const app = express();
 
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 
-
 app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: true,
+  name: 'Muttley',
   cookie: {
-    name:'test',
     secure: false,
     sameSite: 'Lax',
   },

@@ -34,8 +34,8 @@ const NavigationBarTop = () => {
     // Function to check for the 'connect.sid' cookie
     const checkCookie = () => {
       const cookies = document.cookie.split(';');
-      console.log(document.cookie)
-      const connectSidCookie = cookies.find(cookie => cookie.trim().startsWith('connect.sid'));
+      console.log(document.cookie, 'working')
+      const connectSidCookie = cookies.find(cookie => cookie.trim().startsWith('Muttley='));
 
       if (connectSidCookie) {
         // If the 'connect.sid' cookie is found, extract its value

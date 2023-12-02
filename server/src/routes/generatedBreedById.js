@@ -19,7 +19,7 @@ router.get('/:id', validateSession, async (req, res) => {
 
 try {
 
-  const userId = req.session.user.id;
+  // const userId = req.session.user.id;
 
 
   const dogBreedId = req.params.id;

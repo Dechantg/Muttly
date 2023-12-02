@@ -17,9 +17,6 @@ router.get('/:id', async (req, res) => {
 
 try {
 
-  const userId = req.session.user.id;
-
-
   const dogBreedId = req.params.id;
 
   if (!dogBreedId) {

@@ -36,19 +36,19 @@ const AboutUsPage = () => {
           <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
         </div>
         <div className="background-with-pawprints-right">
-        <div className='column-3'>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
+          <div className='column-3'>
+              <br/>
+              <img className='side_logo' src='../icons/paws_pink.png'/>
+              <br/>
+              <img className='side_logo' src='../icons/paws_pink.png'/>
+              <br/>
+            </div>
+            <div className='column-4'>
+              <img className='side_logo' src='../icons/paws_pink.png'/>
+              <br/>
+              <img className='side_logo' src='../icons/paws_pink.png'/>
+            </div>
           </div>
-          <div className='column-4'>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-          </div>
-        </div>
       </div>
       <img className='center_logo' src='../icons/paws_pink.png'/>
     </div>
