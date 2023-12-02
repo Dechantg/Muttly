@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../views/stylesheets/EnlargedPawPrintImage.scss';
+import '../views/stylesheets/EnlargedPawprintImage.scss';
 
 const EnlargedPawPrintImage = () => {
   return (

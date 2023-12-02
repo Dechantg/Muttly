@@ -23,10 +23,15 @@ router.post('/', async (req, res) => {
       
       req.session.user = { id: user.id, email: user.email };
 
+      console.log("user login information", req.sessionID)
+
+
      return res.status(200).json({
         message: 'Login successful',
         session: req.sessionID,
       });
+
+
     }  else {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
