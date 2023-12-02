@@ -43,8 +43,23 @@
   // Styling for the Bark In/Bark Out logo link
 }
 
-.login_icon {
-  height: 10vh;
+.sign-in-out-button {
+  height: 2vh;
   margin-right: 2vw;
   margin-top: 5vh;
+}
+
+.login-tag {
+
+}
+
+.logout-icon, .logout-tag {
+ height: 6.5rem;
+ margin-top: 2.5rem;
+ margin-right: 2rem;
+
+ &:hover {
+  filter: brightness(1.1);
+}
+
 }

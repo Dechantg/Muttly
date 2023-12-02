@@ -16,7 +16,6 @@
   justify-content: flex-end;
   gap: 1rem;
   margin-top: 15vh;
-  // margin-left: 1.5rem;
 } 
 
 .background-with-pawprints-left {
@@ -24,14 +23,12 @@
   justify-content: flex-end;
   gap: 1rem;
   margin-top: 15vh;
-  padding-left: 0rem;
-  // margin-right: 1.5rem;
 }
 
 .about-us-content {
-  font-size: 1.25vw;
+  font-size: 1.25rem;
   & > * {
-    margin-bottom: 1.5vh;
+    margin-bottom: 1vh;
   }
 }
 
@@ -45,8 +42,8 @@
 }
 
 .side_logo {
-  width: 3.5vw; /* Adjust image size as needed */
-  margin-bottom: 4rem; /* Adjust spacing between images as needed */
+  width: 3.5vw; 
+  margin-bottom: 4rem; 
 } 
 
 .column-1 {

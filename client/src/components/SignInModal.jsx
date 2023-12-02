@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 
 import '../views/stylesheets/SignInModal.scss';
 
-
-
-const SignInModal = () => {
+const SignInModal = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,6 +17,8 @@ const SignInModal = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+
 
   const handleSignIn = async () => {
     try {
@@ -31,6 +32,7 @@ const SignInModal = () => {
       });
 
       if (!response.ok) {
+        alert('User Creditionals Failed')
         throw new Error('Sign-in failed');
       }
 
@@ -46,7 +48,7 @@ const SignInModal = () => {
   return (
     <div className="signin-modal-overlay">
       <div className="signin-modal">
-        <span className="close-button" >
+        <span className="close-button" onClick ={() => props.closeSignInModal} >
           &times;
         </span>
         <div className="logo-header">

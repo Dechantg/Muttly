@@ -12,7 +12,7 @@ import PokemonCard from './components/PracticeCard';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
-import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
+// import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 
 

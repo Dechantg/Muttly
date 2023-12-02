@@ -27,17 +27,14 @@
 .sign_in {
   position: relative;
   right: 20%; 
-  margin-top: 5rem;
-  font-size: 1.75vw;
-}
-
-.sign_in > img {
-  width: 10vw;
+  height: 5rem;
+  margin-top: 25rem;
+  font-size: 2rem;
   transition: filter 0.3s ease;
   &:hover {
     filter: brightness(1.2);
   }
-} 
+}
 
 .dog_container {
   position: relative;

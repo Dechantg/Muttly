@@ -56,6 +56,21 @@ const SignUpPage = () => {
   return (
     <div className="signup-container">
 
+      <div className="background-with-pawprints-left">
+        <div className='column-1'>
+          <img className='side_logo' src='../icons/paws_pink.png'/>
+          <br/>
+          <img className='side_logo' src='../icons/paws_pink.png'/>
+        </div>
+        <div className='column-2'>
+          <br/>
+          <img className='side_logo' src='../icons/paws_pink.png'/>
+          <br/>
+          <img className='side_logo' src='../icons/paws_pink.png'/>
+          <br/>
+        </div>
+      </div>
+
       {/* Sign Up Form */}
       <div className="signup-form">
         <h1>Sign Up</h1>
@@ -104,10 +119,23 @@ const SignUpPage = () => {
         {/* <button type="submit">Sign Me Up!</button> */}
         </div>
       </div>
-
-      {/* <p>Copyright Muttly Ltd</p> */}
+      <div className="background-with-pawprints-right">
+        <div className='column-3'>
+            <br/>
+            <img className='side_logo' src='../icons/paws_pink.png'/>
+            <br/>
+            <img className='side_logo' src='../icons/paws_pink.png'/>
+            <br/>
+          </div>
+          <div className='column-4'>
+            <img className='side_logo' src='../icons/paws_pink.png'/>
+            <br/>
+            <img className='side_logo' src='../icons/paws_pink.png'/>
+          </div>
+        </div>
     </div>
   );
 };
 
-export default SignUpPage;
+export default SignUpPage; 
+
