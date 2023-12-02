@@ -13,7 +13,6 @@ import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
 // import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
-import { ModalProvider } from './hooks/Context';
 
 
 export default function App() {
@@ -28,7 +27,6 @@ export default function App() {
   const isGenerate = location.pathname === '/generate';
 
   return (
-    <ModalProvider>
       <div className="App">
           <div className="AppWrapper">
             {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isAboutPage || isContactPage) && <NavigationBarTop />}
@@ -51,6 +49,5 @@ export default function App() {
             {(isNewsFeedUser || isNewsFeed || isAboutPage || isContactPage || isHomePage) && <NavigationBarBottom />}
           </div>
       </div>
-    </ModalProvider>
   );
 };
