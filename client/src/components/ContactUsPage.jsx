@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import EnlargedPawPrintImage from './EnlargedPawPrintImage';
+import EnlargedPawprintImage from './EnlargedPawprintImage';
 
 import '../views/stylesheets/ContactUsPage.scss';
 
@@ -24,9 +24,8 @@ function ContactUsPage() {
               <p>Our Code</p>
           </div>
         </div>
-
         <div className="enlarged-pawprint-image">
-          <EnlargedPawPrintImage />
+          <EnlargedPawprintImage />
         </div>
       </div>
     </>
