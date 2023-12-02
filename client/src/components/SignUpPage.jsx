@@ -113,7 +113,7 @@ const SignUpPage = () => {
         {/* Submit Button */}
         <div className="paw-signup">
         <Link to="/newsfeeduser" className="logo-link" onClick={handleSignUp}>
-            <img src="../icons/paws_pink.png"/>
+            <img className="paw-button" src="../icons/paws_pink.png"/>
           </Link>
         <p>Sign Me Up!</p>
         {/* <button type="submit">Sign Me Up!</button> */}
