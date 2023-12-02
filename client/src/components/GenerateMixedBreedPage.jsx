@@ -18,7 +18,7 @@ const GenerateMixedBreedPage = () => {
   const [selectedBreedOne, setDogOneBreed] = useState(null);
   const [selectedBreedTwo, setDogTwoBreed] = useState(null);
 
-  useSessionValidation();
+  const { isValid, userId } = useSessionValidation();
 
   const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
 
