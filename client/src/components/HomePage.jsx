@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"; 
 import { Link } from "react-router-dom"
 import '../views/stylesheets/HomePage.scss';
+import SignInModal from "./SignInModal";
 
 function HomePage() {
 
@@ -27,6 +28,26 @@ function HomePage() {
     return () => clearInterval(interval)
   }, [images.length])
   
+  const [loggedIn, loggedStatus] = useState(false);
+  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+
+  const openSignInModal = () => {
+    setSignInModalOpen(true);
+  };
+
+  const closeSignInModal = () => {
+    console.log('click')
+    setSignInModalOpen(false);
+  };
+
+  const handleSignInClick = () => {
+    if (!loggedIn) {
+      openSignInModal();
+    } else {
+      loggedStatus(false);
+      history.push('/');
+    }
+  };
 
   return (
     <>
@@ -50,11 +71,10 @@ function HomePage() {
           <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
         </div>
         <div className="sign_in">
-          <Link to="/signin" className="logo-link">
-            <img src="../icons/paws_pink.png"/>
-          </Link>
+          <img onClick={handleSignInClick} src="../icons/paws_pink.png"/>
           <p>Sign In</p>
         </div>
+        {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
       </div>
     </>
   )

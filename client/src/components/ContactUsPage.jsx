@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import EnlargedPawPrintImage from './EnlargedPawprintImage';
+// import EnlargedPawPrintImage from './EnlargedPawPrintImage';
 
 import '../views/stylesheets/ContactUsPage.scss';
 

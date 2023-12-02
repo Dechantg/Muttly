@@ -8,11 +8,10 @@ import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
-import PokemonCard from './components/PracticeCard';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
-import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
+// import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 
 
@@ -29,6 +28,7 @@ export default function App() {
   const isGenerate = location.pathname === '/generate';
 
   return (
+
     <div className="App">
         <div className="AppWrapper">
           {(isGenerate || isSignUp || isNewsFeedUser ||isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop />}
