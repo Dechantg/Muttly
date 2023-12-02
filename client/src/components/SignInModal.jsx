@@ -8,6 +8,7 @@ import '../views/stylesheets/SignInModal.scss';
 const SignInModal = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { onClose } = props
 
 
   const handleEmailChange = (e) => {
@@ -48,7 +49,7 @@ const SignInModal = (props) => {
   return (
     <div className="signin-modal-overlay">
       <div className="signin-modal">
-        <span className="close-button" onClick ={() => props.closeSignInModal} >
+        <span className="close-button" onClick ={(onClose)} >
           &times;
         </span>
         <div className="logo-header">
