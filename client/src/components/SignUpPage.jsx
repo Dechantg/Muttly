@@ -45,7 +45,6 @@ const SignUpPage = () => {
 
       console.log('Sign-in successful');
 
-      // onClose();
     } catch (error) {
       console.error('Error during sign-in:', error.message);
     }

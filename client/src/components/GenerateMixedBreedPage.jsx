@@ -1,6 +1,6 @@
 // GenerateMixedBreedPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import DogBreedCardModal from './DogBreedCardModal';
 
@@ -12,6 +12,23 @@ const GenerateMixedBreedPage = () => {
   const handleBreedSelection = (breed) => {
     setSelectedBreed(breed);
   };
+
+  const fetchData = async () => {
+    try {
+      const responce = await fetch(`http://localhost:8088/api/allbreednames`);
+      const data = await responce.json();
+
+      console.log("breed names object returned from api server:", data);
+      
+    } catch (error) {
+      console.error('Error fetch data', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   
   return (

@@ -1,6 +1,6 @@
 // NewsFeedPublicPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignInModal from './SignInModal';
 
 import '../views/stylesheets/NewsFeedPublicPage.scss';
@@ -8,6 +8,8 @@ import '../views/stylesheets/NewsFeedPublicPage.scss';
 const NewsFeedPublicPage = () => {
 
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+  const [mostPopularImages, setMostPopularImages] = useState([]);
+const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
 
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -17,9 +19,43 @@ const NewsFeedPublicPage = () => {
     setSignInModalOpen(false);
   };
 
-  const mostPopularImages = [];
 
-  const recentlyGeneratedImages = [];
+  const fetchData = async (images) => {
+    try {
+      const responce = await fetch(`http://localhost:8088/api/${images}`);
+      const data = await responce.json();
+
+      return data;      
+    } catch (error) {
+      console.error('Error fetch data', error);
+    }
+  }
+  useEffect(() => {
+    const fetchMostPopularImages = async () => {
+      try {
+        const data = await fetchData('mostliked');
+        setMostPopularImages(data);
+      } catch (error) {
+        console.error('Error fetching most popular images:', error);
+      }
+    };
+  
+    const fetchRecentlyGeneratedImages = async () => {
+      try {
+        const data = await fetchData('mostrecent');
+        setRecentlyGeneratedImages(data);
+      } catch (error) {
+        console.error('Error fetching recently generated images:', error);
+      }
+    };
+  
+    // Fetch data when the component mounts
+    fetchMostPopularImages();
+    fetchRecentlyGeneratedImages();
+  }, []);
+  console.log("Here are the most liked in a pretty object: ", mostPopularImages);
+
+  console.log("Here are the most recent in a not as pretty object: ", recentlyGeneratedImages);
 
   return (
     <div className="news-feed-container">

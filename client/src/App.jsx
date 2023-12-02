@@ -42,7 +42,7 @@ export default function App() {
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/signin" element={<SignInModal />} />
-              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} />  */}
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
               {/* <Route path="/generate" element={<GenergateMixedBreedPage />} /> /  */}

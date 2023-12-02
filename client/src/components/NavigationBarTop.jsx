@@ -38,13 +38,13 @@ const NavigationBarTop = () => {
         </div>
       </div>
       <div className="right-side">
-        <buton className="sign-in-out-button" onClick={handleSignInClick}>
+        <button className="sign-in-out-button" onClick={handleSignInClick}>
           {loggedIn ? (
             <img src="../icons/bark_out.png" alt="Muttly Logo" className="login-icon" />
           ) : (
             <img src="../icons/bark_in.png" alt="Muttly Logo" className="logout-icon" />
           )}
-        </buton>
+        </button>
       </div>
       {/* Render the SignInModal if isSignInModalOpen is true */}
       {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
