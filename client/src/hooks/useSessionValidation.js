@@ -1,11 +1,14 @@
-
-
 import { useEffect, useState } from 'react';
+
+
+
+
 
 const useSessionValidation = () => {
   const [sessionData, setSessionData] = useState({
     userId: null,
     isValid: false,
+    isLoading: true, // Add loading state
   });
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const useSessionValidation = () => {
         setSessionData({
           isValid: response.ok,
           userId: data.userId,
+          isLoading: false, // Set loading to false after completion
         });
       } catch (error) {
         console.error('Error during session validation:', error);
@@ -28,6 +32,7 @@ const useSessionValidation = () => {
         setSessionData({
           isValid: false,
           userId: null,
+          isLoading: false, // Set loading to false even on error
         });
       }
     };
@@ -35,8 +40,6 @@ const useSessionValidation = () => {
   }, []);
 
   return sessionData;
-
 };
 
 export default useSessionValidation;
-

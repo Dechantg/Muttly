@@ -2,6 +2,8 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
@@ -20,7 +22,21 @@ const GenerateMixedBreedPage = () => {
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
 
-  const { isValid, userId } = useSessionValidation();
+  const { isValid, userId, isLoading } = useSessionValidation();
+
+  const navigate = useNavigate();
+
+  console.log("fomr the genrate page valid", isValid)
+
+  useEffect(() => {
+    console.log("Before navigation. isValid:", isValid);
+    if (!isLoading && !isValid) {
+      console.log("Navigating to /");
+      navigate('/');
+    }
+    console.log("After navigation. isValid:", isValid);
+  }, [isLoading, isValid, navigate]);
+
 
   useEffect(() => {
     const updatedOptionsList = dogOptions.map((dog) => {
