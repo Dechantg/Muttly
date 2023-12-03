@@ -8,7 +8,7 @@ const DogBreedCardModal = (props) => {
 
   const [liked, setLike] = useState(false) 
   const [closeModal, setClose] = useState(true)
-  const {image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
+  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
 
   const onLikeClick = () => {
     setLike(prev => !prev)
@@ -16,7 +16,7 @@ const DogBreedCardModal = (props) => {
   } 
 
   const onShareClick = () => {
-    navigator.clipboard.writeText('pets.ca')
+    navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
       .then(() => {
         console.log('Link copied to clipboard: google.ca');
         alert('Link copied to clipboard!');
@@ -28,9 +28,29 @@ const DogBreedCardModal = (props) => {
   }
   
 
-  const onTrashClick = () => {
+  const onTrashClick = (Id) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
-    setTimeout(()=> setClose(false), 1000)
+    setTimeout(()=> setClose(false), 1000) 
+    const handleDelete = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088/api/generated/delete/${Id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include', 
+        });
+  
+        if (response.ok) {
+          console.log('Breed deleted successfully');
+        } else {
+          console.error('Failed to delete breed');
+        }
+      } catch (error) {
+        console.error('Error while deleting breed:', error);
+      }
+    };
+    handleDelete()
   }
 
   const onCloseClick = () => {

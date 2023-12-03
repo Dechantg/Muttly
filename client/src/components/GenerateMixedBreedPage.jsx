@@ -155,6 +155,7 @@ const GenerateMixedBreedPage = () => {
             const actualData = data.muttyResult 
           modal=
           <DogBreedCardModal
+          id = {actualData.id}
           image={actualData.generated_photo_link}
           shedding={{shedding: actualData.shedding}}
           drooling={{drooling: actualData.drooling}}
