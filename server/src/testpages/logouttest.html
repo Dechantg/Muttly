@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout Confirmation</title>
+</head>
+<body>
+
+  <h1>Logout Confirmation</h1>
+
+  <div id="confirmation-message"></div>
+
+  <script>
+    fetch('http://localhost:8088/api/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+      const confirmationMessage = document.getElementById('confirmation-message');
+      if (data.success) {
+        confirmationMessage.textContent = 'Logout successful!';
+      } else {
+        confirmationMessage.textContent = 'Logout failed.';
+      }
+    })
+    .catch(error => {
+      console.error('Error during logout:', error);
+      const confirmationMessage = document.getElementById('confirmation-message');
+      confirmationMessage.textContent = 'An error occurred during logout.';
+    });
+  </script>
+
+</body>
+</html>
