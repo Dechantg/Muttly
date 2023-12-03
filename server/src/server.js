@@ -27,7 +27,6 @@ app.use(session({
   saveUninitialized: true,
   name: 'Muttley',
   cookie: {
-    name:'test',
     secure: false,
     sameSite: 'Lax',
   },
@@ -59,6 +58,9 @@ const breedsUserLiked            = require('./routes/breedsUserLiked')
 const addNewUser                 = require('./routes/addNewUser')
 const login                      = require('./routes/userAuthorization')
 const validate                   = require('./routes/verification')
+const changeLikeStatus           = require('./routes/likeStatusUpdate')
+const logout                     = require('./routes/userLogout')
+
 
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
@@ -75,9 +77,11 @@ app.use('/api/generatebreed', generateBreed);
 app.use('/api/generated/breedbyid', generatedBreedById);
 app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
 app.use('/api/generated/delete', deleteDogBreed);
+app.use('/api/generated/likestatus', changeLikeStatus)
 
 app.use('/api/addnewuser', addNewUser);
 app.use('/api/login', login);
+app.use('/api/logout', logout);
 app.use('/api/validate', validate);
 
 app.get('/usertest', (req, res) => {
@@ -91,6 +95,11 @@ app.get('/userlogintest', (req, res) => {
 app.get('/validlogin', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/validCookie.html'));
 });
+
+app.get('/testlogout', (req, res) => {
+  res.sendFile(path.join(__dirname, './testpages/logouttest.html'));
+});
+
 
 
 app.listen(port, () => {

@@ -67,6 +67,10 @@ router.get("/", validateSession, async (req, res) => {
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
+    console.log("here is the pre parsing for special charachters", parsedDogBreedData)
+
+    parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
+
     const generationId = dogPhotoId.sdGenerationJob.generationId;
 
 
