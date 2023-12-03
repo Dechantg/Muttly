@@ -48,7 +48,7 @@ export default function App() {
               {/* <Route path="/usersfavourites" element={<UsersFavouritesPage />} /> */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               {/* <Route path="/signup" element={<SignUpPage />} /> */}
-              {/* <Route path="/generate" element={<GenerateMixedBreedPage />} /> */}
+              { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
