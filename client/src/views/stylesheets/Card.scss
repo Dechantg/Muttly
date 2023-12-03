@@ -67,9 +67,10 @@ $type-color-8: #EDCF8E;
 .stat_container {
   display: flex;
   justify-content: space-between;
+  zoom: 95%;
   gap: 1.75rem;
   width: 19.5rem;
-  margin-right: 1.25rem;
+  margin-right: 1.75rem;
   margin-bottom: 0.25rem;
 }
 
@@ -77,6 +78,8 @@ $type-color-8: #EDCF8E;
   display: flex; 
   height: 2rem;
   width: 8rem;
+  margin-left:0.25rem;
+  padding-right: 8rem;
 }
 
 // Dog breed and Name of Dog
@@ -126,6 +129,12 @@ $type-color-8: #EDCF8E;
   padding-right: 0.15rem;
 }
 
+.protect_container > .typesign {
+  margin-top: -0.5rem;
+
+} 
+
+
 .typesign {
   font-size: 20px;
   text-align: center;
@@ -141,6 +150,7 @@ $type-color-8: #EDCF8E;
   box-shadow: 3px 3px 10px #000;
   min-width: 21rem;
   min-height: 14rem;
+  cursor: pointer;
 }
 
 .below_image_container {
@@ -170,15 +180,9 @@ $type-color-8: #EDCF8E;
   margin-left: -1.25rem;
 }
 
-
 .energy_symbol {
   width: 1.1rem;
   margin-top: 0.65rem;
-}
-
-.protect_container > .typesign {
-  margin-top: -0.5rem;
-
 }
 
 .label {

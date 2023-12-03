@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
-import useApiFetch from '../hooks/apiFetchHook';
+// import useApiFetch from '../hooks/apiFetchHook';
 import Card from './Card';
 
 
@@ -33,7 +33,7 @@ const GenerateMixedBreedPage = () => {
 
   const { isValid, userId } = useSessionValidation();
 
-  const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
+  // const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
 
 
   // const { data: mixedBreedData, error: mixedBreedError } = useApiFetch(`/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`);
@@ -42,6 +42,7 @@ const GenerateMixedBreedPage = () => {
 
   useEffect(() => {
     if (selectedBreedOne) {
+      console.log(isValid)
   const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
   setIdOne(dogChoice.id)
   const fetchDataFirstDog = async () => {
@@ -155,6 +156,7 @@ const GenerateMixedBreedPage = () => {
             const actualData = data.muttyResult 
           modal=
           <DogBreedCardModal
+          id = {actualData.id}
           image={actualData.generated_photo_link}
           shedding={{shedding: actualData.shedding}}
           drooling={{drooling: actualData.drooling}}

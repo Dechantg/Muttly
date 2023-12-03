@@ -10,6 +10,7 @@ import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
+import CardPage from './components/CardPage';
 // import SignInModal from './components/SignInModal';
 import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
@@ -36,7 +37,6 @@ export default function App() {
             {/* <ContactUsPage /> */}
             {/* <EnlargedPawPrintImage /> */}
             {/* <UsersFavouritesPage /> */}
-            {/* <PracticeCard /> */}
             {/* <DogBreedCardModal /> */}
             {/* <UsersFavouritesPage /> */}
             <Routes>
@@ -49,7 +49,7 @@ export default function App() {
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/generate" element={<GenerateMixedBreedPage/>} />
-
+              <Route path="generated/breedbyid/:id" element = {<CardPage/>} />
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}

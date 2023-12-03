@@ -83,8 +83,8 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
           </tr>
         </tbody>
       </table>
-      <img className='card_img' src={image} alt={name || null} title="Click for full image"
-            onClick={() => window.open(image, '_blank')} onError="this.style.display='none';"  />
+      <img className='card_img' src={image} alt={name || null} title={image && "Click for full image"}
+            onClick={() => image && window.open(image, '_blank')} onError="this.style.display='none';"  />
       <br />
       <div className='below_image_container'>
         <div className="description">
