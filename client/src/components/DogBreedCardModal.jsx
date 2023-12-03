@@ -13,14 +13,34 @@ const DogBreedCardModal = (props) => {
   const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
 
   const onLikeClick = () => {
-    setLike(prev => !prev)
-    setTimeout(()=> setClose(false), 2000)
+    setLike(prev => !prev) 
+    const handleLike = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088//api/generated/${id}?likestatus=${liked}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include', 
+        });
+  
+        if (response.ok) {
+          console.log('Breed liking successfully');
+        } else {
+          console.error('Failed to like breed');
+        }
+      } catch (error) {
+        console.error('Error while liking breed:', error);
+      }
+    };
+    handleLike()
+    // setTimeout(()=> setClose(false), 2000)
   } 
 
-  const onShareClick = () => {
+  const onShareClick = (id) => {
     navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
       .then(() => {
-        console.log('Link copied to clipboard: google.ca');
+        console.log(`Link copied to clipboard: http://localhost:5173/generated/breedbyid/${id}`);
         alert('Link copied to clipboard!');
       })
       .catch((error) => {
@@ -32,7 +52,6 @@ const DogBreedCardModal = (props) => {
 
   const onTrashClick = (Id) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
-    setTimeout(()=> setClose(false), 1000) 
     const handleDelete = async () => {
       try {
         const response = await fetch(`http://localhost:8088/api/generated/delete/${Id}`, {
@@ -53,6 +72,7 @@ const DogBreedCardModal = (props) => {
       }
     };
     handleDelete()
+    // setClose(false)
   }
 
   const onCloseClick = () => {

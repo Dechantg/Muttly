@@ -2,6 +2,7 @@
 
 
 import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
@@ -19,10 +20,25 @@ const GenerateMixedBreedPage = () => {
   const [dogOneId, setIdOne] = useState(null)
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
+  const {isLoggedIn, setLogIn} = useState(false)
+  // const { isValid, userId } = useSessionValidation();
 
-  const { isValid, userId } = useSessionValidation();
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     // console.log(isValid)
+  //     // console.log(isLoggedIn)
+  //     setLogIn(isValid);
+  //   }, 1000); // Adjust the interval as needed
+
+  //   // Clear interval on component unmount or when reinitializing the effect
+  //   return () => clearInterval(interval);
+  // }, [isLoggedIn]);
 
   useEffect(() => {
+    console.log(isLoggedIn, 'testing')
+    // isValid ? console.log('working') : navigate('/about');
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}
@@ -40,7 +56,6 @@ const GenerateMixedBreedPage = () => {
 
   useEffect(() => {
     if (selectedBreedOne) {
-      console.log(isValid)
   const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
   setIdOne(dogChoice.id)
   const fetchDataFirstDog = async () => {
