@@ -3,7 +3,7 @@
 @import './NavigationBarTop.scss';
 
 .generate-mixed-breed-container {
-  zoom: 65%; 
+  zoom: 95%; 
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -75,7 +75,7 @@
     width: 12rem;
     height: 12rem;
     border-radius: 50%; /* Makes the image round */
-    animation: pulse 5s infinite;
+    animation: pulse 3.5s infinite;
     transition: transform 0.1s linear;
     &:hover {
       animation: rumble 1s infinite; /* Apply the rumble animation on hover */

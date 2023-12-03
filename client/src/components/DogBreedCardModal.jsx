@@ -1,49 +1,70 @@
 // DogBreedCardModal.jsx
 
-import React, {useEffect } from 'react';
-
+import React, {useEffect, useState } from 'react';
+import Card from './Card';
 import '../views/stylesheets/DogBreedCardModal.scss';
 
-const BreedCardModal = () => {
+const DogBreedCardModal = (props) => {
 
+  const [liked, setLike] = useState(false) 
+  const [closeModal, setClose] = useState(true)
+  const {image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
+
+  const onLikeClick = () => {
+    setLike(prev => !prev)
+  } 
+
+  const onShareClick = () => {
+    navigator.clipboard.writeText('pets.ca')
+      .then(() => {
+        console.log('Link copied to clipboard: google.ca');
+        alert('Link copied to clipboard!');
+      })
+      .catch((error) => {
+        console.error('Unable to copy link to clipboard:', error);
+        alert('Failed to copy link to clipboard');
+      });
+  }
   
 
+  const onTrashClick = () => {
+    alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
+    setTimeout(()=> setClose(false), 1000)
+  }
+
+  const onCloseClick = () => {
+    setClose(false)
+  }
+
   return (
-    <div className="dog-breed-card">
-      <div className="dog-breed-card-header">
-        <div>
-          <p>Breed Name</p>
-          <p>Protectiveness: ICONS</p>
-        </div>
-        <img src="/path/or/{}/reference/to/img.png" alt="{breedName}" className="dog-breed-image" />
-        <div>
-          <p>Height: HEIGHT</p>
-          <p>Weight: WEIGHT</p>
-        </div>
-      </div>
-
-      <div className="dog-breed-card-body">
-        <div>
-          <p>Shedding: ICONS</p>
-          <p>Energy: ICONS</p>
-        </div>
-        <div>
-          <p>Drooling: ICONS</p>
-          <p>Barking: ICONS</p>
-        </div>
-      </div>
-
-      <div className="dog-breed-card-description">
-        <p>Breed Description</p>
-        <p>breedDescription</p>
-      </div>
-
-      <div className="dog-breed-card-footer">
-        <p>&copy; 2023  -  Muttly Inc  -  BREEDMAKER Ltd.  -  AlChGr Designs ™</p>
-        <p>13/222</p>
-      </div>
-    </div>
+    <>
+      {closeModal && <div className="dog-breed-card">
+        <div className='modal-card-mid-container'>
+          <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
+          <Card
+            image={image || null}
+            shedding={shedding || null}
+            drooling={drooling || null}
+            protectiveness={protectiveness|| null}
+            energy={energy || null}
+            barking={barking || null} 
+            height={height || null} 
+            weight={weight || null}
+            name={name || null} 
+            description={description || null} 
+            dog1 = {dog1}
+            dog2 = {dog2}
+          />
+          <a><img className='modal-card-icons' onClick={onLikeClick} src={
+            liked ? '../icons/heart.png'
+          : '../icons/heart_empty.png'
+        }></img></a>
+          </div>
+          {feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
+          : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>}
+      </div>}
+    </>
   );
 };
 
-export default BreedCardModal;
+export default DogBreedCardModal;
