@@ -59,6 +59,7 @@ const addNewUser                 = require('./routes/addNewUser')
 const login                      = require('./routes/userAuthorization')
 const validate                   = require('./routes/verification')
 const changeLikeStatus           = require('./routes/likeStatusUpdate')
+const logout                     = require('./routes/userLogout')
 
 
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
@@ -80,6 +81,7 @@ app.use('/api/generated/likestatus', changeLikeStatus)
 
 app.use('/api/addnewuser', addNewUser);
 app.use('/api/login', login);
+app.use('/api/logout', logout);
 app.use('/api/validate', validate);
 
 app.get('/usertest', (req, res) => {
@@ -93,6 +95,11 @@ app.get('/userlogintest', (req, res) => {
 app.get('/validlogin', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/validCookie.html'));
 });
+
+app.get('/testlogout', (req, res) => {
+  res.sendFile(path.join(__dirname, './testpages/logouttest.html'));
+});
+
 
 
 app.listen(port, () => {
