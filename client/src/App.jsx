@@ -1,6 +1,7 @@
 import './App.css';
 import HomePage from './components/HomePage';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React, {useState} from 'react';
+import { Route, Routes, useLocation, Navigate} from 'react-router-dom';
 import NavigationBarBottom from './components/NavigationBarBottom';
 import NavigationBarTop from './components/NavigationBarTop';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
@@ -15,9 +16,13 @@ import CardPage from './components/CardPage';
 import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 import DogBreedCardModal from './components/DogBreedCardModal';
+import useSessionValidation from './hooks/useSessionValidation';
+import ProtectedRoute from './components/ProtectedRoutes';
 
 export default function App() {
   const location = useLocation();
+  const { isValid, userId } = useSessionValidation();
+  const [isLoggedIn, logStatus]=useState(isValid)
 
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
@@ -26,7 +31,7 @@ export default function App() {
   const isNewsFeedUser = location.pathname === '/newsfeeduser';
   const isUsersFavouritesPage = location.pathname === '/usersfavourites';
   const isSignUp = location.pathname === '/signup';
-  const isGenerate = location.pathname === '/generate';
+  const isGenerate = location.pathname === '/generate'; 
 
   return (
 
@@ -45,11 +50,12 @@ export default function App() {
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/signin" element={<SignInModal />} />
               <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
-              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+              {/* isValid && <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/generate" element={<GenerateMixedBreedPage/>} />
-              <Route path="generated/breedbyid/:id" element = {<CardPage/>} />
+              <Route path="generated/breedbyid/:id"element = {<CardPage/>} />
+              <Route path="/usersfavourites" element={isLoggedIn ? <UsersFavouritesPage /> : <Navigate replace to={"/"} />} />
+              <Route path="/generate" element={isLoggedIn ? <GenerateMixedBreedPage /> : <Navigate replace to={"/"} />} />
+              {/* <Route path="/newsfeeduser" element={isLoggedIn ? <NewsFeedUserPage /> : <Navigate replace to={"/"} />} /> */}
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
