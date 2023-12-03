@@ -42,8 +42,6 @@ export default function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLogIn(isValid);
-      console.log(isLoggedIn)
-      console.log(isValid)
     }, 1000); // Adjust the interval as needed
 
     // Clear interval on component unmount or when reinitializing the effect
@@ -70,8 +68,8 @@ export default function App() {
               <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
               {/* isValid && <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="generated/breedbyid/:id"element = {<CardPage/>} />
-              <Route path="/usersfavourites" element={isLoggedIn ? <UsersFavouritesPage /> : <Navigate replace to={"/"} />} />
-              <Route path="/generate" element={isLoggedIn ? <GenerateMixedBreedPage /> : <Navigate replace to={"/"} />} />
+              <Route path="/usersfavourites" element={<UsersFavouritesPage isLoggedIn={isLoggedIn} />} />
+              <Route path="/generate" element= {<GenerateMixedBreedPage isLoggedIn={isValid} />} />
               {/* <Route path="/newsfeeduser" element={isLoggedIn ? <NewsFeedUserPage /> : <Navigate replace to={"/"} />} /> */}
             </Routes> 
           </div>

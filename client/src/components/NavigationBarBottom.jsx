@@ -14,9 +14,14 @@ function NavigationBarBottom(props) {
       <Link to="/about" className="nav-link">
         About Us
       </Link>
-      <Link to="/signup" className="nav-link">
-        {props.isLoggedIn ? 'Your Feed': 'Sign Up'}
-      </Link>
+      {props.isLoggedIn ?
+        <Link to="/newsfeeduser" className="nav-link">
+            Your Feed
+        </Link>
+        :<Link to="/signup" className="nav-link">
+          Sign Up
+        </Link>
+     }
     </div>
   );
 }; 

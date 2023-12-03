@@ -2,13 +2,14 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
 // import useApiFetch from '../hooks/apiFetchHook';
 import Card from './Card';
 
-const GenerateMixedBreedPage = () => {
+const GenerateMixedBreedPage = (props) => {
 
   const [dogOptions, setOptions] = useState([]);
   const [selectedBreedOne, setDogOneBreed] = useState(null);
@@ -22,7 +23,11 @@ const GenerateMixedBreedPage = () => {
 
   const { isValid, userId } = useSessionValidation();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    console.log(props.isLoggedIn, 'testing')
+    props.isLoggedIn ? console.log('working') : navigate('/about');
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}
