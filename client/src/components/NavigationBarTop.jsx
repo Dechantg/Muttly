@@ -6,12 +6,10 @@ import useSessionValidation from '../hooks/useSessionValidation';
 
 
 
-const NavigationBarTop = () => {
+const NavigationBarTop = (props) => {
 
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
-  const [isLoggedIn, setLogIn] = useState(false)
   const history = useLocation();
-  const { isValid, userId } = useSessionValidation();
 
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -22,9 +20,8 @@ const NavigationBarTop = () => {
   };
 
   const handleSignInClick = () => {
-    if (!isValid) {
+    if (!props.isLoggedIn) {
       openSignInModal();
-      setLogIn(true)
     } else {
       loggedStatus(false);
       history.push('/');
@@ -43,13 +40,11 @@ const NavigationBarTop = () => {
         </div>
       </div>
       <div className="right-side">
-        <a className ="login-tag" onClick={handleSignInClick}>
-          {isLoggedIn ? (
-            <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" />
+          {props.isLoggedIn ? (
+                    <a className ="login-tag"> <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" /> </a>
           ) : (
-            <img src="../icons/bark_in.png" alt="Muttly Logo" className="login-icon" />
+            <a className ="login-tag" onClick={handleSignInClick}> <img src="../icons/bark_in.png" alt="Muttly Logo" className="login-icon" /> </a>
           )}
-        </a>
       </div>
       {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
     </div>
