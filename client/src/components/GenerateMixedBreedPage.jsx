@@ -93,8 +93,7 @@ const GenerateMixedBreedPage = () => {
         const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
         const data = await response.json();
         const newDogData = data[0];
-  
-        // Directly create the Card component with newDogData
+
         const dogCard = (
           <Card 
             num={2} 
@@ -139,18 +138,21 @@ const GenerateMixedBreedPage = () => {
     setDogTwoBreed(breed);
   };
 
-  // const handleClickToGenerate = () => {
-  //   if(dogOneId && dogTwoId) {
-  //     const fetchFusion = async() => {
-  //       try {
-  //         const response = fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`)
-  //         const data = await response.json();
-
-
-  //       }
-  //     }
-  //   }
-  // }
+  const handleClickToGenerate = () => {
+    if(dogOneId && dogTwoId) {
+      const fetchFusion = async() => {
+        try {
+          const response = fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`)
+          const data = await response.json();
+          console.log(data)
+        }
+        catch (error) {
+          console.error('Error fetch data', error);
+        }
+      }
+      fetchFusion()
+    }
+  }
 
 
   const fetchData = async () => {
@@ -184,7 +186,7 @@ const GenerateMixedBreedPage = () => {
           </div>
           <div className="middle-container">
             <div className="generate-container">
-              <img className='generate-button' src='../icons/paw_button.png'/>
+              <img className='generate-button' src='../icons/paw_button.png' onClick={handleClickToGenerate}/>
               <p>Go Fetch that Mutt !</p>
               <img className ='merge-icon' src='../icons/merger.png'/>
             </div>
