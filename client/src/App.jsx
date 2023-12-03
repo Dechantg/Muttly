@@ -41,6 +41,8 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      // console.log(isValid)
+      // console.log(isLoggedIn)
       setLogIn(isValid);
     }, 1000); // Adjust the interval as needed
 

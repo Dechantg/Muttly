@@ -32,12 +32,6 @@ const useSessionValidation = () => {
       }
     };
     validateSession();
-     const interval = setInterval(() => {
-      validateSession();
-    }, 1000); // Adjust the interval as needed
-
-    // Clear interval on component unmount or when reinitializing the effect
-    return () => clearInterval(interval);
   }, []);
 
   return sessionData;

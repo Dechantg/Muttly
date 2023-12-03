@@ -9,7 +9,7 @@ import useSessionValidation from '../hooks/useSessionValidation';
 // import useApiFetch from '../hooks/apiFetchHook';
 import Card from './Card';
 
-const GenerateMixedBreedPage = (props) => {
+const GenerateMixedBreedPage = () => {
 
   const [dogOptions, setOptions] = useState([]);
   const [selectedBreedOne, setDogOneBreed] = useState(null);
@@ -20,14 +20,25 @@ const GenerateMixedBreedPage = (props) => {
   const [dogOneId, setIdOne] = useState(null)
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
-
+  const {isLoggedIn, setLogIn} = useState(false)
   const { isValid, userId } = useSessionValidation();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(props.isLoggedIn, 'testing')
-    props.isLoggedIn ? console.log('working') : navigate('/about');
+    const interval = setInterval(() => {
+      // console.log(isValid)
+      // console.log(isLoggedIn)
+      setLogIn(isValid);
+    }, 1000); // Adjust the interval as needed
+
+    // Clear interval on component unmount or when reinitializing the effect
+    return () => clearInterval(interval);
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    console.log(isLoggedIn, 'testing')
+    isValid ? console.log('working') : navigate('/about');
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}

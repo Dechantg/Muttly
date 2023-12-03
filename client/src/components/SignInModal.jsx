@@ -20,7 +20,6 @@ const SignInModal = (props) => {
   };
 
 
-
   const handleSignIn = async () => {
     if (!email || !password) {
       // Handle case when fields are empty

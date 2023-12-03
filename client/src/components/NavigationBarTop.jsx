@@ -26,7 +26,37 @@ const NavigationBarTop = (props) => {
       loggedStatus(false);
       history.push('/');
     }
-  };
+  }; 
+
+  const handleSignOut = async () =>  {
+    try {
+      const response = await fetch('http://localhost:8088/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+      });
+  
+      if (!response.ok) {
+        if (response.status === 401) {
+          alert('Incorrect email or password. Please try again.');
+        } else {
+          alert('Sign-in failed. Please try again later.');
+        }
+        throw new Error('Sign-in failed');
+      }
+  
+      console.log('Sign-in successful');
+      console.log(document.cookie)
+      // Perform actions after successful sign-in
+      onClose(); 
+  
+    } catch (error) {
+      console.error('Error during sign-in:', error.message);
+    }
+  }
 
   return (
     <div className="top-navigation-bar">
