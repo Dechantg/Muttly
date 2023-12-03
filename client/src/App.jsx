@@ -48,7 +48,14 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/signin" element={<SignInModal />} />
+
+              {/* <Route path="/signin" element={<SignInModal />} /> */}
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+              {/* <Route path="/usersfavourites" element={<UsersFavouritesPage />} /> */}
+              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+              <Route path="/signup" element={<SignUpPage />} />
+              { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
+                 <Route path="/signin" element={<SignInModal />} />
               <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
               {/* isValid && <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
