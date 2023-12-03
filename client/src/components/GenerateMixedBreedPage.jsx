@@ -19,6 +19,8 @@ const GenerateMixedBreedPage = () => {
   const [optionsList, setOptionsList] = useState([]);
   const [firstDog, setFirstDog]= useState(null);
   const [secondDog, setSecondDog]= useState(null);
+  const [dogOneId, setIdOne] = useState(null)
+  const [dogTwoId, setIdTwo] = useState(null)
 
   useEffect(() => {
     const updatedOptionsList = dogOptions.map((dog) => {
@@ -33,17 +35,63 @@ const GenerateMixedBreedPage = () => {
 
   const { data: breedNames, error: fetchError } = useApiFetch('/api/generated/breedbyid/24');
 
+
+  useEffect(() => {
+    if (selectedBreedOne) {
+  const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
+  setIdOne(dogChoice.id)
+  const fetchDataFirstDog = async () => {
+    try {
+      if (dogChoice) {
+        const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
+        const data = await response.json();
+        const newDogData = data[0];
+  
+        const dogCard = (
+          <Card 
+            num={1} 
+            image={newDogData.image_link} 
+            shedding={{shedding: newDogData.shedding}} 
+            drooling={ {drooling:newDogData.drooling}}
+            protectiveness={{protectiveness: newDogData.protectiveness}} 
+            energy={{energy:newDogData.energy}} 
+            barking={{barking: newDogData.barking}} 
+            height={[
+              newDogData.max_height_female,
+              newDogData.max_height_male,
+              newDogData.min_height_female,
+              newDogData.min_height_male,
+            ]} 
+            weight={[ 
+              newDogData.max_weight_female,
+              newDogData.max_weight_male,
+              newDogData.min_weight_female,
+              newDogData.min_weight_male
+            ]}
+            name={newDogData.name} 
+            description={newDogData.description} 
+          />
+        );
+  
+        setFirstDog(dogCard);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+  dogChoice && fetchDataFirstDog();
+  }}, [selectedBreedOne]);
+
   useEffect(() => {
     if (selectedBreedTwo) {
   const dogChoice = dogOptions.find(dog => dog.name === selectedBreedTwo);
-  console.log(dogChoice.id);
-
+  setIdTwo(dogChoice.id)
   const fetchDataSecondDog = async () => {
     try {
       if (dogChoice) {
         const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
         const data = await response.json();
-        console.log(data[0]);
         const newDogData = data[0];
   
         // Directly create the Card component with newDogData
@@ -72,8 +120,7 @@ const GenerateMixedBreedPage = () => {
             description={newDogData.description} 
           />
         );
-  
-        // Update the state to render the Card
+
         setSecondDog(dogCard);
       }
     } catch (error) {
@@ -81,60 +128,8 @@ const GenerateMixedBreedPage = () => {
     }
   };
   
-  // Call fetchData if dogChoice is available
   dogChoice && fetchDataSecondDog();
 }}, [selectedBreedTwo]);
-
-useEffect(() => {
-  if (selectedBreedOne) {
-const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
-console.log(dogChoice.id);
-
-const fetchDataFirstDog = async () => {
-  try {
-    if (dogChoice) {
-      const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
-      const data = await response.json();
-      console.log(data[0]);
-      const newDogData = data[0];
-
-      const dogCard = (
-        <Card 
-          num={1} 
-          image={newDogData.image_link} 
-          shedding={{shedding: newDogData.shedding}} 
-          drooling={ {drooling:newDogData.drooling}}
-          protectiveness={{protectiveness: newDogData.protectiveness}} 
-          energy={{energy:newDogData.energy}} 
-          barking={{barking: newDogData.barking}} 
-          height={[
-            newDogData.max_height_female,
-            newDogData.max_height_male,
-            newDogData.min_height_female,
-            newDogData.min_height_male,
-          ]} 
-          weight={[ 
-            newDogData.max_weight_female,
-            newDogData.max_weight_male,
-            newDogData.min_weight_female,
-            newDogData.min_weight_male
-          ]}
-          name={newDogData.name} 
-          description={newDogData.description} 
-        />
-      );
-
-      setFirstDog(dogCard);
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-// Call fetchData if dogChoice is available
-dogChoice && fetchDataFirstDog();
-}}, [selectedBreedOne]);
-
 
   const handleDogOneSelection = (breed) => {
     setDogOneBreed(breed);
@@ -143,6 +138,19 @@ dogChoice && fetchDataFirstDog();
   const handleDogTwoSelection = (breed) => {
     setDogTwoBreed(breed);
   };
+
+  // const handleClickToGenerate = () => {
+  //   if(dogOneId && dogTwoId) {
+  //     const fetchFusion = async() => {
+  //       try {
+  //         const response = fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`)
+  //         const data = await response.json();
+
+
+  //       }
+  //     }
+  //   }
+  // }
 
 
   const fetchData = async () => {
@@ -168,8 +176,8 @@ dogChoice && fetchDataFirstDog();
         <div className="page-body-generate">
           <div className="left-container">
             <label htmlFor="leftDropdown">Select Dog Breed:</label>
-            <select id="leftDropdown" onChange={(e) => handleDogOneSelection(e.target.value)}>
-              <option>Pick a Dog</option>
+            <select id="leftDropdown" placeholder= "Pick a Dog" onChange={(e) => handleDogOneSelection(e.target.value)}>
+              <option value="" disabled selected>Pick a Dog</option>
               {optionsList}
             </select>
             {firstDog || <Card num = {1}/>}
@@ -184,7 +192,7 @@ dogChoice && fetchDataFirstDog();
         <div className="right-container">
           <label htmlFor="rightDropdown">Select Dog Breed:</label>
           <select id="rightDropdown" onChange={(e) => handleDogTwoSelection(e.target.value)}>
-          <option>Pick a Dog</option>
+          <option value="" disabled selected>Pick a Dog</option>
             {optionsList}
           </select>
           {secondDog || <Card num = {2}/>}

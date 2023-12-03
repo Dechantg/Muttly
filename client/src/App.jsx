@@ -13,7 +13,7 @@ import UsersFavouritesPage from './components/UsersFavouritesPage';
 // import SignInModal from './components/SignInModal';
 import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
-
+import DogBreedCardModal from './components/DogBreedCardModal';
 
 export default function App() {
   const location = useLocation();
@@ -40,18 +40,18 @@ export default function App() {
             {/* <DogBreedCardModal /> */}
             {/* <UsersFavouritesPage /> */}
             <Routes>
-              {/* <Route path="/" element={<HomePage />} /> */}
+              <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
-              {/* <Route path="/about" element={<AboutUsPage />} /> */}
-              {/* <Route path="/signin" element={<SignInModal />} /> */}
-              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} /> */}
-              {/* <Route path="/usersfavourites" element={<UsersFavouritesPage />} /> */}
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/signin" element={<SignInModal />} />
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-              {/* <Route path="/signup" element={<SignUpPage />} /> */}
-              {/* <Route path="/generate" element={<GenerateMixedBreedPage />} /> */}
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/generate" element={<DogBreedCardModal />} />
             </Routes> 
           </div>
-          {(isGenerate || isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
         </div>
      </div>
   );

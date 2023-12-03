@@ -1,49 +1,40 @@
 // DogBreedCardModal.jsx
 
-import React, {useEffect } from 'react';
-
+import React, {useEffect, useState } from 'react';
+import Card from './Card';
 import '../views/stylesheets/DogBreedCardModal.scss';
 
-const BreedCardModal = () => {
+const DogBreedCardModal = () => {
 
-  
+  const [liked, setLike] = useState(false) 
+
+  const onLikeClick = () => {
+    setLike(prev => !prev)
+  } 
+
+  const onShareClick = () => {
+    alert('Link copied to clipboard!');
+
+  } 
+
+  const onDeleteClick = () => {
+    alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
+    setTimeout(()=> console.log(lol), 1000)
+  }
 
   return (
     <div className="dog-breed-card">
-      <div className="dog-breed-card-header">
-        <div>
-          <p>Breed Name</p>
-          <p>Protectiveness: ICONS</p>
+      <div className='modal-card-mid-container'>
+        <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
+        <Card/>
+        <a><img className='modal-card-icons' onClick={onLikeClick} src={
+          liked ? '../icons/heart.png'
+        : '../icons/heart_empty.png'}
+        ></img></a>
         </div>
-        <img src="/path/or/{}/reference/to/img.png" alt="{breedName}" className="dog-breed-image" />
-        <div>
-          <p>Height: HEIGHT</p>
-          <p>Weight: WEIGHT</p>
-        </div>
-      </div>
-
-      <div className="dog-breed-card-body">
-        <div>
-          <p>Shedding: ICONS</p>
-          <p>Energy: ICONS</p>
-        </div>
-        <div>
-          <p>Drooling: ICONS</p>
-          <p>Barking: ICONS</p>
-        </div>
-      </div>
-
-      <div className="dog-breed-card-description">
-        <p>Breed Description</p>
-        <p>breedDescription</p>
-      </div>
-
-      <div className="dog-breed-card-footer">
-        <p>&copy; 2023  -  Muttly Inc  -  BREEDMAKER Ltd.  -  AlChGr Designs ™</p>
-        <p>13/222</p>
-      </div>
+        <a><img className='modal-card-icons' src='../icons/trash-can.png'></img></a>
     </div>
   );
 };
 
-export default BreedCardModal;
+export default DogBreedCardModal;
