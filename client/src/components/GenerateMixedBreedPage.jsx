@@ -20,6 +20,7 @@ const GenerateMixedBreedPage = () => {
   const [secondDog, setSecondDog]= useState(null);
   const [dogOneId, setIdOne] = useState(null)
   const [dogTwoId, setIdTwo] = useState(null)
+  const [DogModal, setDogModal] = useState(null)
 
   useEffect(() => {
     const updatedOptionsList = dogOptions.map((dog) => {
@@ -31,9 +32,6 @@ const GenerateMixedBreedPage = () => {
   },[dogOptions])
 
   const { isValid, userId } = useSessionValidation();
-
-  const dogOneId = 87
-  const dogTwoId = 98
 
   const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
 
@@ -105,7 +103,7 @@ const GenerateMixedBreedPage = () => {
             num={2} 
             image={newDogData.image_link} 
             shedding={{shedding: newDogData.shedding}} 
-            drooling={ {drooling:newDogData.drooling}}
+            drooling={{drooling:newDogData.drooling}}
             protectiveness={{protectiveness: newDogData.protectiveness}} 
             energy={{energy:newDogData.energy}} 
             barking={{barking: newDogData.barking}} 
@@ -145,25 +143,55 @@ const GenerateMixedBreedPage = () => {
   };
 
   const handleClickToGenerate = () => {
-    if(dogOneId && dogTwoId) {
-      const fetchFusion = async() => {
+    if (dogOneId && dogTwoId) {
+      let modal = null
+      setDogModal(null)
+      const fetchFusion = async () => {
         try {
-          const response = fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`)
+          const response = await fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
+            credentials: 'include',
+          });
           const data = await response.json();
-          console.log(data)
+            const actualData = data.muttyResult 
+          modal=
+          <DogBreedCardModal
+          image={actualData.generated_photo_link}
+          shedding={{shedding: actualData.shedding}}
+          drooling={{drooling: actualData.drooling}}
+          protectiveness={{protectiveness: actualData.protectiveness}}
+          energy={{energy: actualData.energy}}
+          barking={{barking: actualData.barking}} 
+          height={[
+            actualData.max_height_female,
+            actualData.max_height_male,
+            actualData.min_height_female,
+            actualData.min_height_male,
+          ]} 
+          weight={[ 
+            actualData.max_weight_female,
+            actualData.max_weight_male,
+            actualData.min_weight_female,
+            actualData.min_weight_male
+          ]}
+          name={actualData.name} 
+          description={actualData.description} 
+          dog1 = {selectedBreedOne}
+          dog2 = {selectedBreedTwo}
+          />
+          setDogModal(modal)
+        } catch (error) {data.
+          console.error('Error fetching data', error);
         }
-        catch (error) {
-          console.error('Error fetch data', error);
-        }
-      }
-      fetchFusion()
+      };
+      fetchFusion();
     }
-  }
+  };
+  
 
 
   const fetchData = async () => {
     try {
-      const responce = await fetch(`http://localhost:8088/api/allbreednames`);
+      const responce = await fetch(`http://localhost:8088/api/allbreednames`)
       const data = await responce.json();
       setOptions(data)
       console.log("breed names object returned from api server:", data);
@@ -183,7 +211,6 @@ const GenerateMixedBreedPage = () => {
         <h1>Muttly's Mixer</h1>
         <div className="page-body-generate">
           <div className="left-container">
-            <label htmlFor="leftDropdown">Select Dog Breed:</label>
             <select id="leftDropdown" placeholder= "Pick a Dog" onChange={(e) => handleDogOneSelection(e.target.value)}>
               <option value="" disabled selected>Pick a Dog</option>
               {optionsList}
@@ -198,7 +225,6 @@ const GenerateMixedBreedPage = () => {
             </div>
         </div>
         <div className="right-container">
-          <label htmlFor="rightDropdown">Select Dog Breed:</label>
           <select id="rightDropdown" onChange={(e) => handleDogTwoSelection(e.target.value)}>
           <option value="" disabled selected>Pick a Dog</option>
             {optionsList}
@@ -206,6 +232,7 @@ const GenerateMixedBreedPage = () => {
           {secondDog || <Card num = {2}/>}
         </div>
       </div>
+      {DogModal}
   </div>
   );
 };
