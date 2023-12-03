@@ -8,8 +8,6 @@ import useSessionValidation from '../hooks/useSessionValidation';
 // import useApiFetch from '../hooks/apiFetchHook';
 import Card from './Card';
 
-
-
 const GenerateMixedBreedPage = () => {
 
   const [dogOptions, setOptions] = useState([]);
@@ -22,6 +20,8 @@ const GenerateMixedBreedPage = () => {
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
 
+  const { isValid, userId } = useSessionValidation();
+
   useEffect(() => {
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
@@ -30,8 +30,6 @@ const GenerateMixedBreedPage = () => {
     })
      setOptionsList(updatedOptionsList)
   },[dogOptions])
-
-  const { isValid, userId } = useSessionValidation();
 
   // const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
 
