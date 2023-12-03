@@ -40,15 +40,20 @@ export default function App() {
             {/* <DogBreedCardModal /> */}
             {/* <UsersFavouritesPage /> */}
             <Routes>
-              {/* <Route path="/" element={<HomePage />} /> */}
+              <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<ContactUsPage />} />
-              {/* <Route path="/about" element={<AboutUsPage />} /> */}
+              <Route path="/about" element={<AboutUsPage />} />
               {/* <Route path="/signin" element={<SignInModal />} /> */}
-              {/* <Route path="/newsfeed" element={<NewsFeedPublicPage />} /> */}
+              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
               {/* <Route path="/usersfavourites" element={<UsersFavouritesPage />} /> */}
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
+<<<<<<< Updated upstream
               {/* <Route path="/signup" element={<SignUpPage />} /> */}
               {/* <Route path="/generate" element={<GenerateMixedBreedPage />} /> */}
+=======
+              <Route path="/signup" element={<SignUpPage />} />
+              { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
+>>>>>>> Stashed changes
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}

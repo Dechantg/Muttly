@@ -59,7 +59,7 @@ const NavigationBarTop = () => {
   return (
     <div className="top-navigation-bar">
       <div className="left-side">
-        <Link to="/news-feed" className="logo-link">
+        <Link to="/newsfeed" className="logo-link">
           <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
         </Link>
         <div>
