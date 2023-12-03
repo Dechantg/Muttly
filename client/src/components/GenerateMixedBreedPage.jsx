@@ -10,7 +10,6 @@ import Card from './Card';
 
 
 
-
 const GenerateMixedBreedPage = () => {
 
   const [dogOptions, setOptions] = useState([]);
@@ -33,7 +32,14 @@ const GenerateMixedBreedPage = () => {
 
   const { isValid, userId } = useSessionValidation();
 
-  const { data: breedNames, error: fetchError } = useApiFetch('/api/generated/breedbyid/24');
+  const dogOneId = 87
+  const dogTwoId = 98
+
+  const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
+
+
+  // const { data: mixedBreedData, error: mixedBreedError } = useApiFetch(`/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`);
+
 
 
   useEffect(() => {
