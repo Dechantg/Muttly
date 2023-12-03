@@ -12,7 +12,7 @@ const DogBreedCardModal = (props) => {
 
   const onLikeClick = () => {
     setLike(prev => !prev)
-    setTimeout(()=> setClose(false), 1000)
+    setTimeout(()=> setClose(false), 2000)
   } 
 
   const onShareClick = () => {
