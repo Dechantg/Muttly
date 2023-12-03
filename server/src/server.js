@@ -58,6 +58,8 @@ const breedsUserLiked            = require('./routes/breedsUserLiked')
 const addNewUser                 = require('./routes/addNewUser')
 const login                      = require('./routes/userAuthorization')
 const validate                   = require('./routes/verification')
+const changeLikeStatus           = require('./routes/likeStatusUpdate')
+
 
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
@@ -74,6 +76,7 @@ app.use('/api/generatebreed', generateBreed);
 app.use('/api/generated/breedbyid', generatedBreedById);
 app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
 app.use('/api/generated/delete', deleteDogBreed);
+app.use('/api/generated/likestatus', changeLikeStatus)
 
 app.use('/api/addnewuser', addNewUser);
 app.use('/api/login', login);
