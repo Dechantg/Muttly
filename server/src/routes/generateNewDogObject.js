@@ -90,7 +90,16 @@ router.get("/", validateSession, async (req, res) => {
       breedTwo: dogTwoId
     };
 
-    const extraStats = await queryRecord(updatedBreed);
+    const extraStats = {
+      genId: generatedBreedDetails[0].id,
+      userId: userId,
+      breedOne: dogOneName,
+      breedTwo: dogTwoName
+    };
+
+    
+
+    await queryRecord(updatedBreed);
 
     console.log("last by not least lets work on my query table", updatedBreed)
 
