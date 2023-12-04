@@ -17,14 +17,9 @@ import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 import DogBreedCardModal from './components/DogBreedCardModal';
 import useSessionValidation from './hooks/useSessionValidation';
-import ProtectedRoute from './components/ProtectedRoutes';
-import Card from './components/Card';
 
 export default function App() {
   const location = useLocation();
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const [isLoggedIn, setLoggedIn] = useState(isValid)
-  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
   const isAboutPage = location.pathname === '/about';
@@ -34,21 +29,12 @@ export default function App() {
   const isSignUp = location.pathname === '/signup';
   const isGenerate = location.pathname === '/generate';
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // console.log(isValid)
-      // console.log(isLoggedIn)
-      // setLogIn(isValid);
-    }, 1000);
-  
-    return () => clearInterval(interval);
-  }, [isLoggedIn]);
 
   return (
     <div className="App">
 
         <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
+          {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop />}
           <div className="AppContent">
             {/* <ContactUsPage /> */}
             {/* <EnlargedPawPrintImage /> */}
@@ -56,8 +42,8 @@ export default function App() {
             {/* <DogBreedCardModal /> */}
             {/* <UsersFavouritesPage /> */}
             <Routes>
-              <Route path="/" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <HomePage />} />
-              <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/signup" element= {<SignUpPage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
               {/* <Route path="/signin" element={<SignInModal />} /> */}
@@ -69,7 +55,7 @@ export default function App() {
               <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
             </Routes> 
           </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
+          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
           </div>
         </div>
   );

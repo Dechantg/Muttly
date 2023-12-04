@@ -11,6 +11,8 @@ const SignInModal = (props) => {
   const { onClose } = props
   const navigate = useNavigate();
 
+  
+
 
 
   const handleEmailChange = (e) => {
