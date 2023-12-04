@@ -1,7 +1,6 @@
 // NewsFeedPublicPage.jsx
 
 import React, { useState, useEffect } from 'react';
-import SignInModal from './SignInModal';
 import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/NewsFeedPublicPage.scss';
