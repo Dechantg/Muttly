@@ -2,37 +2,65 @@
 
 @import './NavigationBarTop.scss';
 @import './NavigationBarBottom.scss';
-@import './SignInModal.scss';
 
 
 .news-feed-container {
-  // Styling for the overall container
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  // width: 100%;
+  height: 100vh;
+  margin-bottom: 7rem;
+  
+  h1,
+  h3 {
+    text-align: center;
+  }
+  
+} 
+
+.most-popular-images-text,
+.recently-generated-images-text {
+  // background-color: red;
+  padding-top: .75rem;
+  padding-left: 1.5rem;
+  white-space: nowrap;
 }
 
 .news-feed-content {
-  text-align: center;
-  margin: 20px;
-
-  h2 {
-    // Styling for the Titile
-  }
-
-  .image-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-
-    // Styling for image thumbnails needed
-  }
+  display: flex;
+  // flex-direction: column;
+  justify-content: flex-start;
+  // align-items: flex-start;
 }
 
-.sign-in-button {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
+.most-popular-images-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+.recently-generated-images-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
 
-  // Styling for the pawprint icon
+.most-popular-images-thumbnail,
+.recently-generated-images-thumbnail {
+  display: flex;
+  box-sizing: border-box;
+  height: 11rem;
+  width: 14rem;
+  margin: 1.5rem;
+  border-radius: 8px;
+}
+
+.news-feed-content {
+  display: inline-block;
+  align-items: center;
+  box-sizing: border-box;
+  height: 13rem;
+  width: 13rem;
+  padding: 1.5rem;
+  border-radius: 8px;
 }
