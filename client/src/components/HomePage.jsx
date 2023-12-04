@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom"
 import '../views/stylesheets/HomePage.scss';
 import SignInModal from "./SignInModal";
+import { useNavigate } from 'react-router-dom';
+import useSessionValidation from '../hooks/useSessionValidation';
+
 
 function HomePage() {
 
@@ -19,6 +22,22 @@ function HomePage() {
   ] 
   
   const [index, setIndex] = useState(0) 
+  
+  const { isValid, userId, isLoading } = useSessionValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isValid) {
+      console.log("Before navigation. isValid:", isValid);
+      if (isValid) {
+        console.log("Navigating to /newsfeeduser");
+        navigate('/newsfeeduser');
+      } else {
+        console.log('User not authenticated');
+      }
+      console.log("After navigation. isValid:", isValid);
+    }
+  }, [isValid, navigate]);
   
   useEffect(() => {
     const interval = setInterval(() => {

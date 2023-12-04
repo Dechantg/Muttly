@@ -1,7 +1,7 @@
 // GenerateMixedBreedPage.jsx
 
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';

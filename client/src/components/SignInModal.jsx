@@ -2,13 +2,15 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import '../views/stylesheets/SignInModal.scss';
 
 const SignInModal = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { onClose } = props
+  const navigate = useNavigate();
+
 
 
   const handleEmailChange = (e) => {
@@ -49,6 +51,7 @@ const SignInModal = (props) => {
       console.log('Sign-in successful');
       console.log(document.cookie)
       // Perform actions after successful sign-in
+      navigate('/newsfeeduser');
       onClose(); 
   
     } catch (error) {
