@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Card from './Card'; 
+import '../views/stylesheets/CardPage.scss';
 
 function CardPage () {
 
@@ -16,7 +17,9 @@ function CardPage () {
           credentials: 'include',
         });
         const data = await response.json();
-        const newDogData = data[0];
+        // const newDogData = data[0];
+        const newDogData = data.muttyResult[0]
+        const mateData = data.extraStats[0]
         console.log(data[0])
         const dogCard = (
           <Card 
@@ -40,7 +43,8 @@ function CardPage () {
             ]}
             name={newDogData.name} 
             description={newDogData.description} 
-
+            dog1 = {mateData.breedOne}
+            dog2 = {mateData.breedTwo}
           />
         );
   
@@ -51,12 +55,16 @@ function CardPage () {
       console.error('Error fetching data:', error);
     }
   };
-  fetchGeneratedDog()
+
+  useEffect(() => {
+    console.log("useEffect triggered with id:", id);
+    fetchGeneratedDog(); // Fetch data when id changes
+  }, [id]);
 
 return (
-  <>
+  <div className="solo-card-container">
     {card}
-  </>
+  </div>
 )
 
 }

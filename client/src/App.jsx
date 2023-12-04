@@ -40,9 +40,10 @@ export default function App() {
       // setLogIn(isValid);
     }, 1000); // Adjust the interval as needed
 
-    // Clear interval on component unmount or when reinitializing the effect
-    return () => clearInterval(interval);
-  }, [isLoggedIn]);
+
+  //   // Clear interval on component unmount or when reinitializing the effect
+  //   return () => clearInterval(interval);
+  // }, [isLoggedIn]);
 
   return (
     <div className="App">

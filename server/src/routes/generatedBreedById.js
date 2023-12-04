@@ -11,6 +11,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const generatedBreedDetails = require('../../database/queries/retrieve_generated_dog')
+const queryRecord = require('../../database/queries/get_generation_record')
 const validateSession = require('../helpers/sessionValidation')
 
 
@@ -29,6 +30,8 @@ try {
   }
 
   const dogBreedDetails = await generatedBreedDetails(dogBreedId);
+  const extraStats = await queryRecord(dogBreedId);
+ 
 
   console.log('Fetched data dog one:', dogBreedDetails);
 
