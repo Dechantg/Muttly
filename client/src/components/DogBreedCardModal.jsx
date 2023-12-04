@@ -26,7 +26,7 @@ const DogBreedCardModal = (props) => {
 
     const handleLike = async () => {
       try {
-        const response = await fetch(`${likeUrl}`, {
+        const response = await fetch(likeUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const DogBreedCardModal = (props) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(`${trashUrl}`, {
+        const response = await fetch(trashUrl, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
