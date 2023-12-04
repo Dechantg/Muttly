@@ -22,7 +22,6 @@ const GenerateMixedBreedPage = () => {
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
   const {isLoggedIn, setLogIn} = useState(false)
-  // const { isValid, userId } = useSessionValidation();
 
   const { isValid, userId, isLoading } = useSessionValidation();
 
@@ -51,12 +50,6 @@ const GenerateMixedBreedPage = () => {
     })
      setOptionsList(updatedOptionsList)
   },[dogOptions])
-
-  // const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
-
-
-  // const { data: mixedBreedData, error: mixedBreedError } = useApiFetch(`/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`);
-
 
 
   useEffect(() => {
@@ -171,34 +164,34 @@ const GenerateMixedBreedPage = () => {
             credentials: 'include',
           });
           const data = await response.json();
-            const actualData = data.muttyResult 
-            console.log(actualData.id)
-            console.log(actualData)
+          console.log(data)
+          const dogData = data.muttyResult[0]
+          const mateData = data.extraStats[0]
           modal=
           <DogBreedCardModal
-          id = {actualData.id}
-          image={actualData.generated_photo_link}
-          shedding={{shedding: actualData.shedding}}
-          drooling={{drooling: actualData.drooling}}
-          protectiveness={{protectiveness: actualData.protectiveness}}
-          energy={{energy: actualData.energy}}
-          barking={{barking: actualData.barking}} 
+          id = {dogData.id}
+          image={dogData.generated_photo_link}
+          shedding={{shedding: dogData.shedding}}
+          drooling={{drooling: dogData.drooling}}
+          protectiveness={{protectiveness: dogData.protectiveness}}
+          energy={{energy: dogData.energy}}
+          barking={{barking: dogData.barking}} 
           height={[
-            actualData.max_height_female,
-            actualData.max_height_male,
-            actualData.min_height_female,
-            actualData.min_height_male,
+            dogData.max_height_female,
+            dogData.max_height_male,
+            dogData.min_height_female,
+            dogData.min_height_male,
           ]} 
           weight={[ 
-            actualData.max_weight_female,
-            actualData.max_weight_male,
-            actualData.min_weight_female,
-            actualData.min_weight_male
+            dogData.max_weight_female,
+            dogData.max_weight_male,
+            dogData.min_weight_female,
+            dogData.min_weight_male
           ]}
-          name={actualData.name} 
-          description={actualData.description} 
-          dog1 = {selectedBreedOne}
-          dog2 = {selectedBreedTwo}
+          name={dogData.name} 
+          description={dogData.description} 
+          dog1 = {mateData.breedOne}
+          dog2 = {mateData.breedTwo}
           />
           setDogModal(modal)
         } catch (error) {data.

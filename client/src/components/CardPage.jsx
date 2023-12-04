@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Card from './Card'; 
+import '../views/stylesheets/CardPage.scss';
 
 function CardPage () {
 
@@ -51,7 +52,11 @@ function CardPage () {
       console.error('Error fetching data:', error);
     }
   };
-  fetchGeneratedDog()
+
+  useEffect(() => {
+    console.log("useEffect triggered with id:", id);
+    fetchGeneratedDog(); // Fetch data when id changes
+  }, [id]);
 
 return (
   <div className="solo-card-container">

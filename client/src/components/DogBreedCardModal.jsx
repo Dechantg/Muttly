@@ -12,11 +12,21 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useSessionValidation();
   const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
 
-  const onLikeClick = (id) => {
-    setLike(prev => !prev) 
+  let likeUrl = null
+  let trashUrl = null 
+  let shareUrl = null
+
+  useEffect(() => {
+    likeUrl = `http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${liked}`
+    trashUrl = `http://localhost:8088/api/generated/delete/${id}`
+    shareUrl =  `http://localhost:5173/generated/breedbyid/${id}`
+
+  },[liked])
+
+
     const handleLike = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/${id}?likeStatus=${liked}`, {
+        const response = await fetch(`${likeUrl}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -33,14 +43,16 @@ const DogBreedCardModal = (props) => {
         console.error('Error while liking breed:', error);
       }
     };
-    handleLike()
-    // setTimeout(()=> setClose(false), 2000)
-  } 
+
+  const onLikeClick = () => {
+    setLike(prevLike => !prevLike);
+    setTimeout(handleLike, 1000);
+  };
 
   const onShareClick = (id) => {
-    navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
+    navigator.clipboard.writeText(`${shareUrl}`)
       .then(() => {
-        console.log(`Link copied to clipboard: http://localhost:5173/generated/breedbyid/${id}`);
+        console.log(`Link copied to clipboard: ${shareUrl}`);
         alert('Link copied to clipboard!');
       })
       .catch((error) => {
@@ -54,7 +66,7 @@ const DogBreedCardModal = (props) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
+        const response = await fetch(`${trashUrl}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
