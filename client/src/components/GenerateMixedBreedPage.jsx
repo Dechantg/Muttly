@@ -21,13 +21,11 @@ const GenerateMixedBreedPage = () => {
   const [dogOneId, setIdOne] = useState(null)
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
-  const {isLoggedIn, setLogIn} = useState(false)
 
   const { isValid, userId, isLoading } = useSessionValidation();
 
   const navigate = useNavigate();
 
-  console.log("fomr the genrate page valid", isValid)
 
   useEffect(() => {
     console.log("Before navigation. isValid:", isValid);

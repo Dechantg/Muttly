@@ -5,42 +5,44 @@ import SignInModal from './SignInModal';
 import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/NewsFeedPublicPage.scss';
+// import mostLikedBreeds from '../../../server/database/queries/get_most_liked_breeds';
 
 const NewsFeedPublicPage = () => {
 
   const [mostPopularImages, setMostPopularImages] = useState([]);
-  // console.log(setMostPopularImages);
   const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
-  // console.log(setRecentlyGeneratedImages);
   const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
-  // console.log(setDogBreedCardModalOpen);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const openDogBreedCardModal = (image) => {
-    setSelectedImage(image.generated_photo_link);
-    setDogBreedCardModalOpen(true);
+  const openDogBreedCardModal = (event, image) => {
+    console.log('Click event:', event);
+
+    if (image && image.generated_photo_link && image.id) {
+      
+      // setSelectedImage(clickedImageSrc);
+      setSelectedImage(image)
+      // setDogBreedCardModalOpen(true);
+      
+      console.log('Image clicked!', image);
+      console.log('Clicked image ID:', image.id);
+      console.log('Selected image:', image.generated_photo_link)
+      console.log('Clicked image element:', event.target)
+    } else {
+      console.error('Image object is undefined');
+    }
   };
 
   const closeDogBreedCardModal = () => {
     setSelectedImage(null);
   };
 
-  const fetchData = async (images) => {
-    try {
-      const responce = await fetch(`http://localhost:8088/api/${images}`);
-      const data = await responce.json();
-
-      return data;      
-    } catch (error) {
-      console.error('Error fetch data', error);
-    }
-  };
-
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const data = await fetchData('mostliked');
+        const response = await fetch('http://localhost:8088/api/mostliked');
+        const data = await response.json();
         setMostPopularImages(data);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
       }
@@ -48,8 +50,10 @@ const NewsFeedPublicPage = () => {
   
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const data = await fetchData('mostrecent');
+        const response = await fetch('http://localhost:8088/api/mostrecent');
+        const data = await response.json();
         setRecentlyGeneratedImages(data);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
       }
@@ -62,6 +66,8 @@ const NewsFeedPublicPage = () => {
 
   console.log("Here are the most liked in a pretty object: ", mostPopularImages);
   console.log("Here are the most recent in a not as pretty object: ", recentlyGeneratedImages);
+  console.log('selectedImage', selectedImage);
+  console.log('mostPopularImages', mostPopularImages);
 
   return (
     <div className="news-feed-container">
@@ -71,32 +77,49 @@ const NewsFeedPublicPage = () => {
       <div className="news-feed-content">
         <h2 className="most-popular-images-text">Most Popular Generated Images...</h2>
         <div className="most-popular-images-row">
-          {mostPopularImages.slice(0, 5).map((image) => (
+          {mostPopularImages.map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
-              alt={`Dog ${image.id}`}
+              alt={`Dog ${image.name}`}
               className={`most-popular-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={() => openDogBreedCardModal(image)}
+              onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
         </div>
 
         <h2 className="recently-generated-images-text">Recently Generated Images...</h2>  
         <div className="recently-generated-images-row">
-          {recentlyGeneratedImages.slice(0, 5).map((image) => (
+          {recentlyGeneratedImages.map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
-              alt={`Dog ${image.id}`}
+              alt={`Dog ${image.name}`}
               className={`recently-generated-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={() => openDogBreedCardModal(image)}
+              onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
         </div>
 
         {/* Dog Breed Card Modal */}
-        {selectedImage && <DogBreedCardModal onClose={closeDogBreedCardModal} />}
+        {selectedImage && (
+          <DogBreedCardModal 
+            id={selectedImage.id}
+            image={selectedImage.generated_photo_link}
+            shedding={selectedImage.shedding}
+            drooling={selectedImage.drooling}
+            protectiveness={selectedImage.protectiveness}
+            energy={selectedImage.energy}
+            barking={selectedImage.barking}
+            height={selectedImage.height}
+            weight={selectedImage.weight}
+            name={selectedImage.name}
+            description={selectedImage.description}
+            dog1={selectedImage.dog1}
+            dog2={selectedImage.dog2}
+            feed={selectedImage.feed}
+            onClose={closeDogBreedCardModal} />
+            )}
       </div>
     </div>
   );
