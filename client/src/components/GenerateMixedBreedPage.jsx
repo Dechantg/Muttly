@@ -1,6 +1,5 @@
 // GenerateMixedBreedPage.jsx
 
-
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -37,10 +36,8 @@ const GenerateMixedBreedPage = () => {
     console.log("After navigation. isValid:", isValid);
   }, [isLoading, isValid, navigate]);
 
-
-
   useEffect(() => {
-    console.log('testing', isLoggedIn);
+    // console.log('testing', isLoggedIn);
     // isValid ? console.log('working') : navigate('/about');
 
     const updatedOptionsList = dogOptions.map((dog) => {
@@ -165,36 +162,35 @@ const GenerateMixedBreedPage = () => {
           });
           const data = await response.json();
           console.log(data)
-          const dogData = data.muttyResult[0]
-          const mateData = data.extraStats[0]
+          const dogData = data.muttyResult[0];
+          // const mateData = data.extraStats[0];
           modal=
           <DogBreedCardModal
-          id = {dogData.id}
-          image={dogData.generated_photo_link}
-          shedding={{shedding: dogData.shedding}}
-          drooling={{drooling: dogData.drooling}}
-          protectiveness={{protectiveness: dogData.protectiveness}}
-          energy={{energy: dogData.energy}}
-          barking={{barking: dogData.barking}} 
-          height={[
-            dogData.max_height_female,
-            dogData.max_height_male,
-            dogData.min_height_female,
-            dogData.min_height_male,
-          ]} 
-          weight={[ 
-            dogData.max_weight_female,
-            dogData.max_weight_male,
-            dogData.min_weight_female,
-            dogData.min_weight_male
-          ]}
-          name={dogData.name} 
-          description={dogData.description} 
-          dog1 = {mateData.breedOne}
-          dog2 = {mateData.breedTwo}
+            image={dogData.generated_photo_link}
+            shedding={{shedding: dogData.shedding}}
+            drooling={{drooling: dogData.drooling}}
+            protectiveness={{protectiveness: dogData.protectiveness}}
+            energy={{energy: dogData.energy}}
+            barking={{barking: dogData.barking}} 
+            height={[
+              dogData.max_height_female,
+              dogData.max_height_male,
+              dogData.min_height_female,
+              dogData.min_height_male,
+            ]} 
+            weight={[ 
+              dogData.max_weight_female,
+              dogData.max_weight_male,
+              dogData.min_weight_female,
+              dogData.min_weight_male
+            ]}
+            name={dogData.name} 
+            description={dogData.description} 
+          // dog1 = {mateData.breedOne}
+          // dog2 = {mateData.breedTwo}
           />
           setDogModal(modal)
-        } catch (error) {data.
+        } catch (error) {
           console.error('Error fetching data', error);
         }
       };

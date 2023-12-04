@@ -6,7 +6,7 @@ import { Route, Routes, useLocation, Navigate, useNavigate } from 'react-router-
 import NavigationBarBottom from './components/NavigationBarBottom';
 import NavigationBarTop from './components/NavigationBarTop';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
-// import NewsFeedUserPage from './components/NewsFeedUserPage';
+import NewsFeedUserPage from './components/NewsFeedUserPage';
 import ContactUsPage from './components/ContactUsPage';
 import AboutUsPage from './components/AboutUsPage';
 import SignUpPage from './components/SignUpPage';
@@ -41,35 +41,34 @@ export default function App() {
     }, 1000); // Adjust the interval as needed
 
 
-  //   // Clear interval on component unmount or when reinitializing the effect
-  //   return () => clearInterval(interval);
-  // }, [isLoggedIn]);
+    // Clear interval on component unmount or when reinitializing the effect
+    return () => clearInterval(interval);
+  }, [isLoggedIn]);
 
   return (
     <div className="App">
-        <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
-          <div className="AppContent">
-            {/* <ContactUsPage /> */}
-            {/* <EnlargedPawPrintImage /> */}
-            {/* <UsersFavouritesPage /> */}
-            {/* <DogBreedCardModal /> */}
-            {/* <UsersFavouritesPage /> */}
-            <Routes>
-              <Route path="/" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <HomePage />} />
-              <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
-              <Route path="/contact" element={<ContactUsPage />} />
-              <Route path="/about" element={<AboutUsPage />} />
-              {/* <Route path="/signin" element={<SignInModal />} /> */}
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
-              {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-              <Route path="/signup" element={<SignUpPage />} />
-              { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
-            </Routes> 
-          </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
-          </div>
+      <div className="AppWrapper">
+        {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
+        <div className="AppContent">
+          {/* <ContactUsPage /> */}
+          {/* <EnlargedPawPrintImage /> */}
+          {/* <UsersFavouritesPage /> */}
+          {/* <DogBreedCardModal /> */}
+          {/* <UsersFavouritesPage /> */}
+          <Routes>
+            <Route path="/" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <HomePage />} />
+            <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/about" element={<AboutUsPage />} />
+            {/* <Route path="/signin" element={<SignInModal />} /> */}
+            <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+            <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
+            <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> /
+            <Route path="/signup" element={<SignUpPage />} />
+            { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
+          </Routes> 
+        </div>
+        {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
         </div>
       </div>
   );
