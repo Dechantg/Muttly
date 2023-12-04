@@ -12,27 +12,19 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useSessionValidation();
   const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
 
-  let likeUrl = null
-  let trashUrl = null 
-  let shareUrl = null
-
-  useEffect(() => {
-    likeUrl = `http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${liked}`
-    trashUrl = `http://localhost:8088/api/generated/delete/${id}`
-    shareUrl =  `http://localhost:5173/generated/breedbyid/${id}`
-
-  },[liked])
-
 
       const handleLike = async () => {
         try {
-          const response = await fetch(`${likeUrl}`, {
+          const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
             credentials: 'include',
           }); 
-          const result = await response.json();
-          setData(result);
+          if (response.ok) {
+            console.log('Breed liked successfully');
+          } else {
+            console.error('Failed to like breed');
+          }
         } catch (error) {
-          setError(error);
+          console.error('Error while liking breed:', error);
         }
       };
   
@@ -40,13 +32,14 @@ const DogBreedCardModal = (props) => {
 
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);
-    setTimeout(handleLike, 2000);
+    handleLike()
+    setTimeout(() => {setClose(false)}, 2000);
   };
 
   const onShareClick = () => {
-    navigator.clipboard.writeText(`${shareUrl}`)
+    navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
       .then(() => {
-        console.log(`Link copied to clipboard: ${shareUrl}`);
+        console.log(`Link copied to clipboard: http://localhost:5173/generated/breedbyid/${id}`);
         alert('Link copied to clipboard!');
       })
       .catch((error) => {
@@ -60,7 +53,7 @@ const DogBreedCardModal = (props) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(trashUrl, {
+        const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -78,7 +71,7 @@ const DogBreedCardModal = (props) => {
       }
     };
     handleDelete()
-    // setClose(false)
+    setClose(false)
   }
 
   const onCloseClick = () => {
