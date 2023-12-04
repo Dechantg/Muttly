@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../views/stylesheets/NavigationBarBottom.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
 
 
 function NavigationBarBottom(props) {
+
+  const { isValid, userId, isLoading } = useSessionValidation();
+  const [isLoggedIn, setLogIn] = useState(null)
+
+  useEffect(() => {
+    console.log(isValid, 'isValid')
+    isValid ? setLogIn(true) : setLogIn(false) 
+    }
+  ,[isLoading, isValid]);
 
   return (
     <div className="bottom-navigation-bar">
@@ -14,7 +23,7 @@ function NavigationBarBottom(props) {
       <Link to="/about" className="nav-link">
         About Us
       </Link>
-      {props.isLoggedIn ?
+      {isLoggedIn ?
         <Link to="/newsfeeduser" className="nav-link">
             Your Feed
         </Link>
