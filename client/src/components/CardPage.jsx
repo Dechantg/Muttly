@@ -20,7 +20,7 @@ function CardPage () {
         console.log(data)
         // const newDogData = data[0];
         const newDogData = data[0]
-        // const mateData = data.extraStats[0]
+        const mateData = data.extraStats
         console.log(data[0])
         const dogCard = (
           <Card 
