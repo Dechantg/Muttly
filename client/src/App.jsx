@@ -85,4 +85,7 @@ export default function App() {
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
+          </div>
+      </div>
+  );
 };

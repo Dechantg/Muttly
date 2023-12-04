@@ -39,8 +39,6 @@ const GenerateMixedBreedPage = () => {
 
 
   useEffect(() => {
-    console.log(isLoggedIn, 'testing')
-    // isValid ? console.log('working') : navigate('/about');
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}
