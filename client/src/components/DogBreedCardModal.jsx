@@ -8,9 +8,9 @@ import useSessionValidation from '../hooks/useSessionValidation';
 const DogBreedCardModal = (props) => {
 
   const [liked, setLike] = useState(false) 
-  const [closeModal, setClose] = useState(true)
+  const [closeModal, setClose] = useState(false)
   const { isValid, userId } = useSessionValidation();
-  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
+  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen} = props
 
 
       const handleLike = async () => {
@@ -33,7 +33,7 @@ const DogBreedCardModal = (props) => {
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);
     handleLike()
-    setTimeout(() => {setClose(false)}, 2000);
+    setTimeout(() => {setClose(true)}, 2000);
   };
 
   const onShareClick = () => {
@@ -71,16 +71,16 @@ const DogBreedCardModal = (props) => {
       }
     };
     handleDelete()
-    setClose(false)
+    setClose(true)
   }
 
   const onCloseClick = () => {
-    setClose(false)
+    onClose()
   }
 
   return (
     <>
-      {closeModal && 
+      {(isOpen || !closeModal) && 
       <div className='modal-background'>
         <div className="dog-breed-card">
           <div className='modal-card-mid-container'>
