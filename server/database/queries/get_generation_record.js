@@ -5,7 +5,7 @@ const db = require('../connection');
 const generationRecord = (breedId) => {
 
   return db.query (
-    'SELECT generated_breeds_id, user_id, breed_one, breed_two FROM new_breed_queries WHERE generated_breeds_id = $1',
+    `SELECT generated_breeds_id, user_id, breed_one, breed_two FROM new_breed_queries WHERE generated_breeds_id = $1`,
     [breedId]
   )
   .then(data => {
