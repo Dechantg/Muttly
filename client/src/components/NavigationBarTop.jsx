@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SignInModal from './SignInModal';
 import '../views/stylesheets/NavigationBarTop.scss';
 import useSessionValidation from '../hooks/useSessionValidation'; 
@@ -7,7 +7,6 @@ import useSessionValidation from '../hooks/useSessionValidation';
 const NavigationBarTop = (props) => {
 
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
-  const history = useLocation();
   const { isValid, userId, isLoading } = useSessionValidation();
   const [isLoggedIn, setLogIn] = useState(null)
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ const NavigationBarTop = (props) => {
   return (
     <div className="top-navigation-bar">
       <div className="left-side">
-        <Link to="/newsfeed" className="logo-link">
+        <Link to={isLoggedIn ? "/newsfeeduser" : '/'} className="logo-link">
           <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
         </Link>
         <div>
