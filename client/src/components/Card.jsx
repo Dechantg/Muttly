@@ -35,7 +35,7 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
       for (let i = 1; i <= value; i++) {
         elements.push(
           <td key={i} className="typesign">
-            <img className="energy_symbol" src={`../icons/${type}.png`} />
+            <img className="energy_symbol" src={`http://localhost:5173/icons/${type}.png`} />
           </td>
         );
       }
@@ -91,7 +91,7 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
           <span className='height'>Average Height {inchesToFeetAndInches(avgHeight)} inches</span>
           <span className='weight'>Average Weight {avgWeight || `0 lbs`}</span>
         </div>
-        <img className='set_logo' src="../icons/paws_pink.png" alt="Logo" />
+        <img className='set_logo' src="http://localhost:5173/icons/paws_pink.png" alt="Logo" />
       </div>
       <div className='stat_container'>
         <table className="stats">

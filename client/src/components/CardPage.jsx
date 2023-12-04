@@ -54,9 +54,9 @@ function CardPage () {
   fetchGeneratedDog()
 
 return (
-  <>
+  <div className="solo-card-container">
     {card}
-  </>
+  </div>
 )
 
 }

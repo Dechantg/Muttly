@@ -12,11 +12,11 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useSessionValidation();
   const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
 
-  const onLikeClick = () => {
+  const onLikeClick = (id) => {
     setLike(prev => !prev) 
     const handleLike = async () => {
       try {
-        const response = await fetch(`http://localhost:8088//api/generated/${id}?likestatus=${liked}`, {
+        const response = await fetch(`http://localhost:8088/api/generated/${id}?likeStatus=${liked}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -50,11 +50,11 @@ const DogBreedCardModal = (props) => {
   }
   
 
-  const onTrashClick = (Id) => {
+  const onTrashClick = (id) => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/delete/${Id}`, {
+        const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
