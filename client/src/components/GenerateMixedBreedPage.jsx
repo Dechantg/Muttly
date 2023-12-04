@@ -2,7 +2,8 @@
 
 
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/GenerateMixedBreedPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
@@ -23,18 +24,22 @@ const GenerateMixedBreedPage = () => {
   const {isLoggedIn, setLogIn} = useState(false)
   // const { isValid, userId } = useSessionValidation();
 
-  // const navigate = useNavigate();
+  const { isValid, userId, isLoading } = useSessionValidation();
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     // console.log(isValid)
-  //     // console.log(isLoggedIn)
-  //     setLogIn(isValid);
-  //   }, 1000); // Adjust the interval as needed
+  const navigate = useNavigate();
 
-  //   // Clear interval on component unmount or when reinitializing the effect
-  //   return () => clearInterval(interval);
-  // }, [isLoggedIn]);
+  console.log("fomr the genrate page valid", isValid)
+
+  useEffect(() => {
+    console.log("Before navigation. isValid:", isValid);
+    if (!isLoading && !isValid) {
+      console.log("Navigating to /");
+      navigate('/');
+    }
+    console.log("After navigation. isValid:", isValid);
+  }, [isLoading, isValid, navigate]);
+
+
 
   useEffect(() => {
     console.log(isLoggedIn, 'testing')
