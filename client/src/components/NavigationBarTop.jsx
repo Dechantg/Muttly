@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SignInModal from './SignInModal';
 import '../views/stylesheets/NavigationBarTop.scss';
 import useSessionValidation from '../hooks/useSessionValidation'; 
-
-
 
 const NavigationBarTop = (props) => {
 
@@ -12,6 +10,7 @@ const NavigationBarTop = (props) => {
   const history = useLocation();
   const { isValid, userId, isLoading } = useSessionValidation();
   const [isLoggedIn, setLogIn] = useState(null)
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(isValid, 'isValid')
@@ -44,7 +43,7 @@ const NavigationBarTop = (props) => {
           alert('Logout Failed. Please try again.');
         throw new Error('Sign-in failed');
       }
-  
+      navigate('/');
     } catch (error) {
       console.error('Error during sign-out:', error.message);
     }
