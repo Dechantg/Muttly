@@ -17,7 +17,9 @@ function CardPage () {
           credentials: 'include',
         });
         const data = await response.json();
-        const newDogData = data[0];
+        // const newDogData = data[0];
+        const newDogData = data.muttyResult[0]
+        const mateData = data.extraStats[0]
         console.log(data[0])
         const dogCard = (
           <Card 
@@ -41,7 +43,8 @@ function CardPage () {
             ]}
             name={newDogData.name} 
             description={newDogData.description} 
-
+            dog1 = {mateData.breedOne}
+            dog2 = {mateData.breedTwo}
           />
         );
   
