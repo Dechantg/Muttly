@@ -8,7 +8,7 @@ const deleteGeneratedBreed = (breedId, userId) => {
   console.log(`Deleting breed with ID ${breedId} for user ID ${userId}`);
   return db.query('DELETE FROM generated_breeds WHERE id = $1 AND user_id = $2;', [breedId, userId])
     .then(result => {
-      console.log('Delete successful:', result);
+      console.log('Delete successful for: ', breedId);
     })
     .catch(error => {
       console.error('Delete failed:', error);

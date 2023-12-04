@@ -36,11 +36,12 @@ const NavigationBarTop = (props) => {
   const handleSignOut = async () =>  {
     try {
       const response = await fetch('http://localhost:8088/api/logout', {
+        method: 'POST',
         credentials: 'include',
       });
   
       if (!response.ok) {
-          alert('Incorrect email or password. Please try again.');
+          alert('Logout Failed. Please try again.');
         throw new Error('Sign-in failed');
       }
   
