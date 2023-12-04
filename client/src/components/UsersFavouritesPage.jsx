@@ -1,18 +1,44 @@
 // UsersFavouritesPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/UsersFavouritesPage.scss';
 
 const UsersFavouritesPage = () => {
+  const [favouritedImages, setFavouritedImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageClick = () => {
-    setSelectedImage(imageId);
+  useEffect(() => {
+    const fetchFavouritedImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setFavouritedImages(data);
+          console.log(data);
+        } else {
+          console.error('Failed to fetch favourited images:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching favourited images:', error);
+      }
+    };
+
+    fetchFavouritedImages();
+  }, []);
+
+  const openDogBreedModal = (image) => {
+    setSelectedImage(image);
   };
 
-  const clearSelectedImage = () => {
+  const closeDogBreedModal = () => {
     setSelectedImage(null);
   };
 
@@ -31,31 +57,38 @@ const UsersFavouritesPage = () => {
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {[1, 2, 3, 4, ].map((imageId) => (   // unsure if we need to do it like this; 
-            <img                                                // can also copy PhotoLabs scss
-            key={imageId}
-            src={`path/to/image${imageId}.png`}               
-            alt={`Image ${imageId}`}
-            onClick={() => handleImageClick(imageId)}
+          {favouritedImages.map((image) => (
+            <img
+              key={image.id}
+              src={image.generated_photo_link}               
+              alt={`Image ${image.id}`}
+              onClick={() => openDogBreedModal(image)}
             />
             ))}
         </div>
 
-        <div className="images">
-          {/* Placeholder elements for Images */}
-          {/* Alternative for displaying the images? */}
-          <div className="image" onClick={() => handleImageClick(1)}></div> 
-          <div className="image" onClick={() => handleImageClick(2)}></div>
-          <div className="image" onClick={() => handleImageClick(3)}></div>
-          <div className="image" onClick={() => handleImageClick(4)}></div>
-          <div className="image" onClick={() => handleImageClick(5)}></div>
-        </div> 
-
         {/* Dog Breed Card Modal */}
-        {selectedImage && <DogBreedCardModal breed={selectedImage} onclick={clearSelectedImage}/>}
+        {selectedImage && (
+          <DogBreedCardModal 
+            breed={selectedImage}
+            id={selectedImage.id}
+            image={selectedImage.generated_photo_link}
+            shedding={selectedImage.shedding}
+            drooling={selectedImage.drooling}
+            protectiveness={selectedImage.protectiveness}
+            energy={selectedImage.energy}
+            barking={selectedImage.barking}
+            height={selectedImage.height}
+            weight={selectedImage.weight}
+            name={selectedImage.name}
+            description={selectedImage.description}
+            dog1={selectedImage.dog1}
+            dog2={selectedImage.dog2}
+            feed={selectedImage.feed}
+            onclick={closeDogBreedModal}
+          />
+        )}
       </div>
-
-      {/* Bottom Navigation Bar */}
     </div>
   );
 };

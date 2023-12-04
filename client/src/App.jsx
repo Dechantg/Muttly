@@ -13,7 +13,6 @@ import SignUpPage from './components/SignUpPage';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 import CardPage from './components/CardPage';
-// import SignInModal from './components/SignInModal';
 import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 import DogBreedCardModal from './components/DogBreedCardModal';
@@ -25,11 +24,6 @@ export default function App() {
   const { isValid, userId, isLoading } = useSessionValidation();
   const [isLoggedIn, setLoggedIn] = useState(isValid)
   const navigate = useNavigate();
-
-  
-
-
-
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
   const isAboutPage = location.pathname === '/about';
@@ -39,22 +33,20 @@ export default function App() {
   const isSignUp = location.pathname === '/signup';
   const isGenerate = location.pathname === '/generate';
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // console.log(isValid)
+      // console.log(isLoggedIn)
+      // setLogIn(isValid);
+    }, 1000); // Adjust the interval as needed
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     // console.log(isValid)
-  //     // console.log(isLoggedIn)
-  //     setLogIn(isValid);
-  //   }, 1000); // Adjust the interval as needed
 
   //   // Clear interval on component unmount or when reinitializing the effect
   //   return () => clearInterval(interval);
   // }, [isLoggedIn]);
 
   return (
-
     <div className="App">
-
         <div className="AppWrapper">
           {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
           <div className="AppContent">
@@ -68,21 +60,17 @@ export default function App() {
               <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
               <Route path="/contact" element={<ContactUsPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-
               {/* <Route path="/signin" element={<SignInModal />} /> */}
               <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              {/* <Route path="/usersfavourites" element={<UsersFavouritesPage />} /> */}
+              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
               { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
-                 <Route path="/signin" element={<SignInModal />} />
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              {/* isValid && <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
-              <Route path="generated/breedbyid/:id"element = {<CardPage/>} />
-              <Route path="/usersfavourites" element={<UsersFavouritesPage isLoggedIn={isLoggedIn} />} />
-              <Route path="/generate" element={ <GenerateMixedBreedPage />} />
-              {/* <Route path="/newsfeeduser" element={isLoggedIn ? <NewsFeedUserPage /> : <Navigate replace to={"/"} />} /> */}
+
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
+        </div>
+      </div>
+  );
 };
