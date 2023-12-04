@@ -19,7 +19,7 @@ function CardPage () {
         const data = await response.json();
         console.log(data)
         // const newDogData = data[0];
-        const newDogData = data[0]
+        const newDogData = data.dogBreedDetails[0]
         const mateData = data.extraStats
         console.log(data[0])
         const dogCard = (
@@ -44,8 +44,8 @@ function CardPage () {
             ]}
             name={newDogData.name} 
             description={newDogData.description} 
-            // dog1 = {mateData.breedOne}
-            // dog2 = {mateData.breedTwo}
+            dog1 = {mateData.breedOne}
+            dog2 = {mateData.breedTwo}
           />
         );
   
