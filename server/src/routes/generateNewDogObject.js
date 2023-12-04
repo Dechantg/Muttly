@@ -90,13 +90,13 @@ router.get("/", validateSession, async (req, res) => {
       breedTwo: dogTwoId
     };
 
-    await queryRecord(updatedBreed);
+    const extraStats = await queryRecord(updatedBreed);
 
     console.log("last by not least lets work on my query table", updatedBreed)
 
 
-    console.log('Generated Breed Details:', generatedBreedDetails);
-    res.json({ muttyResult: parsedDogBreedData });
+    console.log('Generated Breed Details:', generatedBreedDetails, extraStats);
+    res.json({ muttyResult: generatedBreedDetails, extraStats });
   } catch (error) {
     console.error('Error in route handler:', error);
     res.status(500).json({ error: 'Internal Server Error' });
