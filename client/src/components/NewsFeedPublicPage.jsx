@@ -14,6 +14,8 @@ const NewsFeedPublicPage = () => {
   const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // !isLoading && !isValid
+
   const openDogBreedCardModal = (event, image) => {
     console.log('Click event:', event);
 

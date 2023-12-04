@@ -66,10 +66,10 @@ export default function App() {
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
               { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
-
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
+          </div>
         </div>
       </div>
   );

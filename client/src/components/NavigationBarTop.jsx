@@ -10,6 +10,14 @@ const NavigationBarTop = (props) => {
 
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const history = useLocation();
+  const { isValid, userId, isLoading } = useSessionValidation();
+  const [isLoggedIn, setLogIn] = useState(null)
+
+  useEffect(() => {
+    console.log(isValid, 'isValid')
+    isValid ? setLogIn(true) : setLogIn(false) 
+    }
+  ,[isLoading, isValid]);
 
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -20,12 +28,9 @@ const NavigationBarTop = (props) => {
   };
 
   const handleSignInClick = () => {
-    if (!props.isLoggedIn) {
+    if (!isLoggedIn) {
       openSignInModal();
-    } else {
-      loggedStatus(false);
-      history.push('/');
-    }
+    } 
   }; 
 
   const handleSignOut = async () =>  {
@@ -48,11 +53,6 @@ const NavigationBarTop = (props) => {
         throw new Error('Sign-in failed');
       }
   
-      console.log('Sign-in successful');
-      console.log(document.cookie)
-      // Perform actions after successful sign-in
-      onClose(); 
-  
     } catch (error) {
       console.error('Error during sign-in:', error.message);
     }
@@ -70,7 +70,7 @@ const NavigationBarTop = (props) => {
         </div>
       </div>
       <div className="right-side">
-          {props.isLoggedIn ? (
+          {isLoggedIn ? (
                     <a className ="login-tag"> <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" /> </a>
           ) : (
             <a className ="login-tag" onClick={handleSignInClick}> <img src="../icons/bark_in.png" alt="Muttly Logo" className="login-icon" /> </a>
