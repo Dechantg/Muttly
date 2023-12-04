@@ -26,6 +26,7 @@ const GenerateMixedBreedPage = () => {
 
   const navigate = useNavigate();
 
+  console.log("from the genrate page valid", isValid)
 
   useEffect(() => {
     console.log("Before navigation. isValid:", isValid);
@@ -39,6 +40,9 @@ const GenerateMixedBreedPage = () => {
 
 
   useEffect(() => {
+    console.log('testing', isLoggedIn);
+    // isValid ? console.log('working') : navigate('/about');
+
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}
