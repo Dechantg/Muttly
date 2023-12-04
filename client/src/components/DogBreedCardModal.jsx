@@ -40,10 +40,10 @@ const DogBreedCardModal = (props) => {
 
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);
-    setTimeout(handleLike, 1000);
+    setTimeout(handleLike, 2000);
   };
 
-  const onShareClick = (id) => {
+  const onShareClick = () => {
     navigator.clipboard.writeText(`${shareUrl}`)
       .then(() => {
         console.log(`Link copied to clipboard: ${shareUrl}`);
@@ -56,12 +56,12 @@ const DogBreedCardModal = (props) => {
   }
   
 
-  const onTrashClick = (id) => {
+  const onTrashClick = () => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(`${trashUrl}`, {
-          method: 'DELETE',
+        const response = await fetch(trashUrl, {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },

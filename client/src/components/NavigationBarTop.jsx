@@ -36,25 +36,16 @@ const NavigationBarTop = (props) => {
   const handleSignOut = async () =>  {
     try {
       const response = await fetch('http://localhost:8088/api/logout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
         credentials: 'include',
       });
   
       if (!response.ok) {
-        if (response.status === 401) {
           alert('Incorrect email or password. Please try again.');
-        } else {
-          alert('Sign-in failed. Please try again later.');
-        }
         throw new Error('Sign-in failed');
       }
   
     } catch (error) {
-      console.error('Error during sign-in:', error.message);
+      console.error('Error during sign-out:', error.message);
     }
   }
 
@@ -71,7 +62,7 @@ const NavigationBarTop = (props) => {
       </div>
       <div className="right-side">
           {isLoggedIn ? (
-                    <a className ="login-tag"> <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" /> </a>
+                    <a className ="login-tag" onClick={handleSignOut}> <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" /> </a>
           ) : (
             <a className ="login-tag" onClick={handleSignInClick}> <img src="../icons/bark_in.png" alt="Muttly Logo" className="login-icon" /> </a>
           )}

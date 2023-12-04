@@ -165,6 +165,7 @@ const GenerateMixedBreedPage = () => {
           const data = await response.json();
           console.log("here is the data from the generate click", data)
           const dogData = data.muttyResult[0]
+          console.log('extrastats',data.extraStats)
           // const mateData = data.extraStats
           modal=
           <DogBreedCardModal
