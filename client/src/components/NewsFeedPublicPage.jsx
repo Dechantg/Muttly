@@ -11,18 +11,17 @@ const NewsFeedPublicPage = () => {
   const [mostPopularImages, setMostPopularImages] = useState([]);
   const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
   const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(false);
 
-  // !isLoading && !isValid
+  // !isLoading && !isValid  
 
   const openDogBreedCardModal = (event, image) => {
     console.log('Click event:', event);
 
     if (image && image.generated_photo_link && image.id) {
-      
-      // setSelectedImage(clickedImageSrc);
+
       setSelectedImage(image)
-      // setDogBreedCardModalOpen(true);
+      setDogBreedCardModalOpen(true)
       
       console.log('Image clicked!', image);
       console.log('Clicked image ID:', image.id);
@@ -34,7 +33,7 @@ const NewsFeedPublicPage = () => {
   };
 
   const closeDogBreedCardModal = () => {
-    setSelectedImage(null);
+    setDogBreedCardModalOpen(false);
   };
   
   useEffect(() => {
@@ -103,23 +102,34 @@ const NewsFeedPublicPage = () => {
         </div>
 
         {/* Dog Breed Card Modal */}
-        {selectedImage && (
+        {isDogBreedCardModalOpen && (
           <DogBreedCardModal 
             id={selectedImage.id}
             image={selectedImage.generated_photo_link}
-            shedding={selectedImage.shedding}
-            drooling={selectedImage.drooling}
-            protectiveness={selectedImage.protectiveness}
-            energy={selectedImage.energy}
-            barking={selectedImage.barking}
-            height={selectedImage.height}
-            weight={selectedImage.weight}
+            shedding={{shedding : selectedImage.shedding}}
+            drooling={{drooling : selectedImage.drooling}}
+            protectiveness={{protectiveness : selectedImage.protectiveness}}
+            energy={{energy : selectedImage.energy}}
+            barking={{barking : selectedImage.barking}}
+            height={[
+              selectedImage.max_height_female,
+              selectedImage.max_height_male,
+              selectedImage.min_height_female,
+              selectedImage.min_height_male,
+            ]} 
+            weight={[ 
+              selectedImage.max_weight_female,
+              selectedImage.max_weight_male,
+              selectedImage.min_weight_female,
+              selectedImage.min_weight_male
+            ]}
             name={selectedImage.name}
             description={selectedImage.description}
             dog1={selectedImage.dog1}
             dog2={selectedImage.dog2}
-            feed={selectedImage.feed}
-            onClose={closeDogBreedCardModal} />
+            feed={true}
+            onClose={closeDogBreedCardModal}
+            isOpen={isDogBreedCardModalOpen} />
             )}
       </div>
     </div>

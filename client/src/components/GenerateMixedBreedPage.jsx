@@ -37,8 +37,7 @@ const GenerateMixedBreedPage = () => {
   }, [isLoading, isValid, navigate]);
 
   useEffect(() => {
-    // console.log('testing', isLoggedIn);
-    // isValid ? console.log('working') : navigate('/about');
+
 
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
@@ -161,9 +160,11 @@ const GenerateMixedBreedPage = () => {
             credentials: 'include',
           });
           const data = await response.json();
-          console.log(data)
-          const dogData = data.muttyResult[0];
-          // const mateData = data.extraStats[0];
+
+          console.log("here is the data from the generate click", data)
+          const dogData = data.muttyResult[0]
+          console.log('extrastats',data.extraStats)
+          const mateData = data.extraStats
           modal=
           <DogBreedCardModal
             image={dogData.generated_photo_link}

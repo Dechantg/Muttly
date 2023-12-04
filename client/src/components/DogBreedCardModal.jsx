@@ -8,51 +8,38 @@ import useSessionValidation from '../hooks/useSessionValidation';
 const DogBreedCardModal = (props) => {
 
   const [liked, setLike] = useState(false) 
-  const [closeModal, setClose] = useState(true)
+  const [closeModal, setClose] = useState(false)
   const { isValid, userId } = useSessionValidation();
-  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed} = props
-
-  let likeUrl = null
-  let trashUrl = null 
-  let shareUrl = null
-
-  useEffect(() => {
-    likeUrl = `http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${liked}`
-    trashUrl = `http://localhost:8088/api/generated/delete/${id}`
-    shareUrl =  `http://localhost:5173/generated/breedbyid/${id}`
-
-  },[liked])
+  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen} = props
 
 
-    const handleLike = async () => {
-      try {
-        const response = await fetch(`${likeUrl}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', 
-        });
-  
-        if (response.ok) {
-          console.log('Breed liking successfully');
-        } else {
-          console.error('Failed to like breed');
+      const handleLike = async () => {
+        try {
+          const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
+            credentials: 'include',
+          }); 
+          if (response.ok) {
+            console.log('Breed liked successfully');
+          } else {
+            console.error('Failed to like breed');
+          }
+        } catch (error) {
+          console.error('Error while liking breed:', error);
         }
-      } catch (error) {
-        console.error('Error while liking breed:', error);
-      }
-    };
+      };
+  
+    
 
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);
-    setTimeout(handleLike, 1000);
+    handleLike()
+    setTimeout(() => {setClose(true)}, 2000);
   };
 
-  const onShareClick = (id) => {
-    navigator.clipboard.writeText(`${shareUrl}`)
+  const onShareClick = () => {
+    navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
       .then(() => {
-        console.log(`Link copied to clipboard: ${shareUrl}`);
+        console.log(`Link copied to clipboard: http://localhost:5173/generated/breedbyid/${id}`);
         alert('Link copied to clipboard!');
       })
       .catch((error) => {
@@ -62,12 +49,12 @@ const DogBreedCardModal = (props) => {
   }
   
 
-  const onTrashClick = (id) => {
+  const onTrashClick = () => {
     alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
     const handleDelete = async () => {
       try {
-        const response = await fetch(`${trashUrl}`, {
-          method: 'DELETE',
+        const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -84,16 +71,16 @@ const DogBreedCardModal = (props) => {
       }
     };
     handleDelete()
-    // setClose(false)
+    setClose(true)
   }
 
   const onCloseClick = () => {
-    setClose(false)
+    onClose()
   }
 
   return (
     <>
-      {closeModal && 
+      {(isOpen || !closeModal) && 
       <div className='modal-background'>
         <div className="dog-breed-card">
           <div className='modal-card-mid-container'>
