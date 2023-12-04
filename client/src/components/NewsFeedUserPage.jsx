@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../views/stylesheets/NewsFeedUserPage';
+// import '../views/stylesheets/NewsFeedUserPage';
 
 const NewsFeedUserPage = () => {
   const navigate = useNavigate();
