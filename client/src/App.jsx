@@ -40,16 +40,16 @@ export default function App() {
   const isGenerate = location.pathname === '/generate';
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // console.log(isValid)
-      // console.log(isLoggedIn)
-      setLogIn(isValid);
-    }, 1000); // Adjust the interval as needed
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     // console.log(isValid)
+  //     // console.log(isLoggedIn)
+  //     setLogIn(isValid);
+  //   }, 1000); // Adjust the interval as needed
 
-    // Clear interval on component unmount or when reinitializing the effect
-    return () => clearInterval(interval);
-  }, [isLoggedIn]);
+  //   // Clear interval on component unmount or when reinitializing the effect
+  //   return () => clearInterval(interval);
+  // }, [isLoggedIn]);
 
   return (
 
@@ -85,8 +85,7 @@ export default function App() {
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
-        </div>
-        {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom />}
+       
       </div>
     </div>
   );
