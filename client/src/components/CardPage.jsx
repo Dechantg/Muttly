@@ -17,9 +17,10 @@ function CardPage () {
           credentials: 'include',
         });
         const data = await response.json();
+        console.log(data)
         // const newDogData = data[0];
-        const newDogData = data.muttyResult[0]
-        const mateData = data.extraStats[0]
+        const newDogData = data[0]
+        // const mateData = data.extraStats[0]
         console.log(data[0])
         const dogCard = (
           <Card 
@@ -43,8 +44,8 @@ function CardPage () {
             ]}
             name={newDogData.name} 
             description={newDogData.description} 
-            dog1 = {mateData.breedOne}
-            dog2 = {mateData.breedTwo}
+            // dog1 = {mateData.breedOne}
+            // dog2 = {mateData.breedTwo}
           />
         );
   
@@ -58,8 +59,10 @@ function CardPage () {
 
   useEffect(() => {
     console.log("useEffect triggered with id:", id);
-    fetchGeneratedDog(); // Fetch data when id changes
+    fetchGeneratedDog(); 
   }, [id]);
+
+  // fetchGeneratedDog(); 
 
 return (
   <div className="solo-card-container">

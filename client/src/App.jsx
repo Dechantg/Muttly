@@ -18,6 +18,7 @@ import SignInModal from './components/SignInModal';
 import DogBreedCardModal from './components/DogBreedCardModal';
 import useSessionValidation from './hooks/useSessionValidation';
 import ProtectedRoute from './components/ProtectedRoutes';
+import Card from './components/Card';
 
 export default function App() {
   const location = useLocation();
@@ -65,13 +66,13 @@ export default function App() {
               <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
               {/* <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> / */}
               <Route path="/signup" element={<SignUpPage />} />
-              { <Route path="/generate" element={<GenerateMixedBreedPage />} /> }
+              <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
+              <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
             </Routes> 
           </div>
           {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
           </div>
         </div>
-      </div>
   );
   
 }
