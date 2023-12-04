@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import useSessionValidation from '../hooks/useSessionValidation';
-
 import '../views/stylesheets/SignInModal.scss';
 
 const SignInModal = (props) => {
