@@ -21,6 +21,8 @@ const GenerateMixedBreedPage = () => {
   const [dogOneId, setIdOne] = useState(null)
   const [dogTwoId, setIdTwo] = useState(null)
   const [DogModal, setDogModal] = useState(null)
+  const {isLoggedIn, setLogIn} = useState(false)
+  // const { isValid, userId } = useSessionValidation();
 
   const { isValid, userId, isLoading } = useSessionValidation();
 
@@ -38,7 +40,10 @@ const GenerateMixedBreedPage = () => {
   }, [isLoading, isValid, navigate]);
 
 
+
   useEffect(() => {
+    console.log(isLoggedIn, 'testing')
+    // isValid ? console.log('working') : navigate('/about');
     const updatedOptionsList = dogOptions.map((dog) => {
       return <option key ={dog.id} value={dog.name}>
         {dog.name}
@@ -56,7 +61,6 @@ const GenerateMixedBreedPage = () => {
 
   useEffect(() => {
     if (selectedBreedOne) {
-      console.log(isValid)
   const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
   setIdOne(dogChoice.id)
   const fetchDataFirstDog = async () => {

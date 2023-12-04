@@ -1,9 +1,10 @@
 import React, {useState} from "react";
+import { useParams } from "react-router-dom";
 import Card from './Card'; 
 
 function CardPage () {
 
-  const { id } = match.params;
+  const { id } = useParams();
   const [card, setCard] = useState(null)
 
   // /api/generated/breedbyid
@@ -11,16 +12,17 @@ function CardPage () {
   const fetchGeneratedDog = async () => {
     try {
       if (id) {
-        const response = await fetch(`http://localhost:8088/api/generated/breedbyid/${id}`);
+        const response = await fetch(`http://localhost:8088/api/generated/breedbyid/${id}`, {
+          credentials: 'include',
+        });
         const data = await response.json();
         const newDogData = data[0];
-
+        console.log(data[0])
         const dogCard = (
           <Card 
-            num={1} 
-            image={newDogData.image_link} 
+            image={newDogData.generated_photo_link} 
             shedding={{shedding: newDogData.shedding}} 
-            drooling={ {drooling:newDogData.drooling}}
+            drooling={{drooling: newDogData.drooling}}
             protectiveness={{protectiveness: newDogData.protectiveness}} 
             energy={{energy:newDogData.energy}} 
             barking={{barking: newDogData.barking}} 
@@ -38,6 +40,7 @@ function CardPage () {
             ]}
             name={newDogData.name} 
             description={newDogData.description} 
+
           />
         );
   
@@ -51,7 +54,9 @@ function CardPage () {
   fetchGeneratedDog()
 
 return (
-  {card}
+  <>
+    {card}
+  </>
 )
 
 }
