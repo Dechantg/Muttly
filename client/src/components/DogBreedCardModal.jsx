@@ -24,25 +24,19 @@ const DogBreedCardModal = (props) => {
   },[liked])
 
 
-    const handleLike = async () => {
-      try {
-        const response = await fetch(`${likeUrl}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', 
-        });
-  
-        if (response.ok) {
-          console.log('Breed liking successfully');
-        } else {
-          console.error('Failed to like breed');
+      const handleLike = async () => {
+        try {
+          const response = await fetch(`${likeUrl}`, {
+            credentials: 'include',
+          }); 
+          const result = await response.json();
+          setData(result);
+        } catch (error) {
+          setError(error);
         }
-      } catch (error) {
-        console.error('Error while liking breed:', error);
-      }
-    };
+      };
+  
+    
 
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);

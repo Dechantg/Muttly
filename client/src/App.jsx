@@ -38,7 +38,7 @@ export default function App() {
       // console.log(isValid)
       // console.log(isLoggedIn)
       // setLogIn(isValid);
-    }, 1000); // Adjust the interval as needed
+    }, 1000)}); // Adjust the interval as needed
 
 
   //   // Clear interval on component unmount or when reinitializing the effect
@@ -73,4 +73,5 @@ export default function App() {
         </div>
       </div>
   );
-};
+  
+}
