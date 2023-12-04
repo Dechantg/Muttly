@@ -35,7 +35,7 @@ const NewsFeedPublicPage = () => {
   const closeDogBreedCardModal = () => {
     setSelectedImage(null);
   };
-
+  
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {

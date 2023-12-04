@@ -5,6 +5,8 @@
 @import './DogBreedCardModal.scss';
 
 .user-favourites-page-container {
+  display: flex;
+  flex-direction: column;
   // margin-top: 20px;
   // margin-bottom: 20px;
   // position: absolute;
@@ -15,57 +17,37 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px;
+  text-align: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
 
   .header {
     h1 {
       text-align: center;
-      position: relative;
-      // left: 100%;
+      padding-top: .5rem;
+      font-size: 5vw;
     }
 
     h3 {
       text-align: center;
-      position: relative;
       top: -1.875rem;
       top: -30%;
       // left: 30rem;
     }
   }
 
-  // .images {
-  //   display: grid;
-  //   grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
-  //   gap: 1rem;
-
-  //   .image {
-  //     width: 100%;
-  //     height: 12.5rem;
-  //     background-color: light-grey;
-  //     cursor: pointer;
-
-  //     // Stying for images
-
-  //     &:hover {
-  //       // Hover-styles if needed
-  //     }
-  //   }
-  //   // Styling for anything extra
-  // }
-
   .image-grid {
-    position: relative;
-    align-items: center;
-    right: 2.5rem;
     display: grid;
-    // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 1rem;
+    margin: 1.75rem;
 
-    .image {
+    img {
       width: 100%;
       height: auto;
       cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
       // Styling for the images
     }
