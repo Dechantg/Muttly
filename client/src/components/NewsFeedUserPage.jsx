@@ -54,7 +54,11 @@ const NewsFeedUserPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUsersFavouritedImages(data);
+          const usersFavourited = data.userLiked;
+          console.log("here is the useres favourited results", usersFavourited)
+          setUsersFavouritedImages(usersFavourited);
+          console.log('Extra Details:', extraDetails);
+
           // console.log('Users Favourited Images:', data);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
@@ -73,7 +77,9 @@ const NewsFeedUserPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setMostPopularImages(data);
+          const mostPopular = data.topLikedDetailsResult;
+          console.log("here is the most popular", mostPopular)
+          setMostPopularImages(mostPopular);
           // console.log('Most Popular Images state:', mostPopularImages);
           // console.log('Most Popular Images', data);
         } else {
@@ -93,7 +99,8 @@ const NewsFeedUserPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setRecentlyGeneratedImages(data);
+          const recentlyGen = data.result
+          setRecentlyGeneratedImages(recentlyGen);
           // console.log('Recently Generated Images:', data);
         } else {
           console.error('Failed to fetch recently generated images:', response.status);
