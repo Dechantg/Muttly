@@ -1,54 +1,57 @@
+// NavigationBarTop.jsx
+
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SignInModal from './SignInModal';
-import '../views/stylesheets/NavigationBarTop.scss';
 import useSessionValidation from '../hooks/useSessionValidation'; 
 
+import SignInModal from './SignInModal';
+
+import '../views/stylesheets/NavigationBarTop.scss';
+
 const NavigationBarTop = (props) => {
+  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+  const { isValid, userId, isLoading } = useSessionValidation();
+  const [isLoggedIn, setLogIn] = useState(null)
+  const navigate = useNavigate();
 
-const [isSignInModalOpen, setSignInModalOpen] = useState(false);
-const { isValid, userId, isLoading } = useSessionValidation();
-const [isLoggedIn, setLogIn] = useState(null)
-const navigate = useNavigate();
-
-useEffect(() => {
-  console.log(isValid, 'isValid')
-  isValid ? setLogIn(true) : setLogIn(false) 
-  }
-,[isLoading, isValid]);
-
-const openSignInModal = () => {
-  setSignInModalOpen(true);
-};
-
-const closeSignInModal = () => {
-  setSignInModalOpen(false);
-};
-
-const handleSignInClick = () => {
-  if (!isLoggedIn) {
-    openSignInModal();
-  } 
-}; 
-
-const handleSignOut = async () =>  {
-  try {
-    const response = await fetch('http://localhost:8088/api/logout', {
-      method: 'POST',
-      credentials: 'include',
-    });
-
-    if (!response.ok) {
-        alert('Logout Failed. Please try again.');
-      throw new Error('Sign-in failed');
+  useEffect(() => {
+    console.log(isValid, 'isValid')
+    isValid ? setLogIn(true) : setLogIn(false) 
     }
-    navigate('/');
-  } catch (error) {
-    console.error('Error during sign-out:', error.message);
-  }
-}
+  ,[isLoading, isValid]);
 
-return (
+  const openSignInModal = () => {
+    setSignInModalOpen(true);
+  };
+
+  const closeSignInModal = () => {
+    setSignInModalOpen(false);
+  };
+
+  const handleSignInClick = () => {
+    if (!isLoggedIn) {
+      openSignInModal();
+    };
+  }; 
+
+  const handleSignOut = async () =>  {
+    try {
+      const response = await fetch('http://localhost:8088/api/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+          alert('Logout Failed. Please try again.');
+        throw new Error('Sign-in failed');
+      }
+      navigate('/');
+    } catch (error) {
+      console.error('Error during sign-out:', error.message);
+    }
+  }
+
+  return (
     <div className="top-navigation-bar">
       <div className="left-side">
         {isLoggedIn ? (
@@ -60,7 +63,6 @@ return (
             <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
           </Link>
         )}
-
         <div>
           <h1 className="muttly-brand">Muttly</h1>
           <h2 className="muttly-slogan">Unlimited paw-sibilities... Tailored Tails, Your Way!</h2>

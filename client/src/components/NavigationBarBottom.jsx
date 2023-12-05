@@ -1,15 +1,19 @@
+// NavigationBarBottom.jsx
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../views/stylesheets/NavigationBarBottom.scss';
+
 import useSessionValidation from '../hooks/useSessionValidation';
 
-function NavigationBarBottom(props) {
+import '../views/stylesheets/NavigationBarBottom.scss';
+
+const NavigationBarBottom = (props) => {
   const { isValid, userId, isLoading } = useSessionValidation();
-  const [isLoggedIn, setLogIn] = useState(isValid);
+  const [ isLoggedIn, setLogIn ] = useState(isValid);
 
   useEffect(() => {
-    console.log(isValid, 'isValid')
-    isValid ? setLogIn(true) : setLogIn(false) 
+    // console.log(isValid, 'isValid');
+    isValid ? setLogIn(true) : setLogIn(false) ;
     }
   ,[isLoading, isValid]);
 
@@ -26,6 +30,6 @@ function NavigationBarBottom(props) {
       </Link>
     </div>
   );
-}
+};
 
 export default NavigationBarBottom;

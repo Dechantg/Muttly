@@ -1,19 +1,17 @@
 // SignInModal.jsx
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import '../views/stylesheets/SignInModal.scss';
 
 const SignInModal = (props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { onClose } = props
-  const navigate = useNavigate();
-
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
   
-
-
+  const { onClose } = props;
+  
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,8 +24,7 @@ const SignInModal = (props) => {
 
   const handleSignIn = async () => {
     if (!email || !password) {
-      // Handle case when fields are empty
-      alert('Email and password are required.'); // Show an alert or handle empty fields appropriately
+      alert('Email and password are required.');
       return;
     }
 
@@ -48,21 +45,17 @@ const SignInModal = (props) => {
           alert('Sign-in failed. Please try again later.');
         }
         throw new Error('Sign-in failed');
-      }
+      };
   
-      console.log('Sign-in successful');
-      console.log(document.cookie)
-      // Perform actions after successful sign-in
+      // console.log('Sign-in successful');
+      // console.log(document.cookie);
+  
       navigate('/newsfeeduser');
       onClose(); 
-  
     } catch (error) {
       console.error('Error during sign-in:', error.message);
-    }
+    };
   };
-  
-  
-  
 
   return (
     <div className="signin-modal-overlay">
@@ -77,10 +70,22 @@ const SignInModal = (props) => {
         </div>
         <div className="form-container">
           <label htmlFor="email">Email Address</label>
-          <input type="email" id="email" placeholder="Enter your email address" value={email} onChange={handleEmailChange} />
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Enter your email address" 
+            value={email} 
+            onChange={handleEmailChange} 
+          />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" value={password} onChange={handlePasswordChange}/>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Enter your password" 
+            value={password} 
+            onChange={handlePasswordChange} 
+          />
           <br></br>
           <button type="button" onClick={handleSignIn} >Sign In</button>
         </div>

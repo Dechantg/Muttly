@@ -8,8 +8,8 @@ import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/UsersFavouritesPage.scss';
 
 const UsersFavouritesPage = () => {
-  const [favouritedImages, setFavouritedImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [ favouritedImages, setFavouritedImages ] = useState([]);
+  const [ selectedImage, setSelectedImage ] = useState(null);
 
   useEffect(() => {
     const fetchFavouritedImages = async () => {
@@ -22,13 +22,12 @@ const UsersFavouritesPage = () => {
         if (response.ok) {
           const data = await response.json();
           setFavouritedImages(data);
-          console.log(data);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching favourited images:', error);
-      }
+      };
     };
 
     fetchFavouritedImages();
@@ -44,8 +43,6 @@ const UsersFavouritesPage = () => {
 
   return (
     <div className="users-favourites-page-container">
-      {/* Top Navigation Bar */}
-      
       {/* Body of the Page */}
       <div className="page-body">
         {/* Header and Subheader */}

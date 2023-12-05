@@ -1,27 +1,25 @@
 // App.jsx
 
-import './App.css';
-import HomePage from './components/HomePage';
+import './App.scss';
+
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useLocation, Navigate, useNavigate } from 'react-router-dom';
 
-import NavigationBarBottom from './components/NavigationBarBottom';
+import HomePage from './components/HomePage';
 import NavigationBarTop from './components/NavigationBarTop';
+import ContactUsPage from './components/ContactUsPage';
+import SignUpPage from './components/SignUpPage';
+import AboutUsPage from './components/AboutUsPage';
 import NewsFeedPublicPage from './components/NewsFeedPublicPage';
 import NewsFeedUserPage from './components/NewsFeedUserPage';
-import ContactUsPage from './components/ContactUsPage';
-import AboutUsPage from './components/AboutUsPage';
-import SignUpPage from './components/SignUpPage';
 import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 import CardPage from './components/CardPage';
-import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
-import SignInModal from './components/SignInModal';
-import DogBreedCardModal from './components/DogBreedCardModal';
-import useSessionValidation from './hooks/useSessionValidation';
+import NavigationBarBottom from './components/NavigationBarBottom';
+
 import UsersGeneratedImages from './components/UsersGeneratedImages'
 
-export default function App() {
+const App = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
@@ -56,4 +54,6 @@ export default function App() {
       </div>
     </div>
   );
-}
+};
+
+export default App;

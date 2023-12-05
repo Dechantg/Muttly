@@ -1,13 +1,14 @@
+// HomePage.jsx
+
 import React, {useEffect, useState} from "react"; 
-import { Link } from "react-router-dom"
-import '../views/stylesheets/HomePage.scss';
-import SignInModal from "./SignInModal";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom"
 import useSessionValidation from '../hooks/useSessionValidation';
 
+import SignInModal from "./SignInModal";
 
-function HomePage() {
+import '../views/stylesheets/HomePage.scss';
 
+const HomePage = () => {
   const images = [
     'BoxerHusky',
     'BulldogBorder_Collie', 
@@ -19,33 +20,34 @@ function HomePage() {
     'Miniature_SchnauzerAlaskan_Malamute', 
     'Poodle_StandardBoston_Terrier', 
     'Shiba_Inupug'
-  ] 
+  ];
   
-  const [index, setIndex] = useState(0) 
+  const [ index, setIndex ] = useState(0);
   
   const { isValid, userId, isLoading } = useSessionValidation();
+  
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isValid) {
-      console.log("Before navigation. isValid:", isValid);
+      // console.log("Before navigation. isValid:", isValid);
       if (isValid) {
-        console.log("Navigating to /newsfeeduser");
+        // console.log("Navigating to /newsfeeduser");
         navigate('/newsfeeduser');
       } else {
-        console.log('User not authenticated');
+        // console.log('User not authenticated');
       }
-      console.log("After navigation. isValid:", isValid);
+      // console.log("After navigation. isValid:", isValid);
     }
   }, [isValid, navigate]);
   
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 5000)
+    }, 5000);
 
     return () => clearInterval(interval)
-  }, [images.length])
+  }, [images.length]);
   
   const [loggedIn, loggedStatus] = useState(false);
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
@@ -55,7 +57,7 @@ function HomePage() {
   };
 
   const closeSignInModal = () => {
-    console.log('click')
+    // console.log('click');
     setSignInModalOpen(false);
   };
 
@@ -65,7 +67,7 @@ function HomePage() {
     } else {
       loggedStatus(false);
       history.push('/');
-    }
+    };
   };
 
   return (
@@ -96,7 +98,7 @@ function HomePage() {
         {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default HomePage
