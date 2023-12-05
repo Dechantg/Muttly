@@ -11,48 +11,51 @@
   position: relative;
   width: 35rem;
   height: 35rem;
+  min-height: 25rem;
+  max-width: 50vw;
+  padding-bottom: 1rem;
 }
 
 .tiktok-icon {
   position: absolute;
   left: 8%;
-  bottom: 50%;
-  width: 4rem;
+  bottom: 55%;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
 }
 
 .instagram-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
   left: 29.5%;
-  bottom: 70%;
+  bottom: 75%;
   // margin: 10rem;
 }
 
 .email-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  bottom: 70%;
+  bottom: 75%;
   right: 33.5%;
 }
 
 .facebook-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
   right: 12%;
-  bottom: 50%;
+  bottom: 55%;
 }
 
 .mailing-address-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
   left: 42%;
@@ -68,7 +71,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.65vw;
   font-weight: 700;
   height: 12vh;
   margin-bottom: 1rem;

@@ -45,9 +45,7 @@ const NavigationBarTop = () => {
           alert('Logout Failed. Please try again.');
         throw new Error('Sign-in failed');
       }
-      setLogIn(false, () => {
-        navigate('/');
-      });
+      window.location.reload();
     } catch (error) {
       console.error('Error during sign-out:', error.message);
     }
@@ -72,15 +70,15 @@ const NavigationBarTop = () => {
       </div>
       <div className="right-side">
         {isLoggedIn ? (
-          <a className ="login-tag" onClick={handleSignOut}> 
-            {' '}
-            <img src="../icons/bark_out.png" alt="Muttly Logo" className="logout-icon" /> 
-          </a>
+          <div className='log-container'>
+            <button className ="logout-btn" onClick={handleSignOut}> BARK OUT! </button>
+            <img src="../icons/bark-out.png" alt="Muttly Logo" className="login-icon" /> 
+          </div>
         ) : (
-          <a className ="login-tag" onClick={handleSignInClick}> 
-            {' '}
-            <img src="../icons/bark_in.png" alt="Muttly Logo" className="login-icon" /> 
-          </a>
+          <div className='log-container'>
+            <button className ="login-btn" onClick={handleSignInClick}> WOOF IN! </button>
+            <img src="../icons/woof-in.png" alt="Muttly Logo" className="login-icon" /> 
+          </div>
         )}
       </div>
       {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}

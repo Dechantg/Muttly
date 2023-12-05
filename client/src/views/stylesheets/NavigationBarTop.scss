@@ -48,23 +48,36 @@
   // Styling for the Bark In/Bark Out logo link
 }
 
-.sign-in-out-button {
-  height: 2vh;
-  margin-right: 2vw;
-  margin-top: 5vh;
+.log-container {
+  margin-bottom: 3vh;
+  min-height: 4rem;
+  &:hover {
+    filter: brightness(1.1);
 }
 
-.login-tag {
-
+.login-btn, .logout-btn {
+  width: 9rem;
+  height: 5vh;
+  min-height: 3rem;
+  margin-right: 1rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 5%;
+  padding: 0.5rem;
 }
 
-.logout-icon, .login-icon {
- height: 6.5rem;
- margin-top: 2.5rem;
- margin-right: 2rem;
+.login-btn {
+  background-color:#BF5B8F;
+}
 
- &:hover {
-  filter: brightness(1.1);
+.logout-btn {
+  background-color: #7B9AE1;
+}
+
+.login-icon {
+ min-height: 6rem;
+ height: 13vh;
+ margin-bottom: -5rem;
 }
 
 }

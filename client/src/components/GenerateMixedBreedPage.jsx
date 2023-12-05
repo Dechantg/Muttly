@@ -194,6 +194,7 @@ const GenerateMixedBreedPage = () => {
           setdogModal(modal);
         } catch (error) {
           console.error('Error fetching data', error);
+          setWaitModal(false)
         }
       };
       

@@ -49,8 +49,7 @@ const SignInModal = (props) => {
   
       // console.log('Sign-in successful');
       // console.log(document.cookie);
-  
-      navigate('/newsfeeduser');
+      window.location.reload();
       onClose(); 
     } catch (error) {
       console.error('Error during sign-in:', error.message);
