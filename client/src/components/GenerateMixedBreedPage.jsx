@@ -162,8 +162,11 @@ const GenerateMixedBreedPage = () => {
             credentials: 'include',
           });
           const data = await response.json();
-          const dogData = data.muttyResult[0]
-          const mateData = data.extraStats
+          console.log('Data in full',data)
+          const dogData = data.dogBreedDetails[0];
+          console.log('dogData', dogData)
+          const mateData = data.extraStats;
+          console.log(mateData)
           modal=
             <DogBreedCardModal
               id={dogData.id}
