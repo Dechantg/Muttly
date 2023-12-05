@@ -2,10 +2,11 @@
 
 .contact-us-container {
   position: absolute;
+  text-align: center;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-left: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
 }
 
 .contact-header-section {
@@ -14,16 +15,17 @@
   align-items: center;
   margin-top: 1rem;
   font-size: 3vh;
+h1 {
+    margin-right: 3rem;
+  }
   } 
 
-  .header-text {
-    
+  .contact-header-section>   h3 {
+    margin-right: 3rem;
   }
 
   .github-section {
-    margin-top: 3rem;
-    position: relative;
-    left: 20%; 
+    margin-right: 13%;
     .github-icon {
       height: 8rem;
     }
@@ -32,10 +34,40 @@
       text-decoration: none;
       color: inherit;
       font-size: 30px;
+      font-weight: 700;
     }
     
     .Link {
       text-decoration: none;
       color: inherit;
     }
+} 
+
+.enlarged-pawprint-image {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 55vh;
+  margin-bottom: 2vh;
+  margin-right: 1.25vw;
+
+}
+
+.linkedin-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 11%;
+
+
+  .coder-container {
+    margin: 1rem;
+    font-size: 1vw;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .linkedin-icon {
+    height: 10vh;
+  }
 }

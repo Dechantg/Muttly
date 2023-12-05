@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation';
 
+import WaitOnGenerateModal from './WaitOnGenerateModal';
 import DogBreedCardModal from './DogBreedCardModal';
 import Card from './Card';
 
@@ -19,7 +20,8 @@ const GenerateMixedBreedPage = () => {
   const [ secondDog, setSecondDog ]= useState(null);
   const [ dogOneId, setIdOne ] = useState(null);
   const [ dogTwoId, setIdTwo ] = useState(null);
-  const [ DogModal, setDogModal ] = useState(null);
+  const [ dogModal, setdogModal ] = useState(null);
+  const [ waitModal, setWaitModal ] = useState(null);
 
   const { isValid, userId, isLoading } = useSessionValidation();
 
@@ -152,7 +154,8 @@ const GenerateMixedBreedPage = () => {
   const handleClickToGenerate = () => {
     if (dogOneId && dogTwoId) {
       let modal = null;
-      setDogModal(null);
+      setdogModal(null);
+      setWaitModal(true)
       const fetchFusion = async () => {
         try {
           const response = await fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
@@ -187,7 +190,8 @@ const GenerateMixedBreedPage = () => {
               dog1 = {mateData.breedOne}
               dog2 = {mateData.breedTwo}
             />
-          setDogModal(modal);
+          setWaitModal(false)
+          setdogModal(modal);
         } catch (error) {
           console.error('Error fetching data', error);
         }
@@ -238,7 +242,8 @@ const GenerateMixedBreedPage = () => {
           {secondDog || <Card num = {2}/>}
         </div>
       </div>
-      {DogModal}
+      {waitModal && <WaitOnGenerateModal/>}
+      {dogModal}
   </div>
   );
 };

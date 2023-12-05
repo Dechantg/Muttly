@@ -16,7 +16,6 @@ import GenerateMixedBreedPage from './components/GenerateMixedBreedPage';
 import UsersFavouritesPage from './components/UsersFavouritesPage';
 import CardPage from './components/CardPage';
 import NavigationBarBottom from './components/NavigationBarBottom';
-
 import UsersGeneratedImages from './components/UsersGeneratedImages'
 
 const App = () => {
@@ -55,7 +54,6 @@ const App = () => {
         {(isNewsFeedUser || isNewsFeed || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom/>}
         </div>
       </div>
-    </div>
   );
 };
 
