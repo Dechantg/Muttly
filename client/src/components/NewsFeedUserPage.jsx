@@ -143,8 +143,7 @@ const NewsFeedUserPage = () => {
           className ="userfeed-clickable-title" 
           title="Click Me!" 
           onClick={redirectToUsersFavouritesPage}>
-          Your Favourites 
-          <img className='bone-animate' src='../icons/bone.png' />
+          Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-favourited-images-row">
           {usersfavouritedImages.slice(0, 5).map((image) => (
@@ -191,8 +190,7 @@ const NewsFeedUserPage = () => {
           className="your-generations" 
           title="Click Me!" 
           onClick={redirectToUsersGeneratedImagesPage}>
-            Your Generations 
-            <img className='bone-animate' src= '../icons/bone.png' />
+            Your Generations <img className='bone-animate' src= '../icons/bone.png' />
         </h2>
         <div className="users-generated-image-row">
           {usersGeneratedImages.slice(0, 6).map((image) => (

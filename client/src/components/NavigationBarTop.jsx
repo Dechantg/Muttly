@@ -8,7 +8,7 @@ import SignInModal from './SignInModal';
 
 import '../views/stylesheets/NavigationBarTop.scss';
 
-const NavigationBarTop = (props) => {
+const NavigationBarTop = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const { isValid, userId, isLoading } = useSessionValidation();
   const [isLoggedIn, setLogIn] = useState(null)
@@ -18,7 +18,7 @@ const NavigationBarTop = (props) => {
     console.log(isValid, 'isValid')
     isValid ? setLogIn(true) : setLogIn(false) 
     }
-  ,[isLoading, isValid]);
+  ,[isLoading, isValid, isLoggedIn]);
 
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -45,7 +45,9 @@ const NavigationBarTop = (props) => {
           alert('Logout Failed. Please try again.');
         throw new Error('Sign-in failed');
       }
-      navigate('/');
+      setLogIn(false, () => {
+        navigate('/');
+      });
     } catch (error) {
       console.error('Error during sign-out:', error.message);
     }
