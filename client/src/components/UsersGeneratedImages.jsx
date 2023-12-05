@@ -2,15 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DogBreedCardModal from './DogBreedCardModal';
 import useSessionValidation from '../hooks/useSessionValidation';
+
+import DogBreedCardModal from './DogBreedCardModal';
+
 import '../views/stylesheets/UsersFavouritesPage.scss';
 
 const UsersFavouritesPage = () => {
-  const [usersGeneratedImages, setUsersGeneratedImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
+  const [ selectedImage, setSelectedImage ] = useState(null);
   const { isValid, userId, isLoading } = useSessionValidation();
-  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
+  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
 
 
   const openDogBreedCardModal = (event, image) => {
@@ -41,14 +43,14 @@ const UsersFavouritesPage = () => {
         if (response.ok) {
           const data = await response.json();
           setUsersGeneratedImages(data); 
-          console.log('Users Generated Images state:', usersGeneratedImages);
-          console.log('Users Generated Images:', data);
+          // console.log('Users Generated Images state:', usersGeneratedImages);
+          // console.log('Users Generated Images:', data);
         } else {
           console.error('Failed to fetch users generated images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching users recently generated images:', error);
-      }
+      };
     };
 
     fetchUsersGeneratedImages();
@@ -61,8 +63,6 @@ const UsersFavouritesPage = () => {
 
   return (
     <div className="users-generated-images-page-container">
-      {/* Top Navigation Bar */}
-      
       {/* Body of the Page */}
       <div className="page-body">
         {/* Header and Subheader */}

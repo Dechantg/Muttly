@@ -1,4 +1,5 @@
 // DogBreedCardModal.scss
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -43,9 +44,9 @@
     from {
       box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Initial glow effect */
     }
+
     to {
       box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Final glow effect */
     }
   }
-
 }

@@ -7,7 +7,7 @@ import EnlargedPawprintImage from './EnlargedPawprintImage';
 
 import '../views/stylesheets/ContactUsPage.scss';
 
-function ContactUsPage() {
+const ContactUsPage = () => {
   return (
       <div className="contact-us-container" >
         {/* Header Section */}
@@ -27,8 +27,6 @@ function ContactUsPage() {
 }; 
 
 export default ContactUsPage;
-
-
 
  {/* Paw Graphic + Social Media Links Section */}
       {/* <div className="social-media-section"> */}

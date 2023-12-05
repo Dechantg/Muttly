@@ -1,3 +1,5 @@
+// HomePage.scss
+
 .main {
   display: flex;
 }
@@ -36,6 +38,7 @@
   margin-right:-200rem;
   margin-top: 45vh;
   transition: filter 0.3s ease;
+
   &:hover {
     filter: brightness(1.2);
   }
@@ -61,26 +64,31 @@
   opacity: 0;
   transition: opacity 0.5s ease; /* Transition for smooth opacity change */
 }
+
 .dog_home.active {
   opacity: 1;
 }
+
 .dog_home.fade-in {
   animation: fadeIn 5s infinite; /* Adjust timing as needed */
 }
 
 @keyframes fadeIn {
-0% {
-  opacity: 0;
-}
-25% {
-  opacity: 1;
-}
-75% {
-  opacity: 1;
-}
-100% {
-  opacity: 0;
-}
+  0% {
+    opacity: 0;
+  }
+  
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 button {
@@ -92,6 +100,7 @@ button {
   border: none; 
   font-family: 'Indie Flower', cursive;
   transition: filter 0.3s ease;
+
   &:hover {
     filter: brightness(1.2);
   }

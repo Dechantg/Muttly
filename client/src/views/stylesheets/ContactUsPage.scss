@@ -1,8 +1,5 @@
 // ContactUsPage.scss
 
-@import './NavigationBarTop.scss';
-@import './NavigationBarBottom.scss';
-
 .contact-us-container {
   position: absolute;
   display: flex;
@@ -23,7 +20,6 @@
     
   }
 
-  
   .github-section {
     margin-top: 3rem;
     position: relative;

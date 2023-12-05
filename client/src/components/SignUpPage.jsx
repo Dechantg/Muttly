@@ -1,33 +1,33 @@
+// SignUpPage.jsx
+
 import React, { useState,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation'; 
-import { useNavigate } from 'react-router-dom';
 
 import '../views/stylesheets/SignUpPage.scss';
 
 const SignUpPage = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [isLoggedIn, setLogIn] = useState(null)
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ firstName, setFirstName ] = useState('');
+  const [ lastName, setLastName ] = useState('');
+  const [ isLoggedIn, setLogIn ] = useState(null);
   const { isValid, userId, isLoading } = useSessionValidation();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isValid) {
-      console.log("Before navigation. isValid:", isValid);
+      // console.log("Before navigation. isValid:", isValid);
       if (isValid) {
-        console.log("Navigating to /newsfeeduser");
+        // console.log("Navigating to /newsfeeduser");
         navigate('/newsfeeduser');
       } else {
-        console.log('User not authenticated');
-      }
-      console.log("After navigation. isValid:", isValid);
-    }
+        // console.log('User not authenticated');
+      };
+      // console.log("After navigation. isValid:", isValid);
+    };
   }, [isValid, navigate]);
-
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -58,20 +58,15 @@ const SignUpPage = () => {
 
       if (!response.ok) {
         throw new Error('Sign-in failed');
-      }
-
-      console.log('Sign-in successful');
-
+      };
+      // console.log('Sign-in successful');
     } catch (error) {
       console.error('Error during sign-in:', error.message);
-    }
+    };
   };
-  
-
 
   return (
     <div className="signup-container">
-
       <div className="background-with-pawprints-left">
         <div className='column-1'>
           <img className='side_logo' src='../icons/paws_pink.png'/>
@@ -132,9 +127,9 @@ const SignUpPage = () => {
             <img className="paw-button" src="../icons/paws_pink.png"/>
           </Link>
         <p>Sign Me Up!</p>
-        {/* <button type="submit">Sign Me Up!</button> */}
         </div>
       </div>
+      
       <div className="background-with-pawprints-right">
         <div className='column-3'>
             <br/>
