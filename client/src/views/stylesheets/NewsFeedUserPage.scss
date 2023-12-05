@@ -21,7 +21,7 @@
 .users-news-feed-content {
   margin-left: 3.5rem;
   margin-top: 3rem;
-  width: 55rem;
+  width: 65rem;
   // margin-bottom: -1rem;
 
   h2 {
@@ -56,8 +56,8 @@
     margin-bottom: 0.5rem;
 
     img {
-      width: 9rem;
-      height: 7rem;
+      width: 11rem;
+      height: 9rem;
       object-fit: cover;
       margin: 8px;
       border-radius: 8px;
@@ -69,12 +69,11 @@
 .users-generated-image-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 30rem;
   margin-bottom: 1.5rem;
   
   img {
-    width: 9rem;
-    height: 7rem;
+    width: 11rem;
+    height: 9rem;
     object-fit: cover;
     margin: 8px;
     border-radius: 8px;
