@@ -42,8 +42,8 @@ try {
   }
 
 
-  console.log('Fetched data dog one:', dogBreedDetails);
-  console.log("extra breed details", extraStats);
+  // console.log('Fetched data dog one:', dogBreedDetails);
+  // console.log("extra breed details", extraStats);
 
   res.json({dogBreedDetails, extraStats});
 

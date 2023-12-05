@@ -23,15 +23,23 @@ router.post ('/', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUserResponse = await addNewUser(firstName, lastName, email, hashedPassword);
+    const user = await addNewUser(firstName, lastName, email, hashedPassword);
+    console.log("New user created for: ", user);
 
-    if (newUserResponse.success) {
-      req.session.user = { id: newUserResponse.user.id, username: newUserResponse.user.username };
+
+    if (user.success) {
+      req.session.user = { id: user.user.id, email: user.user.email };
+      console.log("inside the enw user signup", req.session.user)
+      console.log("inside the enw user signup", req.sessionID)
+
     }
 
-    console.log("New user created for: ", newUserResponse);
 
-    res.status(200).json(newUserResponse);
+    return res.status(200).json({
+      message: 'Login successful',
+      session: req.sessionID,
+    });
+
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
