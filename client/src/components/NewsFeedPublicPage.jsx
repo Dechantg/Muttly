@@ -39,8 +39,9 @@ const NewsFeedPublicPage = () => {
       try {
         const response = await fetch('http://localhost:8088/api/mostliked');
         const data = await response.json();
-        setMostPopularImages(data[0]);
-        console.log(data[0]);
+        const popularImages = data.topLikedDetailsResult
+        setMostPopularImages(popularImages);
+        console.log(popularImages);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
       };
@@ -50,8 +51,11 @@ const NewsFeedPublicPage = () => {
       try {
         const response = await fetch('http://localhost:8088/api/mostrecent');
         const data = await response.json();
-        setRecentlyGeneratedImages(data[0]);
-        console.log(data[0]);
+        const recentlyGen = data.result
+
+        setRecentlyGeneratedImages(recentlyGen);
+
+        console.log(recentlyGen);
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
       }
