@@ -19,6 +19,7 @@ import DogBreedCardModal from './components/DogBreedCardModal';
 import useSessionValidation from './hooks/useSessionValidation';
 import ProtectedRoute from './components/ProtectedRoutes';
 import Card from './components/Card';
+import UsersGeneratedImages from './components/UsersGeneratedImages'
 
 export default function App() {
   const location = useLocation();
@@ -46,32 +47,25 @@ export default function App() {
 
   return (
     <div className="App">
-
-        <div className="AppWrapper">
-          {(isGenerate || isSignUp || isNewsFeedUser || isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
-          <div className="AppContent">
-            {/* <ContactUsPage /> */}
-            {/* <EnlargedPawPrintImage /> */}
-            {/* <UsersFavouritesPage /> */}
-            {/* <DogBreedCardModal /> */}
-            {/* <UsersFavouritesPage /> */}
-            <Routes>
-              <Route path="/" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <HomePage />} />
-              <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
-              <Route path="/contact" element={<ContactUsPage />} />
-              <Route path="/about" element={<AboutUsPage />} />
-              {/* <Route path="/signin" element={<SignInModal />} /> */}
-              <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-              <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
-            <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> /
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
-              <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
-            </Routes> 
-          </div>
-          {(isNewsFeedUser || isNewsFeed || isAboutPage || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
-          </div>
+      <div className="AppWrapper">
+        {(isGenerate || isSignUp || isNewsFeedUser || UsersGeneratedImages|| isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop isLoggedIn={isLoggedIn} />}
+        <div className="AppContent">
+          <Routes>
+            <Route path="/" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <HomePage />} />
+            <Route path="/signup" element={isLoggedIn ? <Navigate replace to={"/newsfeeduser" }/>  : <SignUpPage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+            <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
+            <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> 
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
+            <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
+            <Route path="/usersgeneratedimages" element={<UsersGeneratedImages />} /> 
+          </Routes> 
         </div>
+        {(isNewsFeedUser || isNewsFeed || isAboutPage || UsersGeneratedImages || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom isLoggedIn={isLoggedIn} />}
+        </div>
+      </div>
   );
-  
 }

@@ -3,37 +3,158 @@
 @import './NavigationBarTop.scss';
 @import './NavigationBarBottom.scss';
 
-.news-feed-user-container {
-  // Styling for the overall container
+.users-news-feed-user-container {
+  display: flex;
+  // margin-bottom: -10rem;
+  margin-top: .5rem
 }
 
-.news-feed-content {
-  text-align: center;
-  margin: 20px;
+.news-feed-container-generate {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 45rem; 
+}
+
+.users-news-feed-content {
+  margin-left: 3.5rem;
+  margin-top: 1.5rem;
+  width: 55rem;
+  // margin-bottom: -1rem;
 
   h2 {
-    // Styling for the section titles
+    text-align: left;
+    // margin-bottom: .5rem;
   }
 
-  .image-row {
+  .userfeed-clickable-title {
+    width: fit-content;
+    // background-color: white;
+    border-bottom: 2px solid black;
+    height: 2rem;
+    padding: 0.25rem 0.5rem 2rem 0.5rem;
+    text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    img {
+      // margin-top: 1rem;
+      width: 1.5rem;
+    }
+
+  // &:hover {
+  //   animation: wiggle 0.3s ease-in-out; 
+  // }
+
+  // @keyframes wiggle {
+  //   20% {
+  //     transform: translateX(-2px);
+  //   }
+  //   40% {
+  //     transform: translateX(2px);
+  //   }
+  //   60% {
+  //     transform: translateX(-1px);
+  //   }
+  //   80% {
+  //     transform: translateX(1px);
+  //   }
+  //   100% {
+  //     transform: translateX(0);
+  //   }
+  // }
+}
+  
+  .users-favourited-images-row,
+  .users-most-popular-images-row,
+  .users-recently-generated-images-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 
-    // Stying for thumbnail images needed
+    img {
+      width: 9rem;
+      height: 7rem;
+      object-fit: cover;
+      margin: 8px;
+      border-radius: 8px;
+    }
+  }  
+}
+
+.users-generated-image-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 30rem;
+  margin-bottom: 1.5rem;
+  
+  img {
+    width: 9rem;
+    height: 7rem;
+    object-fit: cover;
+    margin: 8px;
+    border-radius: 8px;
   }
+}
+
+.your-generations {
+  width: fit-content;
+  // background-color: white;
+  border-bottom: 2px solid black;
+  height: 2rem;
+  padding: 0.25rem 0.5rem 2rem 0.5rem;
+  text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.userfeed-h2 {
+  width: fit-content;
+  border-bottom: 2px solid black;
 }
 
 .generate-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  margin-top: .5rem;
+  height: 10rem;
+  width: 10rem;
+  margin-bottom: 2.5rem;
   cursor: pointer;
+  animation: glow 1s ease-in-out infinite alternate;
+  border-radius: 50%; 
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Initial glow effect */
+    }
+    to {
+      box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Final glow effect */
+    }
+  }
+}
 
-  // Styling for the pawprint icon
+.bone-animate {
+  width: 1.5rem;
+   animation: wiggle infinite 0.3s ease-in-out; 
 
-  p {
-    // Styling for the text related to button
+   @keyframes wiggle {
+    20% {
+      transform: translateX(-2px);
+    }
+    40% {
+      transform: translateX(2px);
+    }
+    60% {
+      transform: translateX(-1px);
+    }
+    80% {
+      transform: translateX(1px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }
