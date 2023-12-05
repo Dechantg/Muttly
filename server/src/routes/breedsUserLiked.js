@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 const userLikedBreeds = require('../../database/queries/get_breeds_user_liked')
 const validateSession = require('../helpers/sessionValidation')
+const breedParentNames = require('../../database/queries/get_breed_name_extra_details')
 
 router.get('/', validateSession, async (req, res) => {
 
@@ -23,10 +24,21 @@ try {
 
   const userLiked = await userLikedBreeds(userId);
 
-  console.log('Fetched data dog details:', userLiked);
+  const userLikedIds = userLiked.map((breed) => ({ id: breed.id }));
 
 
-  res.json(userLiked);
+  console.log("here is my check for breed ids: ", userLikedIds)
+
+  const extraDetails = await breedParentNames(userLikedIds)
+
+  console.log('here is the extradetails back from the query', extraDetails)
+
+
+
+  // console.log('Fetched data dog details:', userLiked);
+
+
+  res.json({userLiked, extraDetails});
 
 } catch (error) {
   console.error('Error executing SQL query:', error);
