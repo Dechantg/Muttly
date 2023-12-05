@@ -62,7 +62,6 @@ function CardPage () {
     fetchGeneratedDog(); 
   }, [id]);
 
-  // fetchGeneratedDog(); 
 
 return (
   <div className="solo-card-container">

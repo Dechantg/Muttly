@@ -160,10 +160,9 @@ const GenerateMixedBreedPage = () => {
             credentials: 'include',
           });
           const data = await response.json();
-
-          console.log("here is the data from the generate click", data.dogBreedDetails[0])
-          const dogData = data.dogBreedDetails[0]
-          console.log('extrastats', data.extraStats)
+          console.log('here is the dog generate', data)
+          console.log(data.muttyResult)
+          const dogData = data.muttyResult[0]
           const mateData = data.extraStats
           modal=
           <DogBreedCardModal
@@ -221,7 +220,6 @@ const GenerateMixedBreedPage = () => {
   
   return (
     <div className="generate-mixed-breed-container">
-        <h1>Muttly's Mixer</h1>
         <div className="page-body-generate">
           <div className="left-container">
             <select id="leftDropdown" placeholder= "Pick a Dog" onChange={(e) => handleDogOneSelection(e.target.value)}>

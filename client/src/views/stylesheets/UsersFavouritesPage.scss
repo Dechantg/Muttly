@@ -4,22 +4,22 @@
 @import './NavigationBarBottom.scss';
 @import './DogBreedCardModal.scss';
 
-.user-favourites-page-container {
-  display: flex;
-  flex-direction: column;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
-  // position: absolute;
-
-}
-
 .page-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   margin-left: 1rem;
   margin-right: 1rem;
+  height: 44rem;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+  }
 
   .header {
     h1 {
@@ -30,9 +30,6 @@
 
     h3 {
       text-align: center;
-      top: -1.875rem;
-      top: -30%;
-      // left: 30rem;
     }
   }
 
@@ -55,80 +52,3 @@
   }
 }
 
-// ----- PHOTOLABS SCSS ----- \\
-
-/* 
-
-  PhotoList.scss
-
-.photo-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.photo-list:after {
-  content: "";
-  flex: 0 1 30%;
-  margin: 5px;
-}
-
-*/
-
-/*
-
-  PhotoListItem.scss
-
-.photo-list__item {
-  margin: 24px;
-  padding: 8px;
-  border-width: 0.5px;
-  border-color: lightgray;
-  border-style: solid;
-  border-radius: 8px;
-  max-width: fit-content;
-}
-
-.photo-list__image {
-  user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.photo-list__image {
-  border-radius: 8px 8px 0px 0px;
-  user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.photo-list__user-profile {
-  object-fit: cover;
-  border-radius: 100%;
-  vertical-align: middle;
-  margin-right: 8px;
-  width: 40px;
-  height: 40px;
-}
-
-.photo-list__user-details {
-  display: flex;
-}
-
-.photo-list__user-info {
-  margin-top: 5px;
-  font-weight: 700;
-  font-size: 12px;
-  margin-left: 8px;
-}
-
-.photo-list__user-location {
-  color: #838383;
-}
-
-*/

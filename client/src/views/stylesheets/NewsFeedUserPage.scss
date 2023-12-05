@@ -5,7 +5,7 @@
 
 .users-news-feed-user-container {
   display: flex;
-  // margin-bottom: -10rem;
+  justify-content: center;
   margin-top: .5rem
 }
 
@@ -20,8 +20,8 @@
 
 .users-news-feed-content {
   margin-left: 3.5rem;
-  margin-top: 1.5rem;
-  width: 55rem;
+  margin-top: 3rem;
+  width: 65rem;
   // margin-bottom: -1rem;
 
   h2 {
@@ -41,30 +41,9 @@
 
     img {
       // margin-top: 1rem;
-      width: 1.5rem;
+      width: 1.75rem;
     }
 
-  // &:hover {
-  //   animation: wiggle 0.3s ease-in-out; 
-  // }
-
-  // @keyframes wiggle {
-  //   20% {
-  //     transform: translateX(-2px);
-  //   }
-  //   40% {
-  //     transform: translateX(2px);
-  //   }
-  //   60% {
-  //     transform: translateX(-1px);
-  //   }
-  //   80% {
-  //     transform: translateX(1px);
-  //   }
-  //   100% {
-  //     transform: translateX(0);
-  //   }
-  // }
 }
   
   .users-favourited-images-row,
@@ -77,11 +56,12 @@
     margin-bottom: 0.5rem;
 
     img {
-      width: 9rem;
-      height: 7rem;
+      width: 11rem;
+      height: 9rem;
       object-fit: cover;
       margin: 8px;
       border-radius: 8px;
+      cursor: pointer;
     }
   }  
 }
@@ -89,21 +69,21 @@
 .users-generated-image-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 30rem;
   margin-bottom: 1.5rem;
   
   img {
-    width: 9rem;
-    height: 7rem;
+    width: 11rem;
+    height: 9rem;
     object-fit: cover;
     margin: 8px;
     border-radius: 8px;
+    cursor: pointer;
   }
 }
 
 .your-generations {
   width: fit-content;
-  // background-color: white;
+  margin-bottom: 0.75rem;
   border-bottom: 2px solid black;
   height: 2rem;
   padding: 0.25rem 0.5rem 2rem 0.5rem;
@@ -119,26 +99,26 @@
 
 .generate-button {
   margin-top: .5rem;
+  padding: 0.50rem 0.25rem 0rem 0.25rem;
   height: 10rem;
-  width: 10rem;
   margin-bottom: 2.5rem;
   cursor: pointer;
-  animation: glow 1s ease-in-out infinite alternate;
+  animation: pulse 5s infinite;
   border-radius: 50%; 
   
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Initial glow effect */
+      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 20px white; /* Initial glow effect */
     }
     to {
-      box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Final glow effect */
+      box-shadow: 0 0 20px white, 0 0 20px white, 0 0 60px white; /* Final glow effect */
     }
   }
 }
 
 .bone-animate {
-  width: 1.5rem;
-   animation: wiggle infinite 0.3s ease-in-out; 
+  width: 1.75rem;
+   animation: wiggle infinite 0.5s ease-in-out; 
 
    @keyframes wiggle {
     20% {
