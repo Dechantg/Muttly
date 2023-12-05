@@ -1,35 +1,33 @@
 // NewsFeedPublicPage.jsx
 
 import React, { useState, useEffect } from 'react';
+
 import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/NewsFeedPublicPage.scss';
-// import mostLikedBreeds from '../../../server/database/queries/get_most_liked_breeds';
 
 const NewsFeedPublicPage = () => {
 
-  const [mostPopularImages, setMostPopularImages] = useState([]);
-  const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
-  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(false);
-
-  // !isLoading && !isValid  
+  const [ mostPopularImages, setMostPopularImages ] = useState([]);
+  const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
+  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
+  const [ selectedImage, setSelectedImage ] = useState(false);
 
   const openDogBreedCardModal = (event, image) => {
     console.log('Click event:', event);
 
     if (image && image.generated_photo_link && image.id) {
 
-      setSelectedImage(image)
-      setDogBreedCardModalOpen(true)
+      setSelectedImage(image);
+      setDogBreedCardModalOpen(true);
       
-      console.log('Image clicked!', image);
-      console.log('Clicked image ID:', image.id);
-      console.log('Selected image:', image.generated_photo_link)
-      console.log('Clicked image element:', event.target)
+      // console.log('Image clicked!', image);
+      // console.log('Clicked image ID:', image.id);
+      // console.log('Selected image:', image.generated_photo_link)
+      // console.log('Clicked image element:', event.target)
     } else {
       console.error('Image object is undefined');
-    }
+    };
   };
 
   const closeDogBreedCardModal = () => {
@@ -45,7 +43,7 @@ const NewsFeedPublicPage = () => {
         console.log(data);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
-      }
+      };
     };
   
     const fetchRecentlyGeneratedImages = async () => {
@@ -59,20 +57,20 @@ const NewsFeedPublicPage = () => {
       }
     };
   
-    // Fetch data when the component mounts
     fetchMostPopularImages();
     fetchRecentlyGeneratedImages();
   }, []);
 
-  console.log("Here are the most liked in a pretty object: ", mostPopularImages);
-  console.log("Here are the most recent in a not as pretty object: ", recentlyGeneratedImages);
-  console.log('selectedImage', selectedImage);
-  console.log('mostPopularImages', mostPopularImages);
+  // console.log("Here are the most liked in a pretty object: ", mostPopularImages);
+  // console.log("Here are the most recent in a not as pretty object: ", recentlyGeneratedImages);
+  // console.log('selectedImage', selectedImage);
+  // console.log('mostPopularImages', mostPopularImages);
 
   return (
     <div className="news-feed-container">
       <h1>Top Dogs & New Pups</h1>
       <h3>Wag-worthy moments from the stars and the rising!</h3>
+
       {/* News Feed Public Content */}
       <div className="news-feed-content">
         <h2 className="most-popular-images-text">Most Popular Generated Images...</h2>
@@ -88,6 +86,7 @@ const NewsFeedPublicPage = () => {
           ))}
         </div>
 
+        {/* Recently Generated Images */}
         <h2 className="recently-generated-images-text">Recently Generated Images...</h2>  
         <div className="recently-generated-images-row">
           {recentlyGeneratedImages.map((image) => (
@@ -129,8 +128,9 @@ const NewsFeedPublicPage = () => {
             dog2={selectedImage.dog2}
             feed={true}
             onClose={closeDogBreedCardModal}
-            isOpen={isDogBreedCardModalOpen} />
-            )}
+            isOpen={isDogBreedCardModalOpen} 
+          />
+        )}
       </div>
     </div>
   );

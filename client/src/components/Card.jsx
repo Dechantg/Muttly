@@ -1,9 +1,25 @@
+// Card.jsx
+
 import React from "react";
+
 import '../views/stylesheets/Card.scss';
 
-function Card(props) {
-
-  const {num, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2} = props
+const Card = (props) => {
+  const {
+    num, 
+    image, 
+    shedding, 
+    drooling, 
+    protectiveness, 
+    energy, 
+    barking, 
+    height, 
+    weight, 
+    name, 
+    description, 
+    dog1, 
+    dog2
+  } = props
 
   const avgStat = array => {
     if (!array || array.length === 0) {
@@ -11,16 +27,15 @@ function Card(props) {
     }
     return array.reduce((x, y) => x + y) / array.length;
   }
-  
-  
-const avgWeight = weight && Array.isArray(weight) && weight.length > 0 ? `${avgStat(weight)} lbs` : null;
 
-const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat(height) : null;
+  const avgWeight = weight && Array.isArray(weight) && weight.length > 0 ? `${avgStat(weight)} lbs` : null;
+
+  const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat(height) : null;
 
   const inchesToFeetAndInches = (inches) => {
     const feet = Math.floor(inches / 12);
     const remainingInches = inches % 12;
-    return `${feet}'${remainingInches}"`;
+    return `${feet}' ${remainingInches}"`;
   }
 
   const symbolGenerator = (statObj) => {
@@ -33,37 +48,38 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
     const fullFunct = () => {
       const elements = [];
       for (let i = 1; i <= value; i++) {
-        elements.push(
+        elements.push (
           <td key={i} className="typesign">
             <img className="energy_symbol" src={`http://localhost:5173/icons/${type}.png`} />
           </td>
         );
       }
+
       return elements;
     };
 
     const halfFunct = () => {
       const newValue = value + 0.5;
       const elements = [];
-      for (let i = 1; i <= newValue; i++) {
-        elements.push(
-          i === newValue ? (
-            <td key={i} className="typesign">
-              <img className="energy_symbol" src={`../icons/${type}_half.png`} />
-            </td>
-          ) : (
-            <td key={i} className="typesign">
-              <img className="energy_symbol" src={`../icons/${type}.png`} />
-            </td>
-          )
-        );
-      }
-      return elements;
-    };
+        for (let i = 1; i <= newValue; i++) {
+          elements.push (
+            i === newValue ? (
+              <td key={i} className="typesign">
+                <img className="energy_symbol" src={`../icons/${type}_half.png`} />
+              </td>
+            ) : (
+              <td key={i} className="typesign">
+                <img className="energy_symbol" src={`../icons/${type}.png`} />
+              </td>
+            )
+          );
+        }
 
-  return value % 1 === 0.5 ? halfFunct() : fullFunct() 
-};
+        return elements;
+      };
 
+    return value % 1 === 0.5 ? halfFunct() : fullFunct() 
+  };
 
   return (
     <div className={`nameimageinfo color-${num || 'fusion'}`}>
@@ -83,8 +99,13 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
           </tr>
         </tbody>
       </table>
-      <img className='card_img' src={image} alt={name || null} title={image && "Click for full image"}
-            onClick={() => image && window.open(image, '_blank')} onError="this.style.display='none';"  />
+      <img 
+        className='card_img' 
+        src={image} alt={name || null} 
+        title={image && "Click for full image"}
+        onClick={() => image && window.open(image, '_blank')} 
+        onError="this.style.display='none';" 
+      />
       <br />
       <div className='below_image_container'>
         <div className="description">
@@ -132,7 +153,6 @@ const avgHeight = height && Array.isArray(height) && height.length > 0 ? avgStat
       <ul>
         <p className='breed_facts'>Breed Facts</p>
         <li className="italicize">{description || 'No Facts for No Breeds! Pick a Pup!'}</li>
-        
         <li className="copyrights">
           <span className="medium">©2023 - Muttly Inc - BREEDMIXER Ltd - AlChGr Designs</span>
         </li>

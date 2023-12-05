@@ -30,7 +30,6 @@ const UsersFavouritesPage = () => {
     }
   };
 
-
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
@@ -42,13 +41,12 @@ const UsersFavouritesPage = () => {
         if (response.ok) {
           const data = await response.json();
           setFavouritedImages(data);
-          console.log(data);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching favourited images:', error);
-      }
+      };
     };
 
     fetchFavouritedImages();
@@ -63,7 +61,6 @@ const UsersFavouritesPage = () => {
   };
 
   return (
-
       <div className="page-body">
         {/* Header and Subheader */}
         <div className="header">

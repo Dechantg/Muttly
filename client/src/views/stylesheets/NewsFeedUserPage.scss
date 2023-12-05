@@ -1,8 +1,5 @@
 // NewsFeedUserPage.scss
 
-@import './NavigationBarTop.scss';
-@import './NavigationBarBottom.scss';
-
 .users-news-feed-user-container {
   display: flex;
   justify-content: center;
@@ -43,8 +40,9 @@
       // margin-top: 1rem;
       width: 1.75rem;
     }
-
+  }
 }
+
   
   .users-favourited-images-row,
   .users-most-popular-images-row,
@@ -70,7 +68,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 1.5rem;
-  
+
   img {
     width: 11rem;
     height: 9rem;

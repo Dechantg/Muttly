@@ -1,12 +1,10 @@
 // AboutUsPage.jsx
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import '../views/stylesheets/AboutUsPage.scss';
 
 const AboutUsPage = () => {
-
   return (
     <div className="about-us-container">
       {/* Body of the About Us Page */}

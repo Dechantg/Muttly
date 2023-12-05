@@ -2,33 +2,29 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../views/stylesheets/NewsFeedUserPage.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
+
 import DogBreedCardModal from './DogBreedCardModal';
 
-  const NewsFeedUserPage = () => {
+import '../views/stylesheets/NewsFeedUserPage.scss';
+
+const NewsFeedUserPage = () => {
   const navigate = useNavigate();
 
-  const [usersfavouritedImages, setUsersFavouritedImages] = useState([]);
-  const [mostPopularImages, setMostPopularImages] = useState([]);
-  const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
-  const [usersGeneratedImages, setUsersGeneratedImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(false);
+  const [ usersfavouritedImages, setUsersFavouritedImages ] = useState([]);
+  const [ mostPopularImages, setMostPopularImages ] = useState([]);
+  const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
+  const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
+  const [ selectedImage, setSelectedImage ] = useState(false);
   const { isValid, userId, isLoading } = useSessionValidation();
-  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
+  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
 
     if (image && image.generated_photo_link && image.id) {
-
-      setSelectedImage(image)
-      setDogBreedCardModalOpen(true)
-      
-      console.log('Image clicked!', image);
-      console.log('Clicked image ID:', image.id);
-      console.log('Selected image:', image.generated_photo_link)
-      console.log('Clicked image element:', event.target)
+      setSelectedImage(image);
+      setDogBreedCardModalOpen(true);
     } else {
       console.error('Image object is undefined');
     }
@@ -49,13 +45,13 @@ import DogBreedCardModal from './DogBreedCardModal';
         if (response.ok) {
           const data = await response.json();
           setUsersFavouritedImages(data);
-          console.log('Users Favourited Images:', data);
+          // console.log('Users Favourited Images:', data);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching favourited images:', error);
-      }
+      };
     };
 
     const fetchMostPopularImages = async () => {
@@ -68,15 +64,14 @@ import DogBreedCardModal from './DogBreedCardModal';
         if (response.ok) {
           const data = await response.json();
           setMostPopularImages(data);
-          console.log('Most Popular Images state:', mostPopularImages)
-          console.log('Most Popular Images', data);
-          console.log('this is popular state',mostPopularImages) 
+          // console.log('Most Popular Images state:', mostPopularImages);
+          // console.log('Most Popular Images', data);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching most popular images:', error);
-      }
+      };
     };
 
     const fetchRecentlyGeneratedImages = async () => {
@@ -89,13 +84,13 @@ import DogBreedCardModal from './DogBreedCardModal';
         if (response.ok) {
           const data = await response.json();
           setRecentlyGeneratedImages(data);
-          console.log('Recently Generated Images:', data);
+          // console.log('Recently Generated Images:', data);
         } else {
           console.error('Failed to fetch recently generated images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
-      }
+      };
     };
 
     const fetchUsersGeneratedImages = async () => {
@@ -112,10 +107,10 @@ import DogBreedCardModal from './DogBreedCardModal';
           console.log('Users Generated Images:', data);
         } else {
           console.error('Failed to fetch users generated images:', response.status);
-        }
+        };
       } catch (error) {
         console.error('Error fetching users recently generated images:', error);
-      }
+      };
     };
 
     fetchUsersFavouritedImages();
@@ -139,7 +134,12 @@ import DogBreedCardModal from './DogBreedCardModal';
   return (
     <div className="users-news-feed-user-container">
       <div className="users-news-feed-content">
-        <h2 className ="userfeed-clickable-title" title = "Click Me!" onClick={redirectToUsersFavouritesPage}>Your Favourites <img className='bone-animate' src='../icons/bone.png'/></h2>
+        <h2 
+          className ="userfeed-clickable-title" 
+          title="Click Me!" 
+          onClick={redirectToUsersFavouritesPage}>
+          Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+        </h2>
         <div className="users-favourited-images-row">
           {usersfavouritedImages.slice(0, 5).map((image) => (
             <img 
@@ -181,9 +181,12 @@ import DogBreedCardModal from './DogBreedCardModal';
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
         <img className='generate-button' title = "Click Me!" src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
 
-        {/* Logged in User Specific Row */}
-        {/* userfeed-clickable-title */}
-        <h2 className="your-generations" title = "Click Me!" onClick={redirectToUsersGeneratedImagesPage}>Your Generations <img className='bone-animate' src= '../icons/bone.png'/></h2>
+        <h2 
+          className="your-generations" 
+          title="Click Me!" 
+          onClick={redirectToUsersGeneratedImagesPage}>
+            Your Generations <img className='bone-animate' src= '../icons/bone.png' />
+        </h2>
         <div className="users-generated-image-row">
           {usersGeneratedImages.slice(0, 6).map((image) => (
             <img
@@ -224,7 +227,7 @@ import DogBreedCardModal from './DogBreedCardModal';
           feed={true}
           onClose={closeDogBreedCardModal}
           isOpen={isDogBreedCardModalOpen} 
-        /> 
+        />
       )}
     </div>
   );

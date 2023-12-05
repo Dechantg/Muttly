@@ -1,14 +1,15 @@
+// CardPage.jsx
+
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+
 import Card from './Card'; 
+
 import '../views/stylesheets/CardPage.scss';
 
-function CardPage () {
-
+const CardPage = () => {
   const { id } = useParams();
-  const [card, setCard] = useState(null)
-
-  // /api/generated/breedbyid
+  const [ card, setCard ] = useState(null);
 
   const fetchGeneratedDog = async () => {
     try {
@@ -17,11 +18,10 @@ function CardPage () {
           credentials: 'include',
         });
         const data = await response.json();
-        console.log(data)
-        // const newDogData = data[0];
-        const newDogData = data.dogBreedDetails[0]
-        const mateData = data.extraStats
-        console.log(data[0])
+
+        const newDogData = data.dogBreedDetails[0];
+        const mateData = data.extraStats;
+
         const dogCard = (
           <Card 
             image={newDogData.generated_photo_link} 
@@ -63,12 +63,11 @@ function CardPage () {
   }, [id]);
 
 
-return (
-  <div className="solo-card-container">
-    {card}
-  </div>
-)
-
+  return (
+    <div className="solo-card-container">
+      {card}
+    </div>
+  )
 }
 
-export default CardPage
+export default CardPage;

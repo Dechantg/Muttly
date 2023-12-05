@@ -1,3 +1,5 @@
+// Card.scss
+
 // Variables for colors used in gradients
 $type-color-1: #7B9AE1;
 $type-color-2: #5E74A1;
@@ -29,7 +31,6 @@ $type-color-8: #EDCF8E;
 .color-fusion {
   background: linear-gradient(to bottom right, $type-color-1, $type-color-3, $type-color-4, $type-color-3, $type-color-1);
 }
-
 
 // Name and image information
 .nameimageinfo {
@@ -134,7 +135,6 @@ $type-color-8: #EDCF8E;
 
 } 
 
-
 .typesign {
   font-size: 20px;
   text-align: center;
@@ -233,8 +233,6 @@ ul, li {
   &::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
   }
-
-  
 }
 
 .copyrights {

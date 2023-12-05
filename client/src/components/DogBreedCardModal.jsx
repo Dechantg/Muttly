@@ -1,38 +1,36 @@
 // DogBreedCardModal.jsx
 
 import React, {useEffect, useState } from 'react';
-import Card from './Card';
-import '../views/stylesheets/DogBreedCardModal.scss';
 import useSessionValidation from '../hooks/useSessionValidation';
 
+import Card from './Card';
+
+import '../views/stylesheets/DogBreedCardModal.scss';
+
 const DogBreedCardModal = (props) => {
-
-  const [liked, setLike] = useState(false) 
-  const [closeModal, setClose] = useState(false)
+  const [ liked, setLike ] = useState(false);
+  const [ closeModal, setClose ] = useState(false);
   const { isValid, userId } = useSessionValidation();
-  const {id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen} = props
+  const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
 
-
-      const handleLike = async () => {
-        try {
-          const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
-            credentials: 'include',
-          }); 
-          if (response.ok) {
-            console.log('Breed liked successfully');
-          } else {
-            console.error('Failed to like breed');
-          }
-        } catch (error) {
-          console.error('Error while liking breed:', error);
-        }
-      };
-  
-    
+  const handleLike = async () => {
+    try {
+      const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
+        credentials: 'include',
+      }); 
+      if (response.ok) {
+        console.log('Breed liked successfully');
+      } else {
+        console.error('Failed to like breed');
+      }
+    } catch (error) {
+      console.error('Error while liking breed:', error);
+    }
+  };
 
   const onLikeClick = () => {
     setLike(prevLike => !prevLike);
-    handleLike()
+    handleLike();
     setTimeout(() => {setClose(true)}, 2000);
   };
 
@@ -46,11 +44,11 @@ const DogBreedCardModal = (props) => {
         console.error('Unable to copy link to clipboard:', error);
         alert('Failed to copy link to clipboard');
       });
-  }
+  };
   
-
   const onTrashClick = () => {
-    alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!")
+    alert("I'm trash?! YOU'RE TRASH! GRRRRRRR!");
+
     const handleDelete = async () => {
       try {
         const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
@@ -70,13 +68,14 @@ const DogBreedCardModal = (props) => {
         console.error('Error while deleting breed:', error);
       }
     };
-    handleDelete()
-    setClose(true)
-  }
+
+    handleDelete();
+    setClose(true);
+  };
 
   const onCloseClick = () => {
     onClose()
-  }
+  };
 
   return (
     <>
