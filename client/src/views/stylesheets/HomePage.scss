@@ -62,7 +62,7 @@
   height: 50vh; 
   border-radius: 10%;
   opacity: 0;
-  transition: opacity 0.5s ease; /* Transition for smooth opacity change */
+  transition: opacity 0.5s ease; 
 }
 
 .dog_home.active {
@@ -70,26 +70,9 @@
 }
 
 .dog_home.fade-in {
-  animation: fadeIn 5s infinite; /* Adjust timing as needed */
+  animation: fadingIn 10s infinite; /* Adjust timing as needed */
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  
-  25% {
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
 
 button {
   height: 3rem;
@@ -106,6 +89,23 @@ button {
   }
 } 
 
+@keyframes fadingIn {
+  0% {
+    opacity: 0;
+  }
+  
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 
 

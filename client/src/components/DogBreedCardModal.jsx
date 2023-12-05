@@ -13,6 +13,29 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useSessionValidation();
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
 
+
+  useEffect(() => {
+    const fetchFavouritedImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setFavouritedImages(data);
+        } else {
+          console.error('Failed to fetch favourited images:', response.status);
+        };
+      } catch (error) {
+        console.error('Error fetching favourited images:', error);
+      };
+    };
+
+    fetchFavouritedImages();
+  }, []);
+
   const handleLike = async () => {
     try {
       const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
