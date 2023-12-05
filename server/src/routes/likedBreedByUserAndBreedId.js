@@ -19,7 +19,7 @@ try {
   const genBreedId = req.params.id
 
 
-  console.log("here is my userId attempt to validate:", userId)
+  // console.log("here is my userId attempt to validate:", userId)
 
   if (!userId) {
     return res.status(400).json({ error: 'Missing dogBreedId in the request' });
@@ -27,7 +27,7 @@ try {
 
   const userLiked = await userLikedBreedsById(userId, genBreedId);
 
-  console.log('Fetched data dog details:', userLiked);
+  // console.log('Fetched data dog details:', userLiked);
 
 
   res.json(userLiked);

@@ -26,7 +26,7 @@ try {
 
   const generatedBreeds = await breedIdByUser(userId);
 
-  console.log('Fetched data dog one:', generatedBreeds);
+  // console.log('Fetched data dog one:', generatedBreeds);
 
 
   // Send the combined results as JSON to the client

@@ -16,7 +16,7 @@ try {
 
   const userId = req.session.user.id;
 
-  console.log("here is my userId attempt to validate:", userId)
+  // console.log("here is my userId attempt to validate:", userId)
 
   if (!userId) {
     return res.status(400).json({ error: 'Missing dogBreedId in the request' });
@@ -27,11 +27,11 @@ try {
   const userLikedIds = userLiked.map((breed) => ({ id: breed.id }));
 
 
-  console.log("here is my check for breed ids: ", userLikedIds)
+  // console.log("here is my check for breed ids: ", userLikedIds)
 
   const extraDetails = await breedParentNames(userLikedIds)
 
-  console.log('here is the extradetails back from the query', extraDetails)
+  // console.log('here is the extradetails back from the query', extraDetails)
 
 
 

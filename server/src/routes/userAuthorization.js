@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
       
       req.session.user = { id: user.id, email: user.email };
 
-      console.log("user login information", req.sessionID)
+      console.log("user login information", req.session.user)
 
 
      return res.status(200).json({

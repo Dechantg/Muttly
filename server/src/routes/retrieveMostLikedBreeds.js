@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   try {
     const result = await mostLikedBreeds();
 
-    console.log('Fetched data:', result);
+    // console.log('Fetched data:', result);
     const generatedBreedsIds = result.map(item => item.generated_breeds_id);
 
     const topLikedDetailsResult = await topLikedDetails(generatedBreedsIds);
@@ -31,8 +31,8 @@ router.get('/', async (req, res) => {
 
 
 
-    console.log("here are the top breeds returned", topLikedDetailsResult);
-    console.log("here are extra details", extraDetails);
+    // console.log("here are the top breeds returned", topLikedDetailsResult);
+    // console.log("here are extra details", extraDetails);
 
 
 

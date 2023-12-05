@@ -25,7 +25,7 @@ try {
 
   const dogBreedLikeStatus = await changeLikeStatus(userId, generatedBreedId, likeStatus);
 
-  console.log('Fetched data dog details:', dogBreedLikeStatus);
+  // console.log('Fetched data dog details:', dogBreedLikeStatus);
 
 
   res.json(dogBreedLikeStatus);

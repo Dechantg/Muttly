@@ -10,9 +10,9 @@ const addNewUser = async (firstName, lastName, email, hashedPassword) => {
       [firstName, lastName, email, hashedPassword]
     );
 
-    const newUser = data.rows[0].id;
+    const newUser = data.rows[0];
     
-    console.log("new ueser data from inside the query: ", newUser)
+    // console.log("new ueser data from inside the query: ", newUser)
     return { success: true, user: newUser, message: 'User created successfully' };
   } catch (error) {
     console.error(`Error creating user: ${error.message}`);

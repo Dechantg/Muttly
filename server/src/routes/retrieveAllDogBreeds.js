@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
     const result = await dogBreedName();
 
-    console.log('Fetched data:', result);
+    // console.log('Fetched data:', result);
 
 
     res.json(result);
