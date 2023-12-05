@@ -3,78 +3,77 @@
 .enlarged-pawprint-container {
   display: flex;
   align-items: center;
-  height: 30rem;
+  height: 25rem;
   position: relative;
-  // transform: translate(-50%, -50%);
 }
 
 .enlarged-pawprint-image {
   position: relative;
   width: 35rem;
   height: 35rem;
+  min-height: 25rem;
+  max-width: 50vw;
+  padding-bottom: 1rem;
 }
 
 .tiktok-icon {
   position: absolute;
-  left: 9%;
-  bottom: 50%;
-  width: 4rem;
+  left: 8%;
+  bottom: 55%;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
 }
 
 .instagram-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  left: 31%;
-  bottom: 70%;
+  left: 29.5%;
+  bottom: 75%;
   // margin: 10rem;
 }
 
 .email-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  bottom: 70%;
-  right: 31%;
+  bottom: 75%;
+  right: 33.5%;
 }
 
 .facebook-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  right: 9%;
-  bottom: 50%;
+  right: 12%;
+  bottom: 55%;
 }
 
 .mailing-address-icon {
   position: absolute;
-  width: 4rem;
+  width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  left: 44%;
+  left: 42%;
+  right: 42%;
 }
 
 .mailing-address {
   position: absolute;
-  left: 33%;
-  bottom:8%;
+  left: 31%;
+  right: 36%;
+  top:70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.65vw;
+  font-weight: 700;
   height: 12vh;
+  margin-bottom: 1rem;
 
 } 
-
-.enlarged-pawprint-image {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-
-}

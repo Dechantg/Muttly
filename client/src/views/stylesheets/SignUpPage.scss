@@ -3,6 +3,7 @@
 .signup-container {
   display: flex;
   justify-content: center;
+  zoom: 120%;
   // Styling for the entire container
 }
 
@@ -81,15 +82,13 @@
 }
 
 .paw-signup {
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center; 
 
   .paw-button{
-    width: 9rem;
-    height: 100%;
-    margin-right: 2rem;
+    height: 9rem;
+    margin-right: 2.10rem;
   }
 
   p {

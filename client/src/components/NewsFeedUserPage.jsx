@@ -9,15 +9,25 @@ import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/NewsFeedUserPage.scss';
 
 const NewsFeedUserPage = () => {
-  const navigate = useNavigate();
-
   const [ usersfavouritedImages, setUsersFavouritedImages ] = useState([]);
   const [ mostPopularImages, setMostPopularImages ] = useState([]);
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
   const [ selectedImage, setSelectedImage ] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
+  const { isValid, userId, isLoading } = useSessionValidation();
+  const navigate = useNavigate();
+
+  // console.log("from the genrate page valid", isValid);
+
+  useEffect(() => {
+    // console.log("Before navigation. isValid:", isValid);
+    if (!isLoading && !isValid) {
+      // console.log("Navigating to /");
+      navigate('/');
+    }
+    console.log("After navigation. isValid:", isValid);
+  }, [isLoading, isValid, navigate],[])
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
