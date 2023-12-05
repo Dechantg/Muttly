@@ -9,24 +9,20 @@ import '../views/stylesheets/ContactUsPage.scss';
 
 function ContactUsPage() {
   return (
-    <>
       <div className="contact-us-container" >
         {/* Header Section */}
         <div className="contact-header-section">
-          <div className="header-text">
             <h1>Contact Us</h1>
             <h3>Feel free to BARK at us any time...</h3>
+            <div className="enlarged-pawprint-image">
+              <EnlargedPawprintImage />
+            </div>
           </div>
           <div className="github-section">
-          <a href='https://github.com/BSMuse/Muttly.git' target="_blank"><img src="/public/icons/github.png" alt="GitHub Icon" className="github-icon" /></a>
+          <a href='https://github.com/BSMuse/Muttly.git' target="_blank"><img className="github-icon"  src="/public/icons/github.png" alt="GitHub Icon" /></a>
               <p>Our Code</p>
           </div>
         </div>
-        <div className="enlarged-pawprint-image">
-          <EnlargedPawprintImage />
-        </div>
-      </div>
-    </>
   );
 }; 
 
