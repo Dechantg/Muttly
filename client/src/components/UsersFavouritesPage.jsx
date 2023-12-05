@@ -55,7 +55,8 @@ const UsersFavouritesPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setFavouritedImages(data);
+          const userFavouritesList = data.userLiked
+          setFavouritedImages(userFavouritesList);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
         };
