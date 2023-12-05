@@ -4,18 +4,22 @@
 @import './NavigationBarBottom.scss';
 @import './DogBreedCardModal.scss';
 
-.user-favourites-page-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .page-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   margin-left: 1rem;
   margin-right: 1rem;
+  height: 44rem;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+  }
 
   .header {
     h1 {
@@ -26,8 +30,6 @@
 
     h3 {
       text-align: center;
-      top: -1.875rem;
-      top: -30%;
     }
   }
 

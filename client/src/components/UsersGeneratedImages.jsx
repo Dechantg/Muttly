@@ -14,6 +14,24 @@ const UsersFavouritesPage = () => {
   const { isValid, userId, isLoading } = useSessionValidation();
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
 
+
+  const openDogBreedCardModal = (event, image) => {
+    console.log('Click Mv!ent:', event);
+
+    if (image && image.generated_photo_link && image.id) {
+
+      setSelectedImage(image)
+      setDogBreedCardModalOpen(true)
+      
+      console.log('Image clicked!', image);
+      console.log('Clicked image ID:', image.id);
+      console.log('Selected image:', image.generated_photo_link)
+      console.log('Clicked image element:', event.target)
+    } else {
+      console.error('Image object is undefined');
+    }
+  };
+
   useEffect(() => {
     const fetchUsersGeneratedImages = async () => {
       try {
@@ -38,9 +56,6 @@ const UsersFavouritesPage = () => {
     fetchUsersGeneratedImages();
   }, []);
 
-  const openDogBreedModal = (image) => {
-    setSelectedImage(image);
-  };
 
   const closeDogBreedModal = () => {
     setSelectedImage(null);
@@ -64,7 +79,7 @@ const UsersFavouritesPage = () => {
               key={image.id}
               src={image.generated_photo_link}               
               alt={`Image ${image.id}`}
-              onClick={() => openDogBreedModal(image)}
+              onClick={(event) => openDogBreedCardModal(event, image)}
             />
             ))}
         </div>

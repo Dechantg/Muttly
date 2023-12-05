@@ -20,16 +20,11 @@ const NewsFeedUserPage = () => {
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   
   const openDogBreedCardModal = (event, image) => {
-    console.log('Click event:', event);
+    console.log('Click Mv!ent:', event);
 
     if (image && image.generated_photo_link && image.id) {
       setSelectedImage(image);
       setDogBreedCardModalOpen(true);
-      
-      // console.log('Image clicked!', image);
-      // console.log('Clicked image ID:', image.id);
-      // console.log('Selected image:', image.generated_photo_link)
-      // console.log('Clicked image element:', event.target)
     } else {
       console.error('Image object is undefined');
     }
@@ -184,7 +179,7 @@ const NewsFeedUserPage = () => {
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img className='generate-button' src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
+        <img className='generate-button' title = "Click Me!" src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
 
         <h2 
           className="your-generations" 

@@ -62,6 +62,7 @@ const CardPage = () => {
     fetchGeneratedDog(); 
   }, [id]);
 
+
   return (
     <div className="solo-card-container">
       {card}

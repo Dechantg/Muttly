@@ -1,87 +1,80 @@
 // EnlargedPawprintImage.scss
 
 .enlarged-pawprint-container {
-  position: absolute;
-  background-color: yellow;
-  width: 100%;
-  height: 100%;
-  // bottom: 20vh;
-  // left: 40vw;
+  display: flex;
+  align-items: center;
+  height: 30rem;
+  position: relative;
   // transform: translate(-50%, -50%);
 }
 
 .enlarged-pawprint-image {
-  width: 25rem;
-  height: 25rem;
-  background-color: red;
+  position: relative;
+  width: 35rem;
+  height: 35rem;
 }
 
 .tiktok-icon {
-  position: relative;
-  bottom: 34.5vh;
-  left: 2.05vw;
+  position: absolute;
+  left: 9%;
+  bottom: 50%;
   width: 4rem;
-  height: 4rem;
   background-color: #EFDCAE;
   border-radius: 50%;
 }
 
 .instagram-icon {
-  position: relative;
-  bottom: 52.5vh;
-  left: 8vw;
+  position: absolute;
   width: 4rem;
-  height: 4rem;
   background-color: #EFDCAE;
   border-radius: 50%;
+  left: 31%;
+  bottom: 70%;
+  // margin: 10rem;
 }
 
 .email-icon {
-  position: relative;
-  bottom: 60vh;
-  left: 15.3vw;
+  position: absolute;
   width: 4rem;
-  height: 4rem;
   background-color: #EFDCAE;
   border-radius: 50%;
+  bottom: 70%;
+  right: 31%;
 }
 
 .facebook-icon {
-  position: relative;
-  bottom: 57.5vh;
-  left: 21.3vw;
+  position: absolute;
   width: 4rem;
-  height: 4rem;
   background-color: #EFDCAE;
   border-radius: 50%;
+  right: 9%;
+  bottom: 50%;
 }
 
 .mailing-address-icon {
-  position: relative;
-  bottom: 58vh;
-  left: 11.7vw;
+  position: absolute;
   width: 4rem;
-  height: 4rem;
   background-color: #EFDCAE;
   border-radius: 50%;
+  left: 44%;
 }
 
 .mailing-address {
-  position: relative;
+  position: absolute;
+  left: 33%;
+  bottom:8%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
-  bottom: 57vh;
-  left: 0.25vw;
-  width: auto;
-  height: auto;
+  font-size: 1rem;
+  height: 12vh;
 
-  h3,
-  h5 {
-    position: relative;
-  }
+} 
 
-  p {
-    position: relative;
-  }
+.enlarged-pawprint-image {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
 }
