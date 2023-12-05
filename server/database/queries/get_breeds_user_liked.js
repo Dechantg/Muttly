@@ -27,8 +27,12 @@ const breedsUserLiked = (userId) => {
     generated_breeds.min_weight_female,
     generated_breeds.description,
     generated_breeds.generated_photo_link,
-    liked_generated_breeds.user_id
-    FROM generated_breeds JOIN liked_generated_breeds ON generated_breeds.id = liked_generated_breeds.generated_breeds_id WHERE liked_generated_breeds.user_id = $1 AND liked_generated_breeds.like_status = true ORDER BY generated_breeds.id;`, [userId])
+    liked_generated_breeds.user_id,
+    liked_generated_breeds.like_status
+    FROM generated_breeds
+    JOIN liked_generated_breeds ON generated_breeds.id = liked_generated_breeds.generated_breeds_id
+    WHERE liked_generated_breeds.user_id = $1 AND liked_generated_breeds.like_status = true
+    ORDER BY generated_breeds.id;`, [userId])
   
     .then(data => {
       const userLikedBreeds = data.rows;

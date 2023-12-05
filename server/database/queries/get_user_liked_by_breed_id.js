@@ -3,6 +3,7 @@
 const db = require('../connection');
 
 const breedsUserLikedById = (userId, breedId) => {
+  console.log("here is the user id being passed in", userId)
   return db.query(
     'SELECT user_id, generated_breeds_id, like_status FROM liked_generated_breeds WHERE user_id = $1 AND generated_breeds_id = $2;', [userId, breedId])
   
