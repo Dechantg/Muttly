@@ -10,6 +10,7 @@ import '../views/stylesheets/UsersFavouritesPage.scss';
 const UsersFavouritesPage = () => {
   const [favouritedImages, setFavouritedImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchFavouritedImages = async () => {
@@ -84,8 +85,9 @@ const UsersFavouritesPage = () => {
             description={selectedImage.description}
             dog1={selectedImage.dog1}
             dog2={selectedImage.dog2}
-            feed={selectedImage.feed}
-            onclick={closeDogBreedModal}
+            feed={true}
+            onClose={closeDogBreedModal}
+            isOpen={isDogBreedCardModalOpen} 
           />
         )}
       </div>

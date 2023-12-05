@@ -10,17 +10,15 @@ import '../views/stylesheets/ContactUsPage.scss';
 function ContactUsPage() {
   return (
     <>
-      <div className="contact-us-container">
+      <div className="contact-us-container" >
         {/* Header Section */}
-        <div className="header-section">
+        <div className="contact-header-section">
           <div className="header-text">
             <h1>Contact Us</h1>
             <h3>Feel free to BARK at us any time...</h3>
           </div>
           <div className="github-section">
-            <Link to="https://github.com/BSMuse/Muttly.git" target="_blank" rel="noopener noreferrer">
-              <img src="/public/icons/github.png" alt="GitHub Icon" className="github-icon" />
-            </Link>
+          <a href='https://github.com/BSMuse/Muttly.git' target="_blank"><img src="/public/icons/github.png" alt="GitHub Icon" className="github-icon" /></a>
               <p>Our Code</p>
           </div>
         </div>

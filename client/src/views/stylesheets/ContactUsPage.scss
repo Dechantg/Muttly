@@ -5,22 +5,27 @@
 
 .contact-us-container {
   text-align: center;
-  // background-color: yellow;
+  background-color: green;
 }
 
-.header-section {
-  // display: flex;
-  text-align: center;
+.contact-header-section {
+  display: flex; 
+  margin-top: 2rem;
+  height: 8rem;
+  justify-content: center;
+  background-color: aqua;
+  margin: 0 auto;
+
+  .header-text {
+    
+  }
 
   
   .github-section {
-    float: right;
-    margin-top: -130px;
-    margin-right: 150px;
-    
+
+    margin-left: 10rem;
     .github-icon {
-      width: 70px;
-      height: 70px;
+      width: 5rem;
     }
     
     p {

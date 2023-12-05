@@ -18,7 +18,7 @@ import DogBreedCardModal from './DogBreedCardModal';
   const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
   
   const openDogBreedCardModal = (event, image) => {
-    console.log('Click event:', event);
+    console.log('Click Mv!ent:', event);
 
     if (image && image.generated_photo_link && image.id) {
 
@@ -139,7 +139,7 @@ import DogBreedCardModal from './DogBreedCardModal';
   return (
     <div className="users-news-feed-user-container">
       <div className="users-news-feed-content">
-        <h2 className ="userfeed-clickable-title" title = "click me" onClick={redirectToUsersFavouritesPage}>Your Favourites <img className='bone-animate' src='../icons/bone.png'/></h2>
+        <h2 className ="userfeed-clickable-title" title = "Click Me!" onClick={redirectToUsersFavouritesPage}>Your Favourites <img className='bone-animate' src='../icons/bone.png'/></h2>
         <div className="users-favourited-images-row">
           {usersfavouritedImages.slice(0, 5).map((image) => (
             <img 
@@ -179,11 +179,11 @@ import DogBreedCardModal from './DogBreedCardModal';
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img className='generate-button' src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
+        <img className='generate-button' title = "Click Me!" src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
 
         {/* Logged in User Specific Row */}
         {/* userfeed-clickable-title */}
-        <h2 className="your-generations" title = "click me" onClick={redirectToUsersGeneratedImagesPage}>Your Generations <img className='bone-animate' src= '../icons/bone.png'/></h2>
+        <h2 className="your-generations" title = "Click Me!" onClick={redirectToUsersGeneratedImagesPage}>Your Generations <img className='bone-animate' src= '../icons/bone.png'/></h2>
         <div className="users-generated-image-row">
           {usersGeneratedImages.slice(0, 6).map((image) => (
             <img
