@@ -161,12 +161,13 @@ const GenerateMixedBreedPage = () => {
           });
           const data = await response.json();
 
-          console.log("here is the data from the generate click", data)
-          const dogData = data.muttyResult[0]
-          console.log('extrastats',data.extraStats)
+          console.log("here is the data from the generate click", data.dogBreedDetails[0])
+          const dogData = data.dogBreedDetails[0]
+          console.log('extrastats', data.extraStats)
           const mateData = data.extraStats
           modal=
           <DogBreedCardModal
+            id={dogData.id}
             image={dogData.generated_photo_link}
             shedding={{shedding: dogData.shedding}}
             drooling={{drooling: dogData.drooling}}
@@ -187,8 +188,8 @@ const GenerateMixedBreedPage = () => {
             ]}
             name={dogData.name} 
             description={dogData.description} 
-          // dog1 = {mateData.breedOne}
-          // dog2 = {mateData.breedTwo}
+          dog1 = {mateData.breedOne}
+          dog2 = {mateData.breedTwo}
           />
           setDogModal(modal)
         } catch (error) {

@@ -17,15 +17,10 @@ import EnlargedPawPrintImage from './components/EnlargedPawprintImage';
 import SignInModal from './components/SignInModal';
 import DogBreedCardModal from './components/DogBreedCardModal';
 import useSessionValidation from './hooks/useSessionValidation';
-import ProtectedRoute from './components/ProtectedRoutes';
-import Card from './components/Card';
 import UsersGeneratedImages from './components/UsersGeneratedImages'
 
 export default function App() {
   const location = useLocation();
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const [isLoggedIn, setLoggedIn] = useState(isValid)
-  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
   const isAboutPage = location.pathname === '/about';
@@ -35,15 +30,6 @@ export default function App() {
   const isSignUp = location.pathname === '/signup';
   const isGenerate = location.pathname === '/generate';
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // console.log(isValid)
-      // console.log(isLoggedIn)
-      // setLogIn(isValid);
-    }, 1000);
-  
-    return () => clearInterval(interval);
-  }, [isLoggedIn]);
 
   return (
     <div className="App">
