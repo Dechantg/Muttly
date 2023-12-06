@@ -18,8 +18,9 @@ async function secondFetch(generationId) {
 
     const response = await fetch(`https://cloud.leonardo.ai/api/rest/v1/generations/${generationId}`, options);
     const data = await response.json();
+    console.log("dog url data fetch before parsing", data.generations_by_pk.generated_images)
     const dogUrl = data.generations_by_pk.generated_images[0].url;
-    // console.log("Second fetch data:", dogUrl);
+    console.log("Second fetch data:", dogUrl);
 
     return dogUrl;
   } catch (error) {
