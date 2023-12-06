@@ -21,7 +21,6 @@ const SignInModal = (props) => {
     setPassword(e.target.value);
   };
 
-
   const handleSignIn = async () => {
     if (!email || !password) {
       alert('Email and password are required.');
