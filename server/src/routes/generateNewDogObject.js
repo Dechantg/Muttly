@@ -58,7 +58,11 @@ router.get("/", validateSession, async (req, res) => {
 
     const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
-    let dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+    const {jsonObject, threadId} = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+
+    const dogBreedData = jsonObject
+    const thread = threadId
+    
 
     while (!dogBreedData.description || dogBreedData.description.trim() === '') {
       console.log('Description is missing or empty. Rerunning the function.');
@@ -87,7 +91,9 @@ router.get("/", validateSession, async (req, res) => {
       genId: dogBreedDetails[0].id,
       userId: userId,
       breedOne: dogOneId,
-      breedTwo: dogTwoId
+      breedTwo: dogTwoId,
+      openAiThread: thread,
+      leoGenRecord: generationId
     };
 
     const extraStats = {
