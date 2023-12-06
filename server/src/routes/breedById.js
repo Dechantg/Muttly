@@ -28,7 +28,7 @@ try {
 
   const dogBreedDetails = await breedDetails(dogBreedId);
 
-  console.log('Fetched data dog details:', dogBreedId);
+  // console.log('Fetched data dog details:', dogBreedId);
 
 
   res.json(dogBreedDetails);

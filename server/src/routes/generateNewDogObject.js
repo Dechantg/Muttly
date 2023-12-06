@@ -41,11 +41,11 @@ router.get("/", validateSession, async (req, res) => {
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
 
-    console.log("here is the second dog req", dogTwoId)
+    // console.log("here is the second dog req", dogTwoId)
     const resultOne = await dogBreed(dogOneId);
     const resultTwo = await dogBreed(dogTwoId);
 
-    console.log('Result for dog two:', resultTwo);
+    // console.log('Result for dog two:', resultTwo);
 
 
     const combinedResults = {
@@ -58,7 +58,13 @@ router.get("/", validateSession, async (req, res) => {
 
     const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
-    let dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+    console.log("photo ide gen record", dogPhotoId)
+
+    const {jsonObject, threadId} = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
+
+    const dogBreedData = jsonObject
+    const thread = threadId
+    
 
     while (!dogBreedData.description || dogBreedData.description.trim() === '') {
       console.log('Description is missing or empty. Rerunning the function.');
@@ -67,14 +73,20 @@ router.get("/", validateSession, async (req, res) => {
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
-    console.log("here is the pre parsing for special charachters", parsedDogBreedData)
+    // console.log("here is the pre parsing for special charachters", parsedDogBreedData)
 
     parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
 
     const generationId = dogPhotoId.sdGenerationJob.generationId;
 
 
-    const dogPhotoUrl = await muttyPhotoFetch(generationId);
+    let dogPhotoUrl;
+
+    while (!dogPhotoUrl || dogPhotoUrl === undefined || dogPhotoUrl === null || dogPhotoUrl === '') {
+      dogPhotoUrl = await muttyPhotoFetch(generationId);
+      console.log("Current dog URL:", dogPhotoUrl);
+    }
+
     console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
@@ -87,7 +99,9 @@ router.get("/", validateSession, async (req, res) => {
       genId: dogBreedDetails[0].id,
       userId: userId,
       breedOne: dogOneId,
-      breedTwo: dogTwoId
+      breedTwo: dogTwoId,
+      openAiThread: thread,
+      leoGenRecord: generationId
     };
 
     const extraStats = {
@@ -101,7 +115,7 @@ router.get("/", validateSession, async (req, res) => {
 
     await queryRecord(updatedBreed);
 
-    console.log("last by not least lets work on my query table", updatedBreed)
+    // console.log("last by not least lets work on my query table", updatedBreed)
 
 
     console.log('Generated Breed Details:', dogBreedDetails, extraStats);

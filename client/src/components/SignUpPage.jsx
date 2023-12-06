@@ -124,6 +124,7 @@ const SignUpPage = () => {
           </Link>
         <p>Sign Me Up!</p>
         </div>
+
       </div>
       
       <div className="background-with-pawprints-right">

@@ -67,9 +67,7 @@ const HomePage = () => {
       <div className="main">
         <div className="home_main">
           <h1>WELCOME TO MUTTLY!</h1>
-          <Link to="/newsfeed" className="to-newsfeed-public-link">
-            <button>Unleash your curiosity, and em-bark on a journey with the pack</button>
-          </Link>
+          <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
           <div className="dog_container">
             {images.map((image, idx) => (
             <img
@@ -80,8 +78,9 @@ const HomePage = () => {
             />
           ))}
         </div>
-          <p>At Muttly, we're the Picasso of Paws, the Da Vinci of Doggos! We're not just a dog company; we're barkitects of the highest pedigree...</p>
-          <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
+          <Link to="/newsfeed" className="to-newsfeed-public-link">
+            <button className="home-button">...and em-bark on a journey with the pack</button>
+          </Link>          
         </div>
         <div className="sign_in">
           <img onClick={handleSignInClick} src="../icons/paws_pink.png"/>

@@ -62,11 +62,18 @@ const changeLikeStatus           = require('./routes/likeStatusUpdate')
 const logout                     = require('./routes/userLogout')
 const likedByUserAndBreed        = require('./routes/likedBreedByUserAndBreedId')
 
+const mostRecentBig              = require('./routes/mostRecentBig')
+const userLikedBig               = require('./routes/mostLikedBig')
+
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
 
 app.use('/api/mostliked', mostLikedBreeds);
 app.use('/api/mostrecent', mostRecentBreeds);
+
+app.use('/api/mostliked/big', userLikedBig);
+app.use('/api/mostrecent/big', mostRecentBig);
+
 
 app.use('/api/allbreednames', dogBreedNames);
 app.use('/api/breedbyid', dogBreedById);
