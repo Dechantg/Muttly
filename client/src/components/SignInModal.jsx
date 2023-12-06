@@ -1,5 +1,7 @@
 // SignInModal.jsx
 
+// Added for Alex to compare why pathways/redirects work;
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -20,7 +22,6 @@ const SignInModal = (props) => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
 
   const handleSignIn = async () => {
     if (!email || !password) {
@@ -47,6 +48,8 @@ const SignInModal = (props) => {
         throw new Error('Sign-in failed');
       };
   
+      // console.log('Sign-in successful');
+      // console.log(document.cookie);
       window.location.reload();
       onClose(); 
     } catch (error) {

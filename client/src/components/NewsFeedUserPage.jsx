@@ -1,5 +1,7 @@
 // NewsFeedUserPage.jsx
 
+// Added for Alex to compare why pathways/redirects work;
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation';
@@ -20,14 +22,14 @@ const NewsFeedUserPage = () => {
 
   // console.log("from the genrate page valid", isValid);
 
-  // useEffect(() => {
-  //   // console.log("Before navigation. isValid:", isValid);
-  //   if (!isLoading && !isValid) {
-  //     // console.log("Navigating to /");
-  //     navigate('/');
-  //   }
-  //   console.log("After navigation. isValid:", isValid);
-  // }, [isLoading, isValid, navigate],[])
+  useEffect(() => {
+    // console.log("Before navigation. isValid:", isValid);
+    if (!isLoading && !isValid) {
+      // console.log("Navigating to /");
+      navigate('/');
+    }
+    console.log("After navigation. isValid:", isValid);
+  }, [isLoading, isValid, navigate],[])
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
@@ -55,9 +57,9 @@ const NewsFeedUserPage = () => {
         if (response.ok) {
           const data = await response.json();
           const usersFavourited = data.userLiked;
-          console.log("here is the useres favourited results", usersFavourited)
+          console.log("here is the useres favourited results", usersFavourited);
           setUsersFavouritedImages(usersFavourited);
-          console.log('Extra Details:', extraDetails);
+          // console.log('Extra Details:', extraDetails);
 
           // console.log('Users Favourited Images:', data);
         } else {
