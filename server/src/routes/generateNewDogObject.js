@@ -58,6 +58,8 @@ router.get("/", validateSession, async (req, res) => {
 
     const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
 
+    console.log("photo ide gen record", dogPhotoId)
+
     const {jsonObject, threadId} = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
 
     const dogBreedData = jsonObject
@@ -78,8 +80,14 @@ router.get("/", validateSession, async (req, res) => {
     const generationId = dogPhotoId.sdGenerationJob.generationId;
 
 
-    const dogPhotoUrl = await muttyPhotoFetch(generationId);
-    // console.log("Final dog URL:", dogPhotoUrl);
+    let dogPhotoUrl;
+
+    while (!dogPhotoUrl || dogPhotoUrl === undefined || dogPhotoUrl === null || dogPhotoUrl === '') {
+      dogPhotoUrl = await muttyPhotoFetch(generationId);
+      console.log("Current dog URL:", dogPhotoUrl);
+    }
+
+    console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
 
