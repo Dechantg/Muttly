@@ -62,7 +62,7 @@ const DogBreedCardModal = (props) => {
       }); 
       if (response.ok) {
         console.log('Breed liked successfully');
-        window.location.reload();
+        feed && window.location.reload();
       } else {
         console.error('Failed to like breed');
       }
