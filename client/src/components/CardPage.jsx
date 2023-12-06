@@ -20,6 +20,9 @@ const CardPage = () => {
         const data = await response.json();
 
         const newDogData = data.dogBreedDetails[0];
+
+        console.log("here is the new dog from card", newDogData)
+
         const mateData = data.extraStats;
 
         const dogCard = (
