@@ -55,7 +55,22 @@ const UsersFavouritesPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUsersGeneratedImages(data); 
+
+          const usersFavourites = data.generatedBreeds
+          const extraDetails = data.extraDetails
+
+
+          extraDetails.forEach(detail => {
+            const indexToUpdate = usersFavourites.findIndex(image => image.id === detail.genid);
+          
+            if (indexToUpdate !== -1) {
+              usersFavourites[indexToUpdate].dog1 = detail.breedone;
+              usersFavourites[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+
+
+          setUsersGeneratedImages(usersFavourites); 
           // console.log('Users Generated Images state:', usersGeneratedImages);
           // console.log('Users Generated Images:', data);
         } else {

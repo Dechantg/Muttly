@@ -24,7 +24,10 @@ router.get('/', async (req, res) => {
 
     const topLikedDetailsResult = await topLikedDetails(generatedBreedsIds);
 
+
     const topLikedIds = topLikedDetailsResult.map((breed) => ({ id: breed.id }));
+
+    // console.log("here are the items going to parentnames", topLikedIds)
 
     const extraDetails = await parentNames(topLikedIds);
 

@@ -16,17 +16,6 @@ const SignUpPage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //     // console.log("Before navigation. isValid:", isValid);
-  //     if (isValid && isLoading) {
-  //       // console.log("Navigating to /newsfeeduser");
-  //       navigate('/newsfeeduser');
-  //     } else {
-  //       // console.log('User not authenticated');
-  //     };
-  //     // console.log("After navigation. isValid:", isValid);
-  // }, [isValid, navigate]);
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
