@@ -18,13 +18,13 @@
   padding: 20px;
   text-align: center;
   position: relative;
-  border-radius: 8px;
+  border-radius: 50px;
 
   .close-button {
     position: absolute;
     top: -5px;
-    right: 20px;
-    font-size: 50px;
+    right: 40px;
+    font-size: 60px;
     cursor: pointer;
   }
 
@@ -39,7 +39,7 @@
     h2 {
       margin-top: 0px;
       margin-bottom: 10px;
-      font-size: 30px;
+      font-size: 50px;
       font-weight: bolder;
     }
 
@@ -71,12 +71,17 @@
       font-weight: bold;
       font-size: 18px;
       width: auto;
-      background-color: rgb(39, 111, 192);
       color: #fff;
       padding: 10px 20px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-family: 'Indie Flower', cursive;
+      border-radius: 8px;
+      background-color:#BF5B8F;
+      &:hover {
+        filter: brightness(1.5);
+    }
     }
   }
 }
