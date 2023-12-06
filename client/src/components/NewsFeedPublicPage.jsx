@@ -7,14 +7,13 @@ import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/NewsFeedPublicPage.scss';
 
 const NewsFeedPublicPage = () => {
-
   const [ mostPopularImages, setMostPopularImages ] = useState([]);
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   const [ selectedImage, setSelectedImage ] = useState(false);
 
   const openDogBreedCardModal = (event, image) => {
-    console.log('Click event:', event);
+    // console.log('Click event:', event);
 
     if (image && image.generated_photo_link && image.id) {
 
@@ -39,25 +38,21 @@ const NewsFeedPublicPage = () => {
       try {
         const response = await fetch('http://localhost:8088/api/mostliked');
         const data = await response.json();
-        const extraDetails = data.extraDetails
-        const popularImages = data.topLikedDetailsResult
+        const extraDetails = data.extraDetails;
+        const popularImages = data.topLikedDetailsResult;
         
-     
         extraDetails.forEach(detail => {
           const indexToUpdate = popularImages.findIndex(image => image.id === detail.genid);
         
           if (indexToUpdate !== -1) {
             popularImages[indexToUpdate].dog1 = detail.breedone;
             popularImages[indexToUpdate].dog2 = detail.breedtwo;
-          }
+          };
         });
-        
-  
-
-        console.log("Here are the popular images from public", popularImages)
+        // console.log("Here are the popular images from public", popularImages);
         setMostPopularImages(popularImages);
-        console.log("here are the extra details", extraDetails.genid)
-        console.log("here is the populat imagess", popularImages.id);
+        // console.log("here are the extra details", extraDetails.genid);
+        // console.log("here is the populat imagess", popularImages.id);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
       };
@@ -67,9 +62,8 @@ const NewsFeedPublicPage = () => {
       try {
         const response = await fetch('http://localhost:8088/api/mostrecent');
         const data = await response.json();
-        const recentlyGen = data.result
-        const extraRecentData = data.extraDetails
-
+        const recentlyGen = data.result;
+        const extraRecentData = data.extraDetails;
 
         extraRecentData.forEach(detail => {
           const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
@@ -77,37 +71,37 @@ const NewsFeedPublicPage = () => {
           if (indexToUpdate !== -1) {
             recentlyGen[indexToUpdate].dog1 = detail.breedone;
             recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
-          }
+          };
         });
-
-
-
-
         setRecentlyGeneratedImages(recentlyGen);
-
-        console.log(recentlyGen);
+        // console.log(recentlyGen);
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
-      }
+      };
     };
   
     fetchMostPopularImages();
     fetchRecentlyGeneratedImages();
   }, []);
 
-  // console.log("Here are the most liked in a pretty object: ", mostPopularImages);
-  // console.log("Here are the most recent in a not as pretty object: ", recentlyGeneratedImages);
-  // console.log('selectedImage', selectedImage);
-  // console.log('mostPopularImages', mostPopularImages);
+  const redirectToMostPopularGeneratedImagesPage = () => {
+    navigate('/mostpopulargeneratedimages');
+  };
+
+  const redirectToRecentlyGeneratedImagesPage = () => {
+    navigate('/recentlygeneratedimages');
+  };
 
   return (
     <div className="news-feed-container">
       <h1>Top Dogs & New Pups</h1>
       <h3>Wag-worthy moments from the stars and the rising!</h3>
-
-      {/* News Feed Public Content */}
       <div className="news-feed-content">
-        <h2 className="most-popular-images-text">Most Popular Generated Images...</h2>
+        <h2 
+          className="public-feed-clickable-title" 
+          onClick={redirectToMostPopularGeneratedImagesPage}>
+            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+        </h2>
         <div className="most-popular-images-row">
           {mostPopularImages.map((image) => (
             <img 
@@ -121,7 +115,11 @@ const NewsFeedPublicPage = () => {
         </div>
 
         {/* Recently Generated Images */}
-        <h2 className="recently-generated-images-text">Recently Generated Images...</h2>  
+        <h2 
+          className="public-feed-clickable-title"
+          onClick={redirectToRecentlyGeneratedImagesPage}>
+            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+        </h2>  
         <div className="recently-generated-images-row">
           {recentlyGeneratedImages.map((image) => (
             <img 

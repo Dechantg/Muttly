@@ -66,8 +66,8 @@ const HomePage = () => {
     <>
       <div className="main">
         <div className="home_main">
-          <h1>WELCOME TO MUTTLY!</h1>
-          <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day!</p>
+          <h1>WELCOME TO MUTTLY !</h1>
+          <p>Unleash your imagination, create your own breed, and join us in the symphony of barks - where every mutt has its day !</p>
           <div className="dog_container">
             {images.map((image, idx) => (
             <img
@@ -79,7 +79,7 @@ const HomePage = () => {
           ))}
         </div>
           <Link to="/newsfeed" className="to-newsfeed-public-link">
-            <button className="home-button">...and em-bark on a journey with the pack</button>
+            <button className="home-button">Em-bark on a journey with the pack today !</button>
           </Link>          
         </div>
         <div className="sign_in">

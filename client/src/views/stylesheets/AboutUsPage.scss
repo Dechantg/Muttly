@@ -9,7 +9,7 @@
 .about-us-body {
   text-align: center;
   display: flex;
-  margin-bottom: -1.5rem;
+  margin-bottom: 0rem;
 }
 
 .background-with-pawprints-right {
@@ -28,29 +28,30 @@
 
 .about-us-content {
   font-size: 1.50rem;
+
   h1 {
-    margin-top: 1.5rem;
-    font-size: 4.5rem;
+    margin-top: 1rem;
+    font-size: 4vw;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   p {
     margin-bottom: 1rem;
   }
-
-}
-
-.about-us-content > h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .center_logo {
   width: 10%;
+  margin-bottom: 0rem;
 }
 
 .side_logo {
   width: 3.5vw; 
-  margin-bottom: 4rem; 
 } 
 
 .column-1 {
