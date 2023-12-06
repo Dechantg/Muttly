@@ -88,14 +88,14 @@
 
   .paw-button{
     height: 9rem;
-    margin-right: 2.10rem;
+    // margin-right: 2.10rem;
   }
 
   p {
     font-weight: bold;
   }
 
-  &:hover {
+  & :hover {
     filter:brightness(1.2);
   }
 }

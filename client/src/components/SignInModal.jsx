@@ -47,8 +47,6 @@ const SignInModal = (props) => {
         throw new Error('Sign-in failed');
       };
   
-      // console.log('Sign-in successful');
-      // console.log(document.cookie);
       window.location.reload();
       onClose(); 
     } catch (error) {

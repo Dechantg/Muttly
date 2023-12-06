@@ -20,14 +20,14 @@ const NewsFeedUserPage = () => {
 
   // console.log("from the genrate page valid", isValid);
 
-  useEffect(() => {
-    // console.log("Before navigation. isValid:", isValid);
-    if (!isLoading && !isValid) {
-      // console.log("Navigating to /");
-      navigate('/');
-    }
-    console.log("After navigation. isValid:", isValid);
-  }, [isLoading, isValid, navigate],[])
+  // useEffect(() => {
+  //   // console.log("Before navigation. isValid:", isValid);
+  //   if (!isLoading && !isValid) {
+  //     // console.log("Navigating to /");
+  //     navigate('/');
+  //   }
+  //   console.log("After navigation. isValid:", isValid);
+  // }, [isLoading, isValid, navigate],[])
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);

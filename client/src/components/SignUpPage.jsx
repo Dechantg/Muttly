@@ -16,19 +16,6 @@ const SignUpPage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (isValid) {
-  //     // console.log("Before navigation. isValid:", isValid);
-  //     if (isValid) {
-  //       // console.log("Navigating to /newsfeeduser");
-  //       navigate('/newsfeeduser');
-  //     } else {
-  //       // console.log('User not authenticated');
-  //     };
-  //     // console.log("After navigation. isValid:", isValid);
-  //   };
-  // }, [isValid, navigate]);
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -57,11 +44,12 @@ const SignUpPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Sign-in failed');
+        throw new Error('Sign-in failed. Please enter all details!');
       };
-      // console.log('Sign-in successful');
+      alert('You are signed up! Please login.')
     } catch (error) {
       console.error('Error during sign-in:', error.message);
+      alert('Sign-in failed')
     };
   };
 
@@ -123,9 +111,9 @@ const SignUpPage = () => {
 
         {/* Submit Button */}
         <div className="paw-signup">
-        <Link to="/newsfeeduser" className="logo-link" onClick={handleSignUp}>
+        <Link to="/newsfeeduser" className="to-newsfeed-user-link" onClick={handleSignUp}>
             <img className="paw-button" src="../icons/paws_pink.png"/>
-          </Link>
+          </a>
         <p>Sign Me Up!</p>
         </div>
       </div>

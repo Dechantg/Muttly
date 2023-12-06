@@ -2,7 +2,6 @@
 
 import React, {useEffect, useState } from 'react';
 import useSessionValidation from '../hooks/useSessionValidation';
-
 import Card from './Card';
 
 import '../views/stylesheets/DogBreedCardModal.scss';
@@ -11,30 +10,50 @@ const DogBreedCardModal = (props) => {
   const [ liked, setLike ] = useState(false);
   const [ closeModal, setClose ] = useState(false);
   const { isValid, userId } = useSessionValidation();
+  const [favoriteImages, setFavouritedImages ] = useState(null)
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
 
 
-  // useEffect(() => {
-  //   const fetchFavouritedImages = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:8088/api/userLiked`, {
-  //         method: 'GET',
-  //         credentials: 'include',
-  //       });
+  useEffect(() => {
+    const fetchFavouritedImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+          method: 'GET',
+          credentials: 'include',
+        });
 
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setFavouritedImages(data);
-  //       } else {
-  //         console.error('Failed to fetch favourited images:', response.status);
-  //       };
-  //     } catch (error) {
-  //       console.error('Error fetching favourited images:', error);
-  //     };
-  //   };
+        if (response.ok) {
+          const data = await response.json();
+          console.log('data',data.userLiked)
+          setFavouritedImages(data.userLiked);
+        } else {
+          console.error('Failed to fetch favourited images:', response.status);
+        };
+      } catch (error) {
+        console.error('Error fetching favourited images:', error);
+      };
+    };
 
-  //   fetchFavouritedImages();
-  // }, []);
+    fetchFavouritedImages();
+  }, []);
+
+  useEffect(() => {
+    const likedDog = findLikesForId(id);
+    if (likedDog) {
+      setLike(true);
+    } else {
+      setLike(false);
+    }
+  }, [favoriteImages, id]);
+
+  const findLikesForId = (id) => {
+    if (favoriteImages) {
+      console.log(favoriteImages)
+      const likedDog = favoriteImages.find((dog) => dog.id === id);
+      return likedDog !== undefined; // Return true if the dog is found, false otherwise
+    }
+    return false; // If favoriteImages is not available yet, return false
+  };
 
   const handleLike = async () => {
     try {
@@ -43,6 +62,7 @@ const DogBreedCardModal = (props) => {
       }); 
       if (response.ok) {
         console.log('Breed liked successfully');
+        feed && window.location.reload();
       } else {
         console.error('Failed to like breed');
       }
@@ -51,12 +71,20 @@ const DogBreedCardModal = (props) => {
     }
   };
 
-  const onLikeClick = () => {
-    setLike(prevLike => !prevLike);
-    handleLike();
-    setTimeout(() => {setClose(true)}, 2000);
+  const onLikeClick = async () => {
+    try {
+      await handleLike(); 
+      setLike((prevLiked) => !prevLiked); // Toggle the liked state immediately after liking
+      // Assuming the like status is toggled correctly, proceed with closing after 2 seconds
+      setTimeout(() => {
+        setClose(true);
+      }, 2000);
+    } catch (error) {
+      console.error('Error while liking breed:', error);
+      // If there's an error in liking, consider setting the liked state to its previous value or handle the error accordingly
+    }
   };
-
+  
   const onShareClick = () => {
     navigator.clipboard.writeText(`http://localhost:5173/generated/breedbyid/${id}`)
       .then(() => {
