@@ -46,11 +46,13 @@ const SignInModal = (props) => {
         throw new Error('Sign-in failed');
       };
   
-      if (window.location.pathname === '/signup') {
-        onClose();
-        navigate('/newsfeeduser');
-      };
-      // window.location.reload();
+      // if (window.location.pathname === '/signup') {
+      //   onClose();
+      //   navigate('/newsfeeduser');
+      // };
+      window.location.reload();
+      onClose();
+      navigate('/newsfeeduser');
     } catch (error) {
       console.error('Error during sign-in:', error.message);
     };
