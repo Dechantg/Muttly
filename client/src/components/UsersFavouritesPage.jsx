@@ -56,6 +56,18 @@ const UsersFavouritesPage = () => {
         if (response.ok) {
           const data = await response.json();
           const userFavouritesList = data.userLiked
+          const extraDetails = data.extraDetails
+
+          extraDetails.forEach(detail => {
+            const indexToUpdate = userFavouritesList.findIndex(image => image.id === detail.genid);
+          
+            if (indexToUpdate !== -1) {
+              userFavouritesList[indexToUpdate].dog1 = detail.breedone;
+              userFavouritesList[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+
+
           setFavouritedImages(userFavouritesList);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
