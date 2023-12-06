@@ -46,7 +46,7 @@ const RecentlyGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostrecent', {
+        const response = await fetch('http://localhost:8088/api/mostrecent/big', {
           method: 'GET',
           credentials: 'include',
         });
