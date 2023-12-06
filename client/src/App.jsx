@@ -17,24 +17,27 @@ import UsersFavouritesPage from './components/UsersFavouritesPage';
 import CardPage from './components/CardPage';
 import NavigationBarBottom from './components/NavigationBarBottom';
 import UsersGeneratedImages from './components/UsersGeneratedImages'
+import RecentlyGeneratedImagesPage from './components/RecentlyGeneratedImagesPage';
+import MostPopularGeneratedImagesPage from './components/MostPopularGeneratedImagesPage';
 
 const App = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isContactPage = location.pathname === '/contact';
   const isAboutPage = location.pathname === '/about';
+  const isSignUp = location.pathname === '/signup';
   const isNewsFeed = location.pathname === '/newsfeed';
   const isNewsFeedUser = location.pathname === '/newsfeeduser';
-  const isUsersFavouritesPage = location.pathname === '/usersfavourites';
-  const isSignUp = location.pathname === '/signup';
   const isGenerate = location.pathname === '/generate';
+  const isUsersFavouritesPage = location.pathname === '/usersfavourites';
   const isUserGenerated = location.pathname === "/usersgeneratedimages";
-
+  const isMostPopular = location.pathname === "/mostpopulargeneratedimages";
+  const isRecentlyGenerated = location.pathname === "/recentlygeneratedimages";
 
   return (
     <div className="App">
       <div className="AppWrapper">
-        {(isGenerate || isSignUp || isNewsFeedUser || isUserGenerated|| isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop/>}
+        {(isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated|| isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop/>}
         <div className="AppContent">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -48,10 +51,12 @@ const App = () => {
             <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
             <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
             <Route path="/usersgeneratedimages" element={<UsersGeneratedImages />} /> 
+            <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
+            <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
           </Routes> 
         </div>
 
-        {(isNewsFeedUser || isNewsFeed || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom/>}
+        {(isNewsFeedUser || isNewsFeed || isMostPopular || isRecentlyGenerated || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom/>}
         </div>
       </div>
   );

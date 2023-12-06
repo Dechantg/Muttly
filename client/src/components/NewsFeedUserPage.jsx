@@ -20,14 +20,14 @@ const NewsFeedUserPage = () => {
 
   // console.log("from the genrate page valid", isValid);
 
-  // useEffect(() => {
-  //   // console.log("Before navigation. isValid:", isValid);
-  //   if (!isLoading && !isValid) {
-  //     // console.log("Navigating to /");
-  //     navigate('/');
-  //   }
-  //   console.log("After navigation. isValid:", isValid);
-  // }, [isLoading, isValid, navigate],[])
+  useEffect(() => {
+    // console.log("Before navigation. isValid:", isValid);
+    if (!isLoading && !isValid) {
+      // console.log("Navigating to /");
+      navigate('/');
+    }
+    console.log("After navigation. isValid:", isValid);
+  }, [isLoading, isValid, navigate],[]);
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
@@ -65,12 +65,9 @@ const NewsFeedUserPage = () => {
               usersFavourited[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-
-
-
           console.log("here is the useres favourited results", usersFavourited)
           setUsersFavouritedImages(usersFavourited);
-          console.log('Extra Details:', extraDetails);
+          // console.log('Extra Details:', extraDetails);
 
           // console.log('Users Favourited Images:', data);
         } else {
@@ -101,8 +98,6 @@ const NewsFeedUserPage = () => {
               mostPopular[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-  
-
           console.log("here is the most popular", mostPopular)
           setMostPopularImages(mostPopular);
           // console.log('Most Popular Images state:', mostPopularImages);
@@ -135,10 +130,6 @@ const NewsFeedUserPage = () => {
               recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-  
-
-
-
           setRecentlyGeneratedImages(recentlyGen);
           // console.log('Recently Generated Images:', data);
         } else {
@@ -161,7 +152,6 @@ const NewsFeedUserPage = () => {
           const usersGeneratedImagesFeed = data.generatedBreeds
           const usersGenExtraDetails = data.extraDetails
 
-
           usersGenExtraDetails.forEach(detail => {
           const indexToUpdate = usersGeneratedImagesFeed.findIndex(image => image.id === detail.genid);
         
@@ -170,8 +160,6 @@ const NewsFeedUserPage = () => {
             usersGeneratedImagesFeed[indexToUpdate].dog2 = detail.breedtwo;
           }
         });
-
-
           setUsersGeneratedImages(usersGeneratedImagesFeed); 
           console.log('Users Generated Images state:', usersGeneratedImages);
           console.log('Users Generated Images:', data);
@@ -201,6 +189,14 @@ const NewsFeedUserPage = () => {
     navigate('/usersgeneratedimages');
   };
 
+  const redirectToMostPopularGeneratedImagesPage = () => {
+    navigate('/mostpopulargeneratedimages');
+  };
+
+  const redirectToRecentlyGeneratedImagesPage = () => {
+    navigate('/recentlygeneratedimages');
+  };
+
   return (
     <div className="users-news-feed-user-container">
       <div className="users-news-feed-content">
@@ -208,7 +204,7 @@ const NewsFeedUserPage = () => {
           className ="userfeed-clickable-title" 
           title="Click Me!" 
           onClick={redirectToUsersFavouritesPage}>
-          Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+            Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-favourited-images-row">
           {usersfavouritedImages.slice(0, 5).map((image) => (
@@ -220,7 +216,11 @@ const NewsFeedUserPage = () => {
             />
           ))}
         </div>
-        <h2 className="userfeed-h2">Most Popular Generated Images</h2>
+        <h2 
+          className="userfeed-h2" 
+          onClick={redirectToMostPopularGeneratedImagesPage}>
+            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+        </h2>
         <div className="users-most-popular-images-row">
           {mostPopularImages.slice(0, 5).map((image) => (
             <img 
@@ -233,7 +233,11 @@ const NewsFeedUserPage = () => {
           ))}
         </div>
 
-        <h2 className='userfeed-h2'>Recently Generated Images</h2>
+        <h2 
+          className='userfeed-h2' 
+          onClick={redirectToRecentlyGeneratedImagesPage}>
+            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+        </h2>
         <div className="users-recently-generated-images-row">
           {recentlyGeneratedImages.slice(0, 5).map((image) => (
             <img 
@@ -249,7 +253,12 @@ const NewsFeedUserPage = () => {
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img className='generate-button' title = "Click Me!" src='../icons/paw_button.png' onClick={redirectToGeneratePage} />
+        <img 
+          className='generate-button' 
+          title = "Click Me!" 
+          src='../icons/paw_button.png' 
+          onClick={redirectToGeneratePage} 
+        />
 
         <h2 
           className="your-generations" 
