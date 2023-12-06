@@ -31,7 +31,7 @@ async function leonardoSubmit(dogOne, dogTwo) {
 };
 const response = await fetch('https://cloud.leonardo.ai/api/rest/v1/generations', options);
 const data = await response.json();
-console.log("First fetch data:", data);
+// console.log("First fetch data:", data);
 
 return data;
 } catch (error) {

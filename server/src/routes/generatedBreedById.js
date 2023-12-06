@@ -40,18 +40,18 @@ try {
   const breedTwo = genRecord[0].breed_two
 
 
-  console.log("breed one check", breedTwo)
+  // console.log("breed one check", breedTwo)
 
   const breedName = await breedNames(breedOne, breedTwo)
 
-  console.log("breed name from 3rd querry", breedName)
+  // console.log("breed name from 3rd querry", breedName)
 
 
 
-  console.log("ok first lets look at query 1", dogBreedDetails)
+  // console.log("ok first lets look at query 1", dogBreedDetails)
 
 
-  console.log("here is my extradetails from parents", genRecord)
+  // console.log("here is my extradetails from parents", genRecord)
 
   
   const extraStats = {
@@ -62,7 +62,7 @@ try {
   }
 
 
-  console.log("extra br444eed details", extraStats);
+  // console.log("extra br444eed details", extraStats);
 
   res.json({dogBreedDetails, extraStats});
 

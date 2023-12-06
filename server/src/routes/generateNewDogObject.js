@@ -41,11 +41,11 @@ router.get("/", validateSession, async (req, res) => {
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
 
-    console.log("here is the second dog req", dogTwoId)
+    // console.log("here is the second dog req", dogTwoId)
     const resultOne = await dogBreed(dogOneId);
     const resultTwo = await dogBreed(dogTwoId);
 
-    console.log('Result for dog two:', resultTwo);
+    // console.log('Result for dog two:', resultTwo);
 
 
     const combinedResults = {
@@ -71,7 +71,7 @@ router.get("/", validateSession, async (req, res) => {
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
-    console.log("here is the pre parsing for special charachters", parsedDogBreedData)
+    // console.log("here is the pre parsing for special charachters", parsedDogBreedData)
 
     parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
 
@@ -79,7 +79,7 @@ router.get("/", validateSession, async (req, res) => {
 
 
     const dogPhotoUrl = await muttyPhotoFetch(generationId);
-    console.log("Final dog URL:", dogPhotoUrl);
+    // console.log("Final dog URL:", dogPhotoUrl);
 
     parsedDogBreedData.generated_photo_link = dogPhotoUrl;
 
@@ -107,7 +107,7 @@ router.get("/", validateSession, async (req, res) => {
 
     await queryRecord(updatedBreed);
 
-    console.log("last by not least lets work on my query table", updatedBreed)
+    // console.log("last by not least lets work on my query table", updatedBreed)
 
 
     console.log('Generated Breed Details:', dogBreedDetails, extraStats);
