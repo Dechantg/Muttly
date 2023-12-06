@@ -19,49 +19,47 @@
   margin-left: 3.5rem;
   margin-top: 1.5rem;
   width: 65rem;
-  // margin-bottom: -1rem;
 
   h2 {
     text-align: left;
-    // margin-bottom: .5rem;
   }
 
   .userfeed-clickable-title {
+    display: flex;
+    align-items: center;
     width: fit-content;
-    // background-color: white;
     border-bottom: 2px solid black;
     height: 2rem;
-    padding: 0.25rem 0.5rem 2rem 0.5rem;
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
     text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
 
     img {
-      // margin-top: 1rem;
+      margin-left: 0.5rem;
       width: 1.75rem;
     }
   }
 }
 
-  
-  .users-favourited-images-row,
-  .users-most-popular-images-row,
-  .users-recently-generated-images-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+.users-favourited-images-row,
+.users-most-popular-images-row,
+.users-recently-generated-images-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 
-    img {
-      width: 11rem;
-      height: 9rem;
-      object-fit: cover;
-      margin: 8px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  }  
+  img {
+    width: 11rem;
+    height: 9rem;
+    object-fit: cover;
+    margin: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}  
 
 .users-generated-image-row {
   display: grid;
@@ -79,19 +77,28 @@
 }
 
 .your-generations {
+  display: flex;
+  align-items: center;
   width: fit-content;
-  margin-bottom: 0.75rem;
   border-bottom: 2px solid black;
   height: 2rem;
-  padding: 0.25rem 0.5rem 2rem 0.5rem;
+  padding: 0.25rem 0.5rem 0.5rem 0.5rem;
   text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
+
+  img {
+    margin-left: 0.5rem;
+  }
 }
 
 .userfeed-h2 {
+  display: flex;
+  align-items: center;
   width: fit-content;
   border-bottom: 2px solid black;
+  padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+
 }
 
 .generate-button {

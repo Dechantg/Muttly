@@ -217,7 +217,7 @@ const NewsFeedUserPage = () => {
           ))}
         </div>
         <h2 
-          className="userfeed-h2" 
+          className="userfeed-clickable-title" 
           onClick={redirectToMostPopularGeneratedImagesPage}>
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
@@ -234,7 +234,7 @@ const NewsFeedUserPage = () => {
         </div>
 
         <h2 
-          className='userfeed-h2' 
+          className='userfeed-clickable-title' 
           onClick={redirectToRecentlyGeneratedImagesPage}>
             Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>

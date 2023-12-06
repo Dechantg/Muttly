@@ -65,7 +65,7 @@ const NavigationBarTop = () => {
         )}
         <div>
           <h1 className="muttly-brand">Muttly</h1>
-          <h2 className="muttly-slogan">Unlimited paw-sibilities... Tailored Tails, Your Way!</h2>
+          <h2 className="muttly-slogan">Unlimited paw-sibilities... Tailored Tails; Your Way !</h2>
         </div>
       </div>
       <div className="right-side">
