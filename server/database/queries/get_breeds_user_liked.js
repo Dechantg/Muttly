@@ -31,7 +31,7 @@ const breedsUserLiked = (userId) => {
     liked_generated_breeds.like_status
     FROM generated_breeds
     JOIN liked_generated_breeds ON generated_breeds.id = liked_generated_breeds.generated_breeds_id
-    WHERE liked_generated_breeds.user_id = $1 AND liked_generated_breeds.like_status = true
+    WHERE liked_generated_breeds.user_id = $1 AND liked_generated_breeds.like_status = true AND generated_breeds.user_id != $1
     ORDER BY generated_breeds.id;`, [userId])
   
     .then(data => {
