@@ -44,12 +44,12 @@ const NavigationBarTop = () => {
       if (!response.ok) {
           alert('Logout Failed. Please try again.');
         throw new Error('Sign-in failed');
-      }
+      };
       window.location.reload();
     } catch (error) {
       console.error('Error during sign-out:', error.message);
-    }
-  }
+    };
+  };
 
   return (
     <div className="top-navigation-bar">
@@ -59,7 +59,7 @@ const NavigationBarTop = () => {
             <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
           </Link>
         ) : (
-          <Link to="/newsfeed" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
           </Link>
         )}

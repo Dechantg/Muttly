@@ -75,7 +75,7 @@ const HomePage = () => {
       <div className="main">
         <div className="home_main">
           <h1>WELCOME TO MUTTLY!</h1>
-          <Link to="/newsfeed" className="logo-link">
+          <Link to="/newsfeed" className="to-newsfeed-public-link">
             <button>Unleash your curiosity, and em-bark on a journey with the pack</button>
           </Link>
           <div className="dog_container">
