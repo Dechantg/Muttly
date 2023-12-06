@@ -96,7 +96,7 @@ const MostPopularGeneratedImagesPage = () => {
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {MostPopularGeneratedImagesPage.map((image) => (
+          {mostPopularImages.map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}               
