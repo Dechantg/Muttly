@@ -113,9 +113,10 @@ const SignUpPage = () => {
         <div className="paw-signup">
         <Link to="/newsfeeduser" className="to-newsfeed-user-link" onClick={handleSignUp}>
             <img className="paw-button" src="../icons/paws_pink.png"/>
-          </a>
+          </Link>
         <p>Sign Me Up!</p>
         </div>
+
       </div>
       
       <div className="background-with-pawprints-right">

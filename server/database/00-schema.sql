@@ -85,7 +85,9 @@ CREATE TABLE new_breed_queries (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   generated_breeds_id INTEGER REFERENCES generated_breeds(id) ON DELETE CASCADE,
   breed_one INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE,
-  breed_two INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE
+  breed_two INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE,
+  leo_gen_record VARCHAR(50),
+  openai_thread_id VARCHAR(50)
 );
 
 CREATE TABLE user_login (

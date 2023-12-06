@@ -3,11 +3,11 @@
 const db = require('../connection');
 
 const newBreedQuery = (breedQuery) => {
-  const { genId, userId, breedOne, breedTwo } = breedQuery;
+  const { genId, userId, breedOne, breedTwo, openAiThread, leoGenRecord } = breedQuery;
 
   return db.query (
-    'INSERT INTO new_breed_queries (generated_breeds_id, user_id, breed_one, breed_two) VALUES ($1, $2, $3, $4) RETURNING *;',
-    [genId, userId, breedOne, breedTwo]
+    'INSERT INTO new_breed_queries (generated_breeds_id, user_id, breed_one, breed_two, openai_thread_id, leo_gen_record) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;',
+    [genId, userId, breedOne, breedTwo, openAiThread, leoGenRecord]
   )
   .then(data => {
     const dogDetails = data.rows;

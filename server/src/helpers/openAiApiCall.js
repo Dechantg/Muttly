@@ -19,6 +19,8 @@ async function muttyAssistent(dogOne, dogTwo) {
     content: dogString,
   });
 
+  const threadId = thread.id
+
   const interval = 1000;
 
   const run = await openai.beta.threads.runs.create(thread.id, {
@@ -53,7 +55,7 @@ async function muttyAssistent(dogOne, dogTwo) {
       console.error('Error parsing JSON:', error);
     }
 
-      return jsonObject;
+      return {jsonObject, threadId};
   }
 
     await new Promise((resolve) => setTimeout(resolve, interval));
