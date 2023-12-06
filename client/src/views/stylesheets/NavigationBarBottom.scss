@@ -11,7 +11,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.paws-icon-nav,
+.bone-icon-nav {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
 .nav-link {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
 }

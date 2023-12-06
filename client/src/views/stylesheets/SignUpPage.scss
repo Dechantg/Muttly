@@ -4,18 +4,16 @@
   display: flex;
   justify-content: center;
   zoom: 120%;
-  // Styling for the entire container
 }
 
 .signup-form {
   text-align: center;
   margin-top: 0px;
   background-color: #C2F9FF;
-  padding: 20px;
   width: 50rem;
 
   h1 {
-    // Styling for the main header "Sign Up"
+    font-size: 4vw;
   }
 
   h2 {

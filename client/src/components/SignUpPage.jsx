@@ -1,6 +1,6 @@
 // SignUpPage.jsx
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation'; 
 
@@ -46,10 +46,13 @@ const SignUpPage = () => {
       if (!response.ok) {
         throw new Error('Sign-in failed. Please enter all details!');
       };
+
       alert('You are signed up! Please login.')
+
+      navigate('/newsfeeduser');
     } catch (error) {
       console.error('Error during sign-in:', error.message);
-      alert('Sign-in failed')
+      alert('Sign-in failed');
     };
   };
 

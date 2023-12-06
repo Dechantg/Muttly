@@ -25,7 +25,7 @@ const AboutUsPage = () => {
         </div>
         <div className="about-us-content">
           <h1>About Us...</h1>
-          <h2>Our Tail Begins Here...</h2>
+          <h3>Our Tail Begins Here...</h3>
           <p>...At Muttly, we're the Picasso of Paws, the Da Vinci of Doggos! We're not just a dog company; we're barkitects of the highest pedigree...</p>
           <p>Ever wondered what a Dalmatian and a Husky would look like combined?</p>
           <p>We did too!</p>
