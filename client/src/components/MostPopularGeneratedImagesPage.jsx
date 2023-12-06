@@ -46,7 +46,7 @@ const MostPopularGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostliked', {
+        const response = await fetch('http://localhost:8088/api/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });
@@ -96,7 +96,7 @@ const MostPopularGeneratedImagesPage = () => {
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {MostPopularGeneratedImagesPage.map((image) => (
+          {mostPopularImages.map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}               
