@@ -15,7 +15,7 @@
   width: 90vw;
   margin: 1rem 0 0 6rem; 
   & > * {
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
 
   h1 {
@@ -26,7 +26,7 @@
 .home_main > p {
   text-align: center;
   width: 50vw;
-  font-size: 1vw;
+  font-size: 1.75vw;
   margin-bottom: 1rem;
 }
 
@@ -87,18 +87,18 @@
   }
 }
 
-button {
+.home-button {
   height: 3rem;
   font-size: 1.25vw;
-  margin-top: -1rem;
-  width: 35vw; 
+  margin-top: 1.75rem;
+  width: fit-content; 
   border-radius: 8px;
   border: none; 
   background-color: #FFBEBA;
   font-family: 'Indie Flower', cursive;
   transition: filter 0.3s ease;
 
-  &:hover {
+  & :hover {
     filter: brightness(1.2);
   }
 } 

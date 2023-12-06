@@ -8,10 +8,10 @@ import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/UsersFavouritesPage.scss';
 
-const UsersFavouritesPage = () => {
-  const [favouritedImages, setFavouritedImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
+const RecentlyGeneratedImagesPage = () => {
+  const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
+  const [ selectedImage, setSelectedImage ] = useState(null);
+  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   const { isValid, userId, isLoading } = useSessionValidation();
   const navigate = useNavigate();
 
@@ -25,7 +25,6 @@ const UsersFavouritesPage = () => {
     }
     console.log("After navigation. isValid:", isValid);
   }, [isLoading, isValid, navigate],[])
-
 
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
@@ -45,37 +44,37 @@ const UsersFavouritesPage = () => {
   };
 
   useEffect(() => {
-    const fetchFavouritedImages = async () => {
+    const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+        const response = await fetch('http://localhost:8088/api/mostrecent', {
           method: 'GET',
           credentials: 'include',
         });
 
         if (response.ok) {
           const data = await response.json();
-          const userFavouritesList = data.userLiked
-          const extraDetails = data.extraDetails
+          const recentlyGen = data.result
+          const recentExtraDetails = data.extraDetails
 
-          extraDetails.forEach(detail => {
-            const indexToUpdate = userFavouritesList.findIndex(image => image.id === detail.genid);
+          recentExtraDetails.forEach(detail => {
+            const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
           
             if (indexToUpdate !== -1) {
-              userFavouritesList[indexToUpdate].dog1 = detail.breedone;
-              userFavouritesList[indexToUpdate].dog2 = detail.breedtwo;
+              recentlyGen[indexToUpdate].dog1 = detail.breedone;
+              recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-
-          setFavouritedImages(userFavouritesList);
+          setRecentlyGeneratedImages(recentlyGen);
+          // console.log('Recently Generated Images:', data);
         } else {
-          console.error('Failed to fetch favourited images:', response.status);
+          console.error('Failed to fetch recently generated images:', response.status);
         };
       } catch (error) {
-        console.error('Error fetching favourited images:', error);
+        console.error('Error fetching recently generated images:', error);
       };
     };
 
-    fetchFavouritedImages();
+    fetchRecentlyGeneratedImages();
   }, []);
 
   const openDogBreedModal = (image) => {
@@ -90,14 +89,14 @@ const UsersFavouritesPage = () => {
       <div className="page-body">
         {/* Header and Subheader */}
         <div className="header">
-          <h1>Your Favourites</h1>
-          <h3>Check-out the generated images you have favourited...</h3>
+          <h1>Most Recently Generated Images</h1>
+          <h3>We fetched the most recently generated images for you! Check-out the pack...</h3>
         </div>
 
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {favouritedImages.map((image) => (
+          {recentlyGeneratedImages.map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}               
@@ -142,4 +141,4 @@ const UsersFavouritesPage = () => {
   );
 };
 
-export default UsersFavouritesPage;
+export default RecentlyGeneratedImagesPage;

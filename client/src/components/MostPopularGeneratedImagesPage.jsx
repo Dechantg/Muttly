@@ -1,7 +1,6 @@
 // UsersGeneratedImages.jsxnews-feed-container-
 
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,8 +8,8 @@ import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/UsersFavouritesPage.scss';
 
-const UsersFavouritesPage = () => {
-  const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
+const MostPopularGeneratedImagesPage = () => {
+  const [ mostPopularImages, setMostPopularImages ] = useState([]);
   const [ selectedImage, setSelectedImage ] = useState(null);
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   const { isValid, userId, isLoading } = useSessionValidation();
@@ -41,44 +40,43 @@ const UsersFavouritesPage = () => {
       console.log('Clicked image element:', event.target);
     } else {
       console.error('Image object is undefined');
-    };
+    }
   };
 
   useEffect(() => {
-    const fetchUsersGeneratedImages = async () => {
+    const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/breedbyuserid/${userId}`, {
+        const response = await fetch('http://localhost:8088/api/mostliked', {
           method: 'GET',
           credentials: 'include',
         });
 
         if (response.ok) {
           const data = await response.json();
+          const mostPopular = data.topLikedDetailsResult;
+          const popularExtraDetails = data.extraDetails;
 
-          const usersFavourites = data.generatedBreeds;
-          const extraDetails = data.extraDetails;
-
-          extraDetails.forEach(detail => {
-            const indexToUpdate = usersFavourites.findIndex(image => image.id === detail.genid);
+          popularExtraDetails.forEach(detail => {
+            const indexToUpdate = mostPopular.findIndex(image => image.id === detail.genid);
           
             if (indexToUpdate !== -1) {
-              usersFavourites[indexToUpdate].dog1 = detail.breedone;
-              usersFavourites[indexToUpdate].dog2 = detail.breedtwo;
-            }
+              mostPopular[indexToUpdate].dog1 = detail.breedone;
+              mostPopular[indexToUpdate].dog2 = detail.breedtwo;;
+            };
           });
-
-          setUsersGeneratedImages(usersFavourites); 
-          // console.log('Users Generated Images state:', usersGeneratedImages);
-          // console.log('Users Generated Images:', data);
+          console.log("here is the most popular", mostPopular)
+          setMostPopularImages(mostPopular);
+          // console.log('Most Popular Images state:', mostPopularImages);
+          // console.log('Most Popular Images', data);
         } else {
-          console.error('Failed to fetch users generated images:', response.status);
+          console.error('Failed to fetch most popular images:', response.status);
         };
       } catch (error) {
-        console.error('Error fetching users recently generated images:', error);
+        console.error('Error fetching most popular images:', error);
       };
     };
 
-    fetchUsersGeneratedImages();
+    fetchMostPopularImages();
   }, []);
 
   const closeDogBreedModal = () => {
@@ -86,19 +84,19 @@ const UsersFavouritesPage = () => {
   };
 
   return (
-    <div className="users-generated-images-page-container">
+    <div className="most-popular-generated-images-page-container">
       {/* Body of the Page */}
       <div className="page-body">
         {/* Header and Subheader */}
         <div className="header">
-          <h1>Your Generated Images</h1>
-          <h3>Check-out the generated images you have generated...</h3>
+          <h1>Most Popular Generated Images</h1>
+          <h3>Check-out the generated images that have everyone Barking about...</h3>
         </div>
 
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {usersGeneratedImages.map((image) => (
+          {MostPopularGeneratedImagesPage.map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}               
@@ -144,4 +142,4 @@ const UsersFavouritesPage = () => {
   );
 };
 
-export default UsersFavouritesPage;
+export default MostPopularGeneratedImagesPage;
