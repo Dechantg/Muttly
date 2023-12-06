@@ -80,6 +80,18 @@ const NewsFeedUserPage = () => {
         if (response.ok) {
           const data = await response.json();
           const mostPopular = data.topLikedDetailsResult;
+          const popularExtraDetails = data.extraDetails
+
+          popularExtraDetails.forEach(detail => {
+            const indexToUpdate = mostPopular.findIndex(image => image.id === detail.genid);
+          
+            if (indexToUpdate !== -1) {
+              mostPopular[indexToUpdate].dog1 = detail.breedone;
+              mostPopular[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+  
+
           console.log("here is the most popular", mostPopular)
           setMostPopularImages(mostPopular);
           // console.log('Most Popular Images state:', mostPopularImages);
@@ -102,6 +114,20 @@ const NewsFeedUserPage = () => {
         if (response.ok) {
           const data = await response.json();
           const recentlyGen = data.result
+          const recentExtraDetails = data.extraDetails
+
+          recentExtraDetails.forEach(detail => {
+            const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
+          
+            if (indexToUpdate !== -1) {
+              recentlyGen[indexToUpdate].dog1 = detail.breedone;
+              recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+  
+
+
+
           setRecentlyGeneratedImages(recentlyGen);
           // console.log('Recently Generated Images:', data);
         } else {
@@ -121,7 +147,21 @@ const NewsFeedUserPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUsersGeneratedImages(data); 
+          const usersGeneratedImagesFeed = data.generatedBreeds
+          const usersGenExtraDetails = data.extraDetails
+
+
+          usersGenExtraDetails.forEach(detail => {
+          const indexToUpdate = usersGeneratedImagesFeed.findIndex(image => image.id === detail.genid);
+        
+          if (indexToUpdate !== -1) {
+            usersGeneratedImagesFeed[indexToUpdate].dog1 = detail.breedone;
+            usersGeneratedImagesFeed[indexToUpdate].dog2 = detail.breedtwo;
+          }
+        });
+
+
+          setUsersGeneratedImages(usersGeneratedImagesFeed); 
           console.log('Users Generated Images state:', usersGeneratedImages);
           console.log('Users Generated Images:', data);
         } else {

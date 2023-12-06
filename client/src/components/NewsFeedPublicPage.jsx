@@ -39,9 +39,25 @@ const NewsFeedPublicPage = () => {
       try {
         const response = await fetch('http://localhost:8088/api/mostliked');
         const data = await response.json();
+        const extraDetails = data.extraDetails
         const popularImages = data.topLikedDetailsResult
+        
+     
+        extraDetails.forEach(detail => {
+          const indexToUpdate = popularImages.findIndex(image => image.id === detail.genid);
+        
+          if (indexToUpdate !== -1) {
+            popularImages[indexToUpdate].dog1 = detail.breedone;
+            popularImages[indexToUpdate].dog2 = detail.breedtwo;
+          }
+        });
+        
+  
+
+        console.log("Here are the popular images from public", popularImages)
         setMostPopularImages(popularImages);
-        console.log(popularImages);
+        console.log("here are the extra details", extraDetails.genid)
+        console.log("here is the populat imagess", popularImages.id);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
       };
@@ -52,6 +68,20 @@ const NewsFeedPublicPage = () => {
         const response = await fetch('http://localhost:8088/api/mostrecent');
         const data = await response.json();
         const recentlyGen = data.result
+        const extraRecentData = data.extraDetails
+
+
+        extraRecentData.forEach(detail => {
+          const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
+        
+          if (indexToUpdate !== -1) {
+            recentlyGen[indexToUpdate].dog1 = detail.breedone;
+            recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
+          }
+        });
+
+
+
 
         setRecentlyGeneratedImages(recentlyGen);
 

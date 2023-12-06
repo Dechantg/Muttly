@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 
 const breedIdByUser = require('../../database/queries/get_generated_dog_by_user')
 const validateSession = require('../helpers/sessionValidation')
+const parentNames = require('../../database/queries/get_breed_name_extra_details')
+
 
 
 
@@ -26,11 +28,23 @@ try {
 
   const generatedBreeds = await breedIdByUser(userId);
 
-  // console.log('Fetched data dog one:', generatedBreeds);
+  const generatedBreedsIds = generatedBreeds.map(item => item.id);
+
+  // console.log("here is from this route my generatedBreedIds mapped", generatedBreedsIds)
+
+  const generatedBreedIdMap = generatedBreedsIds.map((value) => ({ id: value }));
+
+
+
+
+  const extraDetails = await parentNames(generatedBreedIdMap);
+
+
+  // console.log('exdra details in console time:', extraDetails);
 
 
   // Send the combined results as JSON to the client
-  res.json(generatedBreeds);
+  res.json({generatedBreeds, extraDetails});
 
 } catch (error) {
   console.error('Error executing SQL query:', error);

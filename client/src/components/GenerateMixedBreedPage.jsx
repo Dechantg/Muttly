@@ -99,7 +99,7 @@ const GenerateMixedBreedPage = () => {
   useEffect(() => {
     if (selectedBreedTwo) {
       const dogChoice = dogOptions.find(dog => dog.name === selectedBreedTwo);
-      setIdTwo(dogChoice.id)
+      setIdTwo(dogChoice.id);
       const fetchDataSecondDog = async () => {
         try {
           if (dogChoice) {
@@ -155,18 +155,18 @@ const GenerateMixedBreedPage = () => {
     if (dogOneId && dogTwoId) {
       let modal = null;
       setdogModal(null);
-      setWaitModal(true)
+      setWaitModal(true);
       const fetchFusion = async () => {
         try {
           const response = await fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
             credentials: 'include',
           });
           const data = await response.json();
-          console.log('Data in full',data)
+          console.log('Data in full',data);
           const dogData = data.dogBreedDetails[0];
-          console.log('dogData', dogData)
+          console.log('dogData', dogData);
           const mateData = data.extraStats;
-          console.log(mateData)
+          console.log(mateData);
           modal=
             <DogBreedCardModal
               id={dogData.id}
@@ -193,11 +193,11 @@ const GenerateMixedBreedPage = () => {
               dog1 = {mateData.breedOne}
               dog2 = {mateData.breedTwo}
             />
-          setWaitModal(false)
+          setWaitModal(false);
           setdogModal(modal);
         } catch (error) {
           console.error('Error fetching data', error);
-          setWaitModal(false)
+          setWaitModal(false);
         }
       };
       
