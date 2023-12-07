@@ -45,7 +45,8 @@
 } 
 
 .sign_in > img {
-  width: 10vw; 
+  width: 10vw;
+  cursor: pointer;
 }
 
 .dog_container {
@@ -97,8 +98,9 @@
   background-color: #FFBEBA;
   font-family: 'Indie Flower', cursive;
   transition: filter 0.3s ease;
+  cursor: pointer;
 
-  & :hover {
+  &:hover {
     filter: brightness(1.2);
   }
 } 
