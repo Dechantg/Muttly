@@ -199,7 +199,7 @@ const NewsFeedUserPage = () => {
             Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-favourited-images-row">
-          {usersfavouritedImages.slice(0, 5).map((image) => (
+          {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -214,7 +214,7 @@ const NewsFeedUserPage = () => {
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-most-popular-images-row">
-          {mostPopularImages.slice(0, 5).map((image) => (
+          {mostPopularImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -230,7 +230,7 @@ const NewsFeedUserPage = () => {
             Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-recently-generated-images-row">
-          {recentlyGeneratedImages.slice(0, 5).map((image) => (
+          {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -258,7 +258,7 @@ const NewsFeedUserPage = () => {
             Your Generations <img className='bone-animate' src= '../icons/bone.png' />
         </h2>
         <div className="users-generated-image-row">
-          {usersGeneratedImages.slice(0, 6).map((image) => (
+          {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}
