@@ -63,7 +63,7 @@ const SignInModal = (props) => {
           &times;
         </span>
         <div className="logo-header">
-          <img src="/public/icons/paws_pink.png" alt="Muttly Logo" className="logo" />
+          <img src="../icons/paws_pink.png" alt="Muttly Logo" className="logo" />
           <h2>Sign In!</h2>
           <h3>If you don't have an account, please click <a onClick ={(onClose)}><Link to="/signup">here</Link></a> to sign up!</h3>
         </div>
