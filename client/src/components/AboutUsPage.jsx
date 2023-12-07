@@ -1,7 +1,6 @@
 // AboutUsPage.jsx
 
 import React from 'react';
-
 import '../views/stylesheets/AboutUsPage.scss';
 
 const AboutUsPage = () => {

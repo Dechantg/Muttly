@@ -23,23 +23,18 @@ const HomePage = () => {
   ];
   
   const [ index, setIndex ] = useState(0);
-  
+  const [isLoggedIn, setLogIn] = useState(null)
+  const [loggedIn, loggedStatus] = useState(false);
+  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const { isValid, userId, isLoading } = useSessionValidation();
   
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isValid) {
-      // console.log("Before navigation. isValid:", isValid);
-      if (isValid) {
-        // console.log("Navigating to /newsfeeduser");
-        navigate('/newsfeeduser');
-      } else {
-        // console.log('User not authenticated');
-      }
-      // console.log("After navigation. isValid:", isValid);
+    console.log(isValid, 'isValid')
+    isValid ? setLogIn(true) : setLogIn(false) 
     }
-  }, [isValid, navigate]);
+  ,[isLoading, isValid, isLoggedIn]);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,9 +43,6 @@ const HomePage = () => {
 
     return () => clearInterval(interval)
   }, [images.length]);
-  
-  const [loggedIn, loggedStatus] = useState(false);
-  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
 
   const openSignInModal = () => {
     setSignInModalOpen(true);

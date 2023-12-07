@@ -1,5 +1,7 @@
 // NavigationBarTop.jsx
 
+// Added for Alex to compare why pathways/redirects work;
+
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation'; 

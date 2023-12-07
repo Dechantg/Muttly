@@ -1,5 +1,7 @@
 // NewsFeedUserPage.jsx
 
+// Added for Alex to compare why pathways/redirects work;
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSessionValidation from '../hooks/useSessionValidation';
@@ -27,7 +29,7 @@ const NewsFeedUserPage = () => {
       navigate('/');
     }
     console.log("After navigation. isValid:", isValid);
-  }, [isLoading, isValid, navigate],[]);
+  }, [isLoading, isValid, navigate],[])
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
@@ -55,17 +57,7 @@ const NewsFeedUserPage = () => {
         if (response.ok) {
           const data = await response.json();
           const usersFavourited = data.userLiked;
-          const usersExtraDetails = data.extraDetails
-
-          usersExtraDetails.forEach(detail => {
-            const indexToUpdate = usersFavourited.findIndex(image => image.id === detail.genid);
-          
-            if (indexToUpdate !== -1) {
-              usersFavourited[indexToUpdate].dog1 = detail.breedone;
-              usersFavourited[indexToUpdate].dog2 = detail.breedtwo;
-            }
-          });
-          console.log("here is the useres favourited results", usersFavourited)
+          console.log("here is the useres favourited results", usersFavourited);
           setUsersFavouritedImages(usersFavourited);
           // console.log('Extra Details:', extraDetails);
 
@@ -207,7 +199,7 @@ const NewsFeedUserPage = () => {
             Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-favourited-images-row">
-          {usersfavouritedImages.slice(0, 5).map((image) => (
+          {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -222,7 +214,7 @@ const NewsFeedUserPage = () => {
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-most-popular-images-row">
-          {mostPopularImages.slice(0, 5).map((image) => (
+          {mostPopularImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -238,7 +230,7 @@ const NewsFeedUserPage = () => {
             Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-recently-generated-images-row">
-          {recentlyGeneratedImages.slice(0, 5).map((image) => (
+          {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -266,7 +258,7 @@ const NewsFeedUserPage = () => {
             Your Generations <img className='bone-animate' src= '../icons/bone.png' />
         </h2>
         <div className="users-generated-image-row">
-          {usersGeneratedImages.slice(0, 6).map((image) => (
+          {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}

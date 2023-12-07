@@ -16,6 +16,15 @@ const SignUpPage = () => {
 
   const navigate = useNavigate();
 
+
+
+  useEffect(() => {
+    if (isValid && isLoading) {
+      navigate('/newsfeeduser');
+    } 
+  },[isValid, navigate])
+
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -44,15 +53,12 @@ const SignUpPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Sign-in failed. Please enter all details!');
+        throw new Error('Sign-in failed');
       };
-
       alert('You are signed up! Please login.')
-
-      navigate('/newsfeeduser');
     } catch (error) {
       console.error('Error during sign-in:', error.message);
-      alert('Sign-in failed');
+      alert('Sign-in failed')
     };
   };
 
