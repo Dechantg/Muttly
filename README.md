@@ -69,7 +69,7 @@ To interact with the application:
 
 ## API Documentation
 
-_(If applicable, provide information about the APIs used, their endpoints, and interaction methods.)_
+Under src/helpers there are files that contain the neccesary API fetchs to those ends points.
 
 ## Technologies Used
 
