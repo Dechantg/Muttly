@@ -83,7 +83,7 @@ _(If applicable, provide information about the APIs used, their endpoints, and i
 
 Check out this YouTube video demonstrating the capabilities of Muttly:
 
-[![Muttly Showcase](link-to-your-youtube-thumbnail-image)](https://www.youtube.com/watch?v=inpfeS3pJPM)
+[![Muttly Showcase](https://raw.githubusercontent.com/BSMuse/Muttly/master/docs/screenshot-muttly-home.png)](https://www.youtube.com/watch?v=inpfeS3pJPM)
 
 ## License
 
