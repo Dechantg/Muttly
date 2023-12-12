@@ -68,29 +68,29 @@ const userLikedBig               = require('./routes/mostLikedBig')
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
 
 
-app.use('/api/mostliked', mostLikedBreeds);
-app.use('/api/mostrecent', mostRecentBreeds);
+app.use('/mostliked', mostLikedBreeds);
+app.use('/mostrecent', mostRecentBreeds);
 
-app.use('/api/mostliked/big', userLikedBig);
-app.use('/api/mostrecent/big', mostRecentBig);
+app.use('/mostliked/big', userLikedBig);
+app.use('/mostrecent/big', mostRecentBig);
 
 
-app.use('/api/allbreednames', dogBreedNames);
-app.use('/api/breedbyid', dogBreedById);
-app.use('/api/userliked', breedsUserLiked);
+app.use('/allbreednames', dogBreedNames);
+app.use('/breedbyid', dogBreedById);
+app.use('/userliked', breedsUserLiked);
 
-app.use('/api/generatebreed', generateBreed);
+app.use('/generatebreed', generateBreed);
 
-app.use('/api/generated/breedbyid', generatedBreedById);
-app.use('/api/generated/breedbyuserid', generatedBreedsByUserId);
-app.use('/api/generated/delete', deleteDogBreed);
-app.use('/api/generated/likestatus', changeLikeStatus)
+app.use('/generated/breedbyid', generatedBreedById);
+app.use('/generated/breedbyuserid', generatedBreedsByUserId);
+app.use('/generated/delete', deleteDogBreed);
+app.use('/generated/likestatus', changeLikeStatus)
 
-app.use('/api/addnewuser', addNewUser);
-app.use('/api/login', login);
-app.use('/api/logout', logout);
-app.use('/api/validate', validate);
-app.use('/api/generated/genlikebyuserandbreed', likedByUserAndBreed);
+app.use('/addnewuser', addNewUser);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/validate', validate);
+app.use('/generated/genlikebyuserandbreed', likedByUserAndBreed);
 
 app.get('/usertest', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/newUserTestRoute.html'));

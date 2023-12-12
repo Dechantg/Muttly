@@ -17,7 +17,7 @@ const DogBreedCardModal = (props) => {
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+        const response = await fetch(`/api/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -57,7 +57,7 @@ const DogBreedCardModal = (props) => {
 
   const handleLike = async () => {
     try {
-      const response = await fetch(`http://localhost:8088/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
+      const response = await fetch(`/api/generated/likestatus/${id}?likeStatus=${!liked}`, {
         credentials: 'include',
       }); 
       if (response.ok) {
@@ -102,7 +102,7 @@ const DogBreedCardModal = (props) => {
 
     const handleDelete = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/delete/${id}`, {
+        const response = await fetch(`/api/generated/delete/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -36,7 +36,7 @@ const NavigationBarTop = () => {
 
   const handleSignOut = async () =>  {
     try {
-      const response = await fetch('http://localhost:8088/api/logout', {
+      const response = await fetch('/api/logout', {
         method: 'POST',
         credentials: 'include',
       });
