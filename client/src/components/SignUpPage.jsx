@@ -43,7 +43,7 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     try {
-      const response = await fetch('http://localhost:8088/api/addnewuser', {
+      const response = await fetch('/api/addnewuser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

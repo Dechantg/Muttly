@@ -46,7 +46,7 @@ const MostPopularGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostliked/big', {
+        const response = await fetch('/api/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });

@@ -47,7 +47,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/userLiked`, {
+        const response = await fetch(`/api/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });

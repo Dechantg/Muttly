@@ -56,7 +56,7 @@ const GenerateMixedBreedPage = () => {
       const fetchDataFirstDog = async () => {
         try {
           if (dogChoice) {
-            const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
+            const response = await fetch(`/api/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             const newDogData = data[0];
       
@@ -103,7 +103,7 @@ const GenerateMixedBreedPage = () => {
       const fetchDataSecondDog = async () => {
         try {
           if (dogChoice) {
-            const response = await fetch(`http://localhost:8088/api/breedbyid/${dogChoice.id}`);
+            const response = await fetch(`/api/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             const newDogData = data[0];
 
@@ -158,7 +158,7 @@ const GenerateMixedBreedPage = () => {
       setWaitModal(true);
       const fetchFusion = async () => {
         try {
-          const response = await fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
+          const response = await fetch(`/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
             credentials: 'include',
           });
           const data = await response.json();
@@ -207,7 +207,7 @@ const GenerateMixedBreedPage = () => {
 
   const fetchData = async () => {
     try {
-      const responce = await fetch(`http://localhost:8088/api/allbreednames`)
+      const responce = await fetch(`/api/allbreednames`)
       const data = await responce.json();
       setOptions(data);
       // console.log("breed names object returned from api server:", data);
