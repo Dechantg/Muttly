@@ -64,7 +64,7 @@ const DogBreedCardModal = (props) => {
 
 
   useEffect(() => {
-    if (findLikesForId(id) || findGeneratedForId(id)) {
+    if (findLikesForId(id) || (findGeneratedForId(id) && feed)) {
       setLike(true);
     } else {
       setLike(false);
@@ -104,7 +104,7 @@ const DogBreedCardModal = (props) => {
   };
 
   const onLikeClick = async () => {
-    if(!findGeneratedForId(id)){
+    if(!feed || !findGeneratedForId(id)){
       try {
         await handleLike(); 
         setLike((prevLiked) => !prevLiked); 
