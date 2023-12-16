@@ -98,7 +98,7 @@ const UsersFavouritesPage = () => {
         {/* Grid Layout of Images */}
         <div className="image-grid">
           {/* Render a grid of clickable images */}
-          {usersGeneratedImages.map((image) => (
+          {usersGeneratedImages.reverse().map((image) => (
             <img
               key={image.id}
               src={image.generated_photo_link}               

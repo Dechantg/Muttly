@@ -59,9 +59,7 @@ const NewsFeedUserPage = () => {
           const usersFavourited = data.userLiked;
           console.log("here is the useres favourited results", usersFavourited);
           setUsersFavouritedImages(usersFavourited);
-          // console.log('Extra Details:', extraDetails);
-
-          // console.log('Users Favourited Images:', data);
+          console.log('Users Favourited Images:', data);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
         };
@@ -72,7 +70,7 @@ const NewsFeedUserPage = () => {
 
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostliked', {
+        const response = await fetch('http://localhost:8088/api/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });
@@ -90,9 +88,9 @@ const NewsFeedUserPage = () => {
               mostPopular[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-          console.log("here is the most popular", mostPopular)
+          // console.log("here is the most popular", mostPopular)
           setMostPopularImages(mostPopular);
-          // console.log('Most Popular Images state:', mostPopularImages);
+          console.log('Most Popular Images state:', mostPopular);
           // console.log('Most Popular Images', data);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
@@ -214,7 +212,7 @@ const NewsFeedUserPage = () => {
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-most-popular-images-row">
-          {mostPopularImages.reverse().slice(0, 5).map((image) => (
+          {mostPopularImages.slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
