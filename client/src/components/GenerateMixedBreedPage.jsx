@@ -198,6 +198,7 @@ const GenerateMixedBreedPage = () => {
         } catch (error) {
           console.error('Error fetching data', error);
           setWaitModal(false);
+          alert('There was a mix-up with your mix! Please try again.');
         }
       };
       

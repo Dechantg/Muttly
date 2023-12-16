@@ -11,6 +11,7 @@ const DogBreedCardModal = (props) => {
   const [ closeModal, setClose ] = useState(false);
   const { isValid, userId } = useSessionValidation();
   const [favoriteImages, setFavouritedImages ] = useState(null)
+  const [usersGeneratedImages, setUsersGeneratedImages] = useState(null)
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
 
 
@@ -24,7 +25,8 @@ const DogBreedCardModal = (props) => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('data',data.userLiked)
+          console.log(data)
+          console.log('user liked these dogs', data.userLiked)
           setFavouritedImages(data.userLiked);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
@@ -38,21 +40,51 @@ const DogBreedCardModal = (props) => {
   }, []);
 
   useEffect(() => {
-    const likedDog = findLikesForId(id);
-    if (likedDog) {
+    const fetchUsersGeneratedImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:8088/api/generated/breedbyuserid/${userId}`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const usersGeneratedImages = data.generatedBreeds;
+          setUsersGeneratedImages(usersGeneratedImages); 
+        } else {
+          console.error('Failed to fetch users generated images:', response.status);
+        };
+      } catch (error) {
+        console.error('Error fetching users recently generated images:', error);
+      };
+    };
+
+    fetchUsersGeneratedImages();
+  }, []);
+
+
+  useEffect(() => {
+    if (findLikesForId(id) || findGeneratedForId(id)) {
       setLike(true);
     } else {
       setLike(false);
     }
-  }, [favoriteImages, id]);
+  }, [favoriteImages, usersGeneratedImages, id]);
 
   const findLikesForId = (id) => {
     if (favoriteImages) {
-      console.log(favoriteImages)
       const likedDog = favoriteImages.find((dog) => dog.id === id);
-      return likedDog !== undefined; // Return true if the dog is found, false otherwise
+      return likedDog !== undefined; 
     }
-    return false; // If favoriteImages is not available yet, return false
+    return false; 
+  };
+
+  const findGeneratedForId = (id) => {
+    if (usersGeneratedImages) {
+      const generatedDog = usersGeneratedImages.find((dog) => dog.id === id);
+      return generatedDog !== undefined; 
+    }
+    return false; 
   };
 
   const handleLike = async () => {
@@ -72,16 +104,16 @@ const DogBreedCardModal = (props) => {
   };
 
   const onLikeClick = async () => {
-    try {
-      await handleLike(); 
-      setLike((prevLiked) => !prevLiked); // Toggle the liked state immediately after liking
-      // Assuming the like status is toggled correctly, proceed with closing after 2 seconds
-      setTimeout(() => {
-        setClose(true);
-      }, 2000);
-    } catch (error) {
-      console.error('Error while liking breed:', error);
-      // If there's an error in liking, consider setting the liked state to its previous value or handle the error accordingly
+    if(!findGeneratedForId(id)){
+      try {
+        await handleLike(); 
+        setLike((prevLiked) => !prevLiked); 
+        setTimeout(() => {
+          setClose(true);
+        }, 2000);
+      } catch (error) {
+        console.error('Error while liking breed:', error);
+      }
     }
   };
   
