@@ -20,7 +20,7 @@
                 }
 
                 // If a cookie is present, proceed with validation
-                const response = await fetch('http://localhost:8088/api/validate-session', {
+                const response = await fetch('/api/validate-session', {
                     method: 'GET',
                     credentials: 'include', // Include credentials (cookies) in the request
                 });

@@ -22,7 +22,7 @@ const SignUpPage = () => {
 
   const handleLogin = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:8088/api/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -45,7 +45,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8088/api/addnewuser', {
+      const response = await fetch('/api/addnewuser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, firstName, lastName }),

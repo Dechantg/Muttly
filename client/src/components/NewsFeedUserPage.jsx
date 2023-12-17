@@ -34,7 +34,7 @@ const NewsFeedUserPage = () => {
   useEffect(() => {
     const fetchUsersFavouritedImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/userLiked', {
+        const response = await fetch('/api/userLiked', {
           method: 'GET',
           credentials: 'include',
         });
@@ -55,7 +55,7 @@ const NewsFeedUserPage = () => {
 
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostliked/big', {
+        const response = await fetch('/api/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });
@@ -85,7 +85,7 @@ const NewsFeedUserPage = () => {
 
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('http://localhost:8088/api/mostrecent', {
+        const response = await fetch('/api/mostrecent', {
           method: 'GET',
           credentials: 'include',
         });
@@ -114,7 +114,7 @@ const NewsFeedUserPage = () => {
 
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`/api/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });

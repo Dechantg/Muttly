@@ -14,7 +14,7 @@ const CardPage = () => {
   const fetchGeneratedDog = async () => {
     try {
       if (id) {
-        const response = await fetch(`http://localhost:8088/api/generated/breedbyid/${id}`, {
+        const response = await fetch(`/api/generated/breedbyid/${id}`, {
           credentials: 'include',
         });
         const data = await response.json();

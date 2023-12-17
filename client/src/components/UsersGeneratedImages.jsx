@@ -34,7 +34,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`http://localhost:8088/api/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`/api/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });

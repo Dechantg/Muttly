@@ -27,7 +27,7 @@ const NavigationBarTop = () => {
 
   const handleSignOut = async () =>  {
     try {
-      const response = await fetch('http://localhost:8088/api/logout', {
+      const response = await fetch('/api/logout', {
         method: 'POST',
         credentials: 'include',
       });
@@ -51,7 +51,7 @@ const NavigationBarTop = () => {
           </Link>
         ) : (
           <Link to="/" className="logo-link">
-            <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
+            <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" title={isValid ? "To Your Feed" : "Home"} />
           </Link>
         )}
         <div>

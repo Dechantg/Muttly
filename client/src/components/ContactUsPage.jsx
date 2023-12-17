@@ -22,7 +22,7 @@ const ContactUsPage = () => {
             <p>Gregory Dechant</p>
           </div>
           <div className='coder-container'>
-          <a href='https://www.linkedin.com/in/charles-denahy-knowles/' target='_blank'>
+          <a href='https://www.linkedin.com/in/cknowles90/' target='_blank'>
               <img className='linkedin-icon' src='../icons/linkedin.png'/>
             </a>
             <p>Charles Denahy-Knowles</p>

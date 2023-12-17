@@ -3,7 +3,7 @@
 .signup-container {
   display: flex;
   justify-content: center;
-  zoom: 120%;
+  zoom: 110%;
 }
 
 .signup-form {
@@ -81,8 +81,9 @@
 
 .paw-signup {
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
-  justify-content: center; 
+  width: fit-content;
 
   .paw-button{
     height: 9rem;

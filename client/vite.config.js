@@ -8,11 +8,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "http://localhost:8080",
+        target: "http://localhost:8088",
         changeOrigin: true,
         secure: false,
-        // We can even re-write the request
-        // rewrite: path => path.replace('/api', ''),
+        rewrite: path => path.replace('/api', ''),
       }
     }
   },

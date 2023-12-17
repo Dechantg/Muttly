@@ -3,7 +3,7 @@
 .users-news-feed-user-container {
   display: flex;
   justify-content: center;
-  margin-top: .5rem
+  zoom: 95%;
 }
 
 .news-feed-container-generate {
@@ -81,6 +81,7 @@
   align-items: center;
   width: fit-content;
   border-bottom: 2px solid black;
+  margin-bottom: 1.5rem;
   height: 2rem;
   padding: 0.25rem 0.5rem 0.5rem 0.5rem;
   text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);

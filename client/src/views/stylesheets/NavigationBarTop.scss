@@ -28,8 +28,10 @@
   margin: 0 1rem 0 2vw;
 }
 
-.logo {
-  // Styling for the muttly logo
+.muttly-logo {
+  &:hover {
+    filter:brightness(1.2);
+  }
 }
 
 .muttly-brand {
@@ -37,7 +39,7 @@
 }
 
 .muttly-slogan {
-  // Styling for the Muttly slogan
+
 }
 
 .right-side {
