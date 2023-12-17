@@ -1,9 +1,7 @@
-// App.jsx
-
 import './App.scss';
 
-import React, { useState, useEffect } from 'react';
-import { Route, Routes, useLocation, Navigate, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
 import NavigationBarTop from './components/NavigationBarTop';
@@ -19,6 +17,8 @@ import NavigationBarBottom from './components/NavigationBarBottom';
 import UsersGeneratedImages from './components/UsersGeneratedImages'
 import RecentlyGeneratedImagesPage from './components/RecentlyGeneratedImagesPage';
 import MostPopularGeneratedImagesPage from './components/MostPopularGeneratedImagesPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import VisitorRoute from './components/VisitorRoute';
 
 const App = () => {
   const location = useLocation();
@@ -37,22 +37,37 @@ const App = () => {
   return (
     <div className="App">
       <div className="AppWrapper">
-        {(isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated|| isNewsFeed || isUsersFavouritesPage|| isAboutPage || isContactPage) && <NavigationBarTop/>}
+        {(isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated || isNewsFeed || isUsersFavouritesPage || isAboutPage || isContactPage) && <NavigationBarTop/>}
         <div className="AppContent">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/" element={
+              <VisitorRoute><HomePage /></VisitorRoute>
+            } />
+            <Route path="/signup" element={
+              <VisitorRoute><SignUpPage /></VisitorRoute>
+            } />
+            <Route path="/usersfavourites" element={
+              <ProtectedRoute><UsersFavouritesPage /></ProtectedRoute>
+            } />
+            <Route path="/newsfeeduser" element={
+              <ProtectedRoute><NewsFeedUserPage /></ProtectedRoute>
+            } />
+            <Route path="/generate" element={
+              <ProtectedRoute><GenerateMixedBreedPage /></ProtectedRoute>
+            } />
+            <Route path="/usersgeneratedimages" element={
+              <ProtectedRoute><UsersGeneratedImages/></ProtectedRoute>
+            } />
+            <Route path="/recentlygeneratedimages" element={
+              <ProtectedRoute><RecentlyGeneratedImagesPage /></ProtectedRoute>
+            } />
+            <Route path="/mostpopulargeneratedimages" element={
+              <ProtectedRoute><MostPopularGeneratedImagesPage /></ProtectedRoute>
+            } />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-            <Route path="/usersfavourites" element={<UsersFavouritesPage />} />
-            <Route path="/newsfeeduser" element={<NewsFeedUserPage />} /> 
-            <Route path="/signup" element={<SignUpPage />} />
             <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
-            <Route path="/generate" element={<GenerateMixedBreedPage />} /> 
-            <Route path="/usersgeneratedimages" element={<UsersGeneratedImages />} /> 
-            <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
-            <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
           </Routes> 
         </div>
 

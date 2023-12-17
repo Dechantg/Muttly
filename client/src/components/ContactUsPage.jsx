@@ -1,5 +1,3 @@
-// ContactUsPage.jsx
-
 import React from 'react';
 
 import EnlargedPawprintImage from './EnlargedPawprintImage';

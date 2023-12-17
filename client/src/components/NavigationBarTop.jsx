@@ -1,10 +1,6 @@
-// NavigationBarTop.jsx
-
-// Added for Alex to compare why pathways/redirects work;
-
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useSessionValidation from '../hooks/useSessionValidation'; 
+import { useAuth } from '../context/AuthContext';
 
 import SignInModal from './SignInModal';
 
@@ -12,15 +8,8 @@ import '../views/stylesheets/NavigationBarTop.scss';
 
 const NavigationBarTop = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const [isLoggedIn, setLogIn] = useState(null)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(isValid, 'isValid')
-    isValid ? setLogIn(true) : setLogIn(false) 
-    }
-  ,[isLoading, isValid, isLoggedIn]);
+  const { isValid } = useAuth(); 
 
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -31,7 +20,7 @@ const NavigationBarTop = () => {
   };
 
   const handleSignInClick = () => {
-    if (!isLoggedIn) {
+    if (!isValid) {
       openSignInModal();
     };
   }; 
@@ -56,7 +45,7 @@ const NavigationBarTop = () => {
   return (
     <div className="top-navigation-bar">
       <div className="left-side">
-        {isLoggedIn ? (
+        {isValid ? (
           <Link to="/newsfeeduser" className="logo-link">
             <img src="../icons/paws_pink.png" alt="Muttly Logo" className="muttly-logo" />
           </Link>
@@ -71,7 +60,7 @@ const NavigationBarTop = () => {
         </div>
       </div>
       <div className="right-side">
-        {isLoggedIn ? (
+        {isValid ? (
           <div className='log-container'>
             <button className ="logout-btn" onClick={handleSignOut}> BARK OUT! </button>
             <img src="../icons/bark-out.png" alt="Muttly Logo" className="login-icon" /> 

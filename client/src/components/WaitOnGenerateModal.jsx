@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react"; 
+import React, {useState, useEffect} from "react"; 
 import '../views/stylesheets/WaitOnGenerateModal.scss'
 
 function WaitOnGenerateModal() {
@@ -18,7 +18,6 @@ function WaitOnGenerateModal() {
 
 useEffect(() => {
   const interval = setInterval(() => {
-    // Generate a random index for the loading phrases array
     const newIndex = Math.floor(Math.random() * loadingPhrases.length);
     setIndex(newIndex);
   }, 6000)

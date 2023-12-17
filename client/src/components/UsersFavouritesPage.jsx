@@ -1,9 +1,4 @@
-// UsersFavouritesPage.jsx
-
 import React, { useState, useEffect } from 'react';
-import useSessionValidation from '../hooks/useSessionValidation';
-import { useNavigate } from 'react-router-dom';
-
 import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/UsersFavouritesPage.scss';
@@ -12,20 +7,6 @@ const UsersFavouritesPage = () => {
   const [favouritedImages, setFavouritedImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const navigate = useNavigate();
-
-  // console.log("from the genrate page valid", isValid);
-
-  useEffect(() => {
-    // console.log("Before navigation. isValid:", isValid);
-    if (!isLoading && !isValid) {
-      // console.log("Navigating to /");
-      navigate('/');
-    }
-    console.log("After navigation. isValid:", isValid);
-  }, [isLoading, isValid, navigate],[])
-
 
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);

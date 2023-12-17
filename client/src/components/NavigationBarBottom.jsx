@@ -1,21 +1,10 @@
-// NavigationBarBottom.jsx
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import useSessionValidation from '../hooks/useSessionValidation';
-
+import { useAuth } from '../context/AuthContext';
 import '../views/stylesheets/NavigationBarBottom.scss';
 
-const NavigationBarBottom = (props) => {
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const [ isLoggedIn, setLogIn ] = useState(isValid);
-
-  useEffect(() => {
-    // console.log(isValid, 'isValid');
-    isValid ? setLogIn(true) : setLogIn(false) ;
-    }
-  ,[isLoading, isValid]);
+const NavigationBarBottom = () => {
+  const { isValid } = useAuth(); 
 
   return (
     <div className="bottom-navigation-bar">
@@ -25,8 +14,8 @@ const NavigationBarBottom = (props) => {
       <Link to="/about" className="nav-link">
       <img src="../icons/paws_pink.png" className="paws-icon-nav" /> About Us <img src="../icons/paws_pink.png" className="paws-icon-nav" />
       </Link>
-      <Link to={isLoggedIn ?"/newsfeeduser" : "/signup" } className="nav-link">
-        {isLoggedIn ? (
+      <Link to={isValid ?"/newsfeeduser" : "/signup" } className="nav-link">
+        {isValid ? (
           <>
             <img src="../icons/bone.png" alt="Bone Icon" className="bone-icon-nav" /> Your Feed <img src="../icons/bone.png" alt="Bone Icon" className="bone-icon-nav" />
           </>

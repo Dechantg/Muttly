@@ -1,5 +1,3 @@
-// EnlargedPawPrintImage.jsx
-
 import React from 'react';
 
 import '../views/stylesheets/EnlargedPawPrintImage.scss';

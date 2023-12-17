@@ -1,9 +1,8 @@
 // UsersGeneratedImages.jsxnews-feed-container-
 
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import useSessionValidation from '../hooks/useSessionValidation';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
 
 import DogBreedCardModal from './DogBreedCardModal';
 
@@ -13,19 +12,7 @@ const UsersFavouritesPage = () => {
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
   const [ selectedImage, setSelectedImage ] = useState(null);
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
-  const navigate = useNavigate();
-
-  // console.log("from the genrate page valid", isValid);
-
-  useEffect(() => {
-    // console.log("Before navigation. isValid:", isValid);
-    if (!isLoading && !isValid) {
-      // console.log("Navigating to /");
-      navigate('/');
-    }
-    console.log("After navigation. isValid:", isValid);
-  }, [isLoading, isValid, navigate],[]);
+  const { userId } = useAuth();
 
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);

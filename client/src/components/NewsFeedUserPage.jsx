@@ -1,11 +1,6 @@
-// NewsFeedUserPage.jsx
-
-// Added for Alex to compare why pathways/redirects work;
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useSessionValidation from '../hooks/useSessionValidation';
-
+import { useAuth } from '../context/AuthContext'
 import DogBreedCardModal from './DogBreedCardModal';
 
 import '../views/stylesheets/NewsFeedUserPage.scss';
@@ -17,19 +12,9 @@ const NewsFeedUserPage = () => {
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
   const [ selectedImage, setSelectedImage ] = useState(false);
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
+  const { userId } = useAuth(); 
   const navigate = useNavigate();
 
-  // console.log("from the genrate page valid", isValid);
-
-  useEffect(() => {
-    // console.log("Before navigation. isValid:", isValid);
-    if (!isLoading && !isValid) {
-      // console.log("Navigating to /");
-      navigate('/');
-    }
-    console.log("After navigation. isValid:", isValid);
-  }, [isLoading, isValid, navigate],[])
   
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
@@ -88,10 +73,8 @@ const NewsFeedUserPage = () => {
               mostPopular[indexToUpdate].dog2 = detail.breedtwo;
             }
           });
-          // console.log("here is the most popular", mostPopular)
           setMostPopularImages(mostPopular);
           console.log('Most Popular Images state:', mostPopular);
-          // console.log('Most Popular Images', data);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
         };
@@ -121,7 +104,6 @@ const NewsFeedUserPage = () => {
             }
           });
           setRecentlyGeneratedImages(recentlyGen);
-          // console.log('Recently Generated Images:', data);
         } else {
           console.error('Failed to fetch recently generated images:', response.status);
         };

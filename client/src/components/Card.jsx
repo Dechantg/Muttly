@@ -1,5 +1,3 @@
-// Card.jsx
-
 import React from "react";
 
 import '../views/stylesheets/Card.scss';

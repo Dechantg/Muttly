@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
+const AuthContext = createContext(null);
 
+export const useAuth = () => useContext(AuthContext);
 
-
-
-const useSessionValidation = () => {
+export const AuthProvider = ({ children }) => {
   const [sessionData, setSessionData] = useState({
     userId: null,
     isValid: false,
-    isLoading: true, // Add loading state
+    isLoading: true,
   });
 
   useEffect(() => {
@@ -19,27 +19,26 @@ const useSessionValidation = () => {
         });
         const data = await response.json();
 
-        console.log('Session validation response:', data);
-
         setSessionData({
           isValid: response.ok,
           userId: data.userId,
-          isLoading: false, // Set loading to false after completion
+          isLoading: false,
         });
       } catch (error) {
         console.error('Error during session validation:', error);
-
         setSessionData({
           isValid: false,
           userId: null,
-          isLoading: false, // Set loading to false even on error
+          isLoading: false,
         });
       }
     };
     validateSession();
   }, []);
 
-  return sessionData;
+  return (
+    <AuthContext.Provider value={sessionData}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
-
-export default useSessionValidation;

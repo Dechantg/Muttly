@@ -1,7 +1,5 @@
-// DogBreedCardModal.jsx
-
 import React, {useEffect, useState } from 'react';
-import useSessionValidation from '../hooks/useSessionValidation';
+import { useAuth } from '../context/AuthContext';
 import Card from './Card';
 
 import '../views/stylesheets/DogBreedCardModal.scss';
@@ -9,7 +7,7 @@ import '../views/stylesheets/DogBreedCardModal.scss';
 const DogBreedCardModal = (props) => {
   const [ liked, setLike ] = useState(false);
   const [ closeModal, setClose ] = useState(false);
-  const { isValid, userId } = useSessionValidation();
+  const { isValid, userId } = useAuth();
   const [favoriteImages, setFavouritedImages ] = useState(null)
   const [usersGeneratedImages, setUsersGeneratedImages] = useState(null)
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;

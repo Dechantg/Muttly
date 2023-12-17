@@ -1,5 +1,3 @@
-// NewsFeedPublicPage.jsx
-
 import React, { useState, useEffect } from 'react';
 
 import DogBreedCardModal from './DogBreedCardModal';
@@ -13,17 +11,11 @@ const NewsFeedPublicPage = () => {
   const [ selectedImage, setSelectedImage ] = useState(false);
 
   const openDogBreedCardModal = (event, image) => {
-    // console.log('Click event:', event);
 
     if (image && image.generated_photo_link && image.id) {
 
       setSelectedImage(image);
       setDogBreedCardModalOpen(true);
-      
-      // console.log('Image clicked!', image);
-      // console.log('Clicked image ID:', image.id);
-      // console.log('Selected image:', image.generated_photo_link)
-      // console.log('Clicked image element:', event.target)
     } else {
       console.error('Image object is undefined');
     };
@@ -49,10 +41,7 @@ const NewsFeedPublicPage = () => {
             popularImages[indexToUpdate].dog2 = detail.breedtwo;
           };
         });
-        // console.log("Here are the popular images from public", popularImages);
         setMostPopularImages(popularImages);
-        // console.log("here are the extra details", extraDetails.genid);
-        // console.log("here is the populat imagess", popularImages.id);
       } catch (error) {
         console.error('Error fetching most popular images:', error);
       };

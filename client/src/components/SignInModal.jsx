@@ -1,7 +1,3 @@
-// SignInModal.jsx
-
-// Added for Alex to compare why pathways/redirects work;
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -10,9 +6,8 @@ import '../views/stylesheets/SignInModal.scss';
 const SignInModal = (props) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
-  
   const { onClose } = props;
-  
+
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -47,10 +42,10 @@ const SignInModal = (props) => {
         }
         throw new Error('Sign-in failed');
       };
-  
-      window.location.reload();
+      
       onClose();
-      navigate('/newsfeeduser');
+      window.location.reload();
+
     } catch (error) {
       console.error('Error during sign-in:', error.message);
     };

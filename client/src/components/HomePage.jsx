@@ -1,8 +1,6 @@
-// HomePage.jsx
-
 import React, {useEffect, useState} from "react"; 
 import { Link, useNavigate } from "react-router-dom"
-import useSessionValidation from '../hooks/useSessionValidation';
+import {useAuth } from '../context/AuthContext';
 
 import SignInModal from "./SignInModal";
 
@@ -23,18 +21,8 @@ const HomePage = () => {
   ];
   
   const [ index, setIndex ] = useState(0);
-  const [isLoggedIn, setLogIn] = useState(null)
   const [loggedIn, loggedStatus] = useState(false);
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
-  const { isValid, userId, isLoading } = useSessionValidation();
-  
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(isValid, 'isValid')
-    isValid ? setLogIn(true) : setLogIn(false) 
-    }
-  ,[isLoading, isValid, isLoggedIn]);
   
   useEffect(() => {
     const interval = setInterval(() => {
