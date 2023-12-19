@@ -16,7 +16,6 @@ $type-color-8: #EDCF8E;
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
-  // font-family: 'Cabin', sans-serif;
 }
 
 // Electric Type color classes
@@ -36,7 +35,7 @@ $type-color-8: #EDCF8E;
 .nameimageinfo {
   width: 24.5rem;
   height: 35rem;
-  margin: 0;
+  margin: 0rem 0.75vw;
   padding: 5px 10px;
   border: 10px solid $type-color-8;
   border-radius: 20px;
@@ -44,9 +43,30 @@ $type-color-8: #EDCF8E;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-// Forcing headers to the same full width
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.7); // Scales down the container to 80% of its original size
+      // margin-bottom: -3rem;
+      // margin-top: -1.5rem;
+      margin: -4rem -3rem -5rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+      transform: scale(0.5); // Scales down the container to 50% of its original size
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+      transform: scale(0.3); // Scales down the container to 30% of its original size
+    }
+  }
+
+} 
+
 .nameheaders {
   width: 10rem;
   vertical-align: center;

@@ -11,6 +11,26 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.8); // Scales down the container to 80% of its original size
+      margin-bottom: -5rem;
+      margin-top: -1.5rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+      transform: scale(0.5); // Scales down the container to 50% of its original size
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+      transform: scale(0.3); // Scales down the container to 30% of its original size
+    }
+  }
 }
 
 .signin-modal {

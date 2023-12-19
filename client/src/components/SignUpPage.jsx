@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../views/stylesheets/SignUpPage.scss';
 
 const SignUpPage = () => {
@@ -8,7 +7,6 @@ const SignUpPage = () => {
   const [ password, setPassword ] = useState('');
   const [ firstName, setFirstName ] = useState('');
   const [ lastName, setLastName ] = useState('');
-  const navigate = useNavigate();
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleConfirmEmailChange = (e) => setConfirmEmail(e.target.value);

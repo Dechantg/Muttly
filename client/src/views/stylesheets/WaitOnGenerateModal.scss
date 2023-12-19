@@ -6,6 +6,25 @@
   height: 100%;
   animation: lowerOpacity 2s ease-in-out forwards;
   z-index: 900;
+  @media (max-height: 800px) {
+    & {
+      transform: scale(1.75); 
+      max-width: 81.8411%;
+      max-height: 84%;
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+    }
+  }
+
 }
 @keyframes lowerOpacity {
   from {
@@ -39,6 +58,7 @@
   z-index: 1;
   font-size: 2rem;
   font-weight: 700;
+  text-align: center;
   color: white;
   animation: gradientChange 5s linear infinite; /* Apply the animation */
   background-size: 400% 400%; /* Adjust background size for gradient transition */
@@ -46,8 +66,31 @@
 
   p {
     animation: fadeInOut 6s ease-in-out infinite;
-    font-size: 2rem;
   }
+  
+  
+  @media (max-height: 800px) {
+    & {
+      transform: translate(-40%, -50%) scale(0.70);
+      font-size: 1.75rem;
+    }
+
+    p {
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+    }
+  }
+
+
 }
 
 

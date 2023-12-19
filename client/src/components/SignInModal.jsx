@@ -8,8 +8,6 @@ const SignInModal = (props) => {
   const [ password, setPassword ] = useState('');
   const { onClose } = props;
 
-  const navigate = useNavigate();
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };

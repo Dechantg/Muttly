@@ -1,5 +1,3 @@
-// UserFavouritesPage.scss
-
 .page-body {
   display: flex;
   flex-direction: column;
@@ -43,4 +41,26 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
   }
+  
+  @media (max-height: 800px) {
+    & {
+      margin-bottom: -6rem;
+      padding-bottom: 5rem;
+    }
+    .customModalStyle{
+      transform: scale(1.75);
+    }
+
+  }
+  
+  @media (max-height: 600px) {
+    & {
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+    }
+  }
+
 }

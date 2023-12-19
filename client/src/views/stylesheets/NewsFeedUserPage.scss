@@ -2,8 +2,28 @@
 
 .users-news-feed-user-container {
   display: flex;
-  justify-content: center;
-  zoom: 95%;
+  justify-content: space-around;
+
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.9); 
+      margin-bottom: -5rem;
+      margin-top: -1.5rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+      transform: scale(0.5); 
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+      transform: scale(0.3); 
+    }
+  }
+
 }
 
 .news-feed-container-generate {
@@ -12,16 +32,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45rem; 
 }
 
 .users-news-feed-content {
-  margin-left: 3.5rem;
-  margin-top: 1.5rem;
-  width: 65rem;
+  margin-top: 2.5vh;
 
   h2 {
     text-align: left;
+    font-size: 2.5vh;
   }
 
   .userfeed-clickable-title {
@@ -29,16 +47,11 @@
     align-items: center;
     width: fit-content;
     border-bottom: 2px solid black;
-    height: 2rem;
+    height: 2vh;
     padding: 0.25rem 0.5rem 0.5rem 0.5rem;
     text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-
-    img {
-      margin-left: 0.5rem;
-      width: 1.75rem;
-    }
   }
 }
 
@@ -52,10 +65,10 @@
   margin-bottom: 1.5rem;
 
   img {
-    width: 11rem;
-    height: 9rem;
+    width: 20vh;
+    height: 8vw;
     object-fit: cover;
-    margin: 8px;
+    margin: 0.5vh;
     border-radius: 8px;
     cursor: pointer;
   }
@@ -67,10 +80,10 @@
   margin-bottom: 1.5rem;
 
   img {
-    width: 11rem;
-    height: 9rem;
+    width: 20vh;
+    height: 8vw;
     object-fit: cover;
-    margin: 8px;
+    margin: 0.5vh;
     border-radius: 8px;
     cursor: pointer;
   }
@@ -80,17 +93,14 @@
   display: flex;
   align-items: center;
   width: fit-content;
+  font-size: 3vh;
   border-bottom: 2px solid black;
   margin-bottom: 1.5rem;
-  height: 2rem;
+  height: 2vh;
   padding: 0.25rem 0.5rem 0.5rem 0.5rem;
   text-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
-
-  img {
-    margin-left: 0.5rem;
-  }
 }
 
 .userfeed-h2 {
@@ -103,10 +113,10 @@
 }
 
 .generate-button {
-  margin-top: .5rem;
+  margin-top: 1vh;
   padding: 0.50rem 0.25rem 0rem 0.25rem;
-  height: 10rem;
-  margin-bottom: 2.5rem;
+  height: 18vh;
+  margin-bottom: 3vh;
   cursor: pointer;
   animation: pulse 5s infinite;
   border-radius: 50%; 
@@ -122,24 +132,26 @@
 }
 
 .bone-animate {
-  width: 1.75rem;
-   animation: wiggle infinite 0.5s ease-in-out; 
+  margin-left: 0.5rem;
+  width: 1.5vw;
+  margin-bottom: 1vh;
+  animation: wiggle infinite 0.5s ease-in-out; 
 
-   @keyframes wiggle {
-    20% {
-      transform: translateX(-2px);
-    }
-    40% {
-      transform: translateX(2px);
-    }
-    60% {
-      transform: translateX(-1px);
-    }
-    80% {
-      transform: translateX(1px);
-    }
-    100% {
-      transform: translateX(0);
-    }
+  @keyframes wiggle {
+  20% {
+    transform: translateX(-2px);
   }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 }

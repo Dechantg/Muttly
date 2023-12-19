@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DogBreedCardModal from './DogBreedCardModal';
 
-import '../views/stylesheets/UsersFavouritesPage.scss';
+import '../views/stylesheets/RecentlyGeneratedImagesPage.scss';
 
 const RecentlyGeneratedImagesPage = () => {
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
@@ -92,6 +92,7 @@ const RecentlyGeneratedImagesPage = () => {
         {/* Dog Breed Card Modal */}
         {selectedImage && (
          <DogBreedCardModal 
+         className="customModalStyle"
          id={selectedImage.id}
          image={selectedImage.generated_photo_link}
          shedding={{shedding : selectedImage.shedding}}

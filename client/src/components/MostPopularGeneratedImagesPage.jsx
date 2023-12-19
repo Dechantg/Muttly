@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DogBreedCardModal from './DogBreedCardModal';
 
-import '../views/stylesheets/UsersFavouritesPage.scss';
+import '../views/stylesheets/MostPopularGeneratedImagePage.scss';
 
 const MostPopularGeneratedImagesPage = () => {
   const [ mostPopularImages, setMostPopularImages ] = useState([]);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'
 import DogBreedCardModal from './DogBreedCardModal';
+import PlaceholderImage from './PlaceHolderImage';
 
 import '../views/stylesheets/NewsFeedUserPage.scss';
 
@@ -149,6 +150,10 @@ const NewsFeedUserPage = () => {
     fetchUsersGeneratedImages();
   }, []);
 
+
+  const placeholderCountFavorites = Math.max(0, 5 - usersfavouritedImages.length);
+  const placeholderCountUsersGenerated = Math.max(0, 6 - usersGeneratedImages.length);
+
   const redirectToGeneratePage = () => {
     navigate('/generate');
   };
@@ -187,6 +192,7 @@ const NewsFeedUserPage = () => {
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
+           <PlaceholderImage count={placeholderCountFavorites} />
         </div>
         <h2
           className="userfeed-clickable-title" 
@@ -247,6 +253,7 @@ const NewsFeedUserPage = () => {
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
+          <PlaceholderImage count={placeholderCountUsersGenerated} />
         </div>
       </div>
       {isDogBreedCardModalOpen && (

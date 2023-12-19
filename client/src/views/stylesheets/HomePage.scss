@@ -1,52 +1,107 @@
-// HomePage.scss
+.homepage {
+  
+$font-size-large: 5rem; // h1
+$font-size-medium: 1.75rem; // p
+$font-size-small: 1.25rem; // buttons and smaller text
+
+$breakpoint-desktop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
+
+@mixin responsive-font($size-large, $size-medium, $size-small) {
+  h1 {
+    font-size: $size-large;
+  }
+  p, .sign_in{
+    font-size: $size-medium;
+  }
+  .public-newsfeed-button{
+    font-size: $size-small;
+  }
+
+  @media (max-width: $breakpoint-desktop) {
+    h1 {
+      font-size: $size-large * 0.8;
+    }
+    p, .sign_in{
+      font-size: $size-medium * 0.8;
+    }
+    .public-newsfeed-button {
+      font-size: $size-small * 0.8;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    h1 {
+      font-size: $size-large * 0.7;
+    }
+    p, .sign_in {
+      font-size: $size-medium * 0.7;
+    }
+    .public-newsfeed-button {
+      font-size: $size-small * 0.7;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    h1 {
+      font-size: $size-large * 0.6;
+    }
+    p, .sign_in {
+      font-size: $size-medium * 0.6;
+    }
+    .public-newsfeed-button {
+      font-size: $size-small * 0.6;
+    }
+  }
+}
 
 .main {
   display: flex;
-}
-
-.home_main, .sign_in {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}  
+  padding: 3vh 0;
+  overflow: hidden;
+  @include responsive-font($font-size-large, $font-size-medium, $font-size-small);
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.8); // Scales down the container to 80% of its original size
+      margin-bottom: -5rem;
+      margin-top: -1.5rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+      transform: scale(0.5); // Scales down the container to 50% of its original size
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+      transform: scale(0.3); // Scales down the container to 30% of its original size
+    }
+  }
+}
 
 .home_main {
-  width: 90vw;
-  margin: 1rem 0 0 6rem; 
-  & > * {
-    margin-bottom: 0rem;
-  }
-
-  h1 {
-    font-size: 5vw; 
-  }
-}
-
-.home_main > p {
+  display: flex;
+  flex-direction: column;
+  max-width: 90vw; // Adjusted for better responsiveness
+  align-items: center;
   text-align: center;
-  width: 50vw;
-  font-size: 1.75vw;
-  margin-bottom: 1rem;
-}
 
-.sign_in {
-  position: relative;
-  font-size: 1.75vw;
-  right: 20%; 
-  height: 5rem;
-  margin-right:-200rem;
-  margin-top: 45vh;
-  transition: filter 0.3s ease;
-
-  &:hover {
-    filter: brightness(1.2);
+  // Ensure h1 scales properly with a maximum size
+  h1 {
+    max-font-size: $font-size-large;
   }
-} 
 
-.sign_in > img {
-  width: 10vw;
-  cursor: pointer;
+  // Adjust paragraph width and ensure it's responsive
+  p {
+    width: 100%;
+    max-width: 750px; // Ensures the text is not too wide on large screens
+    margin: 0 auto 2rem;
+  }
 }
 
 .dog_container {
@@ -71,11 +126,6 @@
 }
 
 .dog_home.fade-in {
-  animation: fadingIn 10s infinite; 
-}
-
-.dog_home.fade-in {
-  opacity: 1;
   animation: fadingInOut 8s infinite;
 }
 
@@ -87,23 +137,6 @@
     opacity: 1;
   }
 }
-
-.home-button {
-  height: 3rem;
-  font-size: 1.25vw;
-  margin-top: 1.75rem;
-  width: fit-content; 
-  border-radius: 8px;
-  border: none; 
-  background-color: #FFBEBA;
-  font-family: 'Indie Flower', cursive;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(1.2);
-  }
-} 
 
 @keyframes fadingIn {
   0% {
@@ -123,7 +156,68 @@
   }
 }
 
+.sign_in {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 40%; // Adjust top positioning to be responsive
+  right: 12%; // Adjust right positioning to be responsive
+  margin: 0; // Remove negative margin
+  transition: filter 0.3s ease;
+  font-weight: 600;
 
+  &:hover {
+    filter: brightness(1.2);
+  }
 
+  // Adjust image size to be responsive
+  img {
+    width: 10rem; // Fixed size
+    max-width: 100%; // Max size relative to the viewport width
+    cursor: pointer;
+  }
+}
 
+.public-newsfeed-button {
+  max-width: 100%;
+  align-self: center; // Align button to the center of its container
+  margin-top: 1rem; // Consistent margin
+  padding: 0.75em 1.5em; // Padding for better touch targets
+  border-radius: 8px;
+  background-color: #FFBEBA;
+  transition: filter 0.3s ease;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
 
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+@media (max-height: 800px) { 
+  .main {
+    margin-top: -5rem;
+    margin-bottom: -5rem;
+  }
+
+  // Any other adjustments to reduce the overall height of elements
+  .dog_container, .dog_home {
+    transform: scale(1.1); 
+    margin: 1rem;
+  }
+
+  .public-newsfeed-button, .sign_in > img {
+    padding: 0.25em; 
+  }
+
+  .public-newsfeed-button {
+    margin-top: 2rem
+  }
+
+}
+
+// Responsive font-size adjustments
+@include responsive-font($font-size-large, $font-size-medium, $font-size-small); 
+}

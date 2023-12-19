@@ -1,42 +1,56 @@
-// ContactUsPage.scss
-
 .contact-us-container {
   position: absolute;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  min-width: 100%;
+
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.9);
+      margin-top: -2rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+    }
+  }
+
 }
 
 .contact-header-section {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-  margin-right: 5rem;
+  margin-right: 4.5rem;
 
   h1 {
-    font-size: 4vw;
+    font-size: 10vh; // Use rem for font size
   }  
-
-  h3 {
-    font-size: 1.5rem;
-  }
-} 
+}
 
 .github-section {
-  margin-right: 5%;
-  margin-bottom: 33rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem; 
+  margin-right: 10vw;
 
   .github-icon {
-    height: 7rem;
+    height: 11vh;
   }
   
   p {
     text-decoration: none;
     color: inherit;
-    font-size: 1vw;
+    font-size: 1.5vw;
     font-weight: 700;
   }
   
@@ -51,24 +65,22 @@
   justify-content: center;
   align-items: center; 
   height: 55vh;
-  // margin-bottom: vh;
-  // padding-right: 1.25vw;
 }
 
 .linkedin-container {
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
+  margin-left: 5vw;
 
   .coder-container {
     margin: 1rem;
-    font-size: 1vw;
+    font-size: 1.5vw;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
   }
 
   .linkedin-icon {
     height: 10vh;
   }
-}
+} 

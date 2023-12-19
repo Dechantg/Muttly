@@ -1,19 +1,13 @@
-// EnlargedPawprintImage.scss
-
 .enlarged-pawprint-container {
   display: flex;
   align-items: center;
-  height: 25rem;
+  height: 15rem;
   position: relative;
 }
 
 .enlarged-pawprint-image {
   position: relative;
-  width: 35rem;
-  height: 35rem;
   min-height: 25rem;
-  max-width: 50vw;
-  // padding-bottom: 1rem;
 }
 
 .tiktok-icon {
@@ -32,7 +26,6 @@
   border-radius: 50%;
   left: 30%;
   bottom: 75%;
-  // margin: 10rem;
 }
 
 .email-icon {
@@ -58,23 +51,25 @@
   width: 3.5vw;
   background-color: #EFDCAE;
   border-radius: 50%;
-  left: 44%;
-  // right: 40%;
+  left: 43%;
 }
 
 .mailing-address {
   position: absolute;
   margin-top: 0.5rem;
   width: 41%;
-  left: 31%;
+  left: 29%;
   right: 36%;
-  top:70%;
+  top: 67%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 0.65vw;
+  font-size: 1.5vh;
   font-weight: 700;
-  height: 12vh;
-  margin-bottom: 0.5rem;
+
+  h3 {
+    font-size: 2.5vh;
+    padding-top: 8%;
+  }
 } 

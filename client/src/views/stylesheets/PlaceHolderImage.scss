@@ -1,0 +1,20 @@
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20vh;
+  height: 8vw;
+  margin: 0.5vh;
+  border-radius: 8px;
+  background-color: #FFBEBA;
+  font-weight: 700;
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+.placeholder-container img {
+  transform: scale(0.8); /* Adjust scale to better fit the container */
+  padding: 0;
+  margin: 0;
+}

@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 import DogBreedCardModal from './DogBreedCardModal';
 
-import '../views/stylesheets/UsersFavouritesPage.scss';
+import '../views/stylesheets/UsersGeneratedImagesPage.scss';
 
 const UsersFavouritesPage = () => {
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
@@ -97,7 +97,7 @@ const UsersFavouritesPage = () => {
 
         {/* Dog Breed Card Modal */}
         {selectedImage && (
-          <DogBreedCardModal 
+          <DogBreedCardModal
             id={selectedImage.id}
             image={selectedImage.generated_photo_link}
             shedding={{shedding : selectedImage.shedding}}

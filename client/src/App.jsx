@@ -19,6 +19,7 @@ import RecentlyGeneratedImagesPage from './components/RecentlyGeneratedImagesPag
 import MostPopularGeneratedImagesPage from './components/MostPopularGeneratedImagesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import VisitorRoute from './components/VisitorRoute';
+import PlaceholderImage from './components/PlaceHolderImage';
 
 const App = () => {
   const location = useLocation();
@@ -40,6 +41,7 @@ const App = () => {
         {(isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated || isNewsFeed || isUsersFavouritesPage || isAboutPage || isContactPage) && <NavigationBarTop/>}
         <div className="AppContent">
           <Routes>
+            <Route path='/placeholder' element={<PlaceholderImage/>}/>
             <Route path="/" element={
               <VisitorRoute><HomePage /></VisitorRoute>
             } />
@@ -58,12 +60,8 @@ const App = () => {
             <Route path="/usersgeneratedimages" element={
               <ProtectedRoute><UsersGeneratedImages/></ProtectedRoute>
             } />
-            <Route path="/recentlygeneratedimages" element={
-              <ProtectedRoute><RecentlyGeneratedImagesPage /></ProtectedRoute>
-            } />
-            <Route path="/mostpopulargeneratedimages" element={
-              <ProtectedRoute><MostPopularGeneratedImagesPage /></ProtectedRoute>
-            } />
+            <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
+            <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/newsfeed" element={<NewsFeedPublicPage />} />

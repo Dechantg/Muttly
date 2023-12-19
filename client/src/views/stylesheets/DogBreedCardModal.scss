@@ -17,8 +17,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10%;
   position: fixed;
-  padding: 3rem 0rem 0rem 0rem;
-  width: 33rem;
+  padding: 3rem 1rem 0rem 1rem;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -36,7 +35,7 @@
   }
 
   .modal-card-icons {
-    width: 2rem;
+    width: 1.75vw;
     margin: 1rem; 
     cursor: pointer;
   }
@@ -50,4 +49,27 @@
       box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Final glow effect */
     }
   }
+} 
+
+@media (max-height: 800px) {
+  .modal-background {
+    transform: scale(1.5); // Scales down the page to 80% of its original size
+    max-width: 84.46%;
+    max-height: 98%;
+    margin-top: -1rem;
+    margin-bottom: -5rem;
+  }
+
+  .dog-breed-card {
+    transform: translate(-40%, -45%) scale(0.7);
+    padding: 1rem 1rem 0 1rem;
+  }
+} 
+
+.event-list {
+  margin: 0;
+  padding: 100;
+  list-style-type: none;
+  display:flex;
+  flex-direction: column;
 }

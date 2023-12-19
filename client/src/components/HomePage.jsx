@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react"; 
-import { Link, useNavigate } from "react-router-dom"
-import {useAuth } from '../context/AuthContext';
+import { Link } from "react-router-dom"
 
 import SignInModal from "./SignInModal";
 
 import '../views/stylesheets/HomePage.scss';
 
 const HomePage = () => {
-  const images = [
+  const images = [ 
     'BoxerHusky',
     'BulldogBorder_Collie', 
     'Cavalier_King_Charles_SpanielGolden', 
@@ -37,7 +36,6 @@ const HomePage = () => {
   };
 
   const closeSignInModal = () => {
-    // console.log('click');
     setSignInModalOpen(false);
   };
 
@@ -51,7 +49,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <div className="homepage">
       <div className="main">
         <div className="home_main">
           <h1>WELCOME TO MUTTLY !</h1>
@@ -67,7 +65,7 @@ const HomePage = () => {
           ))}
         </div>
           <Link to="/newsfeed" className="to-newsfeed-public-link">
-            <button className="home-button">Em-bark on a journey with the pack today !</button>
+            <button className="public-newsfeed-button">Em-bark on a journey with the pack today !</button>
           </Link>          
         </div>
         <div className="sign_in">
@@ -76,7 +74,7 @@ const HomePage = () => {
         </div>
         {isSignInModalOpen && <SignInModal onClose={closeSignInModal} />}
       </div>
-    </>
+    </div>
   );
 };
 

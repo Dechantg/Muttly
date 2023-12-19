@@ -2,6 +2,7 @@
 
 .top-navigation-bar {
   display: flex;
+  font-size: 2vh;
   justify-content: space-between;
   align-items: center;
   background-color: white;
@@ -35,7 +36,7 @@
 }
 
 .muttly-brand {
-  font-size: 3rem;
+  font-size: 6vh;
 }
 
 .muttly-slogan {
@@ -51,6 +52,8 @@
 }
 
 .log-container {
+  display: flex;
+  align-items: end;
   margin-bottom: 3vh;
   min-height: 4rem;
   &:hover {
@@ -58,8 +61,8 @@
 }
 
 .login-btn, .logout-btn {
-  width: 9rem;
-  height: 5vh;
+  min-width: 9vw;
+  max-height: 5vh;
   min-height: 3rem;
   margin-right: 1rem;
   font-weight: 700;
@@ -81,9 +84,10 @@
 }
 
 .login-icon {
- min-height: 6rem;
- height: 13vh;
- margin-bottom: -5rem;
+  justify-self: end;
+  align-items: end;
+  height: 12vh;
+  margin-bottom: -4.5vh;
 }
 
 }

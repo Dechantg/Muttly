@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import DogBreedCardModal from './DogBreedCardModal';
 
@@ -9,6 +10,8 @@ const NewsFeedPublicPage = () => {
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
   const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
   const [ selectedImage, setSelectedImage ] = useState(false);
+
+  const navigate = useNavigate();
 
   const openDogBreedCardModal = (event, image) => {
 
