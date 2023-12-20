@@ -36,7 +36,7 @@ const ContactUsPage = () => {
             </div>
           </div>
           <div className="github-section">
-          <a href='https://github.com/BSMuse/Muttly.git' target="_blank"><img className="github-icon"  src="/public/icons/github.png" alt="GitHub Icon" /></a>
+          <a href='https://github.com/BSMuse/Muttly.git' target="_blank"><img className="github-icon"  src="/icons/github.png" alt="GitHub Icon" /></a>
               <p>Our Code</p>
           </div>
         </div>
