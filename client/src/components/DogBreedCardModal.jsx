@@ -116,9 +116,8 @@ const DogBreedCardModal = (props) => {
   };
   
   const onShareClick = () => {
-    navigator.clipboard.writeText(`https://muttley.onrender.com/generated/breedbyid/${id}`)
+    navigator.clipboard.writeText(`https://muttley.onrender.com/card/${id}`)
       .then(() => {
-        console.log(`Link copied to clipboard: https://muttley.onrender.com/generated/breedbyid/${id}`);
         alert('Link copied to clipboard!');
       })
       .catch((error) => {

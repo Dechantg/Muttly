@@ -65,7 +65,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-            <Route path="/generated/breedbyid/:id" element={<CardPage/>}/>
+            <Route path="/card/:id" element={<CardPage/>}/>
           </Routes> 
         </div>
 
