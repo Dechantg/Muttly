@@ -1,5 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+
+const apiBaseUrl = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_API_BASE_URL || 'https://muttley.onrender.com' 
+  : 'http://localhost:8088';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,12 +13,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.REACT_APP_API_BASE_URL, // No quotes here
+        target: apiBaseUrl,
         changeOrigin: true,
         secure: false,
-        // We can even re-write the request
-        rewrite: path => path.replace('/api', ''),
+        // Conditionally re-write the request if NODE_ENV is production
+        rewrite: path => process.env.NODE_ENV === 'production' ? path : path.replace('/api', ''),
       }
     }
   },
-})
+});
