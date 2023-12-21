@@ -20,7 +20,7 @@ const SignUpPage = () => {
 
   const handleLogin = async (email, password) => {
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('https://muttley.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -43,7 +43,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const response = await fetch('/api/addnewuser', {
+      const response = await fetch('https://muttley.onrender.com/addnewuser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, firstName, lastName }),

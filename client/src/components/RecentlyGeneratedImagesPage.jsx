@@ -29,7 +29,7 @@ const RecentlyGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('/api/mostrecent/big', {
+        const response = await fetch('https://muttley.onrender.com/mostrecent/big', {
           method: 'GET',
           credentials: 'include',
         });

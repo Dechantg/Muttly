@@ -35,7 +35,7 @@ const NewsFeedUserPage = () => {
   useEffect(() => {
     const fetchUsersFavouritedImages = async () => {
       try {
-        const response = await fetch('/api/userLiked', {
+        const response = await fetch('https://muttley.onrender.com/userLiked', {
           method: 'GET',
           credentials: 'include',
         });
@@ -56,7 +56,7 @@ const NewsFeedUserPage = () => {
 
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('/api/mostliked/big', {
+        const response = await fetch('https://muttley.onrender.com/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });
@@ -86,7 +86,7 @@ const NewsFeedUserPage = () => {
 
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('/api/mostrecent', {
+        const response = await fetch('https://muttley.onrender.com/mostrecent', {
           method: 'GET',
           credentials: 'include',
         });
@@ -115,7 +115,7 @@ const NewsFeedUserPage = () => {
 
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`/api/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`https://muttley.onrender.com/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });
