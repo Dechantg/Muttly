@@ -105,7 +105,9 @@ app.get('/testlogout', (req, res) => {
   res.sendFile(path.join(__dirname, './testpages/logouttest.html'));
 });
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(public, 'index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
