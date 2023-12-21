@@ -48,7 +48,7 @@ const Card = (props) => {
       for (let i = 1; i <= value; i++) {
         elements.push (
           <td key={i} className="typesign">
-            <img className="energy_symbol" src={`http://localhost:5173/icons/${type}.png`} />
+            <img className="energy_symbol" src={`/icons/${type}.png`} />
           </td>
         );
       }
@@ -63,11 +63,11 @@ const Card = (props) => {
           elements.push (
             i === newValue ? (
               <td key={i} className="typesign">
-                <img className="energy_symbol" src={`../icons/${type}_half.png`} />
+                <img className="energy_symbol" src={`./icons/${type}_half.png`} />
               </td>
             ) : (
               <td key={i} className="typesign">
-                <img className="energy_symbol" src={`../icons/${type}.png`} />
+                <img className="energy_symbol" src={`./icons/${type}.png`} />
               </td>
             )
           );
