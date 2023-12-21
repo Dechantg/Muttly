@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "http://localhost:8088",
+        target: "https://muttley.onrender.com/",
         changeOrigin: true,
         secure: false,
         // We can even re-write the request

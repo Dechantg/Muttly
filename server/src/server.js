@@ -12,14 +12,11 @@ const cors = require('cors');
 
 const app = express();
 
-// const httpsOptions = {
-//   key: fs.readFileSync('./key.pem'),
-//   cert: fs.readFileSync('./cert.pem'),
-//   passphrase: process.env.KEY_PASSPHRASE,
-// }
-
-
-app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+const corsOptions = {
+  credentials: true,
+  origin: process.env.NODE_ENV === 'production' ? 'https://muttley.onrender.com' : 'http://localhost:5173',
+};
+app.use(cors(corsOptions));
 
 app.use(session({
   secret: process.env.SESSION_KEY,
@@ -110,6 +107,7 @@ app.get('/testlogout', (req, res) => {
 
 
 
+const port = process.env.PORT || 8088; // Fallback to 8088 if PORT is not set
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
