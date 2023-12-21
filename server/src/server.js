@@ -29,7 +29,7 @@ app.use(session({
   },
 }));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8088; // Fallback to 8088 if PORT is not set
 
 
 // serve static files from ../build (needed for React)
@@ -106,8 +106,6 @@ app.get('/testlogout', (req, res) => {
 });
 
 
-
-const port = process.env.PORT || 8088; // Fallback to 8088 if PORT is not set
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
