@@ -29,7 +29,7 @@ app.use(session({
   },
 }));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8088;
 
 
 // serve static files from ../build (needed for React)
