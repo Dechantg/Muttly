@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
     "openai": "^4.20.1",
     "react-router-dom": "^6.20.0",
     "sass": "^1.69.5",
