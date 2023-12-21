@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "http://localhost:8088",
+        target: process.env.REACT_APP_API_BASE_URL, // No quotes here
         changeOrigin: true,
         secure: false,
         // We can even re-write the request
@@ -16,5 +16,4 @@ export default defineConfig({
       }
     }
   },
-
 })

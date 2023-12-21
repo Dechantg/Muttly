@@ -31,7 +31,7 @@ const NewsFeedPublicPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('https://muttley.onrender.com/api/mostliked');
+        const response = await fetch('/api/mostliked');
         const data = await response.json();
         const extraDetails = data.extraDetails;
         const popularImages = data.topLikedDetailsResult;
