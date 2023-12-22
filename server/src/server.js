@@ -14,7 +14,7 @@ const app = express();
 
 const corsOptions = {
   credentials: true,
-  origin: process.env.NODE_ENV === 'production' ? 'https://muttley.onrender.com' : 'http://localhost:5173',
+  origin: process.env.NODE_ENV === 'production' ? 'https://muttly.onrender.com' : 'http://localhost:5173',
 };
 app.use(cors(corsOptions));
 
@@ -22,7 +22,7 @@ app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: true,
-  name: 'Muttley',
+  name: 'muttly',
   cookie: {
     secure: false,
     sameSite: 'Lax',

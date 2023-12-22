@@ -12,7 +12,7 @@ const CardPage = () => {
   const fetchGeneratedDog = async () => {
     try {
       if (id) {
-        const response = await fetch(`https://muttley.onrender.com/generated/breedbyid/${id}`, {
+        const response = await fetch(`https://muttly.onrender.com/generated/breedbyid/${id}`, {
           credentials: 'include',
         });
         const data = await response.json();

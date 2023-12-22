@@ -28,7 +28,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
-        const response = await fetch(`https://muttley.onrender.com/userLiked`, {
+        const response = await fetch(`https://muttly.onrender.com/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });

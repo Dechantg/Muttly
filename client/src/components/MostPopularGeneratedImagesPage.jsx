@@ -29,7 +29,7 @@ const MostPopularGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('https://muttley.onrender.com/mostliked/big', {
+        const response = await fetch('https://muttly.onrender.com/mostliked/big', {
           method: 'GET',
           credentials: 'include',
         });

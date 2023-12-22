@@ -22,7 +22,7 @@ try {
       return res.status(500).json({ error: 'Internal Server Error' });
     }
 
-    res.clearCookie('Muttley');
+    res.clearCookie('muttly');
 
     res.json({ success: true });
   });

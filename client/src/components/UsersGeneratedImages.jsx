@@ -34,7 +34,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`https://muttley.onrender.com/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`https://muttly.onrender.com/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });
