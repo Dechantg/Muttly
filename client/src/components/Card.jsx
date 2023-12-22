@@ -110,7 +110,7 @@ const Card = (props) => {
           <span className='height'>Average Height {inchesToFeetAndInches(avgHeight)} inches</span>
           <span className='weight'>Average Weight {avgWeight || `0 lbs`}</span>
         </div>
-        <img className='set_logo' src="http://localhost:5173/icons/paws_pink.png" alt="Logo" />
+        <img className='set_logo' src="./icons/paws_pink.png" alt="Logo" />
       </div>
       <div className='stat_container'>
         <table className="stats">
