@@ -31,7 +31,7 @@ const NewsFeedPublicPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('api/mostliked');
+        const response = await fetch(`${ process.env.NODE_ENV === 'production' ? REACT_APP_API_BASE_URL : 'api' }/mostliked`);
         const data = await response.json();
         const extraDetails = data.extraDetails;
         const popularImages = data.topLikedDetailsResult;
@@ -52,7 +52,7 @@ const NewsFeedPublicPage = () => {
   
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('api/mostrecent');
+        const response = await fetch(`${ process.env.NODE_ENV === 'production' ? REACT_APP_API_BASE_URL : 'api' }/mostrecent`);
         const data = await response.json();
         const recentlyGen = data.result;
         const extraRecentData = data.extraDetails;
