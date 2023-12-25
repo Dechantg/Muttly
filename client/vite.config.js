@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 
 const apiBaseUrl = process.env.NODE_ENV === 'production'
-  ? process.env.REACT_APP_API_BASE_URL || 'https://muttly.onrender.com' 
+  ? process.env.REACT_APP_API_BASE_URL
   : 'http://localhost:8088';
 
 // https://vitejs.dev/config/
