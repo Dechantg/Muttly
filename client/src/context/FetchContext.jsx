@@ -8,9 +8,9 @@ export const FetchProvider = ({children}) => {
 
   const [fetchUrl, changeUrl] = useState('api')
   
-  useEffect(() => {
-    process.
-  },[])
+  // useEffect(() => {
+  //   process.
+  // },[])
 
   return (
     <FetchContext.Provider value = {fetchUrl}>
