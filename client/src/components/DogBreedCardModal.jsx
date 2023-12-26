@@ -16,7 +16,7 @@ const DogBreedCardModal = (props) => {
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/userLiked`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -40,7 +40,7 @@ const DogBreedCardModal = (props) => {
   useEffect(() => {
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -87,7 +87,7 @@ const DogBreedCardModal = (props) => {
 
   const handleLike = async () => {
     try {
-      const response = await fetch(`https://muttly.onrender.com/generated/likestatus/${id}?likeStatus=${!liked}`, {
+      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/likestatus/${id}?likeStatus=${!liked}`, {
         credentials: 'include',
       }); 
       if (response.ok) {
@@ -116,7 +116,7 @@ const DogBreedCardModal = (props) => {
   };
   
   const onShareClick = () => {
-    navigator.clipboard.writeText(`https://muttly.onrender.com/card/${id}`)
+    navigator.clipboard.writeText(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/card/${id}`)
       .then(() => {
         alert('Link copied to clipboard!');
       })
@@ -131,7 +131,7 @@ const DogBreedCardModal = (props) => {
 
     const handleDelete = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/generated/delete/${id}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/delete/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

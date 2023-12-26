@@ -12,7 +12,7 @@ const CardPage = () => {
   const fetchGeneratedDog = async () => {
     try {
       if (id) {
-        const response = await fetch(`https://muttly.onrender.com/generated/breedbyid/${id}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyid/${id}`, {
           credentials: 'include',
         });
         const data = await response.json();

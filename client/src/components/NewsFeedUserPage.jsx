@@ -35,7 +35,7 @@ const NewsFeedUserPage = () => {
   useEffect(() => {
     const fetchUsersFavouritedImages = async () => {
       try {
-        const response = await fetch('https://muttly.onrender.com/userLiked', {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -56,7 +56,7 @@ const NewsFeedUserPage = () => {
 
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('https://muttly.onrender.com/mostliked/big', {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostliked/big`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -86,7 +86,7 @@ const NewsFeedUserPage = () => {
 
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('https://muttly.onrender.com/mostrecent', {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -115,7 +115,7 @@ const NewsFeedUserPage = () => {
 
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });

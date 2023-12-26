@@ -12,7 +12,7 @@
   <div id="confirmation-message"></div>
 
   <script>
-    fetch('https://muttly.onrender.com/logout', {
+    fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

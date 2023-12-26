@@ -36,7 +36,7 @@ const GenerateMixedBreedPage = () => {
       const fetchDataFirstDog = async () => {
         try {
           if (dogChoice) {
-            const response = await fetch(`https://muttly.onrender.com/breedbyid/${dogChoice.id}`);
+            const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             const newDogData = data[0];
       
@@ -83,7 +83,7 @@ const GenerateMixedBreedPage = () => {
       const fetchDataSecondDog = async () => {
         try {
           if (dogChoice) {
-            const response = await fetch(`https://muttly.onrender.com/breedbyid/${dogChoice.id}`);
+            const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             const newDogData = data[0];
 
@@ -138,7 +138,7 @@ const GenerateMixedBreedPage = () => {
       setWaitModal(true);
       const fetchFusion = async () => {
         try {
-          const response = await fetch(`https://muttly.onrender.com/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
+          const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
             credentials: 'include',
           });
           const data = await response.json();
@@ -188,7 +188,7 @@ const GenerateMixedBreedPage = () => {
 
   const fetchData = async () => {
     try {
-      const responce = await fetch(`https://muttly.onrender.com/allbreednames`)
+      const responce = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/allbreednames`)
       const data = await responce.json();
       setOptions(data);
       // console.log("breed names object returned from api server:", data);

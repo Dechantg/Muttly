@@ -28,7 +28,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchFavouritedImages = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/userLiked`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });

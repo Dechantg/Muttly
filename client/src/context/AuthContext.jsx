@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const validateSession = async () => {
       try {
-        const response = await fetch('https://muttly.onrender.com/validate', {
+        const response = await fetch('${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }.com/validate', {
           credentials: 'include',
         });
         const data = await response.json();

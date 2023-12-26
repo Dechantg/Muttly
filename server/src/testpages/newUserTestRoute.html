@@ -29,7 +29,7 @@
     async function submitForm() {
       const formData = new FormData(document.getElementById('testForm'));
 
-      const response = await fetch('https://muttly.onrender.com/addnewuser', {
+      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/addnewuser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

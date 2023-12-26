@@ -27,7 +27,7 @@ const NavigationBarTop = () => {
 
   const handleSignOut = async () =>  {
     try {
-      const response = await fetch('https://muttly.onrender.com/logout', {
+      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/logout`, {
         method: 'POST',
         credentials: 'include',
       });

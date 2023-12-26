@@ -34,7 +34,7 @@ const UsersFavouritesPage = () => {
   useEffect(() => {
     const fetchUsersGeneratedImages = async () => {
       try {
-        const response = await fetch(`https://muttly.onrender.com/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });

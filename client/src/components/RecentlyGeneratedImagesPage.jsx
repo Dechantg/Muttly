@@ -29,7 +29,7 @@ const RecentlyGeneratedImagesPage = () => {
   useEffect(() => {
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('https://muttly.onrender.com/mostrecent/big', {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent/big`, {
           method: 'GET',
           credentials: 'include',
         });

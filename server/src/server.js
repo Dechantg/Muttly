@@ -14,7 +14,7 @@ const app = express();
 
 const corsOptions = {
   credentials: true,
-  origin: process.env.NODE_ENV === 'production' ? 'https://muttly.onrender.com' : 'http://localhost:5173',
+  origin:  import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'http://localhost:5173',
 };
 app.use(cors(corsOptions));
 
