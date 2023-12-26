@@ -16,7 +16,6 @@ const NewsFeedPublicPage = () => {
   const openDogBreedCardModal = (event, image) => {
 
     if (image && image.generated_photo_link && image.id) {
-
       setSelectedImage(image);
       setDogBreedCardModalOpen(true);
     } else {
@@ -66,7 +65,6 @@ const NewsFeedPublicPage = () => {
           };
         });
         setRecentlyGeneratedImages(recentlyGen);
-        // console.log(recentlyGen);
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
       };

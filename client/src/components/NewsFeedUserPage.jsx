@@ -42,10 +42,20 @@ const NewsFeedUserPage = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const usersFavourited = data.userLiked;
-          console.log("here is the useres favourited results", usersFavourited);
-          setUsersFavouritedImages(usersFavourited);
-          console.log('Users Favourited Images:', data);
+          console.log('fav data:', data)
+          const usersFavourites = data.userLiked;
+          const favouritesExtraDetails = data.extraDetails
+
+          favouritesExtraDetails.forEach(detail => {
+            const indexToUpdate = usersFavourites.findIndex(image => image.id === detail.genid);
+          
+            if (indexToUpdate !== -1) {
+              usersFavourites[indexToUpdate].dog1 = detail.breedone;
+              usersFavourites[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+          setUsersFavouritedImages(usersFavourites);
+          console.log('Users favorites state:', usersFavourites);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
         };

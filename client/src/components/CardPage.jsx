@@ -12,7 +12,7 @@ const CardPage = () => {
   const fetchGeneratedDog = async () => {
     try {
       if (id) {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyid/${id}`, {
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'http://localhost:8088' }/generated/breedbyid/${id}`, {
           credentials: 'include',
         });
         const data = await response.json();
@@ -55,11 +55,11 @@ const CardPage = () => {
     } 
     catch (error) {
       console.error('Error fetching data:', error);
+      console.log(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyid/${id}`)
     }
   };
 
   useEffect(() => {
-    console.log("useEffect triggered with id:", id);
     fetchGeneratedDog(); 
   }, [id]);
 

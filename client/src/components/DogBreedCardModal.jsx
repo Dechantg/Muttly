@@ -116,7 +116,7 @@ const DogBreedCardModal = (props) => {
   };
   
   const onShareClick = () => {
-    navigator.clipboard.writeText(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/card/${id}`)
+    navigator.clipboard.writeText(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'localhost:5173' }/card/${id}`)
       .then(() => {
         alert('Link copied to clipboard!');
       })
