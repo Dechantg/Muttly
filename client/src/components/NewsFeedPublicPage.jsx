@@ -53,7 +53,7 @@ const NewsFeedPublicPage = () => {
     const fetchRecentlyGeneratedImages = async () => {
       try {
         const response = await fetch(`${ import.meta.env.NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`);
-        console.log(import.meta.env.VITE_APP_API_BASE_URL)
+        console.log(import.meta.env.NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' )
         const data = await response.json();
         const recentlyGen = data.result;
         const extraRecentData = data.extraDetails;
