@@ -51,17 +51,18 @@
   }
 } 
 
-@media (max-height: 800px) {
+@media (max-height: 950px) {
   .modal-background {
-    transform: scale(1.5); // Scales down the page to 80% of its original size
+    transform: scale(1.5); 
     max-width: 84.46%;
-    max-height: 98%;
-    margin-top: -1rem;
-    margin-bottom: -5rem;
+    max-height: 100%;
+    padding: 25rem;
+    // margin-top: -1rem;
+    // margin-bottom: -5rem;
   }
 
   .dog-breed-card {
-    transform: translate(-40%, -45%) scale(0.7);
+    transform: translate(-40%, -50%) scale(0.7);
     padding: 1rem 1rem 0 1rem;
   }
 } 

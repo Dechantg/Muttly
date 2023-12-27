@@ -8,7 +8,7 @@
   height: 100%;
   width: 100%;
 
-  @media (max-height: 800px) {
+  @media (max-height: 950px) {
     & {
       transform: scale(0.9); // Scales down the container to 80% of its original size
       margin-bottom: -50rem;
@@ -82,13 +82,13 @@
     
     @media (max-height: 600px) {
       & {
-        transform: scale(0.5); // Scales down the container to 50% of its original size
+        transform: scale(0.5); 
       }
     }
     
     @media (max-height: 400px) {
       & {
-        transform: scale(0.3); // Scales down the container to 30% of its original size
+        transform: scale(0.3); 
       }
     }
 
