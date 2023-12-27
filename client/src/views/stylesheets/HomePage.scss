@@ -60,7 +60,7 @@ $breakpoint-mobile: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vh 0;
+  padding: 1vh 0;
   overflow: hidden;
   @include responsive-font($font-size-large, $font-size-medium, $font-size-small);
   @media (max-height: 800px) {
@@ -143,9 +143,9 @@ $breakpoint-mobile: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 40%; // Adjust top positioning to be responsive
-  right: 12%; // Adjust right positioning to be responsive
-  margin: 0; // Remove negative margin
+  top: 40%; 
+  right: 12%; 
+  margin: 0; 
   transition: filter 0.3s ease;
   font-weight: 600;
 
@@ -153,19 +153,18 @@ $breakpoint-mobile: 480px;
     filter: brightness(1.2);
   }
 
-  // Adjust image size to be responsive
   img {
-    width: 10rem; // Fixed size
-    max-width: 100%; // Max size relative to the viewport width
+    width: 10rem;
+    max-width: 100%;
     cursor: pointer;
   }
 }
 
 .public-newsfeed-button {
   max-width: 100%;
-  align-self: center; // Align button to the center of its container
-  margin-top: 1rem; // Consistent margin
-  padding: 0.75em 1.5em; // Padding for better touch targets
+  align-self: center; 
+  margin-top: 1rem; 
+  padding: 0.75em 1.5em; 
   border-radius: 8px;
   background-color: #FFBEBA;
   transition: filter 0.3s ease;
@@ -184,7 +183,6 @@ $breakpoint-mobile: 480px;
     margin-bottom: -5rem;
   }
 
-  // Any other adjustments to reduce the overall height of elements
   .dog_container, .dog_home {
     transform: scale(1.1); 
     margin: 1rem;
@@ -200,6 +198,5 @@ $breakpoint-mobile: 480px;
 
 }
 
-// Responsive font-size adjustments
 @include responsive-font($font-size-large, $font-size-medium, $font-size-small); 
 }
