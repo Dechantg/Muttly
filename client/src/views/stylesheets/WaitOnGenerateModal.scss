@@ -6,11 +6,11 @@
   height: 100%;
   animation: lowerOpacity 2s ease-in-out forwards;
   z-index: 900;
-  @media (max-height: 800px) {
+  @media (max-height: 950px) {
     & {
       transform: scale(1.75); 
       max-width: 81.8411%;
-      max-height: 84%;
+      max-height: 100%;
       margin-top: 1rem;
     }
   }
@@ -69,7 +69,7 @@
   }
   
   
-  @media (max-height: 800px) {
+  @media (max-height: 950px) {
     & {
       transform: translate(-40%, -50%) scale(0.70);
       font-size: 1.75rem;
