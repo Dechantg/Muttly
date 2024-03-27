@@ -9,7 +9,7 @@ const generationRecord = (breedId) => {
   )
   .then(data => {
     const dogDetails = data.rows;
-    console.log("from inside the querry is is record", dogDetails)
+    // console.log("from inside the querry is is record", dogDetails)
     return dogDetails;
   })
   .catch (error => {

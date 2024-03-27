@@ -59,10 +59,16 @@ const changeLikeStatus           = require('./routes/likeStatusUpdate')
 const logout                     = require('./routes/userLogout')
 const likedByUserAndBreed        = require('./routes/likedBreedByUserAndBreedId')
 
+const migrateDatabase = require('./routes/migrateDatabase');
+
+
 const mostRecentBig              = require('./routes/mostRecentBig')
 const userLikedBig               = require('./routes/mostLikedBig')
 
 // const breedDetails    = require('../database/queries/retrieve_dog_breed');
+
+
+app.use('/migratedatabase', migrateDatabase);
 
 
 app.use('/mostliked', mostLikedBreeds);

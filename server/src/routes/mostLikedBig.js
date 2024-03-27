@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 
 
 
-    console.log("here are the top breeds returned from the new big boy route", topLikedDetailsResult);
+    // console.log("here are the top breeds returned from the new big boy route", topLikedDetailsResult);
     // console.log("here are extra details", extraDetails);
 
 

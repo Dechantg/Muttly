@@ -10,7 +10,7 @@ const mostLikedBreeds = () => {
   )
     .then(data => {
       const mostLiked = data.rows;
-      console.log("inside the query", mostLiked)
+      // console.log("inside the query", mostLiked)
       return mostLiked;
     })
     .catch (error => {

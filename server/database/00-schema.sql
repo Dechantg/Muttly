@@ -1,12 +1,27 @@
-DROP TABLE IF EXISTS items CASCADE;
+DROP TABLE IF EXISTS dog_breeds CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS generated_breeds CASCADE;
+DROP TABLE IF EXISTS liked_generated_breeds CASCADE;
+DROP TABLE IF EXISTS new_breed_queries CASCADE;
 
-CREATE TABLE items (
-  id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(32) NOT NULL
-);
+DROP SEQUENCE IF EXISTS generated_breeds_seq;
+DROP SEQUENCE IF EXISTS dog_breeds_seq;
+DROP SEQUENCE IF EXISTS users_seq;
+DROP SEQUENCE IF EXISTS liked_generated_breeds_seq;
+DROP SEQUENCE IF EXISTS new_breed_queries_seq;
+
+
+CREATE SEQUENCE generated_breeds_seq START WITH 300;
+CREATE SEQUENCE dog_breeds_seq START WITH 75;
+CREATE SEQUENCE users_seq START WITH 80;
+CREATE SEQUENCE liked_generated_breeds_seq START WITH 300;
+CREATE SEQUENCE new_breed_queries_seq START WITH 300;
+
+
+
 
 CREATE TABLE dog_breeds (
-  id SERIAL PRIMARY KEY,
+  id INTEGER DEFAULT nextval('dog_breeds_seq') PRIMARY KEY,
   image_link TEXT,
   good_with_children SMALLINT,
   good_with_other_dogs SMALLINT,
@@ -30,11 +45,10 @@ CREATE TABLE dog_breeds (
   min_weight_female SMALLINT,
   name VARCHAR(50) NOT NULL,
   description TEXT
-
 );
 
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
+  id INTEGER DEFAULT nextval('users_seq') PRIMARY KEY,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   first_name VARCHAR(50),
   last_name VARCHAR(50),
@@ -43,11 +57,10 @@ CREATE TABLE users (
 );
 
 CREATE TABLE generated_breeds (
-  id SERIAL PRIMARY KEY,
+  id INTEGER DEFAULT nextval('generated_breeds_seq') PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  generated_name VARCHAR(50) NOT NULL,
-  generated_photo_link TEXT,
+  name VARCHAR(100),
   good_with_children SMALLINT,
   good_with_other_dogs SMALLINT,
   shedding SMALLINT,
@@ -68,11 +81,12 @@ CREATE TABLE generated_breeds (
   min_height_female SMALLINT,
   min_weight_male SMALLINT,
   min_weight_female SMALLINT,
-  description TEXT
+  description TEXT,
+  generated_photo_link TEXT
 );
 
 CREATE TABLE liked_generated_breeds (
-  id SERIAL PRIMARY KEY,
+  id INTEGER DEFAULT nextval('liked_generated_breeds_seq') PRIMARY KEY,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   generated_breeds_id INTEGER REFERENCES generated_breeds(id) ON DELETE CASCADE,
@@ -80,18 +94,13 @@ CREATE TABLE liked_generated_breeds (
 );
 
 CREATE TABLE new_breed_queries (
-  id SERIAL PRIMARY KEY,
+  id INTEGER DEFAULT nextval('new_breed_queries_seq') PRIMARY KEY,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   generated_breeds_id INTEGER REFERENCES generated_breeds(id) ON DELETE CASCADE,
   breed_one INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE,
   breed_two INTEGER REFERENCES dog_breeds(id) ON DELETE CASCADE,
-  leo_gen_record VARCHAR(50),
-  openai_thread_id VARCHAR(50)
+  leo_gen_record VARCHAR(100) DEFAULT null,
+  openai_thread_id VARCHAR(100) DEFAULT null
 );
 
-CREATE TABLE user_login (
-  id SERIAL PRIMARY KEY,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-)

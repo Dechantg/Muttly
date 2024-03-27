@@ -15,7 +15,7 @@ const topLikedDetails = (generatedBreedsIds) => {
   return db.query(query, generatedBreedsIds)
     .then(data => {
       const topLikedDetails = data.rows;
-      console.log("from in details", topLikedDetails)
+      // console.log("from in details", topLikedDetails)
       return topLikedDetails;
     })
     .catch(error => {
