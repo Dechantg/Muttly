@@ -22,7 +22,7 @@ const EnlargedPawprintImage = () => {
         </div>
         <div>
           {/* Social medial icon EMAIL */}
-          <a href="mailto:muttly@dechantg.com">
+          <a href="mailto:info@muttly.ca">
             <img src="/public/icons/email.png" alt="Email Icon" className="email-icon" /> 
           </a>
         </div>
