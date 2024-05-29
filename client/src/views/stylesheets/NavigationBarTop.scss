@@ -2,12 +2,19 @@
 
 .top-navigation-bar {
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
   font-size: 2vh;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  margin-top: 2vh;
+  // margin-top: 2vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
 }
 
 .left-side {

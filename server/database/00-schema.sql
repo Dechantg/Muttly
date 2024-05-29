@@ -11,11 +11,11 @@ DROP SEQUENCE IF EXISTS liked_generated_breeds_seq;
 DROP SEQUENCE IF EXISTS new_breed_queries_seq;
 
 
-CREATE SEQUENCE generated_breeds_seq START WITH 300;
+CREATE SEQUENCE generated_breeds_seq START WITH 1000;
 CREATE SEQUENCE dog_breeds_seq START WITH 75;
-CREATE SEQUENCE users_seq START WITH 80;
-CREATE SEQUENCE liked_generated_breeds_seq START WITH 300;
-CREATE SEQUENCE new_breed_queries_seq START WITH 300;
+CREATE SEQUENCE users_seq START WITH 1000;
+CREATE SEQUENCE liked_generated_breeds_seq START WITH 1000;
+CREATE SEQUENCE new_breed_queries_seq START WITH 1000;
 
 
 
