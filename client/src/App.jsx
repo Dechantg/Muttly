@@ -23,6 +23,7 @@ const App = () => {
   return (
     <Router>
       <Layout>
+        <div className='App'>
         <Routes>
           {/* Visitor Routes */}
           <Route path="/" element={<VisitorRoute><HomePage /></VisitorRoute>} />
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/placeholder" element={<PlaceholderImage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        </div>
       </Layout>
     </Router>
   );

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Card from './Card'; 
 
-import '../views/stylesheets/CardPage.scss';
+import '../views/stylesheets/Card.scss';
 
 const CardPage = () => {
   const { id } = useParams();

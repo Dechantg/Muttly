@@ -17,16 +17,23 @@ body {
 
 .App {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  // flex-direction: column;
+  // min-height: 100vh;
+  margin-top: 10rem;
+  // left: 0;
+  // right: 0;
+  // margin-right: 3%;
+  justify-content: center;
+  overflow-y: auto;
+// width: 95%;
+padding: 1rem;
+// position: fixed;
+// top: 0;
+// bottom: 0;
+
 }
 
-.AppWrapper {
-  // flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100vh
-}
+
 
 .AppContent {
   // flex: 1;

@@ -193,7 +193,7 @@ const NewsFeedUserPage = () => {
           onClick={redirectToUsersFavouritesPage}>
             Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
-        <div className="users-favourited-images-row">
+        <div className="images-row">
           {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
@@ -209,7 +209,7 @@ const NewsFeedUserPage = () => {
           onClick={redirectToMostPopularGeneratedImagesPage}>
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
-        <div className="users-most-popular-images-row">
+        <div className="images-row">
           {mostPopularImages.slice(0, 5).map((image) => (
             <img 
               key={image.id}
@@ -225,7 +225,7 @@ const NewsFeedUserPage = () => {
           onClick={redirectToRecentlyGeneratedImagesPage}>
             Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
-        <div className="users-recently-generated-images-row">
+        <div className="images-row">
           {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}

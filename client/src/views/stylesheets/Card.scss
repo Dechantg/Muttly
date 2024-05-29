@@ -1,5 +1,13 @@
 // Card.scss
 
+.solo-card-container {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+}
 // Variables for colors used in gradients
 $type-color-1: #7B9AE1;
 $type-color-2: #5E74A1;
