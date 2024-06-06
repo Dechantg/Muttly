@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/AuthContext';
 import DogBreedCardModal from './DogBreedCardModal';
 import PlaceholderImage from './PlaceHolderImage';
 
 import '../views/stylesheets/NewsFeedUserPage.scss';
 
 const NewsFeedUserPage = () => {
-  const [ usersfavouritedImages, setUsersFavouritedImages ] = useState([]);
-  const [ mostPopularImages, setMostPopularImages ] = useState([]);
-  const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
-  const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
-  const [ selectedImage, setSelectedImage ] = useState(false);
-  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
-  const { userId } = useAuth(); 
+  const [usersfavouritedImages, setUsersFavouritedImages] = useState([]);
+  const [mostPopularImages, setMostPopularImages] = useState([]);
+  const [recentlyGeneratedImages, setRecentlyGeneratedImages] = useState([]);
+  const [usersGeneratedImages, setUsersGeneratedImages] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(false);
+  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
+  const { userId } = useAuth();
   const navigate = useNavigate();
 
-  
+
   const openDogBreedCardModal = (event, image) => {
     console.log('Click Mv!ent:', event);
 
@@ -31,24 +31,24 @@ const NewsFeedUserPage = () => {
   const closeDogBreedCardModal = () => {
     setDogBreedCardModalOpen(false);
   };
-  
+
   useEffect(() => {
-    const fetchUsersFavouritedImages = async () => {
+    const fetchUsersFavouritedImages = async() => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/userLiked`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/userLiked`, {
           method: 'GET',
           credentials: 'include',
         });
 
         if (response.ok) {
           const data = await response.json();
-          console.log('fav data:', data)
+          console.log('fav data:', data);
           const usersFavourites = data.userLiked;
-          const favouritesExtraDetails = data.extraDetails
+          const favouritesExtraDetails = data.extraDetails;
 
           favouritesExtraDetails.forEach(detail => {
             const indexToUpdate = usersFavourites.findIndex(image => image.id === detail.genid);
-          
+
             if (indexToUpdate !== -1) {
               usersFavourites[indexToUpdate].dog1 = detail.breedone;
               usersFavourites[indexToUpdate].dog2 = detail.breedtwo;
@@ -58,15 +58,15 @@ const NewsFeedUserPage = () => {
           console.log('Users favorites state:', usersFavourites);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
-        };
+        }
       } catch (error) {
         console.error('Error fetching favourited images:', error);
-      };
+      }
     };
 
-    const fetchMostPopularImages = async () => {
+    const fetchMostPopularImages = async() => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostliked/big`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/mostliked/big`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -74,11 +74,11 @@ const NewsFeedUserPage = () => {
         if (response.ok) {
           const data = await response.json();
           const mostPopular = data.topLikedDetailsResult;
-          const popularExtraDetails = data.extraDetails
+          const popularExtraDetails = data.extraDetails;
 
           popularExtraDetails.forEach(detail => {
             const indexToUpdate = mostPopular.findIndex(image => image.id === detail.genid);
-          
+
             if (indexToUpdate !== -1) {
               mostPopular[indexToUpdate].dog1 = detail.breedone;
               mostPopular[indexToUpdate].dog2 = detail.breedtwo;
@@ -88,27 +88,27 @@ const NewsFeedUserPage = () => {
           console.log('Most Popular Images state:', mostPopular);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
-        };
+        }
       } catch (error) {
         console.error('Error fetching most popular images:', error);
-      };
+      }
     };
 
-    const fetchRecentlyGeneratedImages = async () => {
+    const fetchRecentlyGeneratedImages = async() => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/mostrecent`, {
           method: 'GET',
           credentials: 'include',
         });
 
         if (response.ok) {
           const data = await response.json();
-          const recentlyGen = data.result
-          const recentExtraDetails = data.extraDetails
+          const recentlyGen = data.result;
+          const recentExtraDetails = data.extraDetails;
 
           recentExtraDetails.forEach(detail => {
             const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
-          
+
             if (indexToUpdate !== -1) {
               recentlyGen[indexToUpdate].dog1 = detail.breedone;
               recentlyGen[indexToUpdate].dog2 = detail.breedtwo;
@@ -117,41 +117,41 @@ const NewsFeedUserPage = () => {
           setRecentlyGeneratedImages(recentlyGen);
         } else {
           console.error('Failed to fetch recently generated images:', response.status);
-        };
+        }
       } catch (error) {
         console.error('Error fetching recently generated images:', error);
-      };
+      }
     };
 
-    const fetchUsersGeneratedImages = async () => {
+    const fetchUsersGeneratedImages = async() => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generated/breedbyuserid/${userId}`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/generated/breedbyuserid/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });
 
         if (response.ok) {
           const data = await response.json();
-          const usersGeneratedImagesFeed = data.generatedBreeds
-          const usersGenExtraDetails = data.extraDetails
+          const usersGeneratedImagesFeed = data.generatedBreeds;
+          const usersGenExtraDetails = data.extraDetails;
 
           usersGenExtraDetails.forEach(detail => {
-          const indexToUpdate = usersGeneratedImagesFeed.findIndex(image => image.id === detail.genid);
-        
-          if (indexToUpdate !== -1) {
-            usersGeneratedImagesFeed[indexToUpdate].dog1 = detail.breedone;
-            usersGeneratedImagesFeed[indexToUpdate].dog2 = detail.breedtwo;
-          }
-        });
-          setUsersGeneratedImages(usersGeneratedImagesFeed); 
+            const indexToUpdate = usersGeneratedImagesFeed.findIndex(image => image.id === detail.genid);
+
+            if (indexToUpdate !== -1) {
+              usersGeneratedImagesFeed[indexToUpdate].dog1 = detail.breedone;
+              usersGeneratedImagesFeed[indexToUpdate].dog2 = detail.breedtwo;
+            }
+          });
+          setUsersGeneratedImages(usersGeneratedImagesFeed);
           console.log('Users Generated Images state:', usersGeneratedImages);
           console.log('Users Generated Images:', data);
         } else {
           console.error('Failed to fetch users generated images:', response.status);
-        };
+        }
       } catch (error) {
         console.error('Error fetching users recently generated images:', error);
-      };
+      }
     };
 
     fetchUsersFavouritedImages();
@@ -187,31 +187,31 @@ const NewsFeedUserPage = () => {
   return (
     <div className="users-news-feed-user-container">
       <div className="users-news-feed-content">
-        <h2 
-          className ="userfeed-clickable-title" 
-          title="Click Me!" 
+        <h2
+          className="userfeed-clickable-title"
+          title="Click Me!"
           onClick={redirectToUsersFavouritesPage}>
-            Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+          Your Favourites <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="images-row">
           {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
-            <img 
+            <img
               key={image.id}
               src={image.generated_photo_link}
               alt={`Image ${image.id}`}
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
-           <PlaceholderImage count={placeholderCountFavorites} />
+          <PlaceholderImage count={placeholderCountFavorites} />
         </div>
         <h2
-          className="userfeed-clickable-title" 
+          className="userfeed-clickable-title"
           onClick={redirectToMostPopularGeneratedImagesPage}>
-            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+          Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="images-row">
           {mostPopularImages.slice(0, 5).map((image) => (
-            <img 
+            <img
               key={image.id}
               src={image.generated_photo_link}
               alt={`Dog ${image.name}`}
@@ -221,13 +221,13 @@ const NewsFeedUserPage = () => {
           ))}
         </div>
         <h2
-          className='userfeed-clickable-title' 
+          className='userfeed-clickable-title'
           onClick={redirectToRecentlyGeneratedImagesPage}>
-            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+          Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="images-row">
           {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
-            <img 
+            <img
               key={image.id}
               src={image.generated_photo_link}
               alt={`Dog ${image.name}`}
@@ -240,18 +240,18 @@ const NewsFeedUserPage = () => {
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img 
-          className='generate-button' 
-          title = "Click Me!" 
-          src='../icons/paw_button.png' 
-          onClick={redirectToGeneratePage} 
+        <img
+          className='generate-button'
+          title="Click Me!"
+          src='../icons/paw_button.png'
+          onClick={redirectToGeneratePage}
         />
 
-        <h2 
-          className="your-generations" 
-          title="Click Me!" 
+        <h2
+          className="your-generations"
+          title="Click Me!"
           onClick={redirectToUsersGeneratedImagesPage}>
-            Your Generations <img className='bone-animate' src= '../icons/bone.png' />
+          Your Generations <img className='bone-animate' src='../icons/bone.png' />
         </h2>
         <div className="users-generated-image-row">
           {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
@@ -267,21 +267,21 @@ const NewsFeedUserPage = () => {
         </div>
       </div>
       {isDogBreedCardModalOpen && (
-        <DogBreedCardModal 
+        <DogBreedCardModal
           id={selectedImage.id}
           image={selectedImage.generated_photo_link}
-          shedding={{shedding : selectedImage.shedding}}
-          drooling={{drooling : selectedImage.drooling}}
-          protectiveness={{protectiveness : selectedImage.protectiveness}}
-          energy={{energy : selectedImage.energy}}
-          barking={{barking : selectedImage.barking}}
+          shedding={{ shedding: selectedImage.shedding }}
+          drooling={{ drooling: selectedImage.drooling }}
+          protectiveness={{ protectiveness: selectedImage.protectiveness }}
+          energy={{ energy: selectedImage.energy }}
+          barking={{ barking: selectedImage.barking }}
           height={[
             selectedImage.max_height_female,
             selectedImage.max_height_male,
             selectedImage.min_height_female,
             selectedImage.min_height_male,
-          ]} 
-          weight={[ 
+          ]}
+          weight={[
             selectedImage.max_weight_female,
             selectedImage.max_weight_male,
             selectedImage.min_weight_female,
@@ -293,7 +293,7 @@ const NewsFeedUserPage = () => {
           dog2={selectedImage.dog2}
           feed={true}
           onClose={closeDogBreedCardModal}
-          isOpen={isDogBreedCardModalOpen} 
+          isOpen={isDogBreedCardModalOpen}
         />
       )}
     </div>

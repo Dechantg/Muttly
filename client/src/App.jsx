@@ -1,5 +1,5 @@
 import './App.scss';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
@@ -18,33 +18,50 @@ import ProtectedRoute from './components/ProtectedRoute';
 import VisitorRoute from './components/VisitorRoute';
 import PlaceholderImage from './components/PlaceHolderImage';
 import Layout from './components/Layout';
+import LogRocket from 'logrocket';
+
+const logRocketToken = null;
+
+//const logRocketToken = 'tcm3q8/muttly';
+
 
 const App = () => {
+
+  useEffect(() => {
+
+    if (logRocketToken) {
+      LogRocket.init(logRocketToken);
+
+    } else {
+      console.error('LogRocket token not found in environment variables');
+    }
+  }, []);
+
   return (
     <Router>
       <Layout>
         <div className='App'>
-        <Routes>
-          {/* Visitor Routes */}
-          <Route path="/" element={<VisitorRoute><HomePage /></VisitorRoute>} />
-          <Route path="/signup" element={<VisitorRoute><SignUpPage /></VisitorRoute>} />
+          <Routes>
+            {/* Visitor Routes */}
+            <Route path="/" element={<VisitorRoute><HomePage /></VisitorRoute>} />
+            <Route path="/signup" element={<VisitorRoute><SignUpPage /></VisitorRoute>} />
           
-          {/* Protected Routes */}
-          <Route path="/usersfavourites" element={<ProtectedRoute><UsersFavouritesPage /></ProtectedRoute>} />
-          <Route path="/newsfeeduser" element={<ProtectedRoute><NewsFeedUserPage /></ProtectedRoute>} />
-          <Route path="/generate" element={<ProtectedRoute><GenerateMixedBreedPage /></ProtectedRoute>} />
-          <Route path="/usersgeneratedimages" element={<ProtectedRoute><UsersGeneratedImages /></ProtectedRoute>} />
+            {/* Protected Routes */}
+            <Route path="/usersfavourites" element={<ProtectedRoute><UsersFavouritesPage /></ProtectedRoute>} />
+            <Route path="/newsfeeduser" element={<ProtectedRoute><NewsFeedUserPage /></ProtectedRoute>} />
+            <Route path="/generate" element={<ProtectedRoute><GenerateMixedBreedPage /></ProtectedRoute>} />
+            <Route path="/usersgeneratedimages" element={<ProtectedRoute><UsersGeneratedImages /></ProtectedRoute>} />
           
-          {/* Public Routes */}
-          <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
-          <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
-          <Route path="/contact" element={<ContactUsPage />} />
-          <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
-          <Route path="/card/:id" element={<CardPage />} />
-          <Route path="/placeholder" element={<PlaceholderImage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+            {/* Public Routes */}
+            <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
+            <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+            <Route path="/card/:id" element={<CardPage />} />
+            <Route path="/placeholder" element={<PlaceholderImage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
         </div>
       </Layout>
     </Router>

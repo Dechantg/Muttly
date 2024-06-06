@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react"; 
-import '../views/stylesheets/WaitOnGenerateModal.scss'
+import React, { useState, useEffect } from "react";
+import '../views/stylesheets/WaitOnGenerateModal.scss';
 
-function WaitOnGenerateModal() {
-  const [ index, setIndex ] = useState(0);
+const WaitOnGenerateModal = () => {
+  const [index, setIndex] = useState(0);
   const loadingPhrases = [
     "Fetching your unique mutt! Paws for a moment.",
     "Creating a tail-wagging masterpiece! Sit tight.",
@@ -14,26 +14,26 @@ function WaitOnGenerateModal() {
     "Combining breeds for the ultimate pup blend! Patience pays off.",
     "Creating a canine masterpiece! Hang tight, it's happening!",
     "Mixing and matching breeds for your paw-sitively adorable mutt!"
-]; 
+  ];
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    const newIndex = Math.floor(Math.random() * loadingPhrases.length);
-    setIndex(newIndex);
-  }, 6000)
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newIndex = Math.floor(Math.random() * loadingPhrases.length);
+      setIndex(newIndex);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="wait-modal-container">
       <div className="fade-in-container">
         <div className="wait-modal-background">
-          <img className='modal-icon' src="../icons/dog-house-loading.png"/>
+          <img className='modal-icon' src="../icons/dog-house-loading.png" />
           <p>{loadingPhrases[index]}</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WaitOnGenerateModal
+export default WaitOnGenerateModal;

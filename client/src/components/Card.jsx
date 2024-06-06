@@ -1,30 +1,31 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import '../views/stylesheets/Card.scss';
 
 const Card = (props) => {
   const {
-    num, 
-    image, 
-    shedding, 
-    drooling, 
-    protectiveness, 
-    energy, 
-    barking, 
-    height, 
-    weight, 
-    name, 
-    description, 
-    dog1, 
+    num,
+    image,
+    shedding,
+    drooling,
+    protectiveness,
+    energy,
+    barking,
+    height,
+    weight,
+    name,
+    description,
+    dog1,
     dog2
-  } = props
+  } = props;
 
   const avgStat = array => {
     if (!array || array.length === 0) {
       return null;
     }
     return array.reduce((x, y) => x + y) / array.length;
-  }
+  };
 
   const avgWeight = weight && Array.isArray(weight) && weight.length > 0 ? `${avgStat(weight)} lbs` : null;
 
@@ -34,11 +35,11 @@ const Card = (props) => {
     const feet = Math.floor(inches / 12);
     const remainingInches = inches % 12;
     return `${feet}' ${remainingInches}"`;
-  }
+  };
 
   const symbolGenerator = (statObj) => {
     if (!statObj || Object.keys(statObj).length === 0) {
-      return null; 
+      return null;
     }
     const type = Object.keys(statObj)[0];
     const value = statObj[type];
@@ -46,7 +47,7 @@ const Card = (props) => {
     const fullFunct = () => {
       const elements = [];
       for (let i = 1; i <= value; i++) {
-        elements.push (
+        elements.push(
           <td key={i} className="typesign">
             <img className="energy_symbol" src={`/icons/${type}.png`} />
           </td>
@@ -59,24 +60,24 @@ const Card = (props) => {
     const halfFunct = () => {
       const newValue = value + 0.5;
       const elements = [];
-        for (let i = 1; i <= newValue; i++) {
-          elements.push (
-            i === newValue ? (
-              <td key={i} className="typesign">
-                <img className="energy_symbol" src={`./icons/${type}_half.png`} />
-              </td>
-            ) : (
-              <td key={i} className="typesign">
-                <img className="energy_symbol" src={`./icons/${type}.png`} />
-              </td>
-            )
-          );
-        }
+      for (let i = 1; i <= newValue; i++) {
+        elements.push(
+          i === newValue ? (
+            <td key={i} className="typesign">
+              <img className="energy_symbol" src={`./icons/${type}_half.png`} />
+            </td>
+          ) : (
+            <td key={i} className="typesign">
+              <img className="energy_symbol" src={`./icons/${type}.png`} />
+            </td>
+          )
+        );
+      }
 
-        return elements;
-      };
+      return elements;
+    };
 
-    return value % 1 === 0.5 ? halfFunct() : fullFunct() 
+    return value % 1 === 0.5 ? halfFunct() : fullFunct();
   };
 
   return (
@@ -91,18 +92,18 @@ const Card = (props) => {
               <p className="nameofanimal" colSpan="3">{name}</p>
               <div className='protect_container'>
                 <div className="attackdesc"><span className="label">Protectiveness</span></div>
-                {symbolGenerator(protectiveness) || symbolGenerator({'protectiveness':0}) }
+                {symbolGenerator(protectiveness) || symbolGenerator({ 'protectiveness': 0 })}
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-      <img 
-        className='card_img' 
-        src={image} alt={name || null} 
+      <img
+        className='card_img'
+        src={image} alt={name || null}
         title={image && "Click for full image"}
-        onClick={() => image && window.open(image, '_blank')} 
-        onError="this.style.display='none';" 
+        onClick={() => image && window.open(image, '_blank')}
+        onError="this.style.display='none';"
       />
       <br />
       <div className='below_image_container'>
@@ -117,7 +118,7 @@ const Card = (props) => {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Shedding</span></td>
-              {symbolGenerator(shedding) || symbolGenerator({'shedding':0})}
+              {symbolGenerator(shedding) || symbolGenerator({ 'shedding': 0 })}
             </tr>
           </tbody>
         </table>
@@ -125,7 +126,7 @@ const Card = (props) => {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Energy</span></td>
-              {symbolGenerator(energy) || symbolGenerator({'energy':0})}
+              {symbolGenerator(energy) || symbolGenerator({ 'energy': 0 })}
             </tr>
           </tbody>
         </table>
@@ -135,7 +136,7 @@ const Card = (props) => {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Drooling</span></td>
-              {symbolGenerator(drooling) || symbolGenerator({'drooling':0})}
+              {symbolGenerator(drooling) || symbolGenerator({ 'drooling': 0 })}
             </tr>
           </tbody>
         </table>
@@ -143,7 +144,7 @@ const Card = (props) => {
           <tbody>
             <tr className="symbol_container">
               <td className="attackdesc"><span className="label">Barking</span></td>
-              {symbolGenerator(barking) || symbolGenerator({'barking':0})}
+              {symbolGenerator(barking) || symbolGenerator({ 'barking': 0 })}
             </tr>
           </tbody>
         </table>
@@ -157,7 +158,24 @@ const Card = (props) => {
       </ul>
     </div>
   );
-}
+};
+
+Card.propTypes = {
+  num: PropTypes.number,
+  image: PropTypes.string,
+  shedding: PropTypes.number,
+  drooling: PropTypes.number,
+  protectiveness: PropTypes.number,
+  energy: PropTypes.number,
+  barking: PropTypes.number,
+  height: PropTypes.number,
+  weight: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  dog1: PropTypes.string,
+  dog2: PropTypes.string
+};
+
 
 export default Card;
 

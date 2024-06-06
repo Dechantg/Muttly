@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "lint": "eslint 'src/**/*.{js,jsx}'",
+    "prebuild": "npm run lint"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "logrocket": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -16,14 +20,18 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.24.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "axios": "^1.6.2",
     "cors": "^2.8.5",
-    "eslint-plugin-react": "^7.32.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "prop-types": "^15.8.1",
     "vite": "^4.4.5"
   }
 }

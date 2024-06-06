@@ -4,9 +4,9 @@ import DogBreedCardModal from './DogBreedCardModal';
 import '../views/stylesheets/MostPopularGeneratedImagePage.scss';
 
 const MostPopularGeneratedImagesPage = () => {
-  const [ mostPopularImages, setMostPopularImages ] = useState([]);
-  const [ selectedImage, setSelectedImage ] = useState(null);
-  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
+  const [mostPopularImages, setMostPopularImages] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isDogBreedCardModalOpen, setDogBreedCardModalOpen] = useState(false);
 
 
   const openDogBreedCardModal = (event, image) => {
@@ -16,7 +16,7 @@ const MostPopularGeneratedImagesPage = () => {
 
       setSelectedImage(image);
       setDogBreedCardModalOpen(true);
-      
+
       console.log('Image clicked!', image);
       console.log('Clicked image ID:', image.id);
       console.log('Selected image:', image.generated_photo_link);
@@ -27,9 +27,9 @@ const MostPopularGeneratedImagesPage = () => {
   };
 
   useEffect(() => {
-    const fetchMostPopularImages = async () => {
+    const fetchMostPopularImages = async() => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostliked/big`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/mostliked/big`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -41,22 +41,22 @@ const MostPopularGeneratedImagesPage = () => {
 
           popularExtraDetails.forEach(detail => {
             const indexToUpdate = mostPopular.findIndex(image => image.id === detail.genid);
-          
+
             if (indexToUpdate !== -1) {
               mostPopular[indexToUpdate].dog1 = detail.breedone;
-              mostPopular[indexToUpdate].dog2 = detail.breedtwo;;
-            };
+              mostPopular[indexToUpdate].dog2 = detail.breedtwo;
+            }
           });
-          console.log("here is the most popular", mostPopular)
+          console.log("here is the most popular", mostPopular);
           setMostPopularImages(mostPopular);
           // console.log('Most Popular Images state:', mostPopularImages);
           // console.log('Most Popular Images', data);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
-        };
+        }
       } catch (error) {
         console.error('Error fetching most popular images:', error);
-      };
+      }
     };
 
     fetchMostPopularImages();
@@ -82,30 +82,30 @@ const MostPopularGeneratedImagesPage = () => {
           {mostPopularImages.map((image) => (
             <img
               key={image.id}
-              src={image.generated_photo_link}               
+              src={image.generated_photo_link}
               alt={`Image ${image.id}`}
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
-            ))}
+          ))}
         </div>
 
         {/* Dog Breed Card Modal */}
         {selectedImage && (
-          <DogBreedCardModal 
+          <DogBreedCardModal
             id={selectedImage.id}
             image={selectedImage.generated_photo_link}
-            shedding={{shedding : selectedImage.shedding}}
-            drooling={{drooling : selectedImage.drooling}}
-            protectiveness={{protectiveness : selectedImage.protectiveness}}
-            energy={{energy : selectedImage.energy}}
-            barking={{barking : selectedImage.barking}}
+            shedding={{ shedding: selectedImage.shedding }}
+            drooling={{ drooling: selectedImage.drooling }}
+            protectiveness={{ protectiveness: selectedImage.protectiveness }}
+            energy={{ energy: selectedImage.energy }}
+            barking={{ barking: selectedImage.barking }}
             height={[
               selectedImage.max_height_female,
               selectedImage.max_height_male,
               selectedImage.min_height_female,
               selectedImage.min_height_male,
-            ]} 
-            weight={[ 
+            ]}
+            weight={[
               selectedImage.max_weight_female,
               selectedImage.max_weight_male,
               selectedImage.min_weight_female,
@@ -116,8 +116,8 @@ const MostPopularGeneratedImagesPage = () => {
             dog1={selectedImage.dog1}
             dog2={selectedImage.dog2}
             onClose={closeDogBreedModal}
-            isOpen={isDogBreedCardModalOpen} 
-            feed = {true}
+            isOpen={isDogBreedCardModalOpen}
+            feed={true}
           />
         )}
       </div>

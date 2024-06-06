@@ -7,6 +7,6 @@ import App from './App';
 ReactDOM.createRoot(document.getElementById('root'))
   .render(
     <AuthProvider>
-        <App/>
+      <App/>
     </AuthProvider>
   );

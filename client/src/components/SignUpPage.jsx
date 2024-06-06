@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../views/stylesheets/SignUpPage.scss';
 
 const SignUpPage = () => {
-  const [ email, setEmail ] = useState('');
+  const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ firstName, setFirstName ] = useState('');
-  const [ lastName, setLastName ] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleConfirmEmailChange = (e) => setConfirmEmail(e.target.value);
@@ -18,9 +18,9 @@ const SignUpPage = () => {
     return email === confirmEmail && password.length >= 8;
   };
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async(email, password) => {
     try {
-      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/login`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -28,7 +28,7 @@ const SignUpPage = () => {
       });
 
       if (!response.ok) throw new Error('Login failed');
-      
+
       window.location.reload();
     } catch (error) {
       console.error('Error during login:', error.message);
@@ -36,14 +36,14 @@ const SignUpPage = () => {
     }
   };
 
-  const handleSignUp = async () => {
+  const handleSignUp = async() => {
     if (!isFormValid()) {
       alert('Please ensure all fields are filled correctly.');
       return;
     }
 
     try {
-      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/addnewuser`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api'}/addnewuser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, firstName, lastName }),
@@ -63,16 +63,16 @@ const SignUpPage = () => {
     <div className="signup-container">
       <div className="background-with-pawprints-left">
         <div className='column-1'>
-          <img className='side_logo' src='../icons/paws_pink.png'/>
-          <br/>
-          <img className='side_logo' src='../icons/paws_pink.png'/>
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
         </div>
         <div className='column-2'>
-          <br/>
-          <img className='side_logo' src='../icons/paws_pink.png'/>
-          <br/>
-          <img className='side_logo' src='../icons/paws_pink.png'/>
-          <br/>
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
         </div>
       </div>
 
@@ -86,11 +86,11 @@ const SignUpPage = () => {
         <div className="name-fields">
           <div>
             <label htmlFor="firstName">First Name </label>
-            <input type="text" id="firstName" placeholder="First Name" value={firstName} onChange={handleFirstNameChange}/>
+            <input type="text" id="firstName" placeholder="First Name" value={firstName} onChange={handleFirstNameChange} />
           </div>
           <div>
             <label htmlFor="lastName">Last Name </label>
-            <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={handleLastNameChange}/>
+            <input type="text" id="lastName" placeholder="Last Name" value={lastName} onChange={handleLastNameChange} />
           </div>
         </div>
 
@@ -98,7 +98,7 @@ const SignUpPage = () => {
         <div className="email-field">
           <label htmlFor="email">Email Address</label>
           <p>Please enter a valid email address</p>
-          <input type="email" id="email" placeholder="Enter your email address" value={email} onChange={handleEmailChange}/>
+          <input type="email" id="email" placeholder="Enter your email address" value={email} onChange={handleEmailChange} />
         </div>
 
         {/* Confirm Email Field */}
@@ -112,36 +112,36 @@ const SignUpPage = () => {
         <div className="password-field">
           <label htmlFor="password">Password</label>
           <p>Must be at least 8 characters long</p>
-          <input type="password" id="password" placeholder="Enter your password" value={password} onChange={handlePasswordChange}/>
+          <input type="password" id="password" placeholder="Enter your password" value={password} onChange={handlePasswordChange} />
         </div>
 
         {/* Submit Button */}
         <div className="paw-signup">
-        <a className="to-newsfeed-user-link" onClick={handleSignUp}>
+          <a className="to-newsfeed-user-link" onClick={handleSignUp}>
             <img className="paw-button" src="../icons/paws_pink.png" />
           </a>
-        <p>Sign Me Up!</p>
+          <p>Sign Me Up!</p>
         </div>
 
       </div>
-      
+
       <div className="background-with-pawprints-right">
         <div className='column-3'>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
-          </div>
-          <div className='column-4'>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-            <br/>
-            <img className='side_logo' src='../icons/paws_pink.png'/>
-          </div>
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
         </div>
+        <div className='column-4'>
+          <img className='side_logo' src='../icons/paws_pink.png' />
+          <br />
+          <img className='side_logo' src='../icons/paws_pink.png' />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default SignUpPage; 
+export default SignUpPage;
 
