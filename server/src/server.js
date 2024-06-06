@@ -1,16 +1,27 @@
 require('dotenv').config();
 const fs = require('fs');
-// const https = require('https');
 const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
-
-
+const https = require('https');
 
 const app = express();
+
+const keyPath = process.env.KEY_PATH || null;
+const certPath = process.env.CRT_PATH || null;
+
+let httpsServer = null
+
+if (keyPath && certPath) {
+const privateKey = fs.readFileSync(keyPath, 'utf8');
+const certificate = fs.readFileSync(certPath, 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+httpsServer = https.createServer(credentials, app);
+}
+
 
 const corsOptions = {
   credentials: true,
@@ -115,7 +126,18 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(public, 'index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
+if (httpsServer) {
+
+httpsServer.listen(port, () => {
+
+  console.log(`muttly server app listening on port ${port} for https`);
+});
+  } else {
+
+
+app.listen(port, () => {
+   console.log(`muttly server app listening on port ${port} for http`);
+ });
+
+  }
