@@ -34,7 +34,7 @@ const httpsOptions = {
 };
 
 // Create HTTPS server
-const port = process.env.PORT || 5175;
+const port = process.env.PORT || 5173;
 https.createServer(httpsOptions, app).listen(port, () => {
   console.log(`Server is running on https://localhost:${port}`);
 });
