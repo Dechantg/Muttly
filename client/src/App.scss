@@ -33,7 +33,13 @@ padding: 1rem;
 
 }
 
-
+.page-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  overflow-y: auto;
+}
 
 .AppContent {
   // flex: 1;

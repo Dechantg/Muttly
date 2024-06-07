@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import DogBreedCardModal from './DogBreedCardModal';
-import PlaceholderImage from './PlaceHolderImage';
+import FeedRows from './FeedRows';
 
 import '../views/stylesheets/NewsFeedUserPage.scss';
 
@@ -184,58 +184,75 @@ const NewsFeedUserPage = () => {
     navigate('/recentlygeneratedimages');
   };
 
+  const reversedFavoutireImages = [...usersfavouritedImages].reverse();
+  const reversedRecentlyGeneragedImages = [...recentlyGeneratedImages].reverse();
+
+
   return (
     <div className="users-news-feed-user-container">
+
+
       <div className="users-news-feed-content">
-        <h2
-          className="userfeed-clickable-title"
-          title="Click Me!"
-          onClick={redirectToUsersFavouritesPage}>
-          Your Favourites <img className='bone-animate' src='../icons/bone.png' />
-        </h2>
-        <div className="images-row">
-          {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
-            <img
-              key={image.id}
-              src={image.generated_photo_link}
-              alt={`Image ${image.id}`}
-              onClick={(event) => openDogBreedCardModal(event, image)}
-            />
-          ))}
-          <PlaceholderImage count={placeholderCountFavorites} />
+
+        <div>
+          <h2
+            className="userfeed-clickable-title"
+            onClick={redirectToUsersFavouritesPage}>
+            Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+          </h2>
+
+          <FeedRows
+            feedImages={reversedFavoutireImages}
+            placeholderCount={placeholderCountFavorites}
+            openModal={openDogBreedCardModal}
+          />
         </div>
-        <h2
-          className="userfeed-clickable-title"
-          onClick={redirectToMostPopularGeneratedImagesPage}>
-          Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
-        </h2>
-        <div className="images-row">
-          {mostPopularImages.slice(0, 5).map((image) => (
-            <img
-              key={image.id}
-              src={image.generated_photo_link}
-              alt={`Dog ${image.name}`}
-              className={`most-popular-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={(event) => openDogBreedCardModal(event, image)}
-            />
-          ))}
+
+        <div>
+          <h2
+            className="userfeed-clickable-title"
+            onClick={redirectToMostPopularGeneratedImagesPage}>
+            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+          </h2>
+
+          <FeedRows
+            feedImages={mostPopularImages}
+            placeholderCount={placeholderCountFavorites}
+            openModal={openDogBreedCardModal}
+          />
         </div>
-        <h2
-          className='userfeed-clickable-title'
-          onClick={redirectToRecentlyGeneratedImagesPage}>
-          Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
-        </h2>
-        <div className="images-row">
-          {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
-            <img
-              key={image.id}
-              src={image.generated_photo_link}
-              alt={`Dog ${image.name}`}
-              className={`recently-generated-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={(event) => openDogBreedCardModal(event, image)}
-            />
-          ))}
+
+        <div>
+          <h2
+            className="userfeed-clickable-title"
+            onClick={redirectToRecentlyGeneratedImagesPage}>
+            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+          </h2>
+
+          <FeedRows
+            feedImages={reversedRecentlyGeneragedImages}
+            placeholderCount={placeholderCountFavorites}
+            openModal={openDogBreedCardModal}
+          />
         </div>
+
+
+
+        <div>
+          <h2
+            className="userfeed-clickable-title"
+            onClick={redirectToUsersGeneratedImagesPage}>
+            Your Generations <img className='bone-animate' src='../icons/bone.png' />
+          </h2>
+
+          <FeedRows
+            feedImages={usersGeneratedImages}
+            placeholderCount={placeholderCountUsersGenerated}
+            openModal={openDogBreedCardModal}
+          />
+        </div>
+
+
       </div>
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
@@ -247,25 +264,9 @@ const NewsFeedUserPage = () => {
           onClick={redirectToGeneratePage}
         />
 
-        <h2
-          className="your-generations"
-          title="Click Me!"
-          onClick={redirectToUsersGeneratedImagesPage}>
-          Your Generations <img className='bone-animate' src='../icons/bone.png' />
-        </h2>
-        <div className="users-generated-image-row">
-          {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
-            <img
-              key={image.id}
-              src={image.generated_photo_link}
-              alt={`Dog ${image.name}`}
-              className={`recently-generated-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={(event) => openDogBreedCardModal(event, image)}
-            />
-          ))}
-          <PlaceholderImage count={placeholderCountUsersGenerated} />
-        </div>
       </div>
+
+
       {isDogBreedCardModalOpen && (
         <DogBreedCardModal
           id={selectedImage.id}

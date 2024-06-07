@@ -8,7 +8,7 @@ import '../App.scss';
 const Layout = ({ children }) => {
 
   return (
-    <div>
+    <div className='page-container'>
       <NavigationBarTop />
       {children}
       <NavigationBarBottom />

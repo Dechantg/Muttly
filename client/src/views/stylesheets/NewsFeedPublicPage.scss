@@ -1,5 +1,32 @@
 // NewsFeedPublicPage.scss
 
+.users-news-feed-user-container {
+  display: flex;
+  justify-content: space-around;
+
+  @media (max-height: 800px) {
+    & {
+      transform: scale(0.9); 
+      margin-bottom: -5rem;
+      margin-top: -1.5rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    & {
+      transform: scale(0.5); 
+    }
+  }
+  
+  @media (max-height: 400px) {
+    & {
+      transform: scale(0.3); 
+    }
+  }
+
+}
+
+
 .news-feed-container {
   display: flex;
   flex-direction: column;
