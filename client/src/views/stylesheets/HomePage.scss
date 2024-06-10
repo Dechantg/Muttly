@@ -55,12 +55,14 @@
 
 .sign_in {
   position: absolute;
+  width: 25%; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   top: 40%; 
-  right: 12%; 
-  margin: 0; 
+  right: 0; 
+  margin-right: 5%;
   transition: filter 0.3s ease;
   font-weight: 600;
   font-size: 2.5vw;
@@ -70,7 +72,7 @@
   }
 
   img {
-    width: 10rem;
+    width: 15vw;
     max-width: 100%;
     cursor: pointer;
   }
