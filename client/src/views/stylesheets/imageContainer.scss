@@ -1,0 +1,74 @@
+// ImageSlider component styles
+
+.carousel-container {
+    max-width: 35vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 25vw;
+    max-height: 25vw;
+    margin-bottom: 5%;
+    position: relative;
+    
+  }
+  
+  .custom-slide {
+    width: 100%;
+    height: auto;
+  
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+
+
+  .image-container {
+    position: relative;
+    height: 25vw;
+    overflow: hidden;
+    margin-bottom: 5%;
+
+    // cursor: pointer;
+  }
+  
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 2s ease;
+
+  }
+  
+  .image-container img.slide-out {
+    transform: translateX(100%);
+  }
+  
+  .image-container img.active {
+    transform: translateX(0);
+  }
+  
+
+  @media (max-width: 980px) {
+    .carousel-container {
+        max-width: 75vw;
+        max-height: 50vw;
+        margin-bottom: 10%;
+      }
+
+      .image-container {
+        position: relative;
+        height: 50vw;
+        overflow: hidden;
+        margin-bottom: 5%;
+      }
+
+
+  }

@@ -192,80 +192,80 @@ const NewsFeedUserPage = () => {
     <div className="news-feed-container">
 
       <div className="news-feed-content">
-        
-      <div className='user-feed-block'>
 
-        <div>
-          <h2
-            className="feed-clickable-title"
-            onClick={redirectToUsersFavouritesPage}>
-            Your Favourites <img className='bone-animate' src='../icons/bone.png' />
-          </h2>
+        <div className='user-feed-block'>
 
-          <FeedRows
-            feedImages={reversedFavoutireImages}
-            placeholderCount={placeholderCountFavorites}
-            openModal={openDogBreedCardModal}
+          <div>
+            <h2
+              className="feed-clickable-title"
+              onClick={redirectToUsersFavouritesPage}>
+              Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+            </h2>
+
+            <FeedRows
+              feedImages={reversedFavoutireImages}
+              placeholderCount={placeholderCountFavorites}
+              openModal={openDogBreedCardModal}
+            />
+          </div>
+
+          <div>
+            <h2
+              className="feed-clickable-title"
+              onClick={redirectToMostPopularGeneratedImagesPage}>
+              Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+            </h2>
+
+            <FeedRows
+              feedImages={mostPopularImages}
+              placeholderCount={placeholderCountFavorites}
+              openModal={openDogBreedCardModal}
+            />
+          </div>
+
+          <div>
+            <h2
+              className="userfeed-clickable-title"
+              onClick={redirectToRecentlyGeneratedImagesPage}>
+              Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+            </h2>
+
+            <FeedRows
+              feedImages={reversedRecentlyGeneragedImages}
+              placeholderCount={placeholderCountFavorites}
+              openModal={openDogBreedCardModal}
+            />
+          </div>
+
+
+
+          <div>
+            <h2
+              className="userfeed-clickable-title"
+              onClick={redirectToUsersGeneratedImagesPage}>
+              Your Generations <img className='bone-animate' src='../icons/bone.png' />
+            </h2>
+
+            <FeedRows
+              feedImages={usersGeneratedImages}
+              placeholderCount={placeholderCountUsersGenerated}
+              openModal={openDogBreedCardModal}
+            />
+          </div>
+        </div>
+
+
+        <div className="news-feed-container-generate">
+          {/* Generate Your Own Breed Button */}
+          <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
+          <img
+            className='generate-button'
+            title="Click Me!"
+            src='../icons/paw_button.png'
+            onClick={redirectToGeneratePage}
           />
+
         </div>
-
-        <div>
-          <h2
-            className="feed-clickable-title"
-            onClick={redirectToMostPopularGeneratedImagesPage}>
-            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
-          </h2>
-
-          <FeedRows
-            feedImages={mostPopularImages}
-            placeholderCount={placeholderCountFavorites}
-            openModal={openDogBreedCardModal}
-          />
-        </div>
-
-        <div>
-          <h2
-            className="userfeed-clickable-title"
-            onClick={redirectToRecentlyGeneratedImagesPage}>
-            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
-          </h2>
-
-          <FeedRows
-            feedImages={reversedRecentlyGeneragedImages}
-            placeholderCount={placeholderCountFavorites}
-            openModal={openDogBreedCardModal}
-          />
-        </div>
-
-
-
-        <div>
-          <h2
-            className="userfeed-clickable-title"
-            onClick={redirectToUsersGeneratedImagesPage}>
-            Your Generations <img className='bone-animate' src='../icons/bone.png' />
-          </h2>
-
-          <FeedRows
-            feedImages={usersGeneratedImages}
-            placeholderCount={placeholderCountUsersGenerated}
-            openModal={openDogBreedCardModal}
-          />
-        </div>
-        </div>
-
-
-      <div className="news-feed-container-generate">
-        {/* Generate Your Own Breed Button */}
-        <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img
-          className='generate-button'
-          title="Click Me!"
-          src='../icons/paw_button.png'
-          onClick={redirectToGeneratePage}
-        />
-
-      </div>
 
       </div>
 

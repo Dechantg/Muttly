@@ -108,9 +108,9 @@ const NewsFeedPublicPage = () => {
 
       <div className="news-feed-content">
         <div className='public-feed-block'>
-        <h1>Top Dogs & New Pups</h1>
-        <h2>Wag-worthy moments from the stars and the rising!</h2> <br />
-        {/* <div className="news-feed-content"> */}
+          <h1>Top Dogs & New Pups</h1>
+          <h2>Wag-worthy moments from the stars and the rising!</h2> <br />
+          {/* <div className="news-feed-content"> */}
 
           <div>
             <h2
@@ -139,39 +139,39 @@ const NewsFeedPublicPage = () => {
             />
           </div>
           {/* </div> */}
-          </div>
+        </div>
 
-          {/* Dog Breed Card Modal */}
-          {isDogBreedCardModalOpen && (
-            <DogBreedCardModal
-              id={selectedImage.id}
-              image={selectedImage.generated_photo_link}
-              shedding={{ shedding: selectedImage.shedding }}
-              drooling={{ drooling: selectedImage.drooling }}
-              protectiveness={{ protectiveness: selectedImage.protectiveness }}
-              energy={{ energy: selectedImage.energy }}
-              barking={{ barking: selectedImage.barking }}
-              height={[
-                selectedImage.max_height_female,
-                selectedImage.max_height_male,
-                selectedImage.min_height_female,
-                selectedImage.min_height_male,
-              ]}
-              weight={[
-                selectedImage.max_weight_female,
-                selectedImage.max_weight_male,
-                selectedImage.min_weight_female,
-                selectedImage.min_weight_male
-              ]}
-              name={selectedImage.name}
-              description={selectedImage.description}
-              dog1={selectedImage.dog1}
-              dog2={selectedImage.dog2}
-              feed={true}
-              onClose={closeDogBreedCardModal}
-              isOpen={isDogBreedCardModalOpen}
-            />
-          )}
+        {/* Dog Breed Card Modal */}
+        {isDogBreedCardModalOpen && (
+          <DogBreedCardModal
+            id={selectedImage.id}
+            image={selectedImage.generated_photo_link}
+            shedding={{ shedding: selectedImage.shedding }}
+            drooling={{ drooling: selectedImage.drooling }}
+            protectiveness={{ protectiveness: selectedImage.protectiveness }}
+            energy={{ energy: selectedImage.energy }}
+            barking={{ barking: selectedImage.barking }}
+            height={[
+              selectedImage.max_height_female,
+              selectedImage.max_height_male,
+              selectedImage.min_height_female,
+              selectedImage.min_height_male,
+            ]}
+            weight={[
+              selectedImage.max_weight_female,
+              selectedImage.max_weight_male,
+              selectedImage.min_weight_female,
+              selectedImage.min_weight_male
+            ]}
+            name={selectedImage.name}
+            description={selectedImage.description}
+            dog1={selectedImage.dog1}
+            dog2={selectedImage.dog2}
+            feed={true}
+            onClose={closeDogBreedCardModal}
+            isOpen={isDogBreedCardModalOpen}
+          />
+        )}
       </div>
     </div>
   );
