@@ -107,9 +107,10 @@ const NewsFeedPublicPage = () => {
 
 
       <div className="news-feed-content">
+        <div className='public-feed-block'>
         <h1>Top Dogs & New Pups</h1>
         <h2>Wag-worthy moments from the stars and the rising!</h2> <br />
-        <div className="news-feed-content">
+        {/* <div className="news-feed-content"> */}
 
           <div>
             <h2
@@ -137,8 +138,8 @@ const NewsFeedPublicPage = () => {
               openModal={openDogBreedCardModal}
             />
           </div>
-
-
+          {/* </div> */}
+          </div>
 
           {/* Dog Breed Card Modal */}
           {isDogBreedCardModalOpen && (
@@ -171,7 +172,6 @@ const NewsFeedPublicPage = () => {
               isOpen={isDogBreedCardModalOpen}
             />
           )}
-        </div>
       </div>
     </div>
   );

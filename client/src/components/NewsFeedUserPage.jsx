@@ -191,8 +191,9 @@ const NewsFeedUserPage = () => {
   return (
     <div className="news-feed-container">
 
-
       <div className="news-feed-content">
+        
+      <div className='user-feed-block'>
 
         <div>
           <h2
@@ -251,9 +252,9 @@ const NewsFeedUserPage = () => {
             openModal={openDogBreedCardModal}
           />
         </div>
+        </div>
 
 
-      </div>
       <div className="news-feed-container-generate">
         {/* Generate Your Own Breed Button */}
         <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
@@ -266,6 +267,7 @@ const NewsFeedUserPage = () => {
 
       </div>
 
+      </div>
 
       {isDogBreedCardModalOpen && (
         <DogBreedCardModal
