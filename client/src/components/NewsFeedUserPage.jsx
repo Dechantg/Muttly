@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import DogBreedCardModal from './DogBreedCardModal';
 import FeedRows from './FeedRows';
 
-import '../views/stylesheets/NewsFeedUserPage.scss';
+import '../views/stylesheets/NewsFeedPage.scss';
 
 const NewsFeedUserPage = () => {
   const [usersfavouritedImages, setUsersFavouritedImages] = useState([]);
@@ -189,14 +189,14 @@ const NewsFeedUserPage = () => {
 
 
   return (
-    <div className="users-news-feed-user-container">
+    <div className="news-feed-container">
 
 
-      <div className="users-news-feed-content">
+      <div className="news-feed-content">
 
         <div>
           <h2
-            className="userfeed-clickable-title"
+            className="feed-clickable-title"
             onClick={redirectToUsersFavouritesPage}>
             Your Favourites <img className='bone-animate' src='../icons/bone.png' />
           </h2>
@@ -210,7 +210,7 @@ const NewsFeedUserPage = () => {
 
         <div>
           <h2
-            className="userfeed-clickable-title"
+            className="feed-clickable-title"
             onClick={redirectToMostPopularGeneratedImagesPage}>
             Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
           </h2>

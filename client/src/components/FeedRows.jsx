@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../views/stylesheets/NewsFeedUserPage.scss';
+import '../views/stylesheets/NewsFeedPage.scss';
 import PlaceholderImage from './PlaceHolderImage';
 
 const FeedRows = ({ feedImages, placeholderCount, openModal }) => {

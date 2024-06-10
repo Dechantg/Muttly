@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FeedRows from './FeedRows';
 import DogBreedCardModal from './DogBreedCardModal';
 
-import '../views/stylesheets/NewsFeedUserPage.scss';
+import '../views/stylesheets/NewsFeedPage.scss';
 
 const NewsFeedPublicPage = () => {
   const [mostPopularImages, setMostPopularImages] = useState([]);
@@ -103,17 +103,17 @@ const NewsFeedPublicPage = () => {
 
 
   return (
-    <div className="users-news-feed-user-container">
+    <div className="news-feed-user-container">
 
 
-      <div className="users-news-feed-content">
+      <div className="news-feed-content">
         <h1>Top Dogs & New Pups</h1>
         <h2>Wag-worthy moments from the stars and the rising!</h2> <br />
         <div className="news-feed-content">
 
           <div>
             <h2
-              className="userfeed-clickable-title"
+              className="feed-clickable-title"
               onClick={redirectToMostPopularGeneratedImagesPage}>
               Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
             </h2>
@@ -126,7 +126,7 @@ const NewsFeedPublicPage = () => {
           </div>
           <div>
             <h2
-              className="userfeed-clickable-title"
+              className="feed-clickable-title"
               onClick={redirectToRecentlyGeneratedImagesPage}>
               Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
             </h2>
